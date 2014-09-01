@@ -1,0 +1,425 @@
+@charset "utf-8";
+/* CSS Document */
+/*================================ Global Style ================================*/
+ * { margin:0; padding: 0; }
+  option { padding-left: 0.4em; }
+  * html body * { overflow:visible; }
+  * html iframe, * html frame { overflow:auto; }
+ 
+  * html input { overflow: hidden; }
+  body {
+	font-family:arial,sans-serif;
+    background:#fff ;
+  }
+  body ol li { display:list-item; }
+  h2 {
+  	font-size:1.6em;
+  }
+  a {text-decoration:none;color:#4C6E94;}
+  a:focus,
+  a:hover,
+  a:active {text-decoration:none;}
+  fieldset, img { border: 0 solid; }
+  em {
+  	color:red;
+  }
+  table td,th{
+  	text-align:left;
+  	padding:0 5px;
+  	height:20px;
+  	line-height:20px;
+  }
+  table th{
+  	text-align:center;
+  }
+  .spacer{
+	font-size:0; line-height:0; clear:both;}
+  .button{
+	  background:url(../images/button.png) no-repeat 0 0 #42a2c8; color:#FFFFFF; border:none;
+	  width:63px; height:21px; float:right; margin:0; padding:0; cursor:pointer;
+	}
+   .buttonBig
+        {   
+	  background:url(../images/button.png) no-repeat 0 0 #42a2c8; color:#FFFFFF; border:none;
+	  width:110px; height:21px; float:right; margin:0; padding:0; cursor:pointer;
+    }  
+	.input {
+        border:1px solid #A4C6C6;height:18px;width:150px;vertical-align:bottom;
+        }  
+/*===============================================================================*/
+/* ----------------- body start --------------------------- */
+#navigator{
+ 	width:100%; margin:0 auto;height:39px;background:url(../images/navi_pic.gif) repeat-x;position:relative;
+}
+#navigator #naviLeft{
+ 	float:left;width:245px;height:38px;background:url(../images/navi_left.gif);
+}
+#navigator #naviRight{
+ 	float:right;width:17px;height:38px;background:url(../images/navi_right.gif);
+}
+#navigator #LoginUser{
+ 	float:left;
+}
+#navigator span{
+	height:38px;line-height:46px;vertical-align: bottom; 
+}
+#navigator #naviLeftWord{
+	padding-left:40px;font-size:1.1em;margin-top:30px;
+}
+#navigator #LoginUserWord{
+	padding-left:10px;font-size:0.8em;margin-top:30px;
+}
+ #navigator #navi a{
+ 	color:#293D6B;
+ 	font-size:0.7em;
+ 	font-weight:bold;
+ 	padding:4px 0;
+ }
+#footer{
+	width:100%; margin:0 auto; background:url(../images/footer_pic.gif) repeat-x; position:relative;height:11px;float:left;
+	}
+#footer .footerLeft{
+	float:left;width:218px;background:url(../images/footer_left.gif) no-repeat;height:11px;
+	}
+#footer .footerRight{
+	float:right;width:17px;background:url(../images/footer_right.gif) no-repeat;height:11px;
+	}		
+/* ----------------- body end --------------------------- */
+
+/* ----------------- header start --------------------------- */
+#header{
+	width:100%; margin:0 auto; background:url(../images/header_pic.gif) repeat-x; position:relative;
+	height:57px;
+	}
+#header img.logo{
+	display:block; font-size:0; position:absolute; left:0px; top:0px;
+	}
+#header #date{
+	width:270px;height:27px; position:absolute; right:0; top:0;background:url(../images/header_user_pic.gif) no-repeat;color:#333; line-height:27px; font-size:0.85em;
+	}
+/* ----------------- header end --------------------------- */
+
+
+
+#top{
+	height:75px;
+	border-bottom:solid 1px #d1d1d1;
+}
+#content{
+	margin:10px;
+	overflow:hidden;
+}
+#left{
+	width:18%;
+	float:left;
+}
+#left #menu{
+	list-style-type:none;
+	
+	font-size:16px;
+}
+#left #menu li.menu-item{
+	border-bottom:dashed 1px #ccc;
+	line-height:2.5em;
+}
+#navigation{
+	margin-top:8px;
+}
+#navigation li{
+	border:none;
+	font-size:12px;
+	line-height:1em;
+}
+#downloads{
+	margin-top:8px;
+}
+#downloads li{
+	border:none;
+	font-size:12px;
+	line-height:1em;
+}
+#right{
+	_height:800px;
+	float:left;
+	margin-left:5px;
+	width:95%;
+	border-left:solid 1px #ccc;
+}
+.block{
+    text-align:right;
+	margin:15px auto;
+	padding:10px 0;
+	border-bottom:solid 1px #ddd;
+	width:98%;
+}
+.page-title{
+    color:#4E7096;
+	width:100%;
+	margin:10px;
+	margin-right:0px;
+	background-color:#CCCCCC;
+	height:25px;
+	background-image:url(../image/Table_bg.jpg);
+}
+
+#pagecount
+{
+  height:25px;
+  width:90%;
+  background-color:#E0E0E0;
+  float:left;
+  margin-left:5px;
+  width:100%;
+  border-left:solid 1px #ccc;
+  text-align:left;
+  text-indent:10px;
+  font-size:14px;
+}
+.newspost{
+	background:url(../image/post.gif) no-repeat right;
+	padding-right:20px;
+}
+.toolbar {
+	margin:10px;
+	overflow:hidden;
+}
+.toolbar a{
+	display:block;
+	float:left;
+	margin-right:20px;
+	height:20px;
+	line-height:20px;
+}
+.toolbar .print{
+	background:url(../image/icon-print.gif) no-repeat left;
+	padding-left:20px;
+}
+.toolbar .excel{
+	background:url(../image/icon-excel.gif) no-repeat left;
+	padding-left:20px;
+}
+.toolbar .upload{
+	background:url(../image/icon-upload.gif) no-repeat left;
+	padding-left:20px;
+}
+#downloadview .left-block{
+	float:left;
+	width:45%;
+	_display:inline;
+	margin:20px;
+	overflow:hideen;
+	height:100px;
+	clear:both;
+}
+#downloadview .inner-left{
+	float:left;
+	width:25%;
+	height:100px;
+
+}
+#downloadview .inner-left img{
+	margin:10px;
+}
+#downloadview .inner-right{
+	float:right;
+	width:73%;
+	height:100px;
+}
+#downloadview .right-block{
+	float:right;
+	width:45%;
+	_display:inline;
+	margin:20px;
+	
+	height:100px;
+}
+#downloadview .inner-right ul{
+	list-style-type:none;
+	margin:10px;
+	line-height:1.5em;
+}
+#usermgt a{
+	margin:0 5px;
+}
+#usermgt_link{
+	text-align:right;
+	padding-right:20px;
+}
+#usermgt_link a{
+	margin:0 5px;
+}
+#usermgt_link a.active{
+	color:red;
+}
+#usermgt thead a{
+	margin:0;
+}
+#controlList{
+	margin-left:10px;
+	margin-top:11px;
+	float:left;
+	display:block;
+}
+#cover{
+	width:100%;
+	height:100%;
+	background:#cccccc;
+}
+/* ----------------- login start --------------------------- */
+#loginPage{
+	width:100%;height:100%; background-color:#353c44;position: absolute;
+	}
+#loginBox{
+	width:312px;height:300px;  position: absolute;
+  	top: 50%;
+  	left: 50%;
+ 	margin-left: -156px;
+ 	 margin-top: -150px;}
+#loginBox span.ctop{
+	background:url(../images/login/login_top.gif) no-repeat 0 0 #FCFAF3; color:#000000;
+	line-height:0; font-size:0; height:14px; display:block;}
+#loginBox span.cbottom{
+	background:url(../images/login/login_bottom.gif) no-repeat 0 0 #FCFAF3; color:#000000;
+	line-height:0; font-size:0; height:25px; display:block;}
+#loginBox form.login{
+	background:url(../images/login/login_midle.gif) repeat-y 0 0 #FCFAF3; color:#000000;
+	width:272px; padding:0 20px; float:left;}
+#loginBox form.login h2.text3{
+	background:url(../images/login/search_h2_bg.gif) no-repeat 0 0 #FFFFFF; color:#0B0B0B;
+	padding:0 0 10px 55px; float:left; width:228px; height:37px;
+	font:normal 24px/30px Georgia, "Times New Roman", Times, serif;}
+
+#loginBox form.login label{
+	background-color:#FFFFFF; color:#0B0B0B; margin:0 0 8px 0; float:left;
+	font:bold 10px/28px Arial, Helvetica, sans-serif; text-transform:uppercase;}
+#loginBox form.login input{
+	background-color:#EFEBDE; color:#0B0B0B; border:#C3BCA4 1px solid;
+	width:168px; height:22px; padding:2px; margin:0 0 8px 15px; float:right;
+	font:normal 14px/20px Arial, Helvetica, sans-serif;}
+#loginBox form.login textarea{
+	background-color:#EFEBDE; color:#0B0B0B; border:#C3BCA4 1px solid;
+	width:168px; height:66px; padding:2px; margin:0 0 13px 15px; float:right;
+	font:normal 14px/20px Arial, Helvetica, sans-serif;}
+#loginBox form.login input.submit{
+	background:url(../images/button.png) no-repeat 0 0 #42a2c8; color:#FFFFFF; border:none;
+	width:63px; height:21px; float:right; margin:0 0 0 10px; padding:0 cursor:pointer;
+	font:normal 10px/13px Arial, Helvetica, sans-serif; text-transform:uppercase;}
+#loginBox form.login input.reset{
+	background:url(../images/button.png) no-repeat 0 0 #42a2c8; color:#FFFFFF; border:none;
+	width:63px; height:21px; float:right; margin:0; padding:0; cursor:pointer;
+	font:normal 10px/13px Arial, Helvetica, sans-serif; text-transform:uppercase;}
+/* ----------------- login end --------------------------- */
+/* ----------------- subPage start --------------------------- */
+.main {
+float:left;
+margin-bottom:1em;
+width:100%;
+}
+.content {
+margin:0 0.8em;
+}
+.error, .notice, .success, .greatSuccess, .information, .warning, .message {
+border-style:solid;
+border-width:2px;
+display:block;
+margin-bottom:1em;
+padding:0.8em;
+position:relative;
+}
+.notice {
+background:none repeat scroll 0 0 #FFF6BF;
+border-color:#FFD324;
+color:#514721;
+}
+
+.warning {
+background:none repeat scroll 0 0 #FBE3E4;
+border-color:#FBC2C4;
+color:#8A1F11;
+}
+.message {
+background:none repeat scroll 0 0 #FFF6BF;
+border-color:#FFD324;
+color:#514721;
+}
+.pagination  {
+margin:3em 10px 2em;
+text-align:left;
+}
+.pagination {
+color:#999999;
+}
+.pagination a {
+-moz-border-radius:2px 2px 2px 2px;
+background:none repeat scroll 0 0 #EFF8F6;
+font-weight:700;
+}
+.pagination a:hover {
+	text-decoration:underline;
+}
+.pagination a, .pagination span {
+margin:1px;
+padding:0.25em 0.5em;
+}
+.pagination .current {
+-moz-border-radius:2px 2px 2px 2px;
+background:none repeat scroll 0 0 #007799;
+color:#EFF8F6;
+font-weight:700;
+}
+.pagination .gap {
+padding:0;
+}
+.search_field { 
+	background: #fff url(../images/searchbg.gif) no-repeat right; 
+	color: #808080;
+	clear: both;
+	font-weight: bold;
+	padding: 7px 25px 10px 10px;
+	margin: 5px 0;
+}
+.search_form { float: right; }
+.userManage{ font-size:0.75em}
+.userManage h1 {
+border-bottom:12px solid #DDDDDD;
+color:#536C71;
+font:400 1.6em arial,sans-serif;
+padding-bottom:0.2em;
+}
+.userManage h2  {
+color:#586B7A;
+font-size:1.2em;
+}
+.userManage h1, h2, h3, h4, h5, h6 {
+margin:0 0 10px;
+padding:0;
+}
+.userManage p{
+	line-height:40px;
+	}
+.userManage .dark {
+color:#353E47;
+}
+.userManage label {
+float:left;
+vertical-align:top;
+width:25%;
+}
+.userManage .width50  {
+width:28%;
+}
+.userManage input.radio {
+background:none repeat scroll 0 0 transparent;
+border:0 none;
+}
+.userManage input, textarea, select {
+background:none repeat scroll 0 0 #EEEEEE;
+border:1px solid #CCCCCC;
+color:#999999;
+font:400 1em verdana,sans-serif;
+padding:1px;
+}
+.userManage .lightBlueBg {
+background-color:#EAF2F5;
+}
+/* ----------------- subPage end --------------------------- */

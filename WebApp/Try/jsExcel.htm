@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+    function jsExcel() {
+        var xls = new ActiveXObject("Excel.Application");
+        xls.visible = true;
+        var newBook = xls.Workbooks.Add;
+        newBook.Worksheets.Add;
+        newBook.Worksheets(1).Activate;
+        xls.ActiveWorkBook.ActiveSheet.PageSetup.Orientation = 2;
+        xls.ActiveWorkBook.ActiveSheet.PageSetup.PaperSize = 5;
+        newBook.Worksheets(1).Columns("A").columnwidth = 50;
+        newBook.Worksheets(1).Columns("A").WrapText = true;
+        newBook.Worksheets(1).Columns("B").columnwidth = 50;
+        newBook.Worksheets(1).Columns("B").WrapText = true;
+        /*
+        newBook.Worksheets(1).Range("A1:B1000").NumberFormat = "0";
+        newBook.Worksheets(1).Range("A1:B1000").HorizontalAlignment = -4131;
+        newBook.Worksheets(1).Cells(1, 1).Interior.ColorIndex = "15";
+        newBook.Worksheets(1).Cells(1, 1).value = "First Column, First Cell";
+        newBook.Worksheets(1).Cells(2, 1).value = "First Column, Second Cell";
+        newBook.Worksheets(1).Cells(1, 2).value = "Second Column, First Cell";
+        newBook.Worksheets(1).Cells(2, 2).value = "Second Column, Second Cell";*/
+
+        var startTime, endTime;
+        var d = new Date();
+        startTime = d.getTime();
+        var number = 2000;
+
+        for (i = 1; i < number+1; i++) {
+            //  newBook.Worksheets(1).Cells(i, 1).value = i +" Column, "+ i + " Cell";
+            newBook.Worksheets(1).Cells(i, 1).value = i + " Column, 1 Cell";
+        }
+
+        d = new Date(); endTime = d.getTime();
+        var time = (endTime - startTime) / 1000;
+        var text = "生成数据条数为：" + number + "，总共耗时：" + time + " 秒!";
+        document.write(text);
+
+        newBook.Worksheets(1).Name = "My First WorkSheet GO GO GO!";
+
+    }
+</script>
+
+<input type="button" value="点击生成Excel" onclick="jsExcel()" />
+
+</body>
+</html>

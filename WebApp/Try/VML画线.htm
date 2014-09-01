@@ -1,0 +1,181 @@
+<html xmlns:v=http://www.handandaily.com/vml>
+    <head>
+        <title></title>
+        <meta name="Generator" content="EditPlus" />
+        <meta name="Author" content="eglic" />
+        <meta name="ContentType" content="text/html" />
+        <meta name="CharSet" content="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="/style/default.css" />
+        <style type="text/css">
+            body{margin:0;}
+            v\:*   {behavior:url(#default#VML);}              
+        </style>
+    </head>
+    <body>
+        <div id='lineDiv'        
+            onmousedown = 'down(event)'    
+            onmouseup='up(event)'
+            onmousemove='move(event)'
+            style='top:30px;left:30px;width:800px;height:600px;visibility:visible;border:solid 1px blue;background-color: #FFFFFF'
+        >    
+      </div>
+
+      <div id="displayDiv">
+          <div id="moveX"></div>
+          <div id="moveY"></div>
+      </div>
+        <script type="text/javascript">
+             /**
+             * 定义点对象，也就是鼠标的位置的封装
+             */
+            function Point(){
+                return this;
+            }
+            Point.prototype.setX = function(screenX){
+            };
+            Point.prototype.setY = function(screenY){
+            }
+            /**
+             * 定义的屏幕点对象
+             */
+            function ScreenPoint(screenX,screenY){
+                this.screenX = screenX;
+                this.screenY = screenY;
+                return this;
+            }
+            ScreenPoint.prototype = new Point();
+            ScreenPoint.prototype.setX = function (screenX){
+                this.screenX = screenX;
+            };
+            ScreenPoint.prototype.setY = function (screenY){
+                this.screenY = screenY;
+            };
+            /**
+             * 重载toString方法
+             */
+            ScreenPoint.prototype.toString = function(){
+                return this.screenX.toString() + " ---  " + this.screenY.toString();
+                //return "-----------";
+            };  
+        </script>
+        <script language="javascript">
+            // 你所点过的鼠标位置的数组，是点对象数组
+            var disPoints = new Array();
+            // 是否处于鼠标按下状态
+            var  select = false;
+            // 记录鼠标按下点的位置 ，默认是(0,0)  
+            var  downX = 0;  
+            var  downY = 0;
+            // 当前用于画线的层            
+            var lineDiv = document.getElementById("lineDiv");
+            // 当前你鼠标画的线，在鼠标抬起前的那一条
+            var line = null;
+            /**
+            * 处理鼠标按下事件
+            */
+            function down(event){                
+                //alert(event);
+                // 取得你选取的最后一个点
+                var lastPoint = disPoints[disPoints.length - 1];
+                //alert(lastPoint);
+                // 判断是否是第一个点
+                if(lastPoint == null){
+                    // 鼠标按下点屏幕坐标
+                    var mouseX1 = event.clientX - getDivOffsetLeft();
+                    var mouseY1 = event.clientY -  getDivOffsetTop();
+                    // 记录鼠标按下点的屏幕坐标
+                    downX = mouseX1;
+                    downY = mouseY1;
+                    // 记录第一个点
+                    lastPoint = new ScreenPoint(downX,downY);
+                    disPoints[0] = lastPoint;
+                    //return;
+                }
+                // 如果不是第一个点
+                // 取得当前鼠标点的位置
+                var mouseX2 = event.clientX -  getDivOffsetLeft();
+                var mouseY2 = event.clientY -  getDivOffsetTop();
+                // 定义当前点
+                var tmpPoint = new ScreenPoint(mouseX2,mouseY2);
+                // 定义线的ID,用于，取得线的对象
+                var lineID = "the_line_" + (disPoints.length-1);
+                // 在当前点，和最后一个点，两点画线
+                line = drawLine(lineID,lastPoint,tmpPoint);
+                // 鼠标按下，记录按下的状态
+                select = true;
+            }
+            /**
+            * 处理鼠标抬起事件
+            */
+             function up(event){        
+                     //alert("up");            
+                    // 取得鼠标抬起点的坐标，也就是确定点的坐标
+                    var mouseX3 = event.clientX -  getDivOffsetLeft();
+                    var mouseY3 = event.clientY -  getDivOffsetTop();
+                    // 最终确定的点的对象
+                    var currentPoint = new ScreenPoint(mouseX3,mouseY3);
+                    // 把此点放入到线的端点数组里面，这个点，相对于下一次的操作来说，就是最后一个点
+                    disPoints[disPoints.length] = currentPoint;
+                    select = false;        
+                }    
+            /**
+            * 处理鼠标移动事件
+            */
+             function move(event){
+                     // 是否鼠标按下
+                    if(select){        
+                        // 取得当前鼠标的位置坐标
+                        var mouseX2 = event.clientX - getDivOffsetLeft();
+                        document.getElementById('moveX').innerHTML = "当前鼠标所在的X坐标：" + mouseX2 + "<br>";
+                        var mouseY2 = event.clientY - getDivOffsetTop();
+                        document.getElementById('moveY').innerHTML = "当前鼠标所在的Y坐标：" + mouseY2;
+                        // 把线，从最后一个点画到当前位置
+                        line.to = mouseX2 + "," + mouseY2;            
+                    }
+                    /*
+                     * 取消事件冒泡，否则不能响应鼠标的抬起事件
+                     */
+                    window.event.cancelBubble = true;
+                    window.event.returnValue = false;    
+                }    
+            function getDivOffsetLeft(){
+                var lay1 = document.getElementById("lineDiv");
+                //var rect = document.getElementById("rect");
+                return lay1.offsetLeft;
+            }
+            function getDivOffsetTop(){
+                var lay1 = document.getElementById("lineDiv");
+                //var rect = document.getElementById("rect");
+                return lay1.offsetTop;
+            }
+            /**                
+            * 画线操作
+            * 用VML 实现
+            */
+            function drawLine(id,startPoint,endPoint){
+                //alert("start -- ");
+                var   s="<v:line   " +
+                    +     "id="
+                    +     id
+                    +    "   from="
+                    +    "'"
+                    +     startPoint.screenX
+                    +    ","
+                    +     startPoint.screenY
+                    +    "'"
+                    +     "   to="
+                    +     "'"
+                    +     endPoint.screenX
+                    +    ","
+                    +     endPoint.screenY
+                    +    "'"
+                    +    "  style='position:absolute;left:0px;top:0px;'></v:line>";
+                var  o = document.createElement(s); 
+                // 这个方法，使在特定的位置添加对象，具体使用，请参考其它的资料
+                document.body.insertAdjacentElement('BeforeEnd',o);  
+                return o;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test</title>
+    <script type="text/javascript" src="scripts/jquery-1.8.1.js"></script>
+    <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+    <style type="text/css">
+        .account {
+            border-bottom-color: #0094ff;
+            background-color: #b6ff00;
+            border-bottom-width: 2px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <input id="isvip" type='checkbox' data-bind="checked: isVip" /><label for="isvip">是否是会员</label>
+    </p>
+    <p>
+        你的用户名是:
+        <input type='text' data-bind="value: username, enable: isVip,css: {account: username().indexOf('G')>-1}" />
+        <span data-bind="visible: isVip">尊贵的会员欢迎你访问!</span>
+    </p>
+    <script type="text/javascript">
+        function ViewModel() {
+            var self = this;
+            self.isVip = ko.observable(false);
+            self.username = ko.observable("halower@@");
+        }
+        $(function () {
+            ko.applyBindings(new ViewModel());
+        });
+    </script>
+</body>
+</html>

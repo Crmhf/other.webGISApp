@@ -1,0 +1,31 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>konckout学习系列</title>
+    <script type="text/javascript" src="scripts/jquery-1.8.1.js"></script>
+    <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+    <script type="text/javascript">
+        function MyViewModel() {
+            var self = this;
+            self.selectOptions = [
+                    { name: "老大", id: 1 },
+                    { name: "老二", id: 2 },
+                    { name: "老幺", id: 3 }
+            ];
+            self.result = ko.observable(2);//只能检测 value
+            self.changeToYoung = function () {
+                self.result(2);  //ko.observable()声明的属性，使用propName("...")方式改变其值，才能通知相关UI产生联动效果
+            }
+        }
+        $(function () {
+            ko.applyBindings(new MyViewModel());
+        });
+    </script>
+</head>
+<body>
+    <!-- 指定options来源，option text/value对应的属性名称 -->
+    <select data-bind="options:selectOptions, optionsText: 'name', optionsValue: 'id', value:result"></select><br />
+    排行：<span data-bind="text:result"></span><br />
+    <!-- 指定按钮click事件调用ViewModel中的特定函數修改result值 -->
+    <input type="button" value="老幺" data-bind="click: changeToYoung" />
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        html, body {
+            overflow: hidden;
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        .virtual_body {
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            overflow-x: auto;
+        }
+        .fixed_div {
+            position: absolute;
+            z-index: 2008;
+            bottom: 2px;
+            left: 40px;
+            width: 800px;
+            height: 40px;
+            border: 1px solid red;
+            background: #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="fixed_div">我是一个固定在这里的DIV !</div>
+    <div class="virtual_body">
+        <div style="height:888px;">
+            我是一个要显示的内容 !
+        </div>
+    </div>
+<!--
+html,body：将默认可能会随机出现的滚动条，完全地隐藏了，
+这样不管您放了啥内容，它们都不会出来了。
+.virtual_body：顾名思义，就是一个假的body了，它被设置为长宽都为100%的，
+意思就是它利用了所有可视的浏览器窗体显示所有的内容，并垂直允许出现滚动条。
+.fixed_div：这下它可以利用绝对值进行定位了，因为在这个场景下，
+这个页面100%地被那个假冒的body给独霸了，而滚动条反正也出不来，
+您就可以自认为是在某个点蹲坑了，绝对安全。        
+-->
+</body>
+</html>

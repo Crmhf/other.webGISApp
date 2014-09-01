@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>
+add
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<link href="jiance.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+<table width="1004" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td>
+<table width="1004" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<table width="1004" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<table height="78" cellspacing="0" cellpadding="0" width="100%" border="0">
+<tbody>
+<tr>
+<td width="10" height="78" background="../images/top_01.gif">&nbsp;
+</td>
+<td width="994" valign="bottom" background="../images/top_06.gif">
+<table width="994" border="0" align="right" cellpadding="0" cellspacing="0">
+<tr>
+<td width="988" height="50" align="right" class="STYLE6"><a href="javascript:;" class="top">退出系统</a>
+</td>
+<td width="10" align="right">
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table width="100%" height="31" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td background="../images/top_07.gif">
+<table width="600" border="0" cellpadding="0" cellspacing="0" class="topMsg">
+<tbody>
+<tr>
+<td width="70">&nbsp;
+</td>
+<td height="31" class="font_blue_03">欢迎<font color="#009900">xxxxxxx　</font>数据管理系统 </td>
+</tr>
+</tbody>
+</table>
+</td>
+<td width="300" background="../images/top_07.gif">
+<table width="260" border="0" cellspacing="0" cellpadding="0">
+<tr>
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td width="1004" >
+<table width="1004" border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<td width="1004">
+<table width="1004" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#88bfea">
+<tr>
+
+<td valign="top" bgcolor="#F9F9F9"  class="centerBG">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td height="50" bgcolor="#E5F1F8">
+<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr>
+<td width="200">&nbsp;
+</td>
+<td width="100">&nbsp;
+</td>
+<td valign="middle"><a href="#"></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td height="25" align="center" class="topMsg"><div align="left"></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+
+<table align="left" width="100%" border="0" cellspacing="0" cellpadding="0">
+
+<form id="formX" method="post" UseValidator="true" action="../servlet/Addok" name="form1" />
+
+<input name="tablename" type="text" size="16" value=TB_BX_JBXXB style="display:none"/>
+<input name="OBJECTID" type="text" size="16"  style="display:none"/> 
+    <tr>
+      <td width="92" height="31" align="left" class="listTable">&nbsp;</td>
+       <td width="249" align="left" bgcolor="#F9F9F9" class="listTable"  >监测年份</td>
+     <td width="438" colspan="8" align="left" class="listTable">
+	 <INPUT id="starttime2" onclick="setday(this)" size="16" NotEmpty="true" EmptyMessage="请输入日期" Match="date" ErrorMessage="请正确输入" name="starttime" value="点击插入日期" style="cursor:hand">
+  </td>
+  </tr>
+    <tr>
+      <td width="92" height="31" align="left" class="listTable">&nbsp;</td>
+       <td align="left" bgcolor="#F9F9F9" class="listTable"  >空间尺度</td>
+     <td colspan="8" align="left" class="listTable">
+       <input id="KJCD" name=KJCD type="text" size="16" NotEmpty="true" EmptyMessage="请输入空间尺度" Match="int" ErrorMessage="请输入整数且长度小于10"/>      </td>
+  </tr>
+    <tr>
+      <td width="92" height="31" align="left" class="listTable">&nbsp;</td>
+       <td align="left" bgcolor="#F9F9F9" class="listTable"  >具体区域编码</td>
+     <td colspan="8" align="left" class="listTable">
+       <input id="BM" name=BM type="text" size="16" NotEmpty="true" EmptyMessage="请输入具体区域编码" Match="int" ErrorMessage="请输入整数且长度小于10"/>      </td>
+  </tr>
+    <tr>
+      <td width="92" height="31" align="left" class="listTable">&nbsp;</td>
+       <td align="left" bgcolor="#F9F9F9" class="listTable"  >监测小流域名称</td>
+     <td colspan="8" align="left" class="listTable">
+       <input id="XLYMC" name=XLYMC type="text" size="16" NotEmpty="true" EmptyMessage="请输入监测小流域名称" Match="chinese" ErrorMessage="请输入中文且长度小于10"/>      </td>
+  </tr>
+    <tr>
+      <td width="92" height="31" align="left" class="listTable">&nbsp;</td>
+       <td align="left" bgcolor="#F9F9F9" class="listTable"  >小流域面积（km2）</td>
+     <td colspan="8" align="left" class="listTable">
+       <input id="XLYMJ" name=XLYMJ type="text" size="16" NotEmpty="true" EmptyMessage="请输入小流域面积（km2）" Match="int" ErrorMessage="请输入整数且长度小于10"/>      </td>
+  </tr>
+    <tr>
+      <td width="92" height="31" align="left" class="listTable">&nbsp;</td>
+       <td align="left" bgcolor="#F9F9F9" class="listTable"  >所属支流</td>
+     <td colspan="8" align="left" class="listTable">
+       <input id="SSZL" name=SSZL type="text" size="16" NotEmpty="true" EmptyMessage="请输入所属支流" Match="chinese" ErrorMessage="请输入中文且长度小于10"/>      </td>
+  </tr>
+    <tr>
+      <td width="92" height="31" align="left" class="listTable">&nbsp;</td>
+       <td align="left" bgcolor="#F9F9F9" class="listTable"  >控制面积</td>
+     <td colspan="8" align="left" class="listTable">
+       <input id="KZMJ" name=KZMJ type="text" size="16" NotEmpty="true" EmptyMessage="请输入控制面积" Match="int" ErrorMessage="请输入整数且长度小于10"/>      </td>
+  </tr>
+    <tr>
+      <td width="92" height="31" align="left" class="listTable">&nbsp;</td>
+       <td align="left" bgcolor="#F9F9F9" class="listTable"  >把口站名称</td>
+     <td colspan="8" align="left" class="listTable">
+       <input id="BKZMC" name=BKZMC type="text" size="16"  NotEmpty="true" EmptyMessage="请输入把口站名称" Match="chinese" ErrorMessage="请输入中文且长度小于10"/>      </td>
+  </tr>
+    <tr>
+      <td width="92" height="31" align="left" class="listTable">&nbsp;</td>
+       <td align="left" bgcolor="#F9F9F9" class="listTable"  >基面名称</td>
+     <td colspan="8" align="left" class="listTable">
+       <input id="JMMC" name=JMMC type="text" size="16" NotEmpty="true" EmptyMessage="请输入基面名称" Match="chinese" ErrorMessage="请输入中文且长度小于10"/>      </td>
+  </tr>
+<tr>
+<td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="50" height="25" align="right" >
+</td>
+<td align="center"><input name="Submit"  class="buttonClass"  value="添加" type="submit" onclick="return FormValidator.CheckForm(this.form);" />
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table id="__03" width="1004" height="43"  align="center" border="0" background="../images/index_foot.gif" cellpadding="0" cellspacing="0">
+<tr>
+<td rowspan="4" width="189" height="36" >
+
+<input name="Submit"  class="buttonClass"  value="单独的添加按钮" type="button" onclick="return FormValidator.CheckForm(document.getElementById('formX'));" />
+
+</td>
+<td rowspan="4" width="195" height="36" ></td>
+</tr>
+<tr>
+<td colspan="3" height="7" >
+</td>
+</tr>
+<tr>
+<td rowspan="2" width="89" height="18" >
+</td>
+
+<td rowspan="2"  width="90" height="18" >
+</td>
+</tr>
+<tr>
+<td width="441" height="7" >
+</td>
+</tr>
+</table>
+<script language="javascript" src="jiance.js"></script>
+</body>
+</html>
+

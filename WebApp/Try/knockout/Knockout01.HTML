@@ -1,0 +1,44 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+</head>
+<body>
+
+		<h3>一个简单的案例</h3>
+		<p>First name: <label data-bind="text: firstName"></label></p>
+		<p>Last name: <label data-bind="text: lastName"></label></p>
+		<p>Full name: <label data-bind="text: fullName"></label></p>
+		
+		<p>First name: <input data-bind="value: firstName" />试着修改下我的值看看</p>
+		<p>Last name: <input data-bind="value: lastName" />试着修改下我的值看看</p>
+		
+		<button data-bind="click: capitalizeLastName">Go caps</button>
+		
+   
+    <script type="text/javascript">
+
+
+    function AppViewModel() {
+        
+        this.firstName = ko.observable("Bert");//observable是一个监控属性，实现无刷新变更。
+        this.lastName = ko.observable("Bertington");
+
+				//计算属性ko.computed了 – 这些函数是一个或多个监控属性
+        this.fullName = ko.computed(
+        function () {
+            return this.firstName() + " " + this.lastName();
+        }
+    , this);//第2个参数“this”的目的是为了方便引用"this.firstName()","this.lastName()"
+
+        this.capitalizeLastName = function () {
+            var currentVal = this.lastName();        // Read the current value
+            this.lastName(currentVal.toUpperCase()); // Write back a modified value
+        };
+    }
+
+    // Activates knockout.js
+    ko.applyBindings(new AppViewModel());
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="jquery-1.8.1.min.js"></script>
+    <script type="text/javascript">
+        function getPhoto() { 
+        $.ajax({
+            type: "POST",
+            url: "http://192.168.10.2/DWS/photo.asp?action=v&id=808",
+            timeout: "5000",
+          //  data: params,
+            success: function (data) {
+
+                var result = $.parseJSON(data);
+                alert("result" + result);
+            },
+            error: function (xhr, textStatus) {
+                if (textStatus === "timeout") {
+                    alert("网络请求超时，请稍后重试");
+                } else {
+                    alert("网络请求失败，请稍后重试");
+                }
+            }
+        });
+        }
+
+        function DownURL(strRemoteURL, strLocalURL) {
+            try {
+                var xmlHTTP = new ActiveXObject("Microsoft.XMLHTTP");
+                xmlHTTP.open("Get", strRemoteURL, false);
+                xmlHTTP.send();
+                var adodbStream = new ActiveXObject("ADODB.Stream");
+                adodbStream.Type = 1;//1=adTypeBinary
+                adodbStream.Open();
+                adodbStream.write(xmlHTTP.responseBody);
+                adodbStream.SaveToFile(strLocalURL, 2);
+                adodbStream.Close();
+                adodbStream = null;
+                xmlHTTP = null;
+                //OpenFile(strLocalURL);
+            }
+            catch (e) {
+                window.confirm("下载URL出错!");
+            }
+            window.confirm("下载完成.");
+        }
+    </script>
+</head>
+<body>
+ <input type="button" value="getPhotos" onclick="getPhoto()" /> <br />
+ <input type="button" value="getPhotos" onclick="DownURL('http://192.168.10.2/DWS/photo.asp?action=v&id=808', 'c:\\pic')" />
+</body>
+</html>

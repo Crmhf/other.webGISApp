@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script Language="javascript">
+    // 缩放图片
+    function imgToSize(oBool) {
+        var oImg = document.all('oImg');
+        oImg.style.zoom = parseInt(oImg.style.zoom) + (oBool ? 10 : -10) + '%';
+    }
+
+    // 旋转图片
+    var oArcSize = 1;
+    function imgRoll() {
+        var oImg = document.all('oImg');
+        oImg.style.filter = 'Progid:DXImageTransform.Microsoft.BasicImage(Rotation=' + oArcSize + ')';
+        oArcSize += 1;
+        oArcSize = oArcSize == 4 ? 0 : oArcSize;
+    }
+
+    // 翻转图片
+    function imgReverse(arg) {
+        var oImg = document.all('oImg');
+        oImg.style.filter = 'Flip' + arg;
+    }
+
+    // 拖动图片
+    var oBoolean = false, oLeftSpace = 0, oTopSpace = 0;
+    function mStart() {
+        oBoolean = true;
+        if (oBoolean) {
+            var oImg = document.all('oImg');
+            oLeftSpace = window.event.clientX - oImg.style.pixelLeft;
+            oTopSpace = window.event.clientY - oImg.style.pixelTop;
+        }
+    }
+
+    function mEnd() {
+        oBoolean = false;
+    }
+
+    function document.onmousemove() {
+        if (window.event.button == 1 && oBoolean) {
+            var oImg = document.all('oImg');
+            oImg.style.pixelLeft = window.event.clientX - oLeftSpace;
+            oImg.style.pixelTop = window.event.clientY - oTopSpace;
+            return false;
+        }
+    }
+</script>
+</head>
+<body>
+   <div align="center">
+      <img id="oImg"
+   src="images/map.jpg" style="position:relative; zoom:100%; cursor:move;" onMouseDown="mStart();" onMouseUp="mEnd();"><br><br>
+   </div>
+   <div style="position:relative; z-index:1000;">
+      <input type="button" value="放大" onClick="imgToSize(1);">
+      <input type="button" value="缩小" onClick="imgToSize(0);">
+      <input type="button" value="旋转" onClick="imgRoll();">
+      <input type="button" value="水平翻转" onClick="imgReverse('H');"> 
+      <input type="button" value="垂直翻转" onClick="imgReverse('V');"> 
+   </div>
+</body>
+</html>

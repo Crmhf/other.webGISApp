@@ -1,0 +1,64 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS jquery实现Div底部固定</title>
+    <meta http-equiv=Content-Type content="text/html; charset=GBK">
+    <style type=text/css>
+        * {
+            margin: 0;
+            padding: 0;
+            font: 14px "微软雅黑";
+        }
+
+        .fixed {
+            RIGHT: 15px;
+            BACKGROUND: lightgreen;
+            LEFT: 15px;
+            BOTTOM: 0;
+            LINE-HEIGHT: 30px;
+            POSITION: fixed;
+            HEIGHT: 30px;
+        }
+
+        #iefixed {
+            MARGIN: -1px 15px 0px;
+            OVERFLOW: hidden;
+            ZOOM: 1;
+            HEIGHT: 1px;
+        }
+
+        </STYLE >
+ b        <!-- [if lt IE 7] > 
+        <style type="text/css" > .fixed {
+            position: absolute;
+            bottom: auto;
+            clear: both;
+            width: expression(document.getElementById('iefixed').clientWidth);
+            left: expression(document.getElementById('iefixed').offsetLeft);
+            top: expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop +(documentElement.clientHeight-this.clientHeight) : document.body.scrollTop +(document.body.clientHeight-this.clientHeight));
+        }
+    </style>
+    <script type="text/javascript">
+        function _fixBackground() {
+            var body = document.body;
+            var BLANK_GIF;
+            if (body.currentStyle.backgroundAttachment != "fixed") {
+                if (body.currentStyle.backgroundImage == "none") {
+                    body.runtimeStyle.backgroundImage = "url(" + BLANK_GIF + ")"; // dummy
+                    body.runtimeStyle.backgroundAttachment = "fixed";
+                }
+            }
+        }
+        window.onload = function () {
+            _fixBackground();
+        }
+    </script>
+    <![endif]-->
+</head>
+<body>
+    请看网页底部
+    <!--[if lt IE 7]><div id="iefixed"></div><![endif]-->
+    <div style="width:960px;height:2000px;margin:0 auto"></div>
+    <div class=fixed>position:fixed部分</div>
+</body>
+</html>

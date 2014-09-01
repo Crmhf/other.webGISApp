@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <base href="http://learn.knockoutjs.com/" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type='text/javascript' src='/Scripts/Lib/knockout-2.1.0.js'></script>
+    <link rel="Stylesheet" href="/Content/App/coderunner.css" />
+    <link rel="Stylesheet" href="/Content/TutorialSpecific/loadingsaving.css" />
+		<script type="text/javascript" src="/Scripts/Lib/json2.js"></script>
+
+</head>
+<body class="codeRunner">
+<h3>Tasks</h3>
+
+<form action="/tasks/saveform" method="post">
+    <!--<textarea name="tasks" data-bind="value: ko.toJSON(tasks)"></textarea>-->
+    <input type="hidden" name="tasks" type="hidden" data-bind="value: ko.toJSON(tasks)" />
+    <button data-bind="click: save">Save</button>
+</form>
+
+<ul data-bind="foreach: tasks, visible: tasks().length > 0">
+    <li>
+        <input type="checkbox" data-bind="checked: isDone" />
+        <input data-bind="value: title, disable: isDone" />
+        <a href="#" data-bind="click: $parent.removeTask">Delete</a>
+    </li> 
+</ul>
+
+You have <b data-bind="text: incompleteTasks().length">&nbsp;</b> incomplete task(s)
+<span data-bind="visible: incompleteTasks().length == 0"> - it's beer time!</span>
+
+
+<script type="text/javascript">
+	function Task(data) {
+    this.title = ko.observable(data.title);
+    this.isDone = ko.observable(data.isDone);
+}
+
+function TaskListViewModel() {
+    // Data
+    var self = this;
+    self.tasks = ko.observableArray([]);
+    self.newTaskText = ko.observable();
+    self.incompleteTasks = ko.computed(function() {
+        return ko.utils.arrayFilter(self.tasks(), function(task) { return !task.isDone() });
+    });
+
+    // Operations
+    self.addTask = function() {
+        self.tasks.push(new Task({ title: this.newTaskText() }));
+        self.newTaskText("");
+    };
+    self.removeTask = function(task) { self.tasks.destroy(task) };
+    
+    $.getJSON("/tasks", function(allData) {
+        var mappedTasks = $.map(allData, function(item) { return new Task(item) });
+        self.tasks(mappedTasks);
+    });
+    
+    self.save = function() {
+        $.ajax("/tasks", {
+            data: ko.toJSON({ tasks: self.tasks }),
+            type: "post", contentType: "application/json",
+            success: function(result) { alert(result) }
+        });
+    }; 
+    
+    self.incompleteTasks = ko.computed(function() {
+    return ko.utils.arrayFilter(self.tasks(), function(task) { return !task.isDone() && !task._destroy });
+    });
+}
+
+ko.applyBindings(new TaskListViewModel());
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+// 原生的js所 
+ document.write('1214'.replace(1, 'X'));
+ document.write('<br />');
+
+// 正则表达式替换
+ document.write('1214'.replace(/1/g, 'X'));
+ document.write('<br />');
+
+// 数据的展示
+ var r = 'abcd'.replace(/\w/g, function () {
+     return 'X';
+ });
+ document.write(r);
+</script>
+
+</body>
+</html>

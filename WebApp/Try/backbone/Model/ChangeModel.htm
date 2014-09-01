@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="../Scripts/jquery-1.8.1.js"></script>
+<script type="text/javascript" src="../Scripts/underscore.js"></script>
+<script type="text/javascript" src="../Scripts/backbone.js"></script>
+<script type="text/javascript">
+    (function ($) {
+
+        Man = Backbone.Model.extend({
+            initialize: function () {
+                alert('Hey,you create me!');
+
+                // 初始化时绑定监听
+                this.bind("change:name", function () {
+                    var name = this.get("name");
+                    alert("你改变了name的属性为：" + name);
+                });
+            },
+            defaults: {
+                name: '张三',
+                age: '38'
+            },
+            aboutMe: function(){
+                return '我叫' + this.get('name') + ',今年' + this.get('age') + '岁';
+            }
+        });
+
+        var man = new Man();
+        man.set({name:'五毛'}); // 触发绑定的change事件,alert
+
+    })(jQuery)
+
+</script>
+</html>

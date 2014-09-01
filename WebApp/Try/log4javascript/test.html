@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Test</title>
+<script type="text/javascript" src="log4javascript.js"></script>
+<script language="javascript">
+    log4javascript.setEnabled(true);	
+    var logger = log4javascript.getDefaultLogger();
+    function mytest(msg) {
+         
+    
+
+        // 关闭log功能,默认开启
+        // log4javascript.setEnabled(false);	
+
+        // alert(log4javascript.isEnabled());
+
+        /*
+        var popUpAppender = new log4javascript.PopUpAppender();
+        logger.addAppender(popUpAppender);*/
+
+        /*
+        设定显示日期格式
+        var popUpLayout = new log4javascript.PatternLayout("%d{HH:mm:ss} %-5p - %m%n");
+        popUpAppender.setLayout(popUpLayout);*/
+        
+
+        
+//        logger.debug(msg);
+        logger.debug(msg);
+        /*
+        logger.info('你好啊，log4jjavascript!');
+        logger.warn('你好啊，log4jjavascript!');
+        logger.error('你好啊，log4jjavascript!');
+        logger.fatal('你好啊，log4jjavascript!');*/
+
+
+
+
+
+    }
+
+
+</script>
+
+</head>
+
+<body>
+
+<br>
+<input type="button" value="测 试 1" onclick="mytest('测 试 1');" />
+<input type="button" value="测 试 2" onclick="mytest('测 试 2');" />
+<input type="button" value="测 试 3" onclick="mytest('测 试 3');" />
+<input type="button" value="测 试 4" onclick="mytest('测 试 4');" />
+<input type="button" value="测 试 5" onclick="mytest('测 试 5');" />
+</body>
+</html>

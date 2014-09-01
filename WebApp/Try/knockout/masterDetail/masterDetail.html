@@ -1,0 +1,40 @@
+﻿<!doctype html>
+<html>
+<head>
+    <style>
+        /*this is to change appearence of scroll bar*/
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #666666;
+            -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.5);
+        }
+    </style>
+    <title>"components": master-detail</title>
+    <script src="../scripts/jquery-1.8.1.js"></script>
+    <script src="../scripts/knockout-3.1.0.js"></script>
+    <script src="cGridWithRadioButtons.js"></script>
+    <script src="cGrid.js"></script>
+    <script src="data.js"></script>
+    <script src="cPageMasterDetail.js"></script>
+    <script>
+        $(document).ready(function () {
+            var myViewModel = new cPageMasterDetail("", $("#page"), data);
+            ko.applyBindings(myViewModel);
+        });
+    </script>
+</head>
+<body>
+    <div id="page"></div>
+</body>
+</html>

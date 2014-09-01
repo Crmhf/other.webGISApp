@@ -1,0 +1,2 @@
+所有dojo的框架，均是基于Arcgis JavaScript这个框架来实现的。
+本Demo中所访问的ArcGIS JavaScript的代码均来自于部署在 Apache服务器上的代码。

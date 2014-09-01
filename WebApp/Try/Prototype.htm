@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>prototyoe</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    function baseClass() {
+        this.showMsg = function () {
+            alert("baseClass::showMsg");
+        }
+
+        this.baseShowMsg = function () {
+            alert("baseClass::baseShowMsg");
+        }
+    }
+    baseClass.showMsg = function () {
+        alert("baseClass::showMsg static");
+    }
+
+    function extendClass() {
+        this.showMsg = function () {
+            alert("extendClass::showMsg");
+        }
+    }
+    extendClass.showMsg = function () {
+        alert("extendClass::showMsg static")
+    }
+
+    extendClass.prototype = new baseClass();
+    instance = new extendClass();
+
+    instance.showMsg(); //显示extendClass::showMsg
+    instance.baseShowMsg(); //显示baseClass::baseShowMsg
+    instance.showMsg(); //显示extendClass::showMsg
+
+    baseClass.showMsg.call(instance); //显示baseClass::showMsg static
+
+    var baseinstance = new baseClass();
+    baseinstance.showMsg.call(instance); //显示baseClass::showMsg
+
+</script>
+
+
+</body>
+</html>

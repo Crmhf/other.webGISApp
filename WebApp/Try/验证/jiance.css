@@ -1,0 +1,10 @@
+.InvalidInput {
+	background:#fff url(invalid_line.gif) repeat-x bottom;border:1px solid #dd7870;
+}
+.InvalidInputMsg {
+	font-weight: normal;
+	color: #FF0000;
+	background-image: url(wrong.gif);
+	background-repeat: no-repeat;
+	padding-left: 18px;
+}

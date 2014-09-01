@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="scripts/jquery-1.8.1.js"></script>
+    <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+</head>
+<body>
+    <div>
+        <p data-bind="text: firstName"></p>
+        <p data-bind="text: lastName"></p>
+        <input data-bind="value: firstName" />
+        <input data-bind="value: lastName" />
+    </div>
+    <script type="text/javascript">      
+        $(document).ready(function(){
+            alert('ready!');
+        });
+        function ViewModel() {
+            this.firstName = "Zixin";
+            this.lastName = "Yin";
+        }
+        ko.applyBindings(new ViewModel());
+    </script>
+</body>
+
+
+</html>

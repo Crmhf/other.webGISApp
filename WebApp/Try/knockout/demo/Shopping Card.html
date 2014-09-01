@@ -1,0 +1,58 @@
+﻿<html lang='en'>
+<head>
+    <title>Animating Knockout.js</title>
+    <meta charset='utf-8' />
+    <link rel='stylesheet' href='style.css' />
+</head>
+<body>
+    <h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind='foreach: items'>
+                <tr>
+                    <td data-bind='text: name'></td>
+                    <td data-bind='text: price'></td>
+                    <td><button data-bind='click: $root.removeProduct'>Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button data-bind='click: addProduct'>Add Beer</button>
+
+        <script src='knockout-2.1.0.js'></script>
+        <script src='jquery.min.js'></script>
+        <script>
+            function Product(name, price, tags, discount, details) {
+                this.name = ko.observable(name);
+                this.price = ko.observable(price);
+            }
+            function ShoppingCart() {
+                var self = this;
+                this.instructions = ko.observable("");
+                this.hasInstructions = ko.observable(false);
+
+                this.items = ko.observableArray([
+                  new Product("Beer", 10.99),
+                  new Product("Brats", 7.99),
+                  new Product("Buns", 1.49)
+                ]);
+
+                this.addProduct = function () {
+                    this.items.push(new Product("More Beer", 10.99));
+                };
+
+                this.removeProduct = function (product) {
+                    self.items.destroy(product);
+                };
+
+            };
+            ko.applyBindings(new ShoppingCart());
+        </script>
+</body>
+</html>

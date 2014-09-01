@@ -1,0 +1,94 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+</head>
+<body>
+	
+<h2>Your seat reservations</h2>
+
+<table>
+    <thead><tr>
+        <th>Passenger name</th><th>Meal</th><th>Surcharge</th><th></th>
+    </tr></thead>
+    
+    <tbody data-bind="foreach: seats">
+     <tr>
+        <!--<td data-bind="text: name"></td>
+        <td data-bind="text: meal().mealName"></td>-->
+        <td><input data-bind="value: formattedName " /></td>
+        <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
+        <td data-bind="text: formattedPrice"></td>
+        <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
+     </tr>    
+    </tbody>
+</table>
+
+<button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat(试着添加满5条记录看看)</button>
+
+<h3 data-bind="visible: totalSurcharge() > 0">
+    合计金额: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+</h3>
+
+<h2>当前数据条数:(<span data-bind="text: seats().length"></span>)</h2>
+	
+   
+<script type="text/javascript">
+			// Class to represent a row in the seat reservations grid
+			function SeatReservation(name, initialMeal) {
+			    var self = this;
+			    self.name = name;
+			    self.meal = ko.observable(initialMeal);//ko.observable监控数据的变化
+			    
+			    //计算属性ko.computed了 – 这些函数是一个或多个监控属性
+			    self.formattedPrice = ko.computed(function() {
+			        var price = self.meal().price;
+			        return price ? "$" + price.toFixed(2) : "Free";        
+			    });
+			    
+			    self.formattedName = ko.computed(function() {
+			        return self.meal().mealName;
+			    });
+			}
+			
+			// Overall viewmodel for this screen, along with initial state
+			function ReservationsViewModel() {
+			    var self = this;
+			
+			    // Non-editable catalog data - would come from the server
+			    self.availableMeals = [
+			        { mealName: "Standard (sandwich)", price: 0 },
+			        { mealName: "Premium (lobster)", price: 34.95 },
+			        { mealName: "Ultimate (whole zebra)", price: 290 }
+			    ];    
+			
+			    // Editable data
+			    self.seats = ko.observableArray([
+			        new SeatReservation("Steve", self.availableMeals[0]),
+			        new SeatReservation("Bert", self.availableMeals[1]),
+			        new SeatReservation("List", self.availableMeals[2])
+			    ]);
+			    
+			    //新增一条记录
+			    self.addSeat = function() {
+			        self.seats.push(new SeatReservation("新增的", self.availableMeals[0]));
+			    }
+			    
+			    //删除一条记录
+			    self.removeSeat = function(seat) { self.seats.remove(seat) }
+			    
+			    //统计总金额
+			    self.totalSurcharge = ko.computed(function() {
+			       var total = 0;
+			       for (var i = 0; i < self.seats().length; i++)
+			           total += self.seats()[i].meal().price;
+			       return total;
+			    });
+			}
+			
+			ko.applyBindings(new ReservationsViewModel());//启动Ko的功能（必须）
+	
+   
+</script>
+</body>
+</html>

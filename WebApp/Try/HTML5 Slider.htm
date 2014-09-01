@@ -1,0 +1,210 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML5 Slider</title>
+<style type="text/css">
+/* common */
+ body{background: #ddd;overflow-x: hidden;}
+ #bd{width: 960px;margin: 100px auto;max-width: 960px;}
+ 
+ /* module: sliders */
+ #sliders{
+     border-radius: 5px;
+     box-shadow: 1px 1px 4px #666;
+     padding: 1%;
+     background: #fff;
+ }
+ #overflow{
+     width: 100%;
+     overflow: hidden;
+ }
+ #sliders .inner{
+     width: 500%;
+     transiton: all 1s linear;
+     -webkit-transition: all 1s linear;
+ }
+ #sliders article{
+     float: left;
+     width: 20%;
+ }
+ #sliders article .info{
+     position: absolute;
+     opacity: 0;
+     padding: 30px;
+     color: #666;
+     font-family: Arial;
+     transition: opacity 0.1s ease-out;
+     -webkit-transform: translateZ(0);
+     -webkit-transition: opacity 0.1s ease-out;
+ }
+ #sliders article .info h1{
+     font-size: 22px;    
+     font-weight: bold;
+     margin: 0 0 5px;
+ }
+ #sliders article .info a{
+     color: #666;
+     text-decoration: none;
+ }
+ 
+ /* module: controls */
+ #controls{
+     height: 50px;
+     width: 100%;
+     margin-top: -25%;
+ }
+ #controls label{
+     display: none;
+     width: 50px;
+     height: 50px;
+     opacity: 0.3;
+     cursor: pointer;    
+ }
+ #controls label:hover{
+     opacity: 1;
+ }
+ 
+ /* module: active */
+ #active{
+     width: 100%;
+     margin-top: 23%;
+     text-align: center;
+ }
+ #active label{
+     display: inline-block;
+     width: 10px;
+     height: 10px;
+     border-radius: 5px;
+     background: #bbb;
+     border-color: #777;
+ }
+ #active label:hover{
+     background: #ccc;
+ }
+ 
+ /* input checked change style */
+ #slider1:checked ~ #active label:nth-child(1),
+ #slider2:checked ~ #active label:nth-child(2),
+ #slider3:checked ~ #active label:nth-child(3),
+ #slider4:checked ~ #active label:nth-child(4),
+ #slider5:checked ~ #active label:nth-child(5){
+     background: #333;
+ }
+ #slider1:checked ~ #controls label:nth-child(5),
+ #slider2:checked ~ #controls label:nth-child(1),
+ #slider3:checked ~ #controls label:nth-child(2),
+ #slider4:checked ~ #controls label:nth-child(3),
+ #slider5:checked ~ #controls label:nth-child(4){
+     display: block;
+     float: left;
+     background: url(../img/prev.png) no-repeat;
+     margin-left: -70px;
+ }
+ #slider1:checked ~ #controls label:nth-child(2),
+ #slider2:checked ~ #controls label:nth-child(3),
+ #slider3:checked ~ #controls label:nth-child(4),
+ #slider4:checked ~ #controls label:nth-child(5),
+ #slider5:checked ~ #controls label:nth-child(1){
+     display: block;
+     float: right;
+     background: url(../img/next.png) no-repeat;
+     margin-right: -70px;
+ }
+ #slider1:checked ~ #sliders article:nth-child(1) .info,
+ #slider2:checked ~ #sliders article:nth-child(2) .info,
+ #slider3:checked ~ #sliders article:nth-child(3) .info,
+ #slider4:checked ~ #sliders article:nth-child(4) .info,
+ #slider5:checked ~ #sliders article:nth-child(5) .info{
+     opacity: 1;
+     transition: all 0.6s ease-out 1s;
+     -webkit-transition: all 0.6s ease-out 1s;
+ }
+ #slider1:checked ~ #sliders .inner{
+     margin-left: 0;
+ }
+ #slider2:checked ~ #sliders .inner{
+     margin-left: -100%;
+ }
+ #slider3:checked ~ #sliders .inner{
+     margin-left: -200%;
+ }
+ #slider4:checked ~ #sliders .inner{
+     margin-left: -300%;
+ }
+ #slider5:checked ~ #sliders .inner{
+     margin-left: -400%;
+ }
+</style>
+</head>
+
+<body>
+
+<div id="bd">
+     <input checked type="radio" name="slider" id="slider1">
+     <input type="radio" name="slider" id="slider2">
+     <input type="radio" name="slider" id="slider3">
+     <input type="radio" name="slider" id="slider4">
+     <input type="radio" name="slider" id="slider5">
+             
+     <div id="sliders">
+         <div id="overflow">
+              <div class="inner">
+                  <article>
+                      <div class="info">
+                           <h1>Title1</h1>
+                           <a href="#">Description1</a>
+                      </div>
+                      <img src="img/pic1.png"/>
+                   </article>
+                   <article>
+                        <div class="info">
+                            <h1>Title2</h1>
+                            <a href="#">Description2</a>
+                        </div>
+                        <img src="img/pic2.png"/>
+                   </article>
+                   <article>
+                        <div class="info">
+                             <h1>Title3</h1>
+                             <a href="#">Description3</a>
+                         </div>
+                         <img src="img/pic3.png"/>
+                    </article>
+                   <article>
+                       <div class="info">
+                            <h1>Title4</h1>
+                            <a href="#">Description4</a>
+                        </div>
+                    <img src="img/pic4.png"/>
+                </article>
+                <article>
+                     <div class="info">
+                        <h1>Title5</h1>
+                        <a href="#">Description5</a>
+                    </div>
+                    <img src="img/pic5.png"/>
+                 </article>
+             </div>
+         </div>
+     </div>
+ 
+     <div id="controls">
+          <label for="slider1"></label>
+          <label for="slider2"></label>
+          <label for="slider3"></label>
+          <label for="slider4"></label>
+          <label for="slider5"></label>
+     </div>
+ 
+     <div id="active">
+         <label for="slider1"></label>
+         <label for="slider2"></label>
+         <label for="slider3"></label>
+         <label for="slider4"></label>
+         <label for="slider5"></label>
+     </div>
+ </div>
+
+</body>
+</html>

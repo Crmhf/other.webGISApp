@@ -1,0 +1,21 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>我的拾色器</title>
+<script language="javascript" type="text/javascript" src="jquery.js"></script>
+<script language="javascript" type="text/javascript" src="colorpicker.js"></script>
+</head>
+<body>
+
+<fieldset>
+           <legend>疑似图斑图例颜色设置</legend>
+           <label>待调查：</label><input id="colorState1" type="text" style="background-color:rgb(255 102 110)" onclick="var $this=$(this);$this.pickColor(function(color){$this.css('background',color);$this.val(rgbValue);});" /><button title="更新" onclick="UpdatePlotColor(1)">更新</button><br />
+           <label>伪变化：</label><input id="colorState2" type="text" style="background-color:rgb(255 102 0)" onclick="var $this=$(this);$this.pickColor(function(color){$this.css('background',color);$this.val(rgbValue);});"/><button title="更新" onclick="UpdatePlotColor(2)">更新</button><br />
+           <label>违法案件：</label><input id="colorState0" type="text" style="background-color:rgb(5 102 0)" onclick="var $this=$(this);$this.pickColor(function(color){$this.css('background',color);$this.val(rgbValue);});"/><button title="更新" onclick="UpdatePlotColor(0)">更新</button><br />
+</fieldset>
+<div id="xxx"></div>
+</body>
+</html>
+

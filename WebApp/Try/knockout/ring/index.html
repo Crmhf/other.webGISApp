@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Knockout</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  
+
+    <div id="people" data-bind="template: { name: 'personTemplate', foreach: people }">
+    </div>
+    <script id="personTemplate" type="text/x-jquery-tmpl">
+        <section class="person">
+            <img src="../img/person.png" alt="${ name }" />
+            <h1>${ name }</h1>
+            <address>${ address }</address>
+            <span class="tel">${ tel }</span>
+            <a href="http://${ site }" title="Visit site">${ site }</a>
+            <div class="tools">
+                <button data-bind="click: deleteMe">Delete</button>
+            </div>
+        </section>
+    </script>
+    <script src="js/jquery-1.8.1.js"></script>
+    <script src="js/jquery.tmpl.min.js"></script>
+    <script src="js/knockout-2.2.1.js"></script>
+    <script src="js/behavior.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>WebGL Step 01</title>
+<style type="text/css">
+canvas{ background-color:#666; }
+</style>
+<script type="text/ecmascript" src="js/sylvester.js"></script>
+<script type="text/ecmascript" src="js/glUtils.js"></script>
+ 
+<script type="text/ecmascript">
+    function MatrixHelper() { this.matrix = Matrix.I(4); }
+    MatrixHelper.prototype = {
+        /* makePerspective */
+        make: function (fovy, aspect, znear, zfar) {
+            this.ppm = makePerspective(fovy, aspect, znear, zfar);
+        },
+        /* multMatrix */
+        mult: function (m) {
+            this.matrix = this.matrix.x(m);
+        },
+        /* mvTranslate */
+        trans: function (v) {
+            this.mult(Matrix.Translation($V([v[0], v[1], v[2]])).ensure4x4());
+        },
+        /* setMatrixUniforms */
+        set: function (gl, sProg) {
+            if (!!this.ppm) {
+                gl.uniformMatrix4fv(gl.getUniformLocation(sProg, "uPMatrix")
+                , false, new Float32Array(this.ppm.flatten()));
+            }
+            if (!!this.matrix) {
+                gl.uniformMatrix4fv(gl.getUniformLocation(sProg, "uMVMatrix")
+                , false, new Float32Array(this.matrix.flatten()));
+            }
+        }
+    }
+</script>
+ 
+</head>
+ 
+<body>
+ 
+<canvas id="glcanvas" width="640" height="480">看来您的浏览器不支持<code>&lt;canvas&gt;</code>标记</canvas>
+ 
+<script type="text/ecmascript">
+    var testVertexCode = '\
+    attribute vec3 aVertexPosition;\
+    uniform mat4 uMVMatrix;\
+    uniform mat4 uPMatrix;\
+    void main(void){\
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);\
+    }',
+    testFragmentCode = '\
+    void main(void){\
+        gl_FragColor=vec4(1.0,1.0,1.0,1.0);\
+    }';
+
+    var vertices = [
+    1.0, 1.0, 0.0,
+    -1.0, 1.0, 0.0,
+    1.0, -1.0, 0.0,
+    -1.0, -1.0, 0.0
+];
+
+    var canvas = document.getElementById('glcanvas');
+    var gl = canvas.getContext('experimental-webgl');
+
+    var vertShader = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vertShader, testVertexCode);
+    gl.compileShader(vertShader);
+
+    var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fragShader, testFragmentCode);
+    gl.compileShader(fragShader);
+
+    var program = gl.createProgram();
+    gl.attachShader(program, vertShader);
+    gl.attachShader(program, fragShader);
+    gl.linkProgram(program);
+    gl.useProgram(program);
+
+    var squareVerticesBuffer = gl.createBuffer();
+    var vertexPosAttr = gl.getAttribLocation(program, 'aVertexPosition');
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, squareVerticesBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+
+    gl.vertexAttribPointer(vertexPosAttr, 3, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(vertexPosAttr);
+
+    var matrix = new MatrixHelper();
+    matrix.trans([0.0, 0.0, -5.0]);
+    matrix.make(45, 640 / 480, 0.1, 100.0);
+    matrix.set(gl, program);
+
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+ 
+</script>
+</body>
+</html>

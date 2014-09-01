@@ -1,0 +1,359 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>表单验证实例</title>
+    <style type="text/css">
+        * {
+            padding: 0px;
+            margin: 0px;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+
+        #box {
+            width: 980px;
+            height: 622px;
+            padding: 69px 5px 5px 22px;
+            margin: 0 auto;
+        }
+
+        #content {
+            width: 978px;
+            height: 528px;
+            background: #fff;
+            border: 1px solid #CCC;
+            float: left;
+        }
+
+        .bottom {
+            width: 978px;
+            height: 90px;
+            float: left;
+        }
+
+        .top {
+            width: 968px;
+            height: 27px;
+            border-bottom: 1px solid #ccc;
+            font-weight: bold;
+            line-height: 27px;
+            padding-left: 10px;
+            float: left;
+        }
+
+        .main {
+            width: 968px;
+            height: 500px;
+            float: left;
+        }
+
+        .mainLeft {
+            width: 682px;
+            height: 459px;
+            float: left;
+            padding: 41px 43px 0px 41px;
+        }
+
+        .mainRight {
+            width: 201px;
+            height: 410px;
+            float: left;
+            border-left: 1px solid #CCC;
+            text-align: center;
+            padding-top: 90px;
+        }
+
+        .mlTop {
+            width: 682px;
+            height: 54px;
+            float: left;
+            border-bottom: 1px dashed #CCC;
+        }
+
+        .mlmain {
+            width: 542px;
+            height: 384px;
+            float: left;
+            padding-top: 20px;
+            padding-left: 140px;
+        }
+
+        .inputBox {
+            width: 528px;
+            height: 40px;
+            padding-top: 15px;
+            line-height: 22px;
+            border: 1px solid #FFF;
+            padding-left: 12px;
+            _width: 528px;
+            _padding-left: 12px;
+        }
+
+        .passBox {
+            width: 540px;
+            height: 40px;
+            padding-top: 15px;
+            border: 1px solid #FFF;
+            line-height: 22px;
+        }
+
+        .server {
+            width: 505px;
+            height: 40px;
+            padding-left: 35px;
+            font-size: 11px;
+            line-height: 30px;
+        }
+
+        .submit {
+            width: 455px;
+            height: 40px;
+            padding-left: 85px;
+        }
+
+        .server span {
+            color: #999;
+        }
+
+        .server a {
+            text-decoration: none;
+            color: #601C1B;
+        }
+
+        .index {
+            display: inline-block;
+            width: 116px;
+            height: 22px;
+            float: left;
+            text-align: right;
+            line-height: 15px;
+            _line-height: 22px;
+        }
+
+        .wrong {
+            color: #5A1E1E;
+            padding-left: 5px;
+            display: inline-block;
+            border: 1px solid #5A1E1E;
+            width: 179px;
+            height: 22px;
+            line-height: 22px;
+            background: #FFF;
+            <br>padding-left:10px;
+            display: none;
+        }
+
+        .right {
+            color: #030;
+            padding-left: 5px;
+            display: inline-block;
+            width: 50px;
+            height: 22px;
+            line-height: 22px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="content">
+            <div class="top">
+                注册新用户
+            </div>
+            <div class="main">
+                <div class="mainLeft">
+                    <div class="mlmain">
+                        <form name="login" action="index.html" method="post">
+                            <div class="inputBox">
+                                E-mail地址：<input name="email" type="text" />
+                                <span class="wrong">X 请输入有效的E-mail的地址</span> <span class="right">√正确</span>
+                            </div>
+                            <div class="passBox">
+                                设置登录密码：<input name="password" type="password" />
+                                <span class="wrong">X 请输入正确的密码</span> <span class="right">√正确</span>
+                            </div>
+                            <div class="passBox">
+                                再次输入密码：<input name="repass" type="password" type="text" />
+                                <span class="wrong">X 请输入与上面一致的密码</span> <span class="right">√正确</span>
+                            </div>
+                            <div class="passBox">
+                                请输入手机号：<input name="tel" type="text" />
+                                <span class="wrong">X 请输入正确的手机号</span> <span class="right">√正确</span>
+                            </div>
+                            <div class="passBox">
+                                输入您的姓名：<input name="yourname" type="text" />
+                                <span class="wrong">X 请输入正确的姓名</span> <span class="right">√正确</span>
+                            </div>
+                            <div class="server">
+                                <span>请阅读</span><a href="#">《XXXXXX服务条款》</a>
+                            </div>
+                            <div class="submit">
+                                <input name="" type="submit" src="images/按钮.jpg" value="提交按钮" onclick="return checkLogin()" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="mainRight">
+                    我已经注册了，现在就<input type="button" value="登陆" />
+                </div>
+            </div>
+            <div class="bottom">
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        document.login.email.onfocus = function () {
+            this.parentNode.style.background = "#F2F2F2";
+            this.parentNode.style.border = "1px solid #F2F2F2"
+        }
+        document.login.email.onblur = function () {
+            this.parentNode.style.background = "";
+            this.parentNode.style.border = ""
+            var regEmail = /^\w{3,}@[a-zA-Z]+\.\w{3,}$/
+            if (regEmail.test(this.value)) {
+                this.parentNode.getElementsByTagName("span")[0].style.display = "none";
+                this.parentNode.getElementsByTagName("span")[1].style.display = "inline-block";
+            } else {
+                this.parentNode.getElementsByTagName("span")[1].style.display = "none";
+                this.parentNode.getElementsByTagName("span")[0].style.display = "inline-block";
+            }
+        }
+        document.login.password.onfocus = function () {
+            this.parentNode.style.background = "#F2F2F2";
+            this.parentNode.style.border = "1px solid #F2F2F2";
+        }
+        document.login.password.onblur = function () {
+            this.parentNode.style.background = "";
+            this.parentNode.style.border = "";
+            var regPass = /^\w{6,}$/;
+            if (regPass.test(this.value)) {
+                this.parentNode.getElementsByTagName("span")[0].style.display = "none";
+                this.parentNode.getElementsByTagName("span")[1].style.display = "inline-block";
+            } else {
+                this.parentNode.getElementsByTagName("span")[1].style.display = "none";
+                this.parentNode.getElementsByTagName("span")[0].style.display = "inline-block";
+            }
+        }
+        document.login.repass.onfocus = function () {
+            this.parentNode.style.background = "#F2F2F2";
+            this.parentNode.style.border = "1px solid #F2F2F2"
+        }
+        document.login.repass.onblur = function () {
+            this.parentNode.style.background = "";
+            this.parentNode.style.border = ""
+            var regPass = /^\w{6,}$/;
+            if (regPass.test(this.value) && this.value == document.login.password.value) {
+                this.parentNode.getElementsByTagName("span")[0].style.display = "none";
+                this.parentNode.getElementsByTagName("span")[1].style.display = "inline-block";
+            } else {
+                this.parentNode.getElementsByTagName("span")[1].style.display = "none";
+                this.parentNode.getElementsByTagName("span")[0].style.display = "inline-block";
+            }
+        }
+        document.login.tel.onfocus = function () {
+            this.parentNode.style.background = "#F2F2F2";
+            this.parentNode.style.border = "1px solid #F2F2F2"
+        }
+        document.login.tel.onblur = function () {
+            this.parentNode.style.background = "";
+            this.parentNode.style.border = ""
+            var regTel = /^[1][3|5|8][0-9]{9}$/;
+            if (regTel.test(this.value)) {
+                this.parentNode.getElementsByTagName("span")[0].style.display = "none";
+                this.parentNode.getElementsByTagName("span")[1].style.display = "inline-block";
+            } else {
+                this.parentNode.getElementsByTagName("span")[1].style.display = "none";
+                this.parentNode.getElementsByTagName("span")[0].style.display = "inline-block";
+            }
+        }
+        document.login.yourname.onfocus = function () {
+            this.parentNode.style.background = "#F2F2F2";
+            this.parentNode.style.border = "1px solid #F2F2F2"
+        }
+        document.login.yourname.onblur = function () {
+            this.parentNode.style.background = "";
+            this.parentNode.style.border = "";
+            var regName = /^[\u4e00-\u9FA5]{2,6}$/;
+            if (regName.test(this.value)) {
+                this.parentNode.getElementsByTagName("span")[0].style.display = "none";
+                this.parentNode.getElementsByTagName("span")[1].style.display = "inline-block";
+            } else {
+                this.parentNode.getElementsByTagName("span")[1].style.display = "none";
+                this.parentNode.getElementsByTagName("span")[0].style.display = "inline-block";
+            }
+        }
+        function checkLogin() {
+            var email = document.login.email
+            var regEmail = /^\w{3,}@[a-zA-Z]+\.\w{3,}$/
+            if (regEmail.test(email.value)) {
+                email.parentNode.getElementsByTagName("span")[0].style.display = "none";
+                email.parentNode.getElementsByTagName("span")[1].style.display = "inline-block";
+            } else {
+                email.parentNode.getElementsByTagName("span")[1].style.display = "none";
+                email.parentNode.getElementsByTagName("span")[0].style.display = "inline-block";
+                email.focus();
+                email.select();
+                return false;
+            }
+
+
+            var password = document.login.password
+            var regPass = /^\w{6,}$/;
+            if (regPass.test(password.value)) {
+                password.parentNode.getElementsByTagName("span")[0].style.display = "none";
+                password.parentNode.getElementsByTagName("span")[1].style.display = "inline-block";
+            } else {
+                password.parentNode.getElementsByTagName("span")[1].style.display = "none";
+                password.parentNode.getElementsByTagName("span")[0].style.display = "inline-block";
+                password.focus();
+                password.select();
+                return false;
+            }
+
+            var repass = document.login.repass
+            var regRepass = /^\w{6,}$/;
+            if (regRepass.test(repass.value)) {
+                repass.parentNode.getElementsByTagName("span")[0].style.display = "none";
+                repass.parentNode.getElementsByTagName("span")[1].style.display = "inline-block";
+            } else {
+                repass.parentNode.getElementsByTagName("span")[1].style.display = "none";
+                repass.parentNode.getElementsByTagName("span")[0].style.display = "inline-block";
+                repass.focus();
+                repass.select();
+                return false;
+            }
+
+            var tel = document.login.tel
+            var regTel = /^[1][3|5|8][0-9]{9}$/;
+            if (regTel.test(tel.value)) {
+                tel.parentNode.getElementsByTagName("span")[0].style.display = "none";
+                tel.parentNode.getElementsByTagName("span")[1].style.display = "inline-block";
+            } else {
+                tel.parentNode.getElementsByTagName("span")[1].style.display = "none";
+                tel.parentNode.getElementsByTagName("span")[0].style.display = "inline-block";
+                tel.focus();
+                tel.select();
+                return false;
+            }
+
+
+            var yourname = document.login.yourname
+            var regName = /^[\u4e00-\u9FA5]{2,6}$/;
+            if (regName.test(yourname.value)) {
+                yourname.parentNode.getElementsByTagName("span")[0].style.display = "none";
+                yourname.parentNode.getElementsByTagName("span")[1].style.display = "inline-block";
+            } else {
+                yourname.parentNode.getElementsByTagName("span")[1].style.display = "none";
+                yourname.parentNode.getElementsByTagName("span")[0].style.display = "inline-block";
+                yourname.focus();
+                yourname.select();
+                return false;
+            }
+        }
+
+    </script>
+</body>
+</html>

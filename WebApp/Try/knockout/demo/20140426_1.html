@@ -1,0 +1,26 @@
+﻿<html lang='en'>
+<head>
+    <title>Hello, Knockout.js</title>
+    <meta charset='utf-8' />
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <script src="knockout-2.1.0.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var piliPerson = [
+                 { name: '叶小钗', desc: '刀狂剑痴', weapon: '刀剑' },
+                 { name: '素还真', desc: '清香白莲', weapon: '剑' },
+         { name: '一页书', desc: '百世经纶', weapon: '掌' }
+        ];
+        $(document).ready(function () {
+            var viewModel = {};
+            ko.applyBindings(viewModel);
+        });
+        
+     </script>
+
+</head>
+<body>
+    
+    <select data-bind="options: piliPerson, optionsText: 'desc'"></select>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+    function Person(name) {
+        this.name = name;
+    }
+
+    Person.prototype.printName = function () {
+        alert(this.name);
+    }
+
+    var person1 = new Person('Byron');
+    var person2 = new Person('Frank');
+</script>
+
+</body>
+</html>

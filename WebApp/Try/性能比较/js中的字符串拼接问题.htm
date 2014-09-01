@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function xntest() {
+            var d1 = new Date();
+            var str = "";
+            for (var i = 0; i < 1000000; i++) {
+                str += "stext";
+            }
+            var d2 = new Date();
+            document.write("字符串拼接方式耗时：" + (d2.getTime() - d1.getTime()) + "毫秒；");
+
+            d1 = new Date();
+            var sb = new StringBuilder();
+            for (var i = 0; i < 1000000; i++) {
+                sb.append("stext");
+            }
+            var result = sb.toString();
+            d2 = new Date();
+            document.write("数组方式耗时：" + (d2.getTime() - d1.getTime()) + "毫秒；");
+        }
+
+        /////利用Array实现的字符串拼接函数，为方便c#开发者特意取名StringBuilde以便于理解
+
+        function StringBuilder() {
+            this._strings_ = new Array;
+        }
+        StringBuilder.prototype.append = function (str) {
+            this._strings_.push(str);
+        };
+        StringBuilder.prototype.toString = function () {
+            return this._strings_.join("");
+        }; 
+
+    </script>
+</head>
+<body>
+ <input type="button" value="对比数据拼接耗时" onclick="xntest()" />
+
+</body>
+</html>

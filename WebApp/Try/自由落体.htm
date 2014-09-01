@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<style type="text/css">
+  body{margin:0;}
+</style>
+<div id="box" style="width:16px;height:16px;position:absolute;top:0px;border:2px solid #AAA;background:red"></div>
+<div id="ground" style="width:100%;height:1px;background:#CCC;position:absolute;top:600px"></div>
+<div id="info" style="position:absolute;left:200px9:10 2012-9-6"></div>
+<script type="text/javascript">
+    var v0 = 0;
+    var t = 0;
+    var g = 100;
+    var s = v0 * t - g * t * t / 2;
+    var vt = v0 + g * t;
+    var freq = 10;
+    var box = document.getElementById("box");
+    var btop = 0;
+    var height = 300 // 自由落体的高度
+    var e = 5;
+    var vh = 25;
+    var gh = 60;
+    var bleft = 0;
+    function fall() {
+        s = v0 * t + g * t * t / 2;
+        btop += s;
+        bleft += vh * t - gh * t * t / 2;
+        if (btop + 20 >= height) {
+            box.style.top = height - 20 + "px";
+            btop = height - 21;
+            vt = v0 + g * t;
+            v0 = -Math.abs(vt / 2 - e);
+            t = 0;
+            if (s <= 1) {
+                return;
+            }
+        }
+        box.style.top = btop + "px";
+        box.style.left = bleft + "px";
+        t = t + freq / 1000;
+        setTimeout(fall, freq);
+    }
+    fall();
+</script>
+
+</body>
+</html>

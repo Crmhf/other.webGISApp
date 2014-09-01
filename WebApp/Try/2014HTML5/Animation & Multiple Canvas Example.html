@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Animation & Multiple Canvas Example</title>
+    <script>
+        // 水的画布
+        function drawWater() {
+            var canvasWater = document.getElementById("myWaterCanvas");
+            var contextWater = canvasWater.getContext("2d");
+            contextWater.globalAlpha = .50;
+            // 创建一个线性渐变的填充
+            var linearGrad = contextWater.createLinearGradient(0, 0, 400, 400);
+            linearGrad.addColorStop(0, '#0000ff'); // sets the first color
+            linearGrad.addColorStop(.25, '#0099ff'); // sets the second color
+            linearGrad.addColorStop(.50, '#00ccff'); // sets the third color
+            linearGrad.addColorStop(.75, '#00ffff'); // sets the fourth color
+            contextWater.fillStyle = linearGrad;
+            contextWater.fillRect(0, 0, 400, 400);
+        }
+
+        // 游泳者的画布
+        setInterval(drawSwimmer, 30);
+        var positionX = 0;
+        var positionY = 0;
+
+        function drawSwimmer() {
+            var canvasSwimmer = document.getElementById("mySwimmerCanvas");
+            var contextSwimmer = canvasSwimmer.getContext("2d");
+            contextSwimmer.clearRect(0, 0, 400, 400);
+
+            if (positionX < 30) {
+                positionX += 1;
+                positionY += 1;
+            }
+            else {
+                positionX = 0;
+                positionY = 0;
+            }
+
+
+            contextSwimmer.save();
+
+            // 绘制一个圆作为头部
+            var centerX = 200;
+            var centerY = 50;
+            var radius = 20;
+
+            contextSwimmer.beginPath();
+            contextSwimmer.arc(centerX, centerY + positionY,
+            radius, 0, 2 * Math.PI, false);
+
+            contextSwimmer.fillStyle = "#000000";
+            contextSwimmer.fill();
+            contextSwimmer.lineWidth = 5;
+
+            // 躯干部分
+            contextSwimmer.beginPath();
+            contextSwimmer.moveTo(200, 70 + positionY);
+            contextSwimmer.lineTo(200, 175);
+            contextSwimmer.lineWidth = 10;
+            contextSwimmer.strokeStyle = "#000000";
+            contextSwimmer.lineCap = "round";
+            contextSwimmer.stroke();
+
+            // 画右边的手臂
+            contextSwimmer.beginPath();
+            contextSwimmer.moveTo(200, 100);
+            contextSwimmer.lineTo(175 - positionX, 140 - positionY);
+            contextSwimmer.lineWidth = 10;
+            contextSwimmer.strokeStyle = "#000000";
+            contextSwimmer.lineCap = "round";
+            contextSwimmer.stroke();
+
+            // 画左边的手臂
+            contextSwimmer.beginPath();
+            contextSwimmer.moveTo(200, 100);
+            contextSwimmer.lineTo(225 + positionX, 140 - positionY);
+            contextSwimmer.lineWidth = 10;
+            contextSwimmer.strokeStyle = "#000000";
+            contextSwimmer.lineCap = "round";
+            contextSwimmer.stroke();
+
+            // 画右边的腿
+            contextSwimmer.beginPath();
+            contextSwimmer.moveTo(200, 175);
+            contextSwimmer.lineTo(190 - positionX, 250 - positionY);
+            contextSwimmer.lineWidth = 10;
+            contextSwimmer.strokeStyle = "#000000";
+            contextSwimmer.lineCap = "round";
+            contextSwimmer.stroke();
+
+            // 画左边的腿
+            contextSwimmer.beginPath();
+            contextSwimmer.moveTo(200, 175);
+            contextSwimmer.lineTo(210 + positionX, 250 - positionY);
+            contextSwimmer.lineWidth = 10;
+            contextSwimmer.strokeStyle = "#000000";
+            contextSwimmer.lineCap = "round";
+            contextSwimmer.stroke();
+
+            contextSwimmer.restore();
+
+        };
+
+    </script>
+
+</head>
+<body onload="drawWater();">
+    <canvas id="myWaterCanvas" width="400" height="400" style="z-index: 2;
+position:absolute;left:0px;top:0px;"></canvas>
+    <canvas id="mySwimmerCanvas" width="400" height="400" style="z-index: 1;
+position:absolute;left:0px;top:0px;"></canvas>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>动态新增下拉列表选项</title>
+    <script type="text/javascript" src="scripts/jquery-1.8.1.js"></script>
+    <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+    <script type="text/javascript">
+        //创建一个View对象
+        function ViewModel() {
+            var self = this;
+            //使用observableArray进行绑定可以动态变更option选项
+            self.selectOptions = ko.observableArray([
+                 { "text": "请选择", "value": "0" }
+            ]);
+            self.result = ko.observable("0");//添加result监控属性，初始绑定值为0
+        }
+
+        $(function () {
+            var vm = new ViewModel();
+            ko.applyBindings(vm);
+            $("#btnAddItem").click(function () {
+                vm.selectOptions.push({
+                    "text": $("#txtOptText").val(),
+                    "value": $("#txtOptValue").val()
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div style=" background-color:#0094ff; width:180px; margin:100px auto auto auto;">
+        <select style="background-color:ActiveCaption;width:100px" data-bind="options: selectOptions, optionsText: 'text', optionsValue: 'value', value: result"></select>Value=<span data-bind="    text: result"></span>
+        <div> Text: <input id="txtOptText" value="选项1" /></div>
+        <div>Value: <input id="txtOptValue" value="1" /></div>
+        <input type="button" value="新增选项" id='btnAddItem' />
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+    // Lazy Initialization:
+    $(document).ready(function(){
+        $('div.app').myPlugin();
+    });
+
+    // Adapter or wrapper
+    $('div').css({
+        opacity: .1 // opacity in modern browsers, filter in IE.
+    });
+
+    // Facade
+    // higher level interfaces (facades) for $.ajax();
+    $.getJSON();
+    $.get();
+    $.getScript();
+    $.post();
+
+    // Observer
+    // jQuery utilizes it's own event system implementation on top of DOM events.
+    $('div').click(function(){})
+    $('div').trigger('click', function(){})
+
+    // Iterator
+    $.each(function(){});
+    $('div').each(function(){});
+
+    // Strategy
+    $('div').toggle(function(){}, function(){});
+
+    // Proxy
+    $.proxy(function(){}, obj); // =oP
+
+    // Builder
+    $('<div class="hello">world</div>');
+
+    // Prototype
+    // this feels like cheating...
+    $.fn.plugin = function(){}
+    $('div').plugin();
+
+    // Flyweight
+    // CONFIG is shared
+    $.fn.plugin = function(CONFIG){
+        CONFIG = $.extend({
+            content: 'Hello world!'
+        }, CONFIG);
+        this.html(CONFIG.content);
+    }
+
+</script>
+
+</body>
+</html>

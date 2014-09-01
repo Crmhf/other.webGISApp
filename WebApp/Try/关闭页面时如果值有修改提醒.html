@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>关闭页面的时候如果有内容的修改就提醒</title>
+</head>
+<body>
+    <input type="text" value="111111" /><br />
+    <input type="text" value="222222" /><br />
+    <input type="text" value="333333" /><br />
+    <input type="text" value="444444" /><br />
+    <input type="text" value="555555" /><br />
+    <input type="text" value="666666" /><br />
+    <textarea wrap="hard"></textarea>
+</body>
+</html>
+<script type="text/javascript" src="../js Framework/jquery-1.8.0.js"></script>
+<script type="text/javascript">
+    var changeFlag = false;
+    //标识文本框值是否改变，为true，标识已变
+    $(document).ready(function () {
+        //文本框值改变即触发
+        $("input[type='text']").change(function () {
+            changeFlag = true;
+        });
+        //文本域改变即触发
+        $("textarea").change(function () {
+            changeFlag = true;
+        });
+    });
+
+    //离开页面时保存文档
+    window.onbeforeunload = function () {
+        if (changeFlag == true) {
+            //如果changeFlag的值为true则提示
+            if (confirm("页面值已经修改，是否要保存？")) {
+                //处理信息保存...
+                alert("即将执行保存操作...");
+            } else {
+                //不保存数据...
+                alert("不保存信息...");
+            }
+        }
+    }
+</script>

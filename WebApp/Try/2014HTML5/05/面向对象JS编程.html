@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+<input type="button" value="HelloWorld" onclick="_test();" /><br />
+<input type="button" value="HelloWorld2" onclick="_test2();" />
+<script type="text/javascript">
+    function HelloWorld() {
+        var x = "Hello World!";
+        alert(x);  
+    }
+    HelloWorld.prototype = {
+        name: 'JavaScript',
+        sex: 'man',
+        sayHello: function () {
+            alert(this.name);
+        },
+        sayBye: function () {
+            alert(this.sex);
+        }
+    }
+
+    HelloWorld.age = 22;
+    HelloWorld.hello = function () {
+        alert(HelloWorld.age);
+    }
+
+
+    function _test() {
+        var obj = new HelloWorld();
+        obj.sayHello();  // 正确，实例方法，可以通过实例进行访问
+        HelloWorld.hello(); // 正确，静态方法，通过类名进行直接访问
+        obj.hello(); // 错误，不能通过实例访问静态方法。会报JS错误！
+    }
+
+    function HelloWorld2() {       
+        var privateProp3 = 'hello world 3!';
+        this.privateProp = 'hello world 2!';
+        this.method = function () {
+            alert(privateProp3);
+        }
+    }
+
+    function _test2() {
+        var obj = new HelloWorld2();
+        obj.method();
+        alert(obj.privateProp);
+    }
+
+</script>
+</body>
+</html>

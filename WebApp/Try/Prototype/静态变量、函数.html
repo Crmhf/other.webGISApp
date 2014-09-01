@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+    function Obj() {
+    }
+
+    Obj.a = 0; //静态变量
+    Obj.fn = function () { //静态函数
+    }
+
+    console.log(Obj.a); //0
+    console.log(typeof Obj.fn); //function
+
+    var o = new Obj();
+    console.log(o.a); //undefined
+    console.log(typeof o.fn); //undefined
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+/*
+Syntax error: Undefined mixin 'transition-property'.
+        on line 13 of sass/toggles.scss, in `transition-property'
+        from line 13 of sass/toggles.scss
+
+8:   width: 74px;
+9:   height: 30px;
+10:   background-color: #fff;
+11:   border: 2px solid #ddd;
+12:   border-radius: 20px;
+13:   @include transition-property(background-color, border);
+14:   @include transition-duration(.2s);
+15: 
+16:   // Sliding handle
+17:   .toggle-handle {
+18:     position: absolute;
+
+Backtrace:
+sass/toggles.scss:13:in `transition-property'
+sass/toggles.scss:13
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:320:in `block in visit_mixin'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/stack.rb:98:in `block in with_mixin'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/stack.rb:121:in `with_frame'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/stack.rb:98:in `with_mixin'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:318:in `visit_mixin'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/stack.rb:79:in `block in with_base'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/stack.rb:121:in `with_frame'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/stack.rb:79:in `with_base'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:389:in `block (2 levels) in visit_rule'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:389:in `map'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:389:in `block in visit_rule'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:387:in `visit_rule'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/stack.rb:79:in `block in with_base'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/stack.rb:121:in `with_frame'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/stack.rb:79:in `with_base'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:161:in `block in visit_children'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:160:in `visit_children'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:180:in `visit_root'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:151:in `visit'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/tree/root_node.rb:20:in `render'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/engine.rb:274:in `render'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/plugin/compiler.rb:414:in `update_stylesheet'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/plugin/compiler.rb:189:in `block in update_stylesheets'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/plugin/compiler.rb:186:in `each'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/plugin/compiler.rb:186:in `update_stylesheets'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/plugin/compiler.rb:221:in `watch'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/plugin.rb:108:in `method_missing'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/exec.rb:509:in `watch_or_update'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/exec.rb:346:in `process_result'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/exec.rb:43:in `parse'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/lib/sass/exec.rb:22:in `parse!'
+/Users/airen/.rvm/gems/ruby-2.1.1/gems/sass-3.3.6/bin/sass:13:in `<top (required)>'
+/Users/airen/.rvm/gems/ruby-2.1.1/bin/sass:23:in `load'
+/Users/airen/.rvm/gems/ruby-2.1.1/bin/sass:23:in `<main>'
+/Users/airen/.rvm/gems/ruby-2.1.1/bin/ruby_executable_hooks:15:in `eval'
+/Users/airen/.rvm/gems/ruby-2.1.1/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'transition-property'.\A         on line 13 of sass/toggles.scss, in `transition-property'\A         from line 13 of sass/toggles.scss\A \A 8:   width: 74px;\A 9:   height: 30px;\A 10:   background-color: #fff;\A 11:   border: 2px solid #ddd;\A 12:   border-radius: 20px;\A 13:   @include transition-property(background-color, border);\A 14:   @include transition-duration(.2s);\A 15: \A 16:   // Sliding handle\A 17:   .toggle-handle {\A 18:     position: absolute;"; }

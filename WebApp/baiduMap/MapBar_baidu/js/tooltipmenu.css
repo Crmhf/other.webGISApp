@@ -1,0 +1,12 @@
+<style type="text/css">
+<!--
+
+.ptlabel{TEXT-DECORATION: none; CURSOR: Default; font-family: arial; font-size: 8pt}
+.tooltiptitle{COLOR: #CC5522; TEXT-DECORATION: none; CURSOR: Default; font-family: arial; font-weight: bold; font-size: 10pt}
+.tooltipcontent{COLOR: #000000; TEXT-DECORATION: none; CURSOR: Default; font-family: arial; font-size: 8pt}
+
+#ToolTip{position:absolute; width: 100px; top: 0px; left: 0px; z-index:24; visibility:hidden;}
+
+-->
+</style>
+

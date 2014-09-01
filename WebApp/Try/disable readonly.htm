@@ -1,0 +1,16 @@
+﻿<html>  
+ <style>
+      input{background:expression((this.disabled && this.disabled==true)?"red":"");font-size: 30px}
+ </style>
+    
+<form>  
+<input name="1" type="text" size="20" value="readonly" readonly="readonly" onclick="test()">  
+<input name="1" type="text" size="20" value="readonly" readonly="readonly" >  
+<input name="2" type="text" size="20" value="disabled" disabled="disabled">  
+<input name="1" type="text" size="20" value="normal">  
+<input type="text" value="fisker" onclick="alert(this.value);" readonly />
+<input type="text" onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" />
+<input type="text" style="ime-mode:disabled" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="if ((event.keyCode<48 || event.keyCode>57)) event.returnValue=false" />
+
+</form>  
+</html>  

@@ -1,0 +1,23 @@
+﻿<html>
+<head>
+   <title>
+     JS模拟按键
+   </title>
+   <script type="text/javascript">
+
+       function loadListener() {
+           document.getElementById('F11Btn').onclick = function () {
+               var WshShell = new ActiveXObject('WScript.Shell')
+               WshShell.SendKeys('{F11}');
+           }
+       }
+
+       window.attachEvent("onload", loadListener); 
+   </script>
+   <body>
+
+    <input type="button" id="F11Btn" value="点我全屏化">
+   </body>
+</head>
+</html>
+

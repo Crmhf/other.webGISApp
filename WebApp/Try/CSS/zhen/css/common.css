@@ -1,0 +1,100 @@
+/* CSS Document */
+/*-------------------------------------- 全局公共样式---------------------------- ------------*/
+
+ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote{margin:0;padding:0;word-wrap:break-word;word-break:break-all} 
+
+body{height:100%;font:12px/1.6em "Microsoft Yahei","Arial","\5b8b\4f53","sans-serif";color:#333;-webkit-text-size-adjust:none;
+/*background:url(../images/kotei/bodyBg.png) repeat;*/}
+
+/*
+h1,h2,h3,h4,h5,h6{font-size:100%;}label,button,input[type="button"],.hand{cursor:pointer;cursor:hand;}
+select,input,textarea{font-size:14px;line-height:1.4em;}address,cite,em{font-style:normal}
+table,th,tr,td{border-collapse:collapse; border-spacing:0; text-align:center}
+div,th,td,dl,dt,dd,ol,ul,li,p,h1,h2,h3,h4,h5,h6,span{line-height:22px}
+li{list-style-type:none;}fieldset,img,.nobd{border:0 !important}
+a,a:link,a:active,a:visited,a:focus{text-decoration:none; color:#5C5C5C}*/
+
+input[type="text"], textarea {
+border: 1px solid #d2dadd;
+-moz-box-shadow: 0 1px 1px #f3f4f6 inset;
+-webkit-box-shadow: 0 1px 1px #f3f4f6 inset;
+box-shadow: 0 1px 1px #f3f4f6 inset;
+font-size: 13px;
+color: #3a3a3a;
+padding: 4px 4px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px 3px 3px 3px;
+outline-color: #e2eaed;
+background: #f8f8f8;
+}
+img,li{ vertical-align:top}
+ul,dl{ list-style-type:none;}
+ul,li{ margin:0px; padding:0px;}
+h1,h2,h3,h4,h5,h6,dl,dt,dd{ margin:0; padding:0; border:0;font-weight:normal; font-size:14px;}
+a{ text-decoration:none;color:#5C5C5C;}
+a:hover{color:#0099FF}
+.left{ float:left}
+.m_top{margin-top:8px;}
+.m_left{ margin:0 8px 0 8px;}
+h2{font-weight:bold; color:#8697A0; font-size:16px;}
+h3{font-weight:bold; color:#6CB07A; text-align:center}
+/**首页的导航+List里面的导航**/
+h4{font-size:16px; font-weight:bold; color:#666666;}
+.border{border:1px solid #E2E2E2;}
+form{ padding:0px; margin:0px ; border:0px;}
+.w960 {width: 960px;}
+.center {margin: 0 auto;overflow: hidden;}
+
+/*--------------- Component -------------------*/
+
+/*------------------------------------- top---------------------------- ------------*/
+#header,#container,#footer{margin: 0 auto; overflow:hidden;}
+#container{width:960px;margin-bottom:8px;}
+
+.top {background:url("../images/kotei/heading-bg.png") repeat-x scroll 0 0 #F0F0F0 !important;border-bottom: 1px solid #CCCCCC;font-size: 11px;text-shadow: 1px 1px 0 #FFFFFF;}
+.top_left{ font-size:12px; padding:8px 0 0 17px;} 
+.top_right{ font-size:12px; padding:6px 0 0 18px; height:19px; width:266px; float:right;}
+.top_right a{ margin-right:36px; }
+
+#header{ }
+.logo{ height:100px; line-height:100px; }
+.logo_left{float:left;}
+.logo_right{ float:right; width:580px;}
+.logo_right1{ float:left; width:440px; padding-left:10px;}
+.logo_right1 .zjk-name{ height:20px; font-size:18px; font-weight:bold;color:#666}
+.logo_right1 .zjk-time{ height:60px;font-size:14px;;}
+.logo_right2{ text-align:left; line-height:20px;float:right; font-size:12px; width:120px;}
+
+
+
+.nav{ height:50px; width:100%; margin-top:8px; background-color:#333 }
+.nav1{width:950px; height:48px; margin:1px auto;}
+.nav1 li{ width:95px; height:48px; line-height:48px; float:left; text-align:center; }
+.nav1 li a{font-size:16px; font-weight:bold;width:95px; height:48px;color:#fff; display:block;outline: none;}
+.nav1 li a:hover{ background-color:#06A7E1}
+.nav1 span li{ background:none}
+
+.wei{ width:958px;height:40px; line-height:40px; font-size:14px; float:left; background-color:#EEEEEE; color:#AAAAAA; padding-left:5px;}
+.wei span{float:left;}
+
+/* 页面的搜索模块 */
+.search1_1{ width:300px; height:30px; display:inline; float:right;}
+.search1_1 input{ margin-top:3px;width:210px; height:23px;float:left; line-height: 23px; border:1px solid #E2E2E2; color:#999}
+.search1_1 label input{width:70px; height:34px;margin-left:2px;line-height: 34px;  background-color: #6CB88E;color: #FFFFFF; font-size:16px;font-weight: bold;cursor: pointer;}
+
+.friend_link{ width:960px;background-color:#f2f2f2;}
+.link_title{ width:945px; height:22px;background:url("../images/kotei/heading-bg.png") repeat-x scroll 0 0 #F0F0F0 !important;border-bottom:1px solid #DDDDDD; font-size:14px;padding:7px 0 0 13px; color:#6CB07A}
+.link_centen{ margin:10px; line-height:25px;}
+.link_centen span{ margin:0px 5px; color:#CCC;}
+
+
+#footer{ width:100%;text-align:center; overflow:hidden; }
+#footer .center {position: relative;}
+#footer .footbar {height: 22px;margin-top:10px; background-color:F9F9F9;}
+#footer .footbar a{color:#000;}
+#footer .copyright{text-align:center;line-height:22px;background-color:#333;color:#FFF; }
+
+
+.page_nav{width:100%; margin-top:8px; margin-bottom:8px; line-height:28px;}
+.page_nav a{border:1px solid #CCC; width:40px; line-height:22px; padding-top:2px; margin-right:2px; display:block; float:left; text-align:center;}

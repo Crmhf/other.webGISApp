@@ -1,0 +1,86 @@
+//
+// Badges
+// --------------------------------------------------
+
+.badge {
+  display: inline-block;
+  padding: 2px 5px 2px;
+  font-size: 12px;
+  line-height: 1;
+  color: $default-color;
+  background-color: $badge-default;
+  border: 1px solid $badge-default;
+  // Inverted badges have no background.
+  &.badge-inverted {
+    background-color: transparent;
+    color: #000;
+  }
+  > .icon {
+    font-size:14px;
+    margin-right: 5px;
+  }
+}
+
+
+// Badge modifiers
+// --------------------------------------------------
+
+// Main badge
+.badge-primary {
+  background-color: $badge-primary;
+  border-color: $badge-primary;
+
+  &.badge-inverted {
+    color: $badge-primary;
+  }
+}
+
+// Positive badge
+.badge-positive {
+  background-color: $badge-positive;
+  border-color:$badge-positive;
+
+  &.badge-inverted {
+    color: $badge-positive;
+  }
+}
+
+// Negative badge
+.badge-negative {
+  background-color: $badge-negative;
+  border-color: $badge-negative;
+
+  &.badge-inverted {
+    color: $badge-negative;
+  }
+}
+
+//Error badge
+.badge-error {
+  background-color: $badge-error;
+  border-color: $badge-error;
+
+  &.badge-inverted {
+    color: $badge-error;
+  }
+}
+
+//Info badge
+.badge-info {
+  background-color: $badge-info;
+  border-color: $badge-info;
+
+  &.badge-inverted {
+    color: $badge-info;
+  }
+}
+
+//Success badge
+.badge-success {
+  background-color: $badge-success;
+  border-color: $badge-success;
+
+  &.badge-inverted {
+    color: $badge-success;
+  }
+}

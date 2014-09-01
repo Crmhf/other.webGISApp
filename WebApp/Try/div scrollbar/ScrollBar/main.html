@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>无标题文档</title>
+        <link rel="stylesheet" type="text/css" href="Style.css" />
+		<script type="text/javascript" src="ScrolBar.js"></script>
+    </head>
+    <script language="JavaScript" type="text/javascript">
+        
+        //配置信息
+        var bar_ID = "bar";//滚动Bar的ID
+        var context_ID = "main_value";//滚动DIV的ID
+        var barLeft_ID = "bar_left";//左边Bar 
+        var barReight_ID = "bar_right"; //右边Bar
+	    var moveBy_PX;//两边按钮，根据象素移动
+        
+        function init(){
+            ScrollBar(bar_ID, context_ID, barLeft_ID, barReight_ID,moveBy_PX);
+        }
+		
+        window.onload = init;
+    </script>
+    <body>
+        <div class="Main">
+            <div class="Main_right">
+                <div class="Main_cont" id="main_value">
+                    <h1 style="text-indent:12px; color:#999999;">sdfsafsaf</h1>
+                    顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空
+                    裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆
+                    顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋
+                    口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空 
+                    裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替 
+                    有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 
+                    口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶
+                    地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜
+                    为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口
+                    角顶替有茜为圆顶地时空裂缝顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋
+                    口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶
+                    地时空裂缝顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶
+                    地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝顶替有茜为圆顶地
+                    时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为
+                    圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋 口角顶替有茜为圆顶地时空裂缝晨埋裂缝晨埋 口角生风
+                </div>
+                <div class="scrollbar" id="dome">
+                    <img class="track" src="Images/sb.png" alt="">
+                   
+                 
+                    <div id="y-thumb-prev" class="tangram-scrollbar-thumb-prev scrollbar-y-thumb-prev" style="background-position: -36px 0pt;"></div>
+					<div id="bar" class="arrow-left"></div>	
+                    <div id="y-thumb-next" class="tangram-scrollbar-thumb-next scrollbar-y-thumb-next" style="background-position: -36px -4px;"></div>
+                 
+					<img id="bar_left" class="arrow-right" src="Images/sl.gif" alt=""><img id="bar_right" class="bar" src="Images/sr.gif" alt="">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

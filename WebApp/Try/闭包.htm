@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function f() {
+        var n = 999;
+        function f1() {
+            alert(n += 1);
+        }
+        return f1;
+    }
+    var result = f();
+    result(); // 1000　
+    result(); // 1001 　　
+    result(); // 1002
+</script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<html  xmlns:v="urn:schemas-microsoft-com:vml">
+<style>
+v\:* { behavior: url(#default#VML); }
+</style>
+	<HEAD>
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Cache-Control" content="no-store">
+		<meta http-equiv="Pragma" content="no-cache">	
+	<TITLE></TITLE>
+	<link href="js/tooltipmenu.css" rel="stylesheet" type="text/css">
+	<script language="javascript" src="js/avconfig.js"></script>
+	<script language="javascript" src="js/avinclude.js"></script>
+	<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+}
+-->
+</style>
+</head>
+<script language="javascript">
+	function MM_preloadImages() { //v3.0
+	  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+		var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+		if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+	}
+	var tmp1 = b.p('IJSDSBWVJABFA');
+	
+	function ShowPOI()
+	{
+		if(!maplet)return; 
+		
+		addPoint('images/marker.gif','IJSDSBWVJABFA','上海市人民政府','<html><body>上海市人民政府，坐标值IJSDSBWVJABFA<br><a href="http://map.baidu.com/m?sid=BARNFWYPFOTMQOH&bs=021&ct=40&word=%C9%CF%BA%A3%CA%D0%C8%CB%C3%F1%D5%FE%B8%AE" target="_blank">在百度中搜索</a></body></html>');
+
+	}
+	function addAll(type,latlon,slabel,html) {
+	  var tmp = b.p(latlon);
+	  maplet.addPoint('http://baidu.mapbar.com/baidu/images/'+type+'.gif',tmp[1], tmp[0], slabel,html);
+	}
+	function addPoint(type,latlon,slabel,html) {
+		if(!maplet)return;
+		var tmp = b.p(latlon);
+		maplet.addPoint(type,tmp[1], tmp[0], slabel,html);
+	}	
+	function setCenter(lat,lon)
+	{
+		if(!maplet)return;
+		maplet.setCenter(lat,lon);
+	}
+	function RemoveAll()
+	{
+		if(!maplet)return;
+		maplet.clean();
+	}
+	function cleanRoute()
+	{
+		if(!maplet)return;
+		maplet.cleanRoute();
+	}
+	function setMode(imode)
+	{
+		if(!maplet)return;
+		maplet.setMode(imode);
+	}
+	function ZoomIn()
+	{
+		ZoomIn();
+	}
+	function ZoomOut()
+	{
+		ZoomOut();
+	}
+	function SetPanMode()
+	{
+		if(!maplet)return;
+		maplet.setMode(3);
+	}
+	function SetMeasMode()
+	{
+		if(!maplet)return;
+		maplet.setMode(11);
+	}
+	function SetZoomLevel(zoom)
+	{
+		if(!maplet)return;
+		maplet.setZoomLevel(zoom);
+	}
+	function SetAerialView()
+	{
+		if(!maplet)return;
+		maplet.setStyle("aerial");
+	}
+	function SetStandardView()
+	{
+		if(!maplet)return;
+		maplet.setStyle("std");
+	}
+	function settype()
+	{
+		
+		  SetStandardView();
+		
+	}
+	function callback(strURL)
+	{
+	}	
+	function reShowMap()
+	{
+		//document.getElementById("mapid").width = 0;
+		//document.getElementById("mapid").height = 0;
+		var mapheight = document.getElementById("dituclient").clientHeight;
+		var mapwidth = document.getElementById("dituclient").clientWidth;
+		//document.getElementById("mapid").width = mapwidth;
+		//document.getElementById("mapid").height = mapheight;
+		if(!maplet)return;
+		maplet.resize(mapwidth,mapheight);
+	}
+	</script>
+
+<BODY onResize="reShowMap()">	
+
+	<table id='dituclient' border='1' width="680" cellspacing="0" cellpadding="0" style="solid #666666;">
+		<tr>
+			<td width='680' height='448' ><SCRIPT language=javascript>			
+			var maplet = new AVMaplet(tmp1[1],tmp1[0], 1, 678, 448,1,1,"maplite/images/mask.gif","baidu");
+			maplet.addHotspot(39.90496,116.39140,"010",0, 5);	
+			maplet.addHotspot(39.14679566150836,117.20542181200692,"022",1, 5);
+			maplet.addHotspot(31.217730065338284,121.44644672727291,"021",1, 5);
+			maplet.addHotspot(23.13454,113.24539,"020",1, 5);
+			maplet.addHotspot(29.52743657535289,106.52713048972885,"023",1, 5);
+			maplet.addHotspot(41.788136,123.41966,"024",1, 5);
+			maplet.addHotspot(30.583851,114.273666,"027",1, 5);
+			maplet.addHotspot(34.27120,108.93684,"029",1, 5);
+			maplet.addHotspot(30.293614,120.168156,"0571",1, 5);
+			maplet.addHotspot(32.06664,118.79395,"025",1, 5);
+			maplet.addHotspot(37.500475,122.10728,"0531_11",1, 5);
+			maplet.addHotspot(36.67257,117.02788,"0531",1, 5);
+			maplet.addHotspot(28.197455,112.978112,"0731",1, 5);
+			maplet.addHotspot(38.911,121.5899,"024_8",1, 5);
+			maplet.addHotspot(20.02974,110.29916,"0898",1, 5);
+			maplet.addHotspot(38.04759,114.51940,"0311",1, 5);
+			maplet.addHotspot(34.757942,113.641312,"0371",1, 5);
+			maplet.addHotspot(43.884295,125.308308,"0431",1, 5);
+			maplet.addHotspot(29.86757,121.56422,"0571_3",1, 5);
+			maplet.addHotspot(31.31068,120.59224,"025_8",1, 5);
+			maplet.addHotspot(24.49239,118.12163,"0591_4",1, 5);
+			maplet.addHotspot(30.64975,104.078891,"028",1, 5);
+			maplet.addHotspot(26.035396,119.317072,"0591",1, 5);
+			maplet.addHotspot(23.028393,113.099296,"020_14",1, 5);
+			maplet.addHotspot(22.525907,113.373509,"020_15",1, 5);
+			maplet.addHotspot(22.55395,114.109619,"020_10",1, 5);
+			maplet.addHotspot(35.0636648715524,118.34224183637302,"0531_19",1, 5);
+			maplet.addHotspot(32.06886444504337,112.16007302611602,"027_15",1, 5);
+			maplet.addHotspot(45.742095,126.644523,"0451",1, 5);	
+			maplet.addHotspot(25.046907,102.710427,"0871",1, 5);
+			maplet.addHotspot(36.12718,120.38911,"0531_12",1, 5);
+			maplet.addHotspot(43.83134,87.56985,"0991",1, 5);
+			maplet.addHotspot(31.85153,117.26002,"0551",1, 5);
+			maplet.addHotspot(31.573743,120.29715,"025_5",1, 5);
+			maplet.addHotspot(22.80633,108.311875,"0771",1, 5);
+			maplet.addHotspot(37.532723,121.378181,"0531_10",1, 5);
+			maplet.addHotspot(46.591776,125.025081,"0451_14",1, 5);
+			maplet.addHotspot(37.873437,112.564488,"0351",1, 5);
+			maplet.addHotspot(29.651446,91.134569,"0891",1, 5);
+			maplet.addHotspot(28.674173,115.897315,"0791",1, 5);
+			maplet.addHotspot(38.466531,106.2732,"0951",1, 5);
+			maplet.addHotspot(26.579416,106.707856,"0851",1, 5);
+			maplet.addHotspot(36.608731,101.785032,"0971",1, 5);
+			maplet.addHotspot(40.81507,111.662929,"0471",1, 5);
+			maplet.addHotspot(36.07009,103.76189,"0931",1, 5);
+			maplet.addHotspot(32.0098,120.85379,"025_20",1, 5);
+			maplet.addHotspot(31.782658,119.95223,"025_4",1, 5);
+			maplet.addHotspot(36.791005,118.057973,"0531_4",1, 5);
+			maplet.addHotspot(36.702672,119.105353,"0531_7",1, 5);
+			maplet.addHotspot(36.188097,117.126969,"0531_13",1, 5);
+			maplet.addHotspot(34.664,112.382214,"0371_12",1, 5);
+			maplet.addHotspot(32.130634,114.070790,"0371_9",1, 5);
+			maplet.addHotspot(23.047493,113.749275,"020_2",1, 5);　
+			maplet.addHotspot(22.245171225251656,113.54959639143789,"020_21",1, 5);
+			maplet.addHotspot(24.910902,118.589375,"0591_5",1, 5);
+			maplet.addHotspot(24.512702,117.652762,"0591_7",1, 5);
+			maplet.addHotspot(43.906729,126.566005,"0431_2",1, 5);　
+			maplet.addHotspot(27.238193476274983,111.45857409074627,"0731_18",1, 5);　
+			ShowPOI();
+			maplet.showMap();
+		  </SCRIPT></td>
+		</tr>
+	</table>
+<SCRIPT language=javascript>
+//setCenter(31.232026,121.469387);也可以用这样定位的方法进行定位
+SetZoomLevel(12);
+</SCRIPT>
+</body>
+</html>

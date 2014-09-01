@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="../../jsFramework/jquery-1.8.1.min.js"></script>
+</head>
+<body>
+<a href="javascript:ToOrder();" id="cartbutton">提交订单</a>
+
+<script type="text/javascript">
+    function ToOrder() {
+        $('#cartbutton').hide();
+        $('#cartbutton').after("<span class='cartsubmit-state'>正在转向填写核对订单页面，请稍候！</span>");
+        // 2秒后转向跳转的地址
+        window.setTimeout('window.location.href = /Order', 2000);
+        window.location.href = "/Order";
+    }
+</script>
+</body>
+</html>

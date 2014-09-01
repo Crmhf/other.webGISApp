@@ -1,0 +1,135 @@
+
+/*-------------------------------------main---------------------------- ------------*/
+.main{ height:363px;}
+
+.right{ width:196px; height:361px; border:1px solid #E2E2E2; background-color:#FFF;}
+.right_title{ width:186px; height:24px; background:url("../images/kotei/heading-bg.png") repeat-x scroll 0 0 #F0F0F0 !important;border-bottom:1px solid #DDDDDD; font-size:14px; color:#6CB07A; padding:5px 0 0 10px;}
+.right_title img{ margin-top:4px;margin-right:5px;}
+.right_centen{ margin:7px 0 0 8px;}
+.right_centen li{height:25px; background:url(../images/dot.gif) no-repeat 0px 2px; padding-left:15px;}
+.tu{ width:944px; height:137px; border:1px solid #C8E5ED; padding:11px 0 0 14px;}
+.tu li{ float:left; margin-right:8px; width:148px; height:136px; text-align:center; line-height:25px;}
+.tu img{ padding:2px; border:1px solid #DAD7D7;}
+
+/*----- 通用区域的样式划分 -----*/
+#additional {clear: both;width: 960px;background-color:green;color: #000000;margin: 0 auto;}
+
+
+/* 上下带标题 */
+.area{width:960px;float:left;}
+.area-title{height:30px; line-height:30px; padding-left:10px; background:#F2F2F2 !important; font-size:16px;font-weight:bold;border-bottom:1px solid #DDDDDD;}
+.area-title span{font-size:12px;}
+.area-title .love-fang{color:#c31}
+.area-content{ margin:7px 0 0 0;}
+
+/* 左右分割 */
+.area-main {width: 660px;}
+.area-main,.area-sub {float: left;overflow: hidden;}
+.area-sub {width: 300px;}
+
+/*----- 第一层热门文章 -----*/
+.hot-news{ width:300px; height:372px; background-color:#DAD7D7}
+.hot-news-title{ width:300px; height:29px; line-height:29px; background:url("../images/kotei/heading-bg.png") repeat-x scroll 0 0 #F0F0F0 !important;border-bottom:1px solid #DDDDDD; font-size:16px; font-weight:bold; color:#6CB07A; padding:5px 0 0 10px;}
+.hot-news-title img{ margin-top:8px;margin-right:5px;}
+.hot-news-centen{ margin:7px 0 0 8px; font-size:14px;}
+.hot-news-centen li{height:25px; background:url(../images/dot.gif) no-repeat 0px 2px; padding-left:15px;}
+
+/*----- 第二层最新+推荐文章 -----*/
+.recommend-news{float:left; width:200px; height:360px; background-color:red}
+.recommend-news-title{ height:29px; line-height:29px;background:#F0F0F0 !important;border-bottom:1px solid #DDDDDD; padding-left:10px;}
+.recommend-news-centen{ width:200px; }
+.recommend-news-centen li{ height:21px; background:url(../images/dot.gif) no-repeat 0px 2px; padding-left:15px;}
+
+.news{ width:460px; height:372px; background-color:green;}
+.news1{ width:460px; height:29px;background: #F0F0F0 !important;border-bottom:1px solid #DDDDDD;}
+.news1_1{ width:116px; height:20px; background:url(../images/kotei/newsTitleDot.png) no-repeat 5px 2px; padding:6px 0 0 22px;}
+.news1_2{ text-align:right; width:200px; height:19px; padding:8px 20px 0 0;}
+.news2{ width:460px; margin:0 auto; }
+.news2 dd{ font-size:12px; line-height:22px; width:440px; padding-top:8px; margin-bottom:8px; padding-left:20px;}
+.news2 dd a{color:#CC0000;}
+.news2 dt{ line-height:24px; width:340px;display:block; text-align:left; padding-left:20px;}
+.news2 dt a{ width:289px; float:left; display:block;}
+.news2 dt span{ float:left; color:#6CB07A; margin-right:15px;}
+.news2 dt font{ color:#999; font-size:12px;}
+.news3{ padding-left:1px;}
+
+.order-list{ width:300px; height:372px; background-color:#DAD7D7}
+.order-list-title{ width:300px; height:29px; line-height:29px; background:url("../images/kotei/heading-bg.png") repeat-x scroll 0 0 #F0F0F0 !important;border-bottom:1px solid #DDDDDD; font-size:16px; font-weight:bold; color:#6CB07A; padding:5px 0 0 10px;}
+.order-list-title img{ margin-top:8px;margin-right:5px;}
+.order-list-centen{ margin:7px 0 0 8px; font-size:14px;}
+.order-list-centen li{height:25px; background:url(../images/dot.gif) no-repeat 0px 2px; padding-left:15px;}
+
+/***第三层专家介绍***/
+.tcm-doc{ width:660px; height:320px; }
+.tcm-doc-title{ width:659px; height:29px; line-height:29px; background:url("../images/kotei/heading-bg.png") repeat-x scroll 0 0 #F0F0F0 !important;border-bottom:1px solid #DDDDDD; font-size:16px; font-weight:bold; color:#6CB07A; padding:5px 0 0 10px;}
+.tcm-doc-title img{ margin-top:8px;margin-right:5px;}
+.tcm-doc-centen{ margin:7px 0 0 8px;}
+.tcm-doc-centen li{height:25px; background:url(../images/dot.gif) no-repeat 0px 2px; padding-left:15px;}
+
+.tcm-ks{ width:300px; height:320px; }
+.tcm-ks-title{ width:300px; height:29px; line-height:29px; background:url("../images/kotei/heading-bg.png") repeat-x scroll 0 0 #F0F0F0 !important;border-bottom:1px solid #DDDDDD; font-size:16px; font-weight:bold; color:#6CB07A; padding:5px 0 0 10px;}
+.tcm-ks-title img{ margin-top:8px;margin-right:5px;}
+.tcm-ks-centen{ margin:7px 0 0 8px;text-align:center;} }
+
+/*-------------------------------------main1---------------------------- ------------*/
+.main1{ height:325px;}
+.main1_1{ height:325px; width:312px;background:#FFF;}
+.main1_1title{ width:312px; height:34px;background:#EEEEEE !important;border-bottom:1px solid #DDDDDD;}
+.main1_1title1{ width:140px; height:34px;float:left;font-size:16px;font-weight:bold;background:url(../images/maodou/newsTitleDot.png) no-repeat 6px 6px; text-align:center; line-height:34px;}
+.main1_1title2{ float:right; width:200; height:20px; padding:6px 10px 0 0;}
+.main1_1title2 span{ color:#666666;font-size:14px;}
+.main1_1centen{ width:301px; height:239px; padding:5px 0 0 0; }
+.main1_1centen dd{ float:left;font-size:12px; width:136px; height:97px; }
+.main1_1centen dd img{ padding:1px;border:1px solid #DAD7D7;}
+.main1_1centen span dd{ width:145px; margin-left:15px; line-height:19px; padding-top:6px; float:left}
+.main1_1centen dt{ width:270px;font-size:13px; line-height:25px; background:url(../images/dot.gif) no-repeat 0px 6px; padding-left:15px;}
+
+.main1_2{ height:325px; width:312px; margin:0 9px 0 9px;background:#FFF;}
+.main1_2title1{width:140px; height:34px; line-height:34px;float:left;font-size:16px;font-weight:bold;background:url(../images/maodou/newsTitleDot.png) no-repeat 6px 6px; text-align:center; }
+.main1_3{ height:325px; width:312px;background:#FFF;}
+.main1_3title1{ width:140px; height:34px; float:left; font-size:16px;font-weight:bold; background:url(../images/maodou/newsTitleDot.png) no-repeat 6px 6px; text-align:center; line-height:34px;}
+
+.main3_1centen{ width:291px; height:251px; margin:0 auto;background:url(../images/news_bj.gif) repeat-x 0 122px; }
+.main3_1centen1{ float:left;padding:2px;border:1px solid #DAD7D7;margin:22px 0 0 9px; display:inline}
+.main3_1centen2{ float:left; width:126px; margin:35px 0 0 9px; line-height:21px; font-size:12px; margin-left:5px;}
+
+.gdimg{ text-align:center; margin-top:8px; padding-bottom:8px;}
+.gdimg img{border:1px solid #CCC; margin:8px 8px 8px 0px; padding:1px;}
+
+/*---------------work table--------------*/
+#work-table{width:960px; border-collapse: collapse;border:solid #add9c0; border-width:1px 0px 0px 1px;}
+#work-table .yuan-gg{background-color:#E2E2E2}
+#work-table .yuan-hys{background-color:#F2F2F2}
+#work-table .yuan-fh{background-color:#E2E2E2}
+#work-table th{width:60px;height:14px; }
+#work-table th{border:solid #add9c0; border-width:0px 1px 1px 0px;}
+#work-table td{height:14px;border:1px solid #add9c0; text-align:center;}
+#work-table .ljk{background-color:#FAEBD7;}
+#work-table .zzy{background-color:#B4EEB4;}
+#work-table .ddg{background-color:yellow;}
+#work-table .yyh{background-color:#CDC0B0;}
+#work-table .phl{background-color:#6F6;}
+#work-table .xtb{background-color:#9F6;}
+#work-table .zzx{background-color:#FF9;}
+#work-table .zy{background-color:#3FC;}
+#work-table .jy{background-color:#E0FFFF;}
+#work-table .wd{background-color:#999999;}
+#work-table .lhp{background-color:green;}
+#work-table .zq{background-color:#CC6699;}
+#work-table .lhp{background-color:#CCCC66;}
+#work-table .tcm-all{width:100px;}
+
+/* 引导区域 */
+.lemma-guide{width:100%;height:auto;padding-top:40px;padding-bottom:35px;overflow:hidden}
+.guide-wrapper{width:960px;margin:0 auto}
+.guide-wrapper .block{width:237px;padding-left:38px;border-right:1px solid #e5e5e5;float:left;}
+.guide-wrapper .guide-title{background:no-repeat left center;font:24px/38px Microsoft YaHei,Helvetica,Arial;padding-left:50px;color:#666}
+.guide-newer .guide-title{background-image:url(http://baike.baidu.com/cms/s/help/s/images/main07-tip01.png);_background-image:url(http://baike.baidu.com/cms/s/help/s/images/main07-tip01-ie6.png)}
+.guide-question .guide-title{background-image:url(http://baike.baidu.com/cms/s/help/s/images/main07-tip02.png);_background-image:url(http://baike.baidu.com/cms/s/help/s/images/main07-tip02-ie6.png)}
+.guide-suggestion .guide-title{background-image:url(http://baike.baidu.com/cms/s/help/s/images/main07-tip03.png);_background-image:url(http://baike.baidu.com/cms/s/help/s/images/main07-tip03-ie6.png)}
+.guide-wrapper .guide-link{margin-top:12px;display:inline-block}
+.guide-wrapper .guide-link a{width:108px;display:inline-block;font:12px/26px Microsoft YaHei,Helvetica,Arial;color:#999;text-decoration:none}
+.guide-wrapper .guide-link a.left{margin-right:0}
+.guide-wrapper .guide-link a:hover{color:#09F}
+.block.guide-question{width:245px;padding-left:90px}
+.block.guide-suggestion{border-right:0;width:245px;padding-left:90px}

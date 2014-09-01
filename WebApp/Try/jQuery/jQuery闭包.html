@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        #con {
+             width:500px;
+             height:500px;
+             background-color:green;
+             }
+    </style>
+    <script type="text/javascript" src="../../jsFramework/jquery-1.8.1.min.js"></script>
+</head>
+<body>
+
+<div id="con">
+
+</div>
+
+<script type="text/javascript">
+    var con = $("div#con");
+    setTimeout(function () {
+        con.css({ background: "gray" });
+    }, 2000);
+    /*
+    上边的代码使用了 jQuery 的选择器，找到 id 为 con 的 div 元素，注册计时器，当两秒中之后，将该 div 的背景色设置为灰色。
+    这个代码片段的神奇之处在于，在调用了 setTimeout 函数之后，con 依旧被保持在函数内部，
+    当两秒钟之后，id 为 con 的 div 元素的背景色确实得到了改变。
+    应该注意的是，setTimeout 在调用之后已经返回了，但是 con 没有被释放，
+    这是因为 con 引用了全局作用域里的变量 con。
+    */
+</script>
+</body>
+</html>
