@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" href="http://esri-705.arcgiscloud.com:8080/arcgis_js_api/library/3.10/3.10/js/esri/css/esri.css">
+    <style>
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <script src="http://esri-705.arcgiscloud.com:8080/arcgis_js_api/library/3.10/3.10/init.js"></script>
+    <script>
+        var map;
+
+        require(["esri/map", "esri/layers/ArcGISTiledMapServiceLayer", "dojo/domReady!"],
+          function (Map, Tiled) {
+              map = new Map("map");
+
+              var tiled = new Tiled("https://esri-705.arcgiscloud.com:6443/arcgis/rest/services/chinacity/MapServer");
+              map.addLayer(tiled);
+          }
+        );
+    </script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>

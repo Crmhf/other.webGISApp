@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Home Extent</title>
+    <link rel="stylesheet" type="text/css" href="http://esri-705.arcgiscloud.com:8080/arcgis_js_api/library/3.10/3.10/js/esri/css/esri.css">
+    <style>
+        html, body, #map {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        #HomeButton {
+            position: absolute;
+            top: 95px;
+            left: 20px;
+            z-index: 50;
+        }
+    </style>
+    <script src="http://esri-705.arcgiscloud.com:8080/arcgis_js_api/library/3.10/3.10/init.js"></script>
+    <script>
+        // 给地图上添加Home Button
+        require([
+          "esri/map",
+          "esri/dijit/HomeButton",
+          "dojo/domReady!"
+        ], function (
+          Map, HomeButton
+        ) {
+
+            var map = new Map("map", {
+                center: [-56.049, 38.485],
+                zoom: 3,
+                basemap: "streets"
+            });
+
+            var home = new HomeButton({
+                map: map
+            }, "HomeButton");
+            home.startup();
+
+        });
+    </script>
+</head>
+<body>
+    <div id="map" class="map">
+        <div id="HomeButton"></div>
+    </div>
+</body>
+</html>

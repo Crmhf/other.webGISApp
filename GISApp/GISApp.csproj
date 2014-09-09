@@ -65,8 +65,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Try\ArcGIS for JavaScript\HTML5\Canvas with raster layer\index.html" />
-    <Content Include="Try\ArcGIS for JavaScript\HTML5\Canvas with raster layer\javascript\RasterLayer.js" />
+    <Content Include="Try\ArcGIS for JavaScript\Loacl\Map\No Basemap.html" />
+    <Content Include="Try\ArcGIS for JavaScript\Loacl\Map\Test.html" />
+    <Content Include="Try\ArcGIS for JavaScript\Loacl\Map\Home Button.html" />
+    <Content Include="Try\ArcGIS for JavaScript\Loacl\Map\Locate Button.html" />
+    <Content Include="Try\ArcGIS for JavaScript\Loacl\Map\Tiled Map.html" />
+    <Content Include="Try\ArcGIS for JavaScript\Web\HTML5\Canvas with raster layer\index.html" />
+    <Content Include="Try\ArcGIS for JavaScript\Web\HTML5\Canvas with raster layer\javascript\RasterLayer.js" />
+    <Content Include="Try\readme.txt" />
+    <Content Include="Try\Test Install.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
