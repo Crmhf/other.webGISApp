@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>解析为点</title>
+</head>
+
+<body>
+<script type="text/javascript">
+var str="HD071413107703_湖北华电西塞山发电有限公司3号机组烟气排放口_32_115.10555556_30.21666667_35@17325360903598_磁湖污水处理厂_32_115.07777778_30.21805556_32@17325360909654_湖北华电西塞山发电有限公司1号机组烟气排放口_32_115.10055556_30.22166667_35@17325360811525_湖北华电西塞山发电有限公司（2号机组）_32_115.10527778_30.23305556_35@HB071413201007_黄石团城山污水处理厂_36_115.05000000_30.21666667_32@17325360806233_湖北新冶钢股份有限公司（7＃电炉）_32_115.00555556_30.21694444_35@17325360806230_湖北新冶钢股份有限公司（8＃电炉）_32_115.00833333_30.23083333_35"
+
+
+
+function toJson(){
+	var inputText = document.getElementById("inputText").value;	
+	var strSplit = inputText.split('@');
+	var strJson = "";
+	for(i=0;i<strSplit.length;i++){	
+	     var j = i+1;
+		 var singleLineSplit = strSplit[i].split('_');
+		 strJson +='{"attributes":{"FID":'+ j + ',';
+		 strJson +='"nameid":"'+singleLineSplit[0]+'",';  
+		 strJson +='"name":"'+singleLineSplit[1]+'",';
+		 strJson +='"idx":'+singleLineSplit[2]+',';
+		 strJson +='"x":'+singleLineSplit[3]+',';
+		 strJson +='"y":'+singleLineSplit[4]+',';
+		 strJson +='"idy":'+singleLineSplit[5]+'},"geometry":{';
+		 strJson +='"x":'+singleLineSplit[3]+',';
+		 strJson +='"y":'+singleLineSplit[4]+'}},';
+	}
+	//strJson = strJson.Substring(0,strJson.length-1);
+	strJson = strJson.substring(0,strJson.lastIndexOf(','));
+	var preJson = '{"displayFieldName":"","fieldAliases":{"FID":"FID","nameid":"nameid","Name":"name","idx":"idx","x":"x","y":"y"},"geometryType":"esriGeometryPoint","spatialReference":{"wkid":null},"fields":[{"name":"FID","type":"esriFieldTypeOID","alias":"FID"},{"name":"nameid","type":"esriFieldTypeString","alias":"nameid","length":254},{"name":"name","type":"esriFieldTypeString","alias":"name","length":254},{"name":"idx","type":"esriFieldTypeInteger","alias":"idx"},{"name":"x","type":"esriFieldTypeDouble","alias":"x"},{"name":"y","type":"esriFieldTypeDouble","alias":"y"},{"name":"idy","type":"esriFieldTypeInteger","alias":"idy"}],"features":[';
+	jsonAll=preJson + strJson + ']}';
+	document.write(jsonAll); 
+}
+</script>
+请把要转换的数据拷贝到文本框中。
+<input type="text" id="inputText" />
+<input type="button" id="toJson" value="转为JSON" onclick="toJson()"/>
+
+</body>
+</html>
