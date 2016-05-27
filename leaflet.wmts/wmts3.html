@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var extent = 11000000 + 9036842.762 + 667;
+    var tileDetails = {
+        code: 'EPSG:32622',
+        proj4def: '+proj=utm +zone=22 +ellps=WGS84 +datum=WGS84 +units=m +no_defs',
+        origin: [-extent, extent],
+        tilesURL: 'http://{s}.tiles.arcticconnect.org/osm_3573/{z}/{x}/{y}.png',
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        zoom: {
+            min: 0,
+            max: 18
+        }
+    };
+    var baselayer = L.tileLayer.wms("http://dk.nunagis.gl/wms?servicename=nun0000_wms_public", {
+        layers: 'theme-g250v theme-byer-bygder',
+        style:'default',
+        format: 'image/png',
+        transparent: true,
+        version: '1.3.0',
+        attribution: "nunaGIS"
+    });
+
+
+    // Generate Resolutions Array from origin information.
+    // maxResolution is map width/height (origin[1] - origin[0]) metres divided
+    // by 256 pixels (size of zoom level 0 tile). All other zoom levels, or
+    // resolutions, are a factor of that.
+    var maxResolution = (tileDetails.origin[1] - tileDetails.origin[0]) / 256;
+    var resolutions = [];
+    for (var i = tileDetails.zoom.min; i <= tileDetails.zoom.max; i++) {
+        resolutions.push(maxResolution / Math.pow(2, i));
+    };
+
+    // Create new CRS for EPSG:3573.
+    // Proj4 definition string can be found online.
+    var CRS = new L.Proj.CRS(tileDetails.code,
+            tileDetails.proj4def, {
+                origin: tileDetails.origin,
+                resolutions: resolutions
+            });
+
+    var map = L.map('map', {
+        layers:[baselayer],
+        continuousWorld: true,
+        minZoom: tileDetails.zoom.min,
+        maxZoom: tileDetails.zoom.max,
+        crs: CRS
+    });
+
+    // L.tileLayer(tileDetails.tilesURL, {
+    //   attribution: tileDetails.attribution
+    // }).addTo(map);
+
+    // Use standard Lat/Lng for markers, they will be reprojected to the
+    // map's CRS automatically.
+    L.marker([64.169424, -51.728051]).addTo(map);
+
+    map.setView([64.169424, -51.728051], 5);
+</script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!-- coding: utf-8 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+quelques liens
+http://api.ign.fr/tech-docs-js/developpeur/wmts.html
+http://api.ign.fr//tech-docs-js/examples/geoportalLeaflet.html
+http://wxs.ign.fr/qyb08yi3axc1c7h579jvtxs4/proxy-wmts?SERVICE=WMTS&REQUEST=GetCapabilities
+http://tile.geobretagne.fr/gwc02/service/wmts?SERVICE=WMTS&REQUEST=GetCapabilities
+
+http://depot.ign.fr/geoportail/api/develop/tech-docs-js/examples/geoportalLeaflet_WMTSL93.html
+http://api.ign.fr/documentation/80/affichage-de-couches-wmts
+-->
+<html>
+
+<head>
+    <title>Leaflet et WMTS GéoBretagne en Lambert 93</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="cache-control" content="no-cache">
+    <!--leaflet-->
+    <link rel="stylesheet" href="3rd/leaflet/leaflet.css" />
+    <script src="3rd/leaflet/leaflet.js"></script>
+    <script src="3rd/proj4/proj4-compressed.js"></script>
+    <script src="3rd/proj4leaflet/proj4leaflet.js"></script>
+
+    </div>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        #coords {
+            position: absolute;
+            left: 50px;
+            top: 0px;
+            z-index: 1000;
+            color:red;
+            font-weight:800;
+            background: white;
+
+        }
+    </style>
+</head>
+
+<body>
+<div id='map'></div>
+<div id="coords"></div>
+<script type="text/javascript">
+    /*
+     * Copyright (c) 2008-2014 Institut National de l'Information Geographique et Forestiere (IGN) France.
+     * Released under the BSD license.
+     */
+    /*---------------------------------------------------------
+     *Nouvelle classe de Leaflet pour supporter les flux WMTS (basée sur L.TileLayer.WMS)
+     *New Leaflet's class to support WMTS (based on L.TileLayer.WMS)
+     */
+    L.TileLayer.WMTS = L.TileLayer.extend({
+
+        defaultWmtsParams: {
+            service: 'WMTS',
+            request: 'GetTile',
+            version: '1.0.0',
+            layer: '',
+            style: '',
+            tilematrixSet: '',
+            format: 'image/png'
+        },
+
+        initialize: function(url, options) { // (String, Object)
+            this._url = url;
+            var wmtsParams = L.extend({}, this.defaultWmtsParams),
+                    tileSize = options.tileSize || this.options.tileSize;
+            if (options.detectRetina && L.Browser.retina) {
+                wmtsParams.width = wmtsParams.height = tileSize * 2;
+            } else {
+                wmtsParams.width = wmtsParams.height = tileSize;
+            }
+            for (var i in options) {
+                // all keys that are not TileLayer options go to WMTS params
+                if (!this.options.hasOwnProperty(i) && i != "matrixIds") {
+                    wmtsParams[i] = options[i];
+                }
+            }
+            this.wmtsParams = wmtsParams;
+            this.matrixIds = options.matrixIds;
+            L.setOptions(this, options);
+        },
+
+        onAdd: function(map) {
+            L.TileLayer.prototype.onAdd.call(this, map);
+        },
+
+        getTileUrl: function(tilePoint, zoom) { // (Point, Number) -> String
+            var map = this._map;
+            crs = map.options.crs;
+            tileSize = this.options.tileSize;
+            nwPoint = tilePoint.multiplyBy(tileSize);
+            //+/-1 in order to be on the tile
+            nwPoint.x += 1;
+            nwPoint.y -= 1;
+            sePoint = nwPoint.add(new L.Point(tileSize, tileSize));
+            nw = crs.project(map.unproject(nwPoint, zoom));
+            se = crs.project(map.unproject(sePoint, zoom));
+            console.log("nw x:%s y:%s", nw.x, nw.y);
+            tilewidth = se.x - nw.x;
+            zoom = map.getZoom();
+            ident = this.matrixIds[zoom].identifier;
+            X0 = this.matrixIds[zoom].topLeftCorner.lng;
+            Y0 = this.matrixIds[zoom].topLeftCorner.lat;
+            console.log("X0:%s Y0:%s", X0, Y0);
+            tilecol = Math.floor((nw.x - X0) / tilewidth);
+            tilerow = -Math.floor((nw.y - Y0) / tilewidth);
+            url = L.Util.template(this._url, {
+                s: this._getSubdomain(tilePoint)
+            });
+            return url + L.Util.getParamString(this.wmtsParams, url) + "&tilematrix=" + ident + "&tilerow=" + tilerow + "&tilecol=" + tilecol;
+        },
+
+        setParams: function(params, noRedraw) {
+            L.extend(this.wmtsParams, params);
+            if (!noRedraw) {
+                this.redraw();
+            }
+            return this;
+        }
+    });
+
+    L.tileLayer.wtms = function(url, options) {
+        return new L.TileLayer.WMTS(url, options);
+    };
+    /* Fin / End
+     *---------------------------------------------------------*/
+    //
+    // la configuration initiale
+    var conf = {
+        lon: -1.479,
+        lat: 48.313,
+        zoom: 7
+    };
+    //
+    // la partie Lambert 93
+    res2154 = new Array(22);
+    res2154[0] = 5.590822640287179E8 * 0.28 / 1000; // * 256;
+    res2154[1] = 2.795411320143589E8 * 0.28 / 1000; //  * 256;
+    res2154[2] = 1.397705660071794E8 * 0.28 / 1000; //  * 256;
+    res2154[3] = 6.988528300358972E7 * 0.28 / 1000; //  * 256;
+    res2154[4] = 3.494264150179486E7 * 0.28 / 1000; //  * 256;
+    res2154[5] = 1.747132075089743E7 * 0.28 / 1000; //  * 256;
+    res2154[6] = 8735660.375448715 * 0.28 / 1000; //  * 256;
+    res2154[7] = 4367830.1877243575 * 0.28 / 1000; //  * 256;
+    res2154[8] = 2183915.0938621787 * 0.28 / 1000; //  * 256;
+    res2154[9] = 1091957.5469310887 * 0.28 / 1000; //  * 256;
+    res2154[10] = 545978.7734655447 * 0.28 / 1000; //  * 256;
+    res2154[11] = 272989.3867327723 * 0.28 / 1000; //  * 256;
+    res2154[12] = 136494.69336638617 * 0.28 / 1000; //  * 256;
+    res2154[13] = 68247.34668319307 * 0.28 / 1000; //  * 256;
+    res2154[14] = 34123.67334159654 * 0.28 / 1000; //  * 256;
+    res2154[15] = 17061.83667079827 * 0.28 / 1000; //  * 256;
+    res2154[16] = 8530.918335399136 * 0.28 / 1000; //  * 256;
+    res2154[17] = 4265.459167699568 * 0.28 / 1000; //  * 256;
+    res2154[18] = 2132.729583849784 * 0.28 / 1000; //  * 256;
+    res2154[19] = 1066.3647919248917 * 0.28 / 1000; //  * 256;
+    res2154[20] = 533.1823959624461 * 0.28 / 1000; //  * 256;
+    res2154[21] = 266.5911979812229 * 0.28 / 1000; //  * 256;
+    //
+    // !!! attention le top left évolue
+    var matrixIds2154 = new Array(22);
+    matrixIds2154[0] = {
+        identifier: "EPSG:2154:0",
+        scaleDenominator: 5.590822640287179E8,
+        topLeftCorner: new L.LatLng(4.6112025E7, -357823.2365)
+    };
+    matrixIds2154[1] = {
+        identifier: "EPSG:2154:1",
+        scaleDenominator: 2.795411320143589E8,
+        topLeftCorner: new L.LatLng(2.6074517E7, -357823.2365)
+    };
+    matrixIds2154[2] = {
+        identifier: "EPSG:2154:2",
+        scaleDenominator: 1.397705660071794E8,
+        topLeftCorner: new L.LatLng(1.6055763E7, -357823.2365)
+    };
+    matrixIds2154[3] = {
+        identifier: "EPSG:2154:3",
+        scaleDenominator: 6.988528300358972E7,
+        topLeftCorner: new L.LatLng(1.1046386E7, -357823.2365)
+    };
+    matrixIds2154[4] = {
+        identifier: "EPSG:2154:4",
+        scaleDenominator: 3.494264150179486E7,
+        topLeftCorner: new L.LatLng(8541697.0, -357823.2365)
+    };
+    matrixIds2154[5] = {
+        identifier: "EPSG:2154:5",
+        scaleDenominator: 1.747132075089743E7,
+        topLeftCorner: new L.LatLng(7289353.0, -357823.2365)
+    };
+    matrixIds2154[6] = {
+        identifier: "EPSG:2154:6",
+        scaleDenominator: 8735660.375448715,
+        topLeftCorner: new L.LatLng(7289353.0, -357823.2365)
+    };
+    matrixIds2154[7] = {
+        identifier: "EPSG:2154:7",
+        scaleDenominator: 4367830.1877243575,
+        topLeftCorner: new L.LatLng(7289353.0, -357823.2365)
+    };
+    matrixIds2154[8] = {
+        identifier: "EPSG:2154:8",
+        scaleDenominator: 2183915.0938621787,
+        topLeftCorner: new L.LatLng(7289353.0, -357823.2365)
+    };
+    matrixIds2154[9] = {
+        identifier: "EPSG:2154:9",
+        scaleDenominator: 1091957.5469310887,
+        topLeftCorner: new L.LatLng(7289353.0, -357823.2365)
+    };
+    matrixIds2154[10] = {
+        identifier: "EPSG:2154:10",
+        scaleDenominator: 545978.7734655447,
+        topLeftCorner: new L.LatLng(7250217.0, -357823.2365)
+    };
+    matrixIds2154[11] = {
+        identifier: "EPSG:2154:11",
+        scaleDenominator: 272989.3867327723,
+        topLeftCorner: new L.LatLng(7230649.0, -357823.2365)
+    };
+    matrixIds2154[12] = {
+        identifier: "EPSG:2154:12",
+        scaleDenominator: 136494.69336638617,
+        topLeftCorner: new L.LatLng(7230649.0, -357823.2365)
+    };
+    matrixIds2154[13] = {
+        identifier: "EPSG:2154:13",
+        scaleDenominator: 68247.34668319307,
+        topLeftCorner: new L.LatLng(7235541.0, -357823.2365)
+    };
+    matrixIds2154[14] = {
+        identifier: "EPSG:2154:14",
+        scaleDenominator: 34123.67334159654,
+        topLeftCorner: new L.LatLng(7233095.0, -357823.2365)
+    };
+    matrixIds2154[15] = {
+        identifier: "EPSG:2154:15",
+        scaleDenominator: 17061.83667079827,
+        topLeftCorner: new L.LatLng(7231872.0, -357823.2365)
+    };
+    matrixIds2154[16] = {
+        identifier: "EPSG:2154:16",
+        scaleDenominator: 8530.918335399136,
+        topLeftCorner: new L.LatLng(7231261.0, -357823.2365)
+    };
+    matrixIds2154[17] = {
+        identifier: "EPSG:2154:17",
+        scaleDenominator: 4265.459167699568,
+        topLeftCorner: new L.LatLng(7230955.0, -357823.2365)
+    };
+    matrixIds2154[18] = {
+        identifier: "EPSG:2154:18",
+        scaleDenominator: 2132.729583849784,
+        topLeftCorner: new L.LatLng(7230802.0, -357823.2365)
+    };
+    matrixIds2154[19] = {
+        identifier: "EPSG:2154:19",
+        scaleDenominator: 1066.3647919248917,
+        topLeftCorner: new L.LatLng(7230802.0, -357823.2365)
+    };
+    matrixIds2154[20] = {
+        identifier: "EPSG:2154:20",
+        scaleDenominator: 533.1823959624461,
+        topLeftCorner: new L.LatLng(7230764.0, -357823.2365)
+    };
+    matrixIds2154[21] = {
+        identifier: "EPSG:2154:21",
+        scaleDenominator: 266.5911979812229,
+        topLeftCorner: new L.LatLng(7230745.0, -357823.2365)
+    };
+    //
+    // http://spatialreference.org/ref/epsg/rgf93-lambert-93/proj4/
+    // +proj=tmerc +lat_0=0 +lon_0=111 +k=1 +x_0=500000 +y_0=0 +ellps=GRS80 +units=m +no_defs
+    crs_l93 = new L.Proj.CRS('EPSG:2154', '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs', {
+        origin: [-357823.2365, 7230802.0],
+        resolutions: res2154
+    });
+    var layer_GB = "satellite";
+    var gb_attrib = "&copy; <a href='http://geobretagne.fr/'>GéoBretagne</a>"
+
+    var gb_url = 'http://geobretagne.fr/gwc02/service/wmts';
+
+    var gb_layer = new L.TileLayer.WMTS(gb_url, {
+        layer: layer_GB,
+        style: 'normal',
+        tilematrixSet: "EPSG:2154",
+        matrixIds: matrixIds2154,
+        format: 'image/jpeg',
+        attribution: gb_attrib
+    });
+    //
+    // la carte avec le crs ad-hoc
+    var map = L.map('map', {
+        crs: crs_l93,
+        continuousWorld: false,
+        worldCopyJump: false
+    });
+    map.setView([conf.lat, conf.lon], conf.zoom);
+
+    L.control.scale({
+        'position': 'bottomleft',
+        'metric': true,
+        'imperial': false
+    }).addTo(map);
+    // l'URL WMTS
+    //
+    // OK
+    // http://geobretagne.fr/gwc02/service/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0
+    // &LAYER=satellite&STYLE=&TILEMATRIXSET=EPSG%3A2154&TILEMATRIX=EPSG%3A2154%3A16&TILEROW=721&TILECOL=1169&FORMAT=image%2Fjpeg
+    //
+    // KO
+    // http://tile.geobretagne.fr/gwc02/service/wmts?SERVICE=WMTS&service=WMTS&request=GetTile&version=1.0.0
+    // &layer=carte&style=normal&tilematrixSet=EPSG%3A2154&format=image%2Fjpeg&height=256&width=256&tilematrix=EPSG:2154:15&tilerow=1&tilecol=2
+    map.addLayer(gb_layer);
+    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osm = L.tileLayer(osmUrl);
+    map.addLayer(osm);
+
+    var baseLayers = {
+        "Carte GB": gb_layer
+    };
+
+    L.control.layers(baseLayers, {}).addTo(map);
+
+    map.on('mousemove', function(e){
+        var c = document.getElementById("coords");
+        c.innerHTML = e.latlng.lat.toFixed(4) + ", " + e.latlng.lng.toFixed(4);
+    });
+</script>
+</body>
+
+</html>

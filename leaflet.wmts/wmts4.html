@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="3rd/leaflet/leaflet.css" />
+</head>
+<body>
+<div id="map"></div>
+<script src="3rd/leaflet/leaflet.js"></script>
+<script src="3rd/proj4/proj4-compressed.js"></script>
+<script src="3rd/proj4leaflet/proj4leaflet.js"></script>
+<script>
+    // Define CRS (EPSG:31466)
+    var rs31466 = new L.Proj.CRS(
+            'EPSG:31466',
+            '+proj=tmerc +lat_0=0 +lon_0=6 +k=1 +x_0=2500000 +y_0=0 +ellps=bessel +datum=potsdam +units=m +no_defs',
+            {
+                origin: [
+                    2490547.1867,
+                    5958700.0208
+                ],
+                resolutions: [
+                    10000000 * 0.00028, //GroundResolutionInMeter * OGC_PixelWidth
+                    5000000 * 0.00028,
+                    2500000 * 0.00028,
+                    1000000 * 0.00028,
+                    500000 * 0.00028,
+                    250000 * 0.00028,
+                    100000 * 0.00028,
+                    50000 * 0.00028
+                ]
+            }
+    );
+
+    // Create the WMS layer
+    var wmsLayer = L.tileLayer.wms('http://xplanung.lkee.de/xplan-wms-neu/services/wms', {
+        version: '1.3.0',
+        crs: rs31466,
+        layers: 'fp_plan',
+        format: 'image/png',
+        transparent: false,
+        // The `continuousWorld` property should be set to make sure Leaflet doesn't
+        // try to wrap or cut off the tiles on Spherical Mercator's bounds.
+        continuousWorld: true
+    });
+
+    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osm = L.tileLayer(osmUrl);
+
+    // Define the map
+    var map = L.map('map', {
+        crs: rs31466,
+        center:[51.310, 13.393],
+        zoom: 1,
+        layers: [
+            wmsLayer,osm
+        ]
+    });
+</script>
+</html>
+
+
+

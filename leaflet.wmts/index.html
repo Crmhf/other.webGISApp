@@ -1,0 +1,63 @@
+<html>
+<head>
+  <title>Demo leaflet.TileLayer.WMTS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="../3rd/leaflet/leaflet.css" />
+    <style>
+        #coords {
+            position: absolute;
+            left: 50px;
+            top: 0px;
+            z-index: 1000;
+            color:red;
+            font-weight:800;
+            background: white;
+
+        }
+    </style>
+  <script src="3rd/leaflet/leaflet.js"></script>
+  <script src="3rd/jquery.min.js"></script>
+  <script src="3rd/leaflet.wmts/leaflet-tilelayer-wmts-src.js"></script>
+</head>
+<body>
+<div id="map" style="height: 100%; width: 100%"></div>
+<div id="coords"></div>
+<script>
+  // You can get a key here: http://api.ign.fr/accueil (french)
+  var ignKey = "fzgaiooxapl8d560dppxrgen";
+  /** Define the layer type
+   *  GEOGRAPHICALGRIDSYSTEMS.MAPS
+   *  GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.CLASSIQUE
+   *  GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD
+   */
+  var layerIGNScanStd = "4b188f85:demtestdata";
+  // The WMTS URL
+  var url = "http://192.168.227.104:8080/share-exchange/KTWService/wmts";
+  var ign = new L.TileLayer.WMTS( url ,
+          {
+            layer: "4b188f85:demtestdata",
+            style: 'dem',
+           // tilematrixSet: 'c',
+            format: "image/png",
+            continuousWorld: true,
+              worldCopyJump: false
+          }
+  );
+  // var map = L.map('map').setView([113.505, 30.09], 13);
+  var map = L.map('map',{crs:L.CRS.EPSG4326,continuousWorld: false,
+      worldCopyJump: false,center: {lon:112 , lat:27},zoom: 5})
+  L.control.scale({'position':'bottomleft','metric':true,'imperial':false}).addTo(map);
+  map.addLayer(ign);
+  var baseLayers = {"Carte IGN" : ign};
+  L.control.layers(baseLayers, {}).addTo(map);
+
+  map.on('mousemove', function(e){
+      var c = document.getElementById("coords");
+      c.innerHTML = e.latlng.lat.toFixed(4) + ", " + e.latlng.lng.toFixed(4);
+  });
+</script>
+</body>
+
+</html>
+

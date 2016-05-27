@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>Demo leaflet.TileLayer.WMTS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="3rd/leaflet/leaflet.css" />
+    <style>
+
+        #coords {
+            position: absolute;
+            left: 50px;
+            top: 0px;
+            z-index: 1000;
+            color:red;
+            font-weight:800;
+            background: white;
+
+        }
+    </style>
+    <script src="3rd/leaflet/leaflet.js"></script>
+    <script src="3rd/jquery.min.js"></script>
+    <script src="3rd/leaflet.wmts/leaflet-tilelayer-wmts.js"></script>
+    <script src="3rd/proj4/proj4-compressed.js"></script>
+    <script src="3rd/proj4leaflet/proj4leaflet.js"></script>
+</head>
+<body>
+<div id="map" style="height: 100%; width: 100%"></div>
+<div id="coords"></div>
+<script>
+    // You can get a key here: http://api.ign.fr/accueil (french)
+    var ignKey = "fzgaiooxapl8d560dppxrgen";
+    /** Define the layer type
+     *  GEOGRAPHICALGRIDSYSTEMS.MAPS
+     *  GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.CLASSIQUE
+     *  GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD
+     */
+    var layerIGNScanStd = "GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD";
+    // The WMTS URL
+    var url = "http://wxs.ign.fr/" + ignKey + "/geoportail/wmts";
+    var ign = new L.TileLayer.WMTS( url ,
+            {
+                layer: layerIGNScanStd,
+                style: "normal",
+                tilematrixSet: "PM",
+                format: "image/jpeg",
+                attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
+            }
+    );
+
+    var customCRS = new L.Proj.CRS.TMS('EPSG:900913',
+            '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0' +
+            '+x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs',
+            [6422198.546, -851225.043, 196550.197, 9691950.164],
+            {
+                origin: [-851225.043, 6422198.546],
+                resolutions: [6386.233628906251,
+                    3193.1168144531257,
+                    1596.5584072265628,
+                    798.2792036132814,
+                    399.1396018066407,
+                    199.56980090332036,
+                    99.78490045166018,
+                    49.89245022583009
+                ]
+            }
+    );
+
+    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osm = L.tileLayer(osmUrl);
+
+
+    // var map = L.map('map').setView([48.505, 3.09], 12);
+    var map = L.map('map').setView([27, 112], 12);
+    // define rectangle geographical bounds
+    var southWest = L.latLng(24,110),
+            northEast = L.latLng(30, 114),
+            boundsX = L.latLngBounds(southWest, northEast);
+    var bounds = [[48.34,2.66], [48.67, 3.51]];
+    var boundsY = [[24,110], [30, 114]];
+
+    // create an orange rectangle
+    L.rectangle(boundsY, {color: "#ff7800", weight: 1}).addTo(map);
+
+    // zoom the map to the rectangle bounds
+     map.fitBounds(boundsY);
+    L.control.scale({'position':'bottomleft','metric':true,'imperial':false}).addTo(map);
+    map.addLayer(ign);
+    map.addLayer(osm);
+    var baseLayers = {"Carte IGN" : ign};
+    L.control.layers(baseLayers, {}).addTo(map);
+
+    map.on('mousemove', function(e){
+        var c = document.getElementById("coords");
+        c.innerHTML = e.latlng.lat.toFixed(4) + ", " + e.latlng.lng.toFixed(4);
+    });
+</script>
+</body>
+
+</html>
