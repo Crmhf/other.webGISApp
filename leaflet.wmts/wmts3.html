@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../3rd/leaflet/leaflet.css" />
+    <script src="../3rd/leaflet/leaflet.js"></script>
+    <script src="../3rd/proj4/proj4-compressed.js"></script>
+    <script src="../3rd/proj4leaflet/proj4leaflet.js"></script>
 </head>
 <body>
+<div id="map" style="width:100%;height:100%;"></div>
 <script>
     var extent = 11000000 + 9036842.762 + 667;
     var tileDetails = {
