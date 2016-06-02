@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../3rd/leaflet/leaflet.css" />
+    <script src="../3rd/leaflet/leaflet.js"></script>
+    <script src="../3rd/proj4/proj4-compressed.js"></script>
+    <script src="../3rd/proj4leaflet/proj4leaflet.js"></script>
+    </head>
+<body>
+<div id="map" style="height: 100%; width: 100%"></div>
+<script>
+    var crs23030 = new L.Proj.CRS('EPSG:23030','+proj=utm +zone=30 +ellps=intl +units=m +no_defs');
+    var map = new L.Map('map', {
+        crs: crs23030
+    });
+
+    L.tileLayer.wms('http://www.juntadeandalucia.es/servicios/mapas/callejero/wms', {
+        layers: 'CallejeroCompleto',
+        format: 'image/jpeg',
+        center:[37.24344, -4.23522],
+        zoom: 7,
+        maxZoom: 13,
+        minZoom: 0
+    }).addTo(map);
+
+///    map.setView([37.24344,-4.23522], 7);
+
+//    map.setView([37.24344,-4.23522], 10);
+</script>
+</body>
+</html>
