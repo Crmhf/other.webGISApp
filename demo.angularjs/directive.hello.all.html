@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app='expanderModule'>
+<head>
+    <meta charset="UTF-8">
+    <title>关于hello的转换compile和link</title>
+    <style>
+        .expander {
+            border: 1px solid black;
+            width: 250px;
+        }
+
+        .expander>.title {
+            background-color: black;
+            color: white;
+            padding: .1em .3em;
+            cursor: pointer;
+        }
+
+        .expander>.body {
+            padding: .1em .3em;
+        }
+    </style>
+    <script type="text/javascript" src="../js/angular/1.2.28/angular.js"></script>
+</head>
+<body >
+<div ng-controller='SomeController'>
+    <expander class='expander' expander-title='title'>
+        {{text}}
+    </expander>
+</div>
+</body>
+</html>
+
+<script>
+    var expanderModule=angular.module('expanderModule', [])
+    expanderModule.directive('expander', function() {
+        return {
+            restrict : 'EA',
+            replace : true,
+            transclude : true,
+            scope : {
+                title : '=expanderTitle'
+            },
+            template : '<div>'
+            + '<div class="title" ng-click="toggle()">{{title}}</div>'
+            + '<div class="body" ng-show="showMe" ng-transclude></div>'
+            + '</div>',
+            link : function(scope, element, attrs) {
+                scope.showMe = false;
+                scope.toggle = function toggle() {
+                    scope.showMe = !scope.showMe;
+                }
+            }
+        }
+    });
+    expanderModule.controller('SomeController',function($scope) {
+        $scope.title = '点击展开显示';
+        $scope.text = '这里是内部的内容';
+    });
+
+
+    /*
+     * 关于指令的申明方式
+     * E 元素 <my-menu title=Products></my-munu>
+     * A 属性 <div my-menu=Products></div>
+     * C 样式类 <div class=my-menu:Products></div>
+     * M 注释 <!-- directive:my-menu Products -->
+
+    * 指令的本质其实是一个替换过程。
+    * 好，既然如此，Angular到底是如何进行替换的呢？
+    * 这个过程分2个阶段，也就是本节标题所说的compile（编译）和link（连接）了。
+    */
+
+</script>
+
