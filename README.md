@@ -7,7 +7,7 @@
 在这里的是一些和Web以及GIS有关的一些示例代码
 GIS + Web
 ##demo.angularjs
-关于angularjs的一些示例
+关于angularjs的一些示例,其中的显示情况来看
 
 
 #leaflet

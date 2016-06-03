@@ -9,25 +9,151 @@
     <script src="../3rd/proj4leaflet/proj4leaflet.js"></script>
     </head>
 <body>
-<div id="map" style="height: 100%; width: 100%"></div>
+<div id="ljs_map" style="height: 100%; width: 100%"></div>
 <script>
-    var crs23030 = new L.Proj.CRS('EPSG:23030','+proj=utm +zone=30 +ellps=intl +units=m +no_defs');
-    var map = new L.Map('map', {
-        crs: crs23030
+    L.TileLayer.WMTS = L.TileLayer.extend({
+
+        defaultWmtsParams: {
+            service: 'WMTS',
+            request: 'GetTile',
+            version: '1.0.0',
+            layer: '',
+            style: '',
+            tilematrixSet: '',
+            format: 'image/jpeg'
+        },
+
+        initialize: function (url, options) { // (String, Object)
+            this._url = url;
+            var wmtsParams = L.extend({}, this.defaultWmtsParams),
+                    tileSize = options.tileSize || this.options.tileSize;
+            if (options.detectRetina && L.Browser.retina) {
+                wmtsParams.width = wmtsParams.height = tileSize * 2;
+            } else {
+                wmtsParams.width = wmtsParams.height = tileSize;
+            }
+            for (var i in options) {
+                // all keys that are not TileLayer options go to WMTS params
+                if (!this.options.hasOwnProperty(i) && i!="matrixIds") {
+                    wmtsParams[i] = options[i];
+                }
+            }
+            this.wmtsParams = wmtsParams;
+            this.matrixIds = options.matrixIds;
+            L.setOptions(this, options);
+        },
+
+        onAdd: function (map) {
+            L.TileLayer.prototype.onAdd.call(this, map);
+        },
+
+        getTileUrl: function (tilePoint, zoom) { // (Point, Number) -> String
+            var map = this._map;
+            crs = map.options.crs;
+            tileSize = this.options.tileSize;
+            zoom=map.getZoom();
+            ident = this.matrixIds[zoom].identifier;
+            url = L.Util.template(this._url, {s: this._getSubdomain(tilePoint)});
+            return url + L.Util.getParamString(this.wmtsParams, url) + "&tilematrix=" + ident + "&tilerow=" + tilePoint.y +"&tilecol=" + tilePoint.x ;
+        },
+
+        setParams: function (params, noRedraw) {
+            L.extend(this.wmtsParams, params);
+            if (!noRedraw) {
+                this.redraw();
+            }
+            return this;
+        }
     });
 
-    L.tileLayer.wms('http://www.juntadeandalucia.es/servicios/mapas/callejero/wms', {
-        layers: 'CallejeroCompleto',
-        format: 'image/jpeg',
-        center:[37.24344, -4.23522],
-        zoom: 7,
-        maxZoom: 13,
-        minZoom: 0
-    }).addTo(map);
+    L.tileLayer.wtms = function (url, options) {
+        return new L.TileLayer.WMTS(url, options);
+    };
+    /* Fin / End
+     *---------------------------------------------------------*/
 
-///    map.setView([37.24344,-4.23522], 7);
 
-//    map.setView([37.24344,-4.23522], 10);
+
+    var map= null;
+
+    /**
+     * Function: initMap
+     * Load the application. Called when all information have been loaded by
+     * <loadAPI>().
+     */
+    function initMap() {
+        //The api is loaded at this step
+        //L'api est chargée à cette étape
+
+        // add translations
+        translate();
+
+        // Les resolutions Lambert 93
+        var resolutionsL93 = [
+            104579.224549894,
+            52277.5323537905,
+            26135.4870785954,
+            13066.8913818,
+            6533.2286041135,
+            3266.5595244627,
+            1633.2660045974,
+            816.629554986,
+            408.3139146768,
+            204.1567415109,
+            102.0783167832,
+            51.0391448966,
+            25.5195690743,
+            12.7597836936,
+            6.379891636,
+            3.1899457653,
+            1.5949728695,
+            0.7974864315,
+            0.3987432149,
+            0.1993716073,
+            0.0996858037,
+            0.0498429018
+        ];
+
+        var crsL93 = new L.Proj.CRS(
+                'EPSG:2154',
+                '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
+                {
+                    origin: [0,12000000],
+                    resolutions: resolutionsL93
+                }
+        );
+
+        map = L.map('viewerDiv', {crs:crsL93} ).setView([48.8457, 2.4247], 16);
+        L.marker([48.8457, 2.4247]).addTo(map).bindPopup("IGN<br /> 73, avenue de Paris<br /> 94165 Saint-Mandé CEDEX");
+
+
+        var matrixIds2154= new Array(22);
+        for (var i= 0; i<22; i++) {
+            matrixIds2154[i]= {
+                identifier    : "" + i
+            };
+        }
+
+        var ign = new L.TileLayer.WMTS(gGEOPORTALRIGHTSMANAGEMENT[gGEOPORTALRIGHTSMANAGEMENT.apiKey].resources['ORTHOIMAGERY.ORTHOPHOTOS.BDORTHO.L93:WMTS'].url,
+                {
+                    layer: 'ORTHOIMAGERY.ORTHOPHOTOS.BDORTHO.L93',
+                    style: 'normal',
+                    tilematrixSet: "LAMB93",
+                    matrixIds: matrixIds2154,
+                    format: 'image/jpeg',
+                    attribution: "&copy; <a href='http://www.ign.fr'>IGN</a>"
+                }
+        );
+
+        L.control.scale({'position':'bottomleft','metric':true,'imperial':false}).addTo(map);
+        var baseLayers = {"Photos IGN en Lambert 93" : ign};
+
+        map.addLayer(ign);
+
+        L.control.layers(baseLayers, {}).addTo(map);
+    }
+
+
 </script>
 </body>
 </html>
