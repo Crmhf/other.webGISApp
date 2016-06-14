@@ -1,12 +1,41 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en" ng-app="Demo">
 <head>
-    <title>demo20160616</title>
+    <meta charset="utf-8">
+    <title>Directive Html</title>
+    <script type="text/javascript" src="../js/angular/1.2.28/angular.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('Demo', [], angular.noop);
+        app.directive('ysBlock', function(){
+            return {
+                compile: angular.noop,
+                template: '<div style="width: 200px; border: 1px solid black;">'+
+                '<h1 style="background-color: gray; color: white; font-size: 22px;">{{ title }}</h1>'+
+                '<div>{{ text }}</div>'+
+                '</div>',
+                replace: false,
+                scope: {
+                    title: '@titlearr', //directive里面的title取值为element属性titlearr的动态的值{{title}}
+                    text: '=textarr'//directive里面text的取值为element属性textarr的值text在element中scope中的值，scope.text
+                },//这里的=title其实用的是
+                restrict: 'E'
+            };
+        });
+        app.controller('TestCtrl', function($scope){
+            $scope.title = '标题在这里';
+            $scope.text = '内容在这里';
+        });
+        angular.bootstrap(document, ['Demo']);
+    </script>
 </head>
 <body>
-<div>
-    a new div.
+<div ng-controller="TestCtrl">
+    <ys-block titlearr="{{title}}" textarr="text"></ys-block>
+    <p>标题: <input ng-model="title" /></p>
+    <p>内容: <input ng-model="text" /></p>
+    <span>{{title}},{{text}}</span>
 </div>
 </body>
 </html>
+<script type="text/javascript">
+    // 然而并没有正常的运行这些系统呐。
+</script>
