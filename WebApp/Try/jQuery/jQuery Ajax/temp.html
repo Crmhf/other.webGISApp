@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/jquery-1.8.1.js"></script>
+    <title>test ajax</title>
+</head>
+<body>
+<input type="button" onclick="xjtp('10','1');" value="投&nbsp;票" class="btn">
+</body>
+</html>
+
+<script>
+    function xjtp(id, ptype) {
+        var x = 'http://wsdc.wuhanagri.gov.cn/xjtp/';
+
+        $.ajax({
+            url: x + "tp.ashx?id=" + id + "&ptype=" + ptype,
+            type: "post",
+            dataType: "json",
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
+            },
+            success: function (data) {
+                if (data.picnum.length > 3) {
+                    alert(data.picnum);
+                    return;
+                }
+                $("#s" + id).html(data.picnum);
+                alert("投票成功!");
+            }
+        });
+    }
+</script>
