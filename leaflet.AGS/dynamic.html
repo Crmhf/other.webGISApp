@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Dynamic Example</title>
+    <link rel="stylesheet" href="css/test_app.css" />
+    <link rel="stylesheet" href="3rd/leaflet/leaflet.css" />
+</head>
+<body>
+<div id="container">
+    <div id="main">
+        <div id="map"></div>
+    </div>
+</div>
+<script src="3rd/leaflet/leaflet-src.js"></script>
+<script src="3rd/leaflet.AGS/AGS.js"></script>
+
+<script src="3rd/leaflet.AGS/AGS.Layer.js"></script>
+<script src="3rd/leaflet.AGS/AGS.Layer.Dynamic.js"></script>
+
+<script type="text/javascript">
+    window.onload = function() {
+        window.map = L.map('map').setView([34.746481, -92.289595], 3);
+
+
+        var dynUrl = 'http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer';
+        L.agsDynamicLayer(dynUrl).addTo(map);
+    }
+</script>
+</body>
+</html>
