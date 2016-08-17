@@ -14,7 +14,9 @@ GIS + Web
 ##leaflet.wms
 地图中关于wms服务的读取方式
 ##leaflet.wmts
-update:20160127
+##leaflet.AGS
+地图中关于ArcGIS for Server服务的读取方式
+update:20160817
 
 update+1
 
