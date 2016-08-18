@@ -1,16 +1,24 @@
-L.AGS.Layer.Dynamic = L.ImageOverlay.extend({
+L.AGS.DynamicMapLayer = L.ImageOverlay.extend({
+  includes: L.AGS.Mixins.identifiableLayer,
+
   defaultParams: {
-    format: 'png8',
+    format: 'png',
     transparent: true,
     f: 'image',
     bboxSR: 102100,
     imageSR: 102100,
-    layers: ''
+    layers: '',
+    opacity: 1
   },
 
-  initialize: function (url, bounds, options) {
+  initialize: function (url, options) {
+    //add a trailing slash to the url if the user omitted it
+    if(url[url.length-1] !== "/"){
+      url += "/";
+    }
+
     this._url = url;
-    this._bounds = L.latLngBounds(bounds);
+    this.serviceUrl = url;
     this._layerParams = L.Util.extend({}, this.defaultParams);
 
     for (var opt in options) {
@@ -69,6 +77,21 @@ L.AGS.Layer.Dynamic = L.ImageOverlay.extend({
     }
   },
 
+  _animateZoom: function (e) {
+    var map = this._map,
+        image = this._image,
+        scale = map.getZoomScale(e.zoom),
+
+        nw = this._map.getBounds().getNorthWest(),
+        se = this._map.getBounds().getSouthEast(),
+
+        topLeft = map._latLngToNewLayerPoint(nw, e.zoom, e.center),
+        size = map._latLngToNewLayerPoint(se, e.zoom, e.center)._subtract(topLeft),
+        origin = topLeft._add(size._multiplyBy((1 / 2) * (1 - 1 / scale)));
+
+    image.style[L.DomUtil.TRANSFORM] = L.DomUtil.getTranslateString(origin) + ' scale(' + scale + ') ';
+  },
+
   _parseLayers: function () {
     if (typeof this._layerParams.layers === 'undefined') {
       delete this._layerParams.layerOption;
@@ -91,17 +114,17 @@ L.AGS.Layer.Dynamic = L.ImageOverlay.extend({
         if (match) {
           layers = layers.split(match[0]);
           if (Number(layers[1].split(',')[0])) {
-            if (verbs.indexOf(layers[0]) != -1) {
+            if (verbs.indexOf(layers[0]) !== -1) {
               verb = layers[0];
             }
-            
+
             layers = layers[1];
           }
         }
         this._layerParams.layers = verb + ':' + layers;
       }
     } else {
-      if (verbs.indexOf(action) != -1) {
+      if (verbs.indexOf(action) !== -1) {
         verb = action;
       }
 
@@ -127,7 +150,9 @@ L.AGS.Layer.Dynamic = L.ImageOverlay.extend({
       }
     } else if (typeof layerDefs === 'object') {
       for (var layer in layerDefs) {
-        defs.push(layer + ':' + layerDefs[layer]);
+        if(layerDefs.hasOwnProperty(layer)){
+          defs.push(layer + ':' + layerDefs[layer]);
+        }
       }
     } else {
       delete this._layerParams.layerDefs;
@@ -165,19 +190,24 @@ L.AGS.Layer.Dynamic = L.ImageOverlay.extend({
     this._layerParams.bbox = [sw.x, sw.y, ne.x, ne.y].join(',');
     this._layerParams.size = size.x + ',' + size.y;
 
-    var url = this._url + '/export' + L.Util.getParamString(this._layerParams);
+    var url = this._url + 'export' + L.Util.getParamString(this._layerParams);
 
-    if (typeof this.options.token !== 'undefined')
+    if (typeof this.options.token !== 'undefined'){
       url = url + '&token=' + this.options.token;
+    }
 
     return url;
   },
 
   _update: function (e) {
-    if (this._map._panTransition && this._map._panTransition._inProgress) return;
+    if (this._map._panTransition && this._map._panTransition._inProgress) {
+      return;
+    }
 
     var zoom = this._map.getZoom();
-    if (zoom > this.options.maxZoom || zoom < this.options.minZoom) return;
+    if (zoom > this.options.maxZoom || zoom < this.options.minZoom) {
+      return;
+    }
 
     this._newImage = L.DomUtil.create('img', 'leaflet-image-layer');
 
@@ -198,6 +228,13 @@ L.AGS.Layer.Dynamic = L.ImageOverlay.extend({
     });
   },
 
+  _updateOpacity: function(){
+    L.DomUtil.setOpacity(this._image, this.options.opacity);
+    if(this._newImage){
+      L.DomUtil.setOpacity(this._newImage, this.options.opacity);
+    }
+  },
+
   _zoomUpdate: function (e) {
     //console.log(e);
     //console.log(this._image);
@@ -211,7 +248,6 @@ L.AGS.Layer.Dynamic = L.ImageOverlay.extend({
 
     var topLeft = this._map.latLngToLayerPoint(nw),
         size = this._map.latLngToLayerPoint(se)._subtract(topLeft);
-
     L.DomUtil.setPosition(this._newImage, topLeft);
     this._newImage.style.width = size.x + 'px';
     this._newImage.style.height = size.y + 'px';
@@ -233,6 +269,6 @@ L.AGS.Layer.Dynamic = L.ImageOverlay.extend({
   }
 });
 
-L.agsDynamicLayer = function (url, bounds, options) {
-  return new L.AGS.Layer.Dynamic(url, bounds, options);
+L.AGS.dynamicMapLayer = function (url, options) {
+  return new L.AGS.DynamicMapLayer(url, options);
 };

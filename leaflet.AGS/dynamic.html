@@ -21,9 +21,8 @@
     window.onload = function() {
         window.map = L.map('map').setView([34.746481, -92.289595], 3);
 
-
         var dynUrl = 'http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer';
-        L.agsDynamicLayer(dynUrl).addTo(map);
+        L.AGS.dynamicMapLayer(dynUrl).addTo(map);
     }
 </script>
 </body>
