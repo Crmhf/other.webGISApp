@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <!-- Sets the basepath for the library if not in same directory -->
+    <script type="text/javascript">
+        mxBasePath = '../3rd/mxGraph/src';
+    </script>
+
+    <!-- Loads and initializes the library -->
+    <script type="text/javascript" src="../3rd/mxGraph/src/js/mxClient.js"></script>
+</head>
+<body>
+<div id="ct" style="overflow:hidden;width:321px;height:241px;background:url('editors/images/grid.gif');cursor:default;"></div>
+</body>
+<script type="text/javascript">
+    (function main(container) {
+        if(!mxClient.isBrowserSupported()) {
+            alert('1');
+        } else {
+            //container承装graph的容器
+            //graph相当于画布
+            var graph = new mxGraph(container);
+            graph.setHtmlLabels(true);
+
+            var keyHandler = new mxKeyHandler(graph);
+            //辅助方法,得到鼠标事件选定的是哪个value
+            var getFieldnameFormEvent = function(cell, evt) {
+                if (evt != null) {
+                    //将鼠标相对于游览器视口的坐标转换为相对于graph容器的坐标
+                    var point = mxUtils.convertPoint(graph.container, evt.clientX, evt.clientY)
+                    var state = graph.getView().getState(cell);
+                    if (state != null) {
+                        //减去cell的x,y
+                        point.x -= state.x;
+                        point.y -= state.y;
+                        //鼠标事件发生在大于cell高度一半的地方，选定第二个值
+                        if (point.y > state.height / 2) {
+                            return 'second';
+                        }
+                    }
+                }
+                return 'first';
+            };
+            //@Override
+            graph.getLabel = function(cell) {
+                var table = document.createElement('table');
+                table.style.height = '100%';
+                table.style.width = '100%';
+
+                var body = document.createElement('tbody');
+                var tr1 = document.createElement('tr');
+                var td1 = document.createElement('td');
+                td1.style.fontSize = '12px';
+                //写入
+                mxUtils.write(td1, cell.value.first);
+
+                var tr2 = document.createElement('tr');
+                var td2 = document.createElement('td');
+                td2.style.fontSize = '12px';
+                mxUtils.write(td2, cell.value.second);
+
+                tr1.appendChild(td1);
+                tr2.appendChild(td2);
+                body.appendChild(tr1);
+                body.appendChild(tr2);
+                table.appendChild(body);
+
+                return table;
+            };
+            //@Override
+            graph.getEditingValue = function(cell, evt) {
+                evt.fieldname = getFieldnameFormEvent(cell, evt);
+
+                return cell.value[evt.fieldname] || '';
+            };
+            //@Override
+            graph.labelChanged = function(cell, newValue, trigger) {
+                var name = (trigger != null) ? trigger.fieldname : null;
+                if (name != null) {
+                    //不要再原值上修改
+                    var value = mxUtils.clone(cell.value);
+                    value[name] = newValue;
+                    newValue = value;
+
+                    mxGraph.prototype.labelChanged.apply(this, arguments);
+                }
+            };
+
+            var value = {
+                first: '第一个值',
+                second: '第二个值'
+            };
+
+            var parent = graph.getDefaultParent();
+            graph.getModel().beginUpdate();
+            try {
+                //插入一个顶点
+                var v1 = graph.insertVertex(parent, null, value, 100, 60, 120, 80, 'overflow=fill;');
+            } finally {
+                //更新视图
+                graph.getModel().endUpdate();
+            }
+        }
+    })(document.getElementById('ct'));
+</script>
+</html>
