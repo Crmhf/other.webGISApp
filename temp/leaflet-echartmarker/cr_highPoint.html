@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet 快速开始指南示例</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="map" style="width: 800px; height: 600px"></div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+</script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js">
+</script>
+<script>
+    var map = L.map('map').setView([51.5, -0.09], 13);
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var LeafIcon = L.Icon.extend({
+        options: {
+            shadowUrl: '../docs/images/leaf-shadow.png',
+            iconSize:     [38, 95],
+            shadowSize:   [50, 64],
+            iconAnchor:   [22, 94],
+            shadowAnchor: [4, 62],
+            popupAnchor:  [-3, -76]
+        }
+    });
+
+    var greenIcon = new LeafIcon({iconUrl: '../docs/images/leaf-green.png'}),
+        redIcon = new LeafIcon({iconUrl: '../docs/images/leaf-red.png'}),
+        orangeIcon = new LeafIcon({iconUrl: '../docs/images/leaf-orange.png'});
+
+    L.marker([51.5, -0.09], {icon: greenIcon}).bindPopup("我是一片绿叶.").addTo(map);
+    L.marker([51.495, -0.083], {icon: redIcon}).bindPopup("我是一片红叶.").addTo(map);
+    L.marker([51.49, -0.1], {icon: orangeIcon}).bindPopup("我是一片黄叶.").addTo(map);
+
+</script>
+</body>
+</html>
