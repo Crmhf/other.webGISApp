@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="3rd/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="3rd/bootstrap/3.3.5/css/bootstrap.css" />
+    <link rel="stylesheet" href="3rd/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="3rd/jquery.showLoading/showLoading.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>湖南省地理国情普查</title>
+    <script type="text/javascript" src="3rd/leaflet/leaflet-src.js"></script>
+    <script type="text/javascript" src="3rd/leaflet.wms/wms.js"></script>
+    <script type="text/javascript" src="3rd/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="3rd/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="3rd/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="3rd/jquery.showLoading/showLoading.min.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/geometry.js"></script>
+    <script type="text/javascript" src="js/topographic.js"></script>
+    <script type="text/javascript" src="js/surface.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span style="color:#FFF">湖南省地理国情普查</span></a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">首页</a></li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">几何类型统计  <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li id="geometry_point"><a href="#">点状要素</a></li>
+                  <li id="geometry_polyline"><a href="#">线状要素</a></li>
+                  <li id="geometry_polygon"><a href="#"> 面状要素</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">地形地貌统计 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" data-toggle="modal" data-target="#cantonModal">按行政区</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#roadModal">按道路 </a></li>
+                  <li id="topographic_river"><a href="#">按河流</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">地表覆盖统计 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li id="surface_vegetation"><a href="#">植被覆盖统计</a></li>
+                  <li id="surface_desert"><a href="#">荒漠与裸露地统计</a></li>
+                  <li id="surface_water"><a href="#">水域统计</a></li>
+                  <li id="surface_traffic"><a href="#">交通网络统计</a></li>
+                  <li id="surface_people"><a href="#">居民地及设施统计</a></li>
+                </ul>
+              </li>
+              <li><a href="#" data-toggle="modal" data-target="#surfaceModal">统计属性</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+              <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="请输入关键字...">
+                </div>
+                <button type="submit" class="btn btn-default">查询</button>
+              </form>
+              <li><a href="#">帮助</a></li>
+            </ul>
+            </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+        </div>
+      </nav>
+      <div class="navbar-offset"></div>
+      <div id="map">
+      </div>
+      <!--<div class="row main-row">
+        <div class="col-sm-4 col-md-3 sidebar sidebar-left pull-left">
+          <div class="panel-group sidebar-body" id="accordion-left">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#layers">
+                    <i class="fa fa-list-alt"></i>
+                    图层信息
+                  </a>
+                  <span class="pull-right slide-submenu">
+                    <i class="fa fa-chevron-left"></i>
+                  </span>
+                </h4>
+              </div>
+              <div id="layers" class="panel-collapse collapse in">
+                <div class="panel-body list-group">
+                  <a href="#" class="list-group-item">
+                    <i class="fa fa-globe"></i> Open Street Map
+                  </a>
+                  <a href="#" class="list-group-item">
+                    <i class="fa fa-globe"></i> Bing
+                  </a>
+                  <a href="#" class="list-group-item">
+                    <i class="fa fa-globe"></i> WMS
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#properties">
+                    <i class="fa fa-list-alt"></i>
+                    属性
+                  </a>
+                </h4>
+              </div>
+              <div class="panel-collapse collapse in">
+                <div class="panel-body">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mini-submenu mini-submenu-left pull-left">
+        <i class="fa fa-list-alt"></i>
+      </div>-->
+    </div>
+  </body>
+</html>
+
+
+<!-- geometry Point Modal -->
+<div class="modal fade" id="geometryPointModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="geometryPointLabel">几何类型统计-点状要素</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#geometryPointProperties1" role="tab" data-toggle="tab">数量</a></li>
+          <li role="presentation"><a href="#geometryPointProperties2" role="tab" data-toggle="tab">面积</a></li>
+          <li role="presentation"><a href="#geometryPointProperties3" role="tab" data-toggle="tab">分布</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="geometryPointProperties1"></div>
+          <div role="tabpanel" class="tab-pane" id="geometryPointProperties2"></div>
+          <div role="tabpanel" class="tab-pane" id="geometryPointProperties3"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- geometry Line Modal -->
+<div class="modal fade" id="geometryLineModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="geometryLineLabel">几何类型统计-线状要素</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#geometryLineProperties1" role="tab" data-toggle="tab">数量</a></li>
+          <li role="presentation"><a href="#geometryLineProperties2" role="tab" data-toggle="tab">面积</a></li>
+          <li role="presentation"><a href="#geometryLineProperties3" role="tab" data-toggle="tab">分布</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="ggeometryLineProperties1"></div>
+          <div role="tabpanel" class="tab-pane" id="geometryLineProperties2"></div>
+          <div role="tabpanel" class="tab-pane" id="geometryLineProperties3"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- surface Polygon Modal -->
+<div class="modal fade" id="geometryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="geometryLabel">几何类型统计</h4>
+      </div>
+      <div class="modal-body">
+        <div id="geometryProperties" class="form-group">
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- canton Modal -->
+<div class="modal fade" id="cantonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="roadModalLabel">请选择所需查询的行政区</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <select id="topographic_canton_select" class="form-control">
+            <option id="430102000000">芙蓉区</option>
+            <option id="430103000000">天心区</option>
+            <option id="430104000000">岳麓区</option>
+            <option id="430105000000">开福区</option>
+            <option id="430111000000">雨花区</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <button type="button" id="topographic_canton" class="btn btn-primary">查询</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- road Modal -->
+<div class="modal fade" id="roadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="roadModalLabel">请选择所需查询的行政区</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <select id="topographic_road_select" class="form-control">
+            <option id="0610">铁路</option>
+            <option id="0620">公路</option>
+            <option id="0630">城市道路</option>
+            <option id="0640">乡村道路</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <button type="button" id="topographic_road" class="btn btn-primary">查询</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- surface Modal -->
+<div class="modal fade" id="surfaceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="surfaceLabel">地表覆盖统计</h4>
+      </div>
+      <div class="modal-body">
+        <div id="properties" class="form-group">
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
