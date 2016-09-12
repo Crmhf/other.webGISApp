@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>规则引擎管理系统</title>
+    <link href="3rd/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
+    <link href="3rd/font-awesome/css/font-awesome-ie7.min.css" type="text/css" rel="stylesheet"/>
+    <link href="3rd/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript"  src="3rd/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/3rd/mxGraph/examples/editors/images"></script>
+    <script type="text/javascript" src="3rd/mxGraph/src/js/mxClient.js"></script>
+    <script type="text/javascript" src="3rd/mxGraph/examples/editors/js/mxApplication.js"></script>
+    <style>
+        ul {
+            margin: 0;
+            padding:1px;
+            border:1px;
+            border-color:#444;
+            border-style: solid;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        li {
+            float: left;
+        }
+        li a, .dropbtn {
+            display: inline-block;
+            color: #000;
+            text-align: left;
+            padding: 2px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover, .dropdown:hover .dropbtn {
+            background-color: #fff;
+        }
+        .dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+
+
+
+        rect{
+            stroke:rgb(0,0,0);
+            fill:gray ;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+   <strong>规则引擎管理系统</strong>
+    <img src="3rd/mxGraph/src/images/minimize.gif" align="right" title="Minimize" style="margin-left: 1px; cursor: pointer;">
+    <img src="3rd/mxGraph/src/images/maximize.gif" align="right" title="Maximize" style="cursor: pointer; margin-left: 1px; ">
+    <img src="3rd/mxGraph/src/images/close.gif" align="right" title="Close" style="cursor: pointer; margin-right: 1px;">
+</ul>
+<br>
+<ul>
+    <div class="dropdown">
+        <a href="#" class="dropbtn">文件</a>
+        <div class="dropdown-content">
+            <a href="#">链接 1</a>
+            <a href="#">链接 2</a>
+            <a href="#">链接 3</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <a href="#" class="dropbtn">编辑</a>
+        <div class="dropdown-content">
+            <a href="#">链接 1</a>
+            <a href="#">链接 2</a>
+            <a href="#">链接 3</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <a href="#" class="dropbtn">视图</a>
+        <div class="dropdown-content">
+            <a href="#">链接 1</a>
+            <a href="#">链接 2</a>
+            <a href="#">链接 3</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <a href="#" class="dropbtn">工具</a>
+        <div class="dropdown-content">
+            <a href="#">链接 1</a>
+            <a href="#">链接 2</a>
+            <a href="#">链接 3</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <a href="#" class="dropbtn">帮助</a>
+        <div class="dropdown-content">
+            <a href="#">链接 1</a>
+            <a href="#">链接 2</a>
+            <a href="#">链接 3</a>
+        </div>
+    </div>
+</ul>
+
+<br>
+<ul>
+    <a class="btn btn-default" title="加粗" role="button" onclick="">
+        <i class="glyphicon glyphicon-bold"></i>
+    </a>
+    <a  class="btn btn-default" title="斜体" role="button" onclick="">
+        <i class="glyphicon glyphicon-italic"></i>
+    </a>
+    <a class="btn btn-default" title="字体" role="button" onclick="">
+        <i class="glyphicon glyphicon-bold"></i>
+    </a>
+
+</ul>
+
+<div class="row" style="width: 100%;height:750px">
+
+   <div class="left" style="margin-top: 20px;float:left;width:20%;height: 750px; background-color:#fff;box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+       <div class="horizontal">
+           <div class="list-group">
+               <a  class="list-group-item"  ui-sref-active="active" ui-sref="#">方案库</a>
+               <a  class="list-group-item"  ui-sref-active="active" ui-sref="#">数据源</a>
+           </div>
+       </div>
+   </div>
+
+    <div class="center"  style="position:relative;overflow:visible;margin-top: 20px;float:left;width:55%;height: 750px; background:url('/3rd/mxGraph/examples/editors/images/grid.gif');box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;" >
+        <div class="list-group">
+            <a  class="list-group-item">定义投影</a>
+        </div>
+        <iframe src="main.html" frameborder="0" width="100%" scrolling="YES" height="730px" leftmargin="0" topmargin="0px"></iframe>
+    </div>
+
+    <div class="right"  style="margin-top:20px;float:left;width:25%;height: 750px; background-color:#fff;box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+        <div class="list-group">
+            <a class="list-group-item">工具箱</a>
+        </div>
+        <br>
+       <!-- <table  id="graph">
+        <td id="toolbar" style="width:16px;padding-left:20px;" valign="top">
+            Toolbar Here
+            <img class="mxToolbarModeSelected" src="3rd/mxGraph/examples/editors/images/connect.gif" title="Connect" onmousedown="cellRemoved()" onmouseup="createGraph()">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/straight.gif" title="Connect">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/arrow.gif" title="Connect">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/text.gif" title="Text">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/swimlane.gif" title="Container">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/rectangle.gif" title="Rectangle">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/rounded.gif" title="Rounded">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/ellipse.gif" title="Ellipse">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/doubleellipse.gif" title="Double Ellipse">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/rhombus.gif" title="Rhombus">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/triangle.gif" title="Triangle">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/hexagon.gif" title="Hexagon">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/actor.gif" title="Actor">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/cylinder.gif" title="Cylinder">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/cloud.gif" title="Cloud">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/hline.gif" title="Line">
+            <img class="mxToolbarMode" src="3rd/mxGraph/examples/editors/images/image.gif" title="Image">
+        </td>
+        </table>-->
+</div>
+
+</div>
+
+</body>
+</html>

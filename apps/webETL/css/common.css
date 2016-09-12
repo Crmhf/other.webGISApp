@@ -1,0 +1,15 @@
+.map-pause{
+    background:url('../mapimages/pause.png') no-repeat center center;
+}
+.map-stop{
+    background:url('../mapimages/stop.png') no-repeat center center;
+}
+.map-showresults{
+    background:url('../mapimages/show-results.png') no-repeat center center;
+}
+.map-save{
+    background:url('../mapimages/save.png') no-repeat center center;
+}
+.map-run{
+    background:url('../mapimages/run.png') no-repeat center center;
+}

@@ -1,0 +1,877 @@
+﻿body
+{
+    background-color: #E0E9F5;
+}
+
+.TabItem
+{
+    overflow: hidden;
+    float: left;
+    font-size: 14px;
+    cursor: pointer;
+    height: 22px;
+    line-height: 23px;
+    border-left: 1px solid #E0E9F5;
+    border-top: 1px solid #E0E9F5;
+    border-right: 1px solid #E0E9F5;
+    padding: 0px 10px 0px 10px;
+    margin: 1px 6px 0px 6px;
+}
+
+.TabItem_Selected
+{
+    overflow: hidden;
+    float: left;
+    font-size: 14px;
+    cursor: pointer;
+    height: 23px;
+    line-height: 23px;
+    border-left: 1px solid #8CBDE6;
+    border-top: 1px solid #8CBDE6;
+    border-right: 1px solid #8CBDE6;
+    border-bottom: 1px solid #FFFFFF;
+    padding: 0px 10px 0px 10px;
+    margin: 1px 6px 0px 6px;
+    background-image: url(../Image/TabItemBG.png);
+    background-repeat: repeat-x;
+}
+
+.TabItem_MouseOver
+{
+    overflow: hidden;
+    float: left;
+    font-size: 14px;
+    cursor: pointer;
+    height: 23px;
+    line-height: 23px;
+    border-left: 1px solid #99BBEB;
+    border-top: 1px solid #99BBEB;
+    border-right: 1px solid #99BBEB;
+    border-bottom: 1px solid #8CBDE6;
+    padding: 0px 10px 0px 10px;
+    margin: 1px 6px 0px 6px;
+    background-image: url(../Image/TabItemOverBG.png);
+    background-repeat: repeat-x;
+}
+
+#systemMenu
+{
+    left: 0px;
+    z-index: 1;
+    height: 26px;
+    overflow: hidden;
+    position: absolute;
+    margin: 0px 0px 0px 17px;
+}
+
+.translucent
+{
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+
+div.PluginButton
+{
+    padding-top: 5px;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    margin: 2px 8px 0px 8px;
+    width: 64px;
+    height: 61px;
+    font-size: 12px;
+}
+
+div.PluginButton_Move
+{
+    padding-top: 5px;
+    float: left;
+    color: #f0f0f0;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    margin: 2px 8px 0px 8px;
+    width: 64px;
+    height: 61px;
+    font-size: 12px;
+    background-image: url(../image/BtnMoveBG.png);
+}
+
+div.PluginButton_Down
+{
+    padding-top: 5px;
+    float: left;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    margin: 2px 8px 0px 8px;
+    width: 64px;
+    height: 61px;
+    font-size: 12px;
+    background-image: url(../image/BtnDownBG.png);
+}
+
+div.PluginImage
+{
+    padding-top: 43px;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+}
+
+#leftTab
+{
+    top: 1px;
+    left: 0px;
+    z-index: 2;
+    width: 23px;
+    height: 24px;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    border-bottom: 1px solid #8CBDE6;
+    background-color: #E0E9F5;
+    background-image: url(../image/arrow.png);
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-position: 0px -46px;
+}
+
+
+#rightTab
+{
+    top: 1px;
+    left: 0px;
+    z-index: 2;
+    width: 23px;
+    height: 24px;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    border-bottom: 1px solid #8CBDE6;
+    background-color: #E0E9F5;
+    background-image: url(../image/arrow.png);
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-position: 0px 0px;
+}
+
+#leftMenu
+{
+    top: 25px;
+    left: 0px;
+    z-index: 2;
+    width: 14px;
+    height: 92px;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    background-color: #E0E9F5;
+    background-image: url(../image/subsysTab.png);
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-position: 0px 0px;
+}
+
+#rightMenu
+{
+    top: 25px;
+    left: 0px;
+    z-index: 2;
+    width: 14px;
+    height: 92px;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    background-color: #E0E9F5;
+    background-image: url(../image/arrow1.png);
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-position: 0px -92px;
+}
+
+#previousMenus
+{
+    top: 13px;
+    left: 4px;
+    width: 8px;
+    height: 14px;
+    cursor: pointer;
+    position: relative;
+    background-image: url(../image/subsysTab.png);
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-position: 0px 0px;
+}
+
+#nextMenus
+{
+    top: 13px;
+    left: 4px;
+    width: 8px;
+    height: 14px;
+    cursor: pointer;
+    position: relative;
+    background-image: url(../image/subsysTab.png);
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-position: 0px -14px;
+}
+
+#plugins
+{
+    top: 26px;
+    height: 90px;
+    position: absolute;
+    background: #FEFEFE;
+    overflow: hidden;
+    margin: -1px 1px 0px 13px;
+    border: 1px solid #8CBDE6;
+}
+
+#mainFrame
+{
+    top: 117px;
+    margin: 2px 1px 1px 1px;
+}
+
+.smallmap
+{
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.icon-save
+{
+    background: url('image/directory.png') no-repeat center center;
+}
+
+.navigation #navCircle
+{
+    position: absolute;
+    left: 8px;
+    top: 2px;
+    width: 54px;
+    height: 54px;
+    background-image: url("../image/nav.png");
+}
+
+.navigation #north
+{
+    position: absolute;
+    left: 20px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background-position: 0px -120px;
+    background-image: url("../image/nav.png");
+    cursor: pointer;
+}
+
+    .navigation #north:hover
+    {
+        background-position: -14px -120px;
+        background-image: url("../image/nav.png");
+    }
+
+.navigation #south
+{
+    position: absolute;
+    left: 20px;
+    bottom: 6px;
+    width: 14px;
+    height: 14px;
+    background-position: 0px -134px;
+    background-image: url("../image/nav.png");
+    cursor: pointer;
+}
+
+    .navigation #south:hover
+    {
+        background-position: -14px -134px;
+        background-image: url("../image/nav.png");
+    }
+
+.navigation #west
+{
+    position: absolute;
+    left: 6px;
+    top: 20px;
+    width: 14px;
+    height: 14px;
+    background-position: 0px -148px;
+    background-image: url("../image/nav.png");
+    cursor: pointer;
+}
+
+    .navigation #west:hover
+    {
+        background-position: -14px -148px;
+        background-image: url("../image/nav.png");
+    }
+
+.navigation #east
+{
+    position: absolute;
+    right: 6px;
+    top: 20px;
+    width: 14px;
+    height: 14px;
+    background-position: 0px -162px;
+    background-image: url("../image/nav.png");
+    cursor: pointer;
+}
+
+    .navigation #east:hover
+    {
+        background-position: -14px -162px;
+        background-image: url("../image/nav.png");
+    }
+
+.navigation #full
+{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 14px;
+    height: 14px;
+    background-position: -28px -120px;
+    background-image: url("../image/nav.png");
+    cursor: pointer;
+}
+
+.navigation #navBar
+{
+    position: absolute;
+    left: 8px;
+    top: 56px;
+    width: 54px;
+    height: 300px;
+}
+
+.navigation #zoomIn
+{
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    width: 24px;
+    height: 24px;
+    background-position: 0px -54px;
+    background-image: url("../image/nav.png");
+    cursor: pointer;
+}
+
+    .navigation #zoomIn:hover
+    {
+        background-position: 0px -78px;
+        background-image: url("../image/nav.png");
+    }
+
+.navigation #zoomOut
+{
+    position: absolute;
+    left: 15px;
+    bottom: 9px;
+    width: 24px;
+    height: 24px;
+    background-position: -24px -54px;
+    background-image: url("../image/nav.png");
+    cursor: pointer;
+}
+
+    .navigation #zoomOut:hover
+    {
+        background-position: -24px -78px;
+        background-image: url("../image/nav.png");
+    }
+
+.navigation #scaleBar
+{
+    position: absolute;
+    left: 23px;
+    top: 32px;
+    width: 8px;
+    height: 236px;
+    background-position: -54px 0px;
+    background-image: url("../image/nav.png");
+}
+
+.navigation #drag
+{
+    position: absolute;
+    left: 17px;
+    bottom: 60px;
+    width: 20px;
+    height: 9px;
+    background-position: 0px -102px;
+    background-image: url("../image/nav.png");
+    cursor: pointer;
+}
+
+    .navigation #drag:hover
+    {
+        background-position: 0px -111px;
+        background-image: url("../image/nav.png");
+    }
+
+.navigation .tipLabel
+{
+    position: absolute;
+    left: -5px;
+    bottom: 36px;
+    width: 28px;
+    height: 18px;
+    background-position: -20px -102px;
+    background-image: url("../image/nav.png");
+    font-size: 12px;
+    text-align: center;
+    /*display: none;*/
+    line-height: 18px;
+}
+
+.ucPhoto
+{
+    position: relative;
+    overflow: hidden;
+    background-color:rgb(34,34,34);
+    border-right: 1px solid rgb(175,175,175);
+    box-shadow: 0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    -webkit-box-shadow: 0px 1px 5px 0px #4a4a4a;
+}
+
+    .ucPhoto .ucPhotoViewbox, .ucControlView
+    {
+        width: 100%;
+        padding: 0px;
+    }
+
+    .ucPhoto .ucControlView
+    {
+        background-color: transparent;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+
+    .ucPhoto .ucPhotoNavPanel
+    {
+        width: 100%;
+        height: 100px;
+        left: 0px;
+        bottom: 0px;
+        overflow: hidden;
+        position: absolute;
+    }
+
+    .ucPhoto .view_PreButton
+    {
+        position: absolute;
+        left: 2px;
+        top: 50%;
+        margin-top: -20px;
+        width: 40px;
+        height: 40px;
+        background-position: -40px -40px;
+        background-repeat: no-repeat;
+        background-image: url(../image/sprite-default3.png);
+    }
+
+    .ucPhoto .view_NextButton
+    {
+        position: absolute;
+        right: 2px;
+        top: 50%;
+        margin-top: -20px;
+        width: 40px;
+        height: 40px;
+        background-position: 0px -40px;
+        background-repeat: no-repeat;
+        background-image: url(../image/sprite-default3.png);
+    }
+
+    .ucPhoto a[preAndNext]:hover
+    {
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+        background-color: black;
+    }
+
+    .ucPhoto a[preAndNext]:active
+    {
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+        background-color: black;
+    }
+
+    .ucPhoto .nivo-main-image
+    {
+        display: block !important;
+        position: relative;
+    }
+
+    .ucPhoto .arrowupBox
+    {
+        position: absolute;
+        width: 56px;
+        margin-left: -28px;
+        height: 12px;
+        left: 50%;
+        bottom: 100px;
+        cursor: pointer;
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+        background-color: black;
+        -moz-border-radius: 3px 3px 0px 0px;
+        -webkit-border-radius: 3px 3px 0px 0px;
+        border-radius: 3px 3px 0px 0px;
+    }
+
+    .ucPhoto .arrowup
+    {
+        position: absolute;
+        left: 50%;
+        width: 12px;
+        top: 3px;
+        height: 6px;
+        margin-left: -6px;
+        background-image: url("../image/tip.png");
+        background-attachment: scroll;
+        background-position: 0px -12px;
+        background-repeat: no-repeat;
+    }
+
+    .ucPhoto .pictureText
+    {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        line-height: 30px;
+        height: 30px;
+        display: none;
+        /*opacity: 0.4;
+        filter: alpha(opacity=40);*/
+        background-color: rgba(0,0,0,0.4);
+        font-size: 12px;
+        color: white;
+        padding-left: 5px;
+    }
+
+    .ucPhoto .nivo-controlNav
+    {
+        position: relative;
+        float: left;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        margin-left: 24px;
+        text-align: left;
+        padding: 5px;
+        height: 100px;
+        background-image: url(../image/bg2.png);
+        background-repeat: repeat-x;
+    }
+
+    .ucPhoto .nivo-thumbs-enabled
+    {
+        height: 90px;
+    }
+
+        .ucPhoto .nivo-thumbs-enabled a
+        {
+            background: none;
+        }
+
+        .ucPhoto .nivo-thumbs-enabled img
+        {
+            width: 100%;
+            height: 100%;
+            float: left;
+        }
+
+    .ucPhoto .imgLink, .active
+    {
+        width: 120px;
+        height: 80px;
+        display: inline-block;
+        background: url(bullets.png) no-repeat;
+        text-indent: -9999px;
+        border: 5px solid #474747;
+    }
+
+    .ucPhoto .active
+    {
+        border-color: rgb(244,81,55);
+    }
+
+    .ucPhoto .nivo-controlNavPre
+    {
+        width: 24px;
+        height: 100px;
+        position: absolute;
+        background-color: black;
+        background-position: -24px -80px;
+        background-repeat: no-repeat;
+        background-image: url(../image/sprite-default3.png);
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+    }
+
+    .ucPhoto .nivo-controlNavNext
+    {
+        width: 24px;
+        height: 100px;
+        right: 0px;
+        position: absolute;
+        background-color: black;
+        background-position: 0px -80px;
+        background-repeat: no-repeat;
+        background-image: url(../image/sprite-default3.png);
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+    }
+
+    .ucPhoto .nivo-controlNavOver
+    {
+        width: 5px;
+        height: 100px;
+        right: 24px;
+        position: absolute;
+    }
+
+    .ucPhoto .play
+    {
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        width: 40px;
+        height: 40px;
+        background-position: 0px 0px;
+        background-repeat: no-repeat;
+        background-image: url(../image/sprite-default3.png);
+    }
+
+    .ucPhoto .pause
+    {
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        width: 40px;
+        height: 40px;
+        background-position: -40px 0px;
+        background-repeat: no-repeat;
+        background-image: url(../image/sprite-default3.png);
+    }
+
+    .ucPhoto a[play]:hover
+    {
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+        background-color: black;
+    }
+
+    .ucPhoto a[play]:active
+    {
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+        background-color: black;
+    }
+
+    .ucPhoto .mouseover
+    {
+        opacity: 0.2;
+        filter: alpha(opacity=20);
+        background-color: black;
+    }
+
+    .ucPhoto .collapseMoveover
+    {
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+        background-color: black;
+    }
+
+.ucLegendClose
+{
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url(../image/close.png);
+    background-position: center center;
+}
+
+a[ucLgendClose]:hover
+{
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    background-color: rgb(207,225,250);
+}
+
+a[ucLgendClose]:active
+{
+    opacity: 1;
+    filter: alpha(opacity=100);
+    background-color: rgb(207,225,250);
+}
+
+.ucPreview
+{
+    background-color: #404040;
+    background-image: url(../image/pdf/texture.png);
+    overflow: hidden;
+    /*position: absolute;
+    left: 0px;
+    top: 0px;*/
+}
+
+    .ucPreview .previewMain
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        min-width: 320px;
+        overflow: hidden;
+    }
+
+    .ucPreview .previewToolbar
+    {
+        position: relative;
+        width: 100%;
+        height: 32px;
+        background-color: #474747;
+        background-image: url(../image/pdf/texture.png), linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
+        box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08), inset 0 1px 1px hsla(0,0%,0%,.15), inset 0 -1px 0 hsla(0,0%,100%,.05), 0 1px 0 hsla(0,0%,0%,.15), 0 1px 1px hsla(0,0%,0%,.1);
+        -moz-box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08), inset 0 1px 1px hsla(0,0%,0%,.15), inset 0 -1px 0 hsla(0,0%,100%,.05), 0 1px 0 hsla(0,0%,0%,.15), 0 1px 1px hsla(0,0%,0%,.1);
+        -webkit-box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08), inset 0 1px 1px hsla(0,0%,0%,.15), inset 0 -1px 0 hsla(0,0%,100%,.05), 0 1px 0 hsla(0,0%,0%,.15), 0 1px 1px hsla(0,0%,0%,.1);
+    }
+
+    .ucPreview #previewTitle
+    {
+        position: absolute;
+        left: 5px;
+        top: 0px;
+        height: 100%;
+        width: 100%;
+        line-height: 32px;
+        font-size: 15px;
+        font-family: SimSuncss;
+        font-weight: 700;
+        color: rgb(180,180,180);
+    }
+
+    .ucPreview .previewdownload
+    {
+        position: absolute;
+        right: 40px;
+        top: 3px;
+        width: 30px;
+        height: 24px;
+        background-image: url(../image/pdf/toolbarButton-download.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        cursor: pointer;
+        border: 1px solid transparent;
+    }
+
+    .ucPreview a[previewDownload]:hover
+    {
+        border: 1px solid rgb(41,41,41);
+    }
+
+    .ucPreview a[previewDownload]:active
+    {
+        border: 1px solid rgb(41,41,41);
+        background-color: rgb(70,70,70);
+    }
+
+    .ucPreview .previewClose
+    {
+        position: absolute;
+        right: 5px;
+        top: 3px;
+        width: 30px;
+        height: 24px;
+        background-image: url(../image/close.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        cursor: pointer;
+        border: 1px solid transparent;
+    }
+
+    .ucPreview a[previewclose]:hover
+    {
+        border: 1px solid rgb(41,41,41);
+    }
+
+    .ucPreview a[previewclose]:active
+    {
+        border: 1px solid rgb(41,41,41);
+        background-color: rgb(70,70,70);
+    }
+
+    .ucPreview .previewViewer
+    {
+        overflow: auto;
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        -webkit-overflow-scrolling: touch;
+        position: absolute;
+        top: 32px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        background-color: white;
+        box-shadow: inset 1px 0 0 hsla(0,0%,100%,.05);
+        -moz-box-shadow: inset 1px 0 0 hsla(0,0%,100%,.05);
+        -webkit-box-shadow: inset 1px 0 0 hsla(0,0%,100%,.05);
+    }
+
+    .ucPreview .previewTextView
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+
+.UCSystemMenus
+{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(41,48,56);
+}
+
+    .UCSystemMenus .ExpandButton
+    {
+        height: 30px;
+        width: 100%;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+    }
+
+    .UCSystemMenus .Content
+    {
+        width: 100%;
+    }
+
+.bottomPanelNullIcon
+{
+   display:none;
+}

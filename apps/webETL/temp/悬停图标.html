@@ -1,0 +1,176 @@
+<!Doctype html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<head>
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<title>悬停图标示例 for mxGraph</title>
+<!-- 如果本文件的包与src不是在同一个目录,就要将basepath设置到src目录下 -->
+<script type="text/javascript">
+    mxBasePath = '../src';
+</script>
+<!-- 引入支持库文件 -->
+<script type="text/javascript" src="../3rd/mxGraph/src/js/mxClient.js"></script>
+<!-- 示例代码 -->
+<script type="text/javascript">
+// Defines a subclass for mxVertexHandler that adds a set of clickable icons to every selected vertex.
+
+//定义节点处理程序，每个节点在被点击时会显示节点图标。图表是以节点的子类形式存在的。
+function mxVertexToolHandler(state) {
+    mxVertexHandler.apply(this, arguments);
+};
+mxVertexToolHandler.prototype = new mxVertexHandler();
+mxVertexToolHandler.prototype.constructor = mxVertexToolHandler;
+mxVertexToolHandler.prototype.domNode = null;
+//初始化
+mxVertexToolHandler.prototype.init = function()
+{
+    mxVertexHandler.prototype.init.apply(this, arguments);
+    //示例中使用div容器显示元素，这样做的目的就是解决IE浏览器中透明度的问题。
+    this.domNode = document.createElement('div');
+    this.domNode.style.position = 'absolute';
+    this.domNode.style.whiteSpace = 'nowrap';
+    var md = (mxClient.IS_TOUCH) ? 'touchstart' : 'mousedown';
+    // 删除按钮
+    var img = mxUtils.createImage('images/delete2.png');
+    img.style.cursor = 'pointer';
+    img.style.width = '16px';
+    img.style.height = '16px';
+    mxEvent.addListener(img, md,
+            mxUtils.bind(this, function(evt)
+            {
+                // Disables dragging the image
+                mxEvent.consume(evt);
+            })
+    );
+    mxEvent.addListener(img, 'click',
+            mxUtils.bind(this, function(evt)
+            {
+                this.graph.removeCells([this.state.cell]);
+                mxEvent.consume(evt);
+            })
+    );
+    this.domNode.appendChild(img);
+    // 大小按钮
+    var img = mxUtils.createImage('images/fit_to_size.png');
+    img.style.cursor = 'se-resize';
+    img.style.width = '16px';
+    img.style.height = '16px';
+    mxEvent.addListener(img, md,
+            mxUtils.bind(this, function(evt)
+            {
+                this.start(mxEvent.getClientX(evt), mxEvent.getClientY(evt), 7);
+                this.graph.isMouseDown = true;
+                mxEvent.consume(evt);
+            })
+    );
+    this.domNode.appendChild(img);
+    // 移动按钮
+    var img = mxUtils.createImage('images/connector.gif');
+    img.style.cursor = 'move';
+    img.style.width = '16px';
+    img.style.height = '16px';
+    mxEvent.addListener(img, md,
+            mxUtils.bind(this, function(evt)
+            {
+                this.graph.graphHandler.start(this.state.cell,
+                       mxEvent.getClientX(evt), mxEvent.getClientY(evt));
+                this.graph.graphHandler.cellWasClicked = true;
+                this.graph.isMouseDown = true;
+                mxEvent.consume(evt);
+            })
+    );
+    this.domNode.appendChild(img);
+    // 链接按钮
+    var img = mxUtils.createImage('images/check.png');
+    img.style.cursor = 'pointer';
+    img.style.width = '16px';
+    img.style.height = '16px';
+    mxEvent.addListener(img, md,
+            mxUtils.bind(this, function(evt)
+            {
+                var pt = mxUtils.convertPoint(this.graph.container,
+                       mxEvent.getClientX(evt), mxEvent.getClientY(evt));
+                this.graph.connectionHandler.start(this.state, pt.x, pt.y);
+                this.graph.isMouseDown = true;
+                mxEvent.consume(evt);
+            })
+    );
+    this.domNode.appendChild(img);
+    //将节点添加到容器
+    this.graph.container.appendChild(this.domNode);
+    this.redrawTools();
+};
+//重绘
+mxVertexToolHandler.prototype.redraw = function()
+{
+    mxVertexHandler.prototype.redraw.apply(this);
+    this.redrawTools();
+};
+//重绘工具
+mxVertexToolHandler.prototype.redrawTools = function()
+{
+    if (this.state != null && this.domNode != null)
+    {
+        var dy = (mxClient.IS_VML && document.compatMode == 'CSS1Compat') ? 20 : 4;
+        this.domNode.style.left = (this.state.x + this.state.width - 56) + 'px';
+        this.domNode.style.top = (this.state.y + this.state.height + dy) + 'px';
+    }
+};
+//删除元素
+mxVertexToolHandler.prototype.destroy = function(sender, me)
+{
+    mxVertexHandler.prototype.destroy.apply(this, arguments);
+    if (this.domNode != null)
+    {
+        this.domNode.parentNode.removeChild(this.domNode);
+        this.domNode = null;
+    }
+};
+// 程序在此方法中启动
+function main(container) {
+    // 检查浏览器支持
+    if (!mxClient.isBrowserSupported()) {
+        mxUtils.error('Browser is not supported!', 200, false);
+    } else {
+        // 在容器中创建图形
+        var graph = new mxGraph(container);
+        graph.setConnectable(true);
+        graph.connectionHandler.createTarget = true;
+        graph.createHandler = function(state) {
+            if (state != null &&
+                    this.model.isVertex(state.cell)) {
+                return new mxVertexToolHandler(state);
+            }
+            return mxGraph.prototype.createHandler.apply(this, arguments);
+        };
+        //还可以将图形设置成自适应大小
+        graph.setResizeContainer(true);
+        //允许弹性选项
+        //new mxRubberband(graph);
+        // 在图形中创建默认组件
+        var parent = graph.getDefaultParent();
+        //开启模型的事务
+        graph.getModel().beginUpdate();
+        try {
+            //在图形中插入组件
+            var v1 = graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30);
+            var v2 = graph.insertVertex(parent, null, 'World!', 200, 150, 80, 30);
+            var e1 = graph.insertEdge(parent, null, '', v1, v2);
+        }
+        finally
+        {
+            //事务结束
+            graph.getModel().endUpdate();
+        }
+    }
+};
+</script>
+</head>
+
+<!-- 页面载入时启动程序 -->
+<body onload="main(document.getElementById('graphContainer'))">
+<!-- 创建带网格壁纸和曲线的一个容器 -->
+<div id="graphContainer"
+        style="overflow:hidden;width:321px;height:241px;background:url('editors/images/grid.gif');cursor:default;">
+</div>
+</body>
+</html>
