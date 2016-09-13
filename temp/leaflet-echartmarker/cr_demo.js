@@ -34,10 +34,11 @@ $(function() {
                         radius: ['20', '50'],
                         avoidLabelOverlap: true,
                         label: {
+                            /*
                             normal: {
-                                show: false,
+                                show: true,
                                 position: 'center'
-                            },
+                            },*/
                             emphasis: {
                                 show: true,
                                 textStyle: {
@@ -48,7 +49,7 @@ $(function() {
                         },
                         labelLine: {
                             normal: {
-                                show: false
+                                show: true
                             }
                         },
                         data: [{

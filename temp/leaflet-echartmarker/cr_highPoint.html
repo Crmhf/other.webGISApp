@@ -16,7 +16,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js">
 </script>
 <script>
-    var map = L.map('map').setView([51.5, -0.09], 13);
+    var map = L.map('map').setView([28.19, 113], 13);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -24,7 +24,7 @@
 
     var LeafIcon = L.Icon.extend({
         options: {
-            shadowUrl: '../docs/images/leaf-shadow.png',
+            // shadowUrl: '../docs/images/leaf-shadow.png',
             iconSize:     [38, 95],
             shadowSize:   [50, 64],
             iconAnchor:   [22, 94],
@@ -33,13 +33,19 @@
         }
     });
 
-    var greenIcon = new LeafIcon({iconUrl: '../docs/images/leaf-green.png'}),
-        redIcon = new LeafIcon({iconUrl: '../docs/images/leaf-red.png'}),
-        orangeIcon = new LeafIcon({iconUrl: '../docs/images/leaf-orange.png'});
+    var highPointIcon = new LeafIcon({iconUrl: 'img/high-point.png'}),
+            lowPointIcon = new LeafIcon({iconUrl: 'img/low-point.png'});
 
-    L.marker([51.5, -0.09], {icon: greenIcon}).bindPopup("我是一片绿叶.").addTo(map);
-    L.marker([51.495, -0.083], {icon: redIcon}).bindPopup("我是一片红叶.").addTo(map);
-    L.marker([51.49, -0.1], {icon: orangeIcon}).bindPopup("我是一片黄叶.").addTo(map);
+    $.getJSON('staticresult.json', function(data) {
+debugger;
+        L.marker([28.193917897542317, 112.9809413655599], {icon: highPointIcon}).bindPopup("当前路段的最高点,高程值为").addTo(map);
+        L.marker([28.196417897542318, 113.04177469889324], {icon: lowPointIcon}).bindPopup("当前路段的最低点.").addTo(map);
+    });
+
+
+
+
+
 
 </script>
 </body>
