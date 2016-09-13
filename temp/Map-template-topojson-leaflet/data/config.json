@@ -1,0 +1,14 @@
+{"ons":{
+"varlabel": ["Population change from 2004-2013","1 year change"],
+"varcolour": ["#d1e5f0","#fddbc7","#f4a582","#d6604d","#b2182b"],
+"varname": ["population_change_2004_2013","population_change_1year"],
+"varload": "population_change_2004_2013",
+"varunit":["% change since 2004","1 year % change"],
+"varprefix":["",""],
+"breaks":"jenks",
+"average":[24,65.4],
+"averagelabel":"E&W",
+"centre":[53.344,-1.91],
+"zoom":6
+
+}}
