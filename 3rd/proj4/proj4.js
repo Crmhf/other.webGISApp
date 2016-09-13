@@ -1971,7 +1971,7 @@ define('proj4/wkt',['./extend','./constants','./common'],function(extend,constan
     var key;
     if (!Array.isArray(v)) {
       obj[v] = true;
-      return;
+
     }
     else {
       key = v.shift();
@@ -2188,7 +2188,7 @@ define('proj4/defs',['./common','./constants','./global','./projString','./wkt']
       else {
         console.log(name);
       }
-      return;
+
     }
     
   
