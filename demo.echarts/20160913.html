@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>饼状、柱状、折线图</title>
+    <link href="../3rd/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="../3rd/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../3rd/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="../3rd/echarts/echarts.min.js"></script>
+</head>
+<body>
+<div class="col-md-12">
+    <div id="main"></div>
+</div>
+<div class="col-md-6">
+    <button class="btn k-btn" type="button" onclick="getPie()">获得一个饼图<em class="icon-align-left"> </em> </button>
+    <div class="col-md-12" id="pie1" style="height:400px">
+    </div>
+</div>
+<div class="col-md-6">
+    <button class="btn k-btn" type="button" onclick="getBar()">获得一个柱图<em class="icon-align-left"> </em> </button>
+    <div class="col-md-12" id="bar1" style="height:400px">
+    </div>
+</div>
+<div class="col-md-12">
+    <button class="btn k-btn" type="button" onclick="getLine()">获得一个曲线<em class="icon-align-left"> </em> </button>
+    <div class="col-md-12" id="line1" style="height:400px">
+    </div>
+</div>
+</body>
+<script>
+    var pie;
+    var pieopt = {
+        title : {
+            text: '',
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{b} : {c} ({d}%)"
+        },
+        calculable : true, /* 3.0不支持? */
+        /*        legend: {         //    3.0动态加载图例时此处不能有legend
+         show:true,
+         data:[]
+         },*/
+        toolbox: {
+            show:true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        visualMap: [ // 3.0新功能 数据视觉映射 跟图裂的颜色冲突
+            {
+                type: 'piecewise',
+                min: 0,
+                max: 30,
+                dimension: 0,       // series.data 的第一个维度（即 value[0]）被映射
+                seriesIndex: 0,     // 对第一个系列进行映射。
+                inRange: {          // 选中范围中的视觉配置
+                    color: ['red',  'red'],
+                    colorLightness: [0.9, 0.3],
+                    symbolSize: [30, 100]
+                },
+            }
+        ],
+        series: [{
+            name: 'pie1',
+            type: 'pie',
+            data: []
+        }]
+    };
+
+    var bar;
+    var bar_name = ['越限', '异常', '事故', '告知', '变位'];
+    var baropt = {
+        title : {
+            text: '',
+            x:'center',
+            y:'top'
+        },
+        backgroundColor:'#fff',
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        toolbox: {
+            show:true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data:[]
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : []
+    };
+    var barserie= {
+        name:'',
+        type:'bar',
+        stack: 'sum', // 堆积图
+        itemStyle : { normal: {
+            label : { // 柱子上的数字
+                show: true,
+                position: 'inside'}}
+        },
+        data:[]
+    };
+
+    var line;
+    var lineopt = {
+        title: {
+            x:'center',
+            text: ''
+        },
+        tooltip:{
+            show : true,
+            trigger: 'axis',  // 坐标轴触发 也可以item数据点触发
+            formatter:function (params){ // tip的样式
+                var res = '时间 : ' + params[0].name +'<br/>';
+                for (var i = 0, l = params.length; i < l; i++) {
+                    res += '<br/>' + params[i].seriesName + ' : ' + params[i].value;
+                }
+                return res;
+            }
+        },
+        xAxis: [{
+            type: 'category',  // 有今日、昨日曲线叠加的 用category即字符串
+            boundaryGap : false,
+            splitLine:{
+                show:false
+            },
+            data:[]
+        }],
+        yAxis: [{
+            name:'',
+            nameLocation:'end',
+            type: 'value',
+            scale:true,
+            axisLabel: {
+                formatter: '{value}'
+            }
+        }],
+        series:[]
+    };
+    var lineserie =  {
+        name:'',
+        type:'line',
+        markPoint:{ // 无法异步设置markPoint和markLine 也没有addMarkLine函数可用
+            data: [{
+                name: '最大值',
+                type: 'max'
+            }]
+        },
+        markLine:{
+            data:[
+                {
+                    name: 'aaa',
+                    // 支持 'average', 'min', 'max'
+                    type: 'average'
+                }
+            ]
+        },
+        // data:[1,2,3,4,4,3,6,11,2,3,4]
+        data:[] // 同步方式setOption时，如果设置了markPoint和markLine data不可为空
+    };
+
+    // 从2.x里主题文件里抄来设置 此处略
+    var theme = {
+    };
+    // 主题注册  相当于存储了了主题名字和对象的对应关系
+    echarts.registerTheme('infograph', theme);
+
+    $(document).ready(function(){
+        pie = echarts.init(document.getElementById('pie1'), 'infograph'); // 带主题的初始化
+        pie.setOption(pieopt);
+        function eConsolePieClick(e) {
+            console.log(e); // 3.0 e有嵌套结构，不可以JSON.stringify
+        }
+        pie.on('click',  eConsolePieClick); // 点击事件绑定 与2.0不同
+
+        bar = echarts.init(document.getElementById('bar1'));
+        bar.setOption(baropt);
+
+        line =  echarts.init(document.getElementById('line1'));
+        line.setOption(lineopt);
+
+        // 多图联动 目前2个图联动可以 3个不行
+        pie.group = 'group1';
+        bar.group = 'group1';
+        //    line.group =  'group1'; // 3.0 三个图无法联动
+        echarts.connect('group1');
+        //    echarts.connect([pie, bar, line]); // 联动的两种写法
+    });
+</script>
+<script>
+    function getPie(){
+        var resp = "{\"objName\":\"告警\", \"dispName\":[\"越限\",\"异常\",\"事故\",\"告知\",\"变位\"], \"value\":[10.0, 20.0, 15.0, 12.0, 29.0], \"id\":[\"111\", \"112\", \"113\",\"114\",\"115\"]}";
+        var respobj = JSON.parse(resp); // 数据
+        // 饼图的名字从控件选择中拼出来
+        var piedata = []; // 饼的数字
+        var pieLegend = []; //　饼的图例
+        $(respobj.value).each(function(i){
+            piedata.push({name:respobj.dispName[i], value:respobj.value[i]}); // 饼的数据是对象 {name:"str", value:number}
+            pieLegend.push(respobj.dispName[i]); // 图例和每块饼的name要一致
+        });
+        var opt = {
+            title:{
+                text:    respobj.objName
+            },
+            legend:{
+                orient : 'vertical',
+                x : 'right',
+                y:"bottom",
+                data:pieLegend
+            },
+            series:[
+                {
+                    name:"pie1",
+                    type: 'pie',
+                    data:piedata
+                }
+            ]
+        };
+        pie.setOption(opt);
+    }
+
+    function getBar(){
+        var resp = "{\"objName\":\"TITLE here\", \"dispName\":[\"a1\",\"a2\",\"a3\",\"a4\",\"a5\"], \"value\":[[4,3,3,6,1],[2,2,3,3,1],[7,3,5,6,1],[4,2,3,6,3]], \"id\":[\"001\",\"002\",\"003\",\"004\",\"005\"]}";
+        var respobj = JSON.parse(resp); // 数据
+        var xAxis = [];
+        var series = [];
+        $(respobj.dispName).each(function(i){
+            xAxis.push(respobj.dispName[i]);
+        });
+
+        $(respobj.value).each(function(i){
+            var new_serie = JSON.parse(JSON.stringify(barserie));
+            new_serie.name = bar_name[i];
+            new_serie.data = respobj.value[i];
+            series.push(new_serie);
+        });
+        var opt = {
+            title:{
+                text:respobj.objName
+            },
+            xAxis:{
+                data:xAxis
+            },
+            legend:{
+                show:true,
+                x:'right',
+                y:'top',
+                data: bar_name
+            },
+            series:series
+        }
+        bar.setOption(opt);
+    }
+
+    function getLine(){
+        var resp = "{\"dataArray\":[[120.33, 132.12, 101.09, 134.22, 90.17, 230.50, 210.79, 120.79], [220, 182, 191, 234, 290, 330, 310, 350]], \"curveName\":[\"越限\", \"异常\"], \"objName\":\"测试曲线\"}";
+        console.log(resp);
+        var respobj = JSON.parse(resp); // 数据
+        for (var i=0; i<280; i++)
+        {
+            respobj.dataArray[0].push(Math.round(Math.random() * 120-38));
+            respobj.dataArray[1].push(Math.round(Math.random() * 200-51));
+        }
+        var xAxis = [];
+        var series = [];
+        var legend = []
+        for (var i=0; i<respobj.dataArray.length; i++)
+        {
+            var new_series = JSON.parse(JSON.stringify(lineserie));  // 可以用预设的不同风格的曲线
+            new_series.name = respobj.curveName[i];
+            new_series.data = respobj.dataArray[i];
+            legend.push(respobj.curveName[i]); // 必须和曲线的name一致 每条曲线的名字必须不一样，否则图例会出错
+            series.push(new_series);
+        }
+        xAxis = getDayXAsis(respobj.dataArray[0].length);
+        var opt = {
+            title:{
+                text: respobj.objName
+            },
+            legend:{
+                show:true,
+                x: 'right', // 'center' | 'left' | {number},
+                y: 'top', // 'center' | 'bottom' | {number}
+                data:legend
+            },
+            dataZoom : [{
+                type:'slider', // 3.0中缩放的默认type是inside，需要2.x中的缩放条需要写type:'slider'
+                show : true,
+                start : 40,
+                end : 60
+            },
+                {
+                    type: 'inside', // 支持鼠标缩放
+                    realtime: true,
+                    start: 30,
+                    end: 70
+                }],
+            xAxis:[{
+                data:xAxis
+            }],
+            series:series
+        };
+
+        console.log(JSON.stringify(opt, null, 4));
+        line.setOption(opt);
+    }
+    // 根据数据点数创建日曲线的x轴标签
+    function getDayXAsis(split_num)
+    {
+        var xasis = [];
+        // 如果是288点就5分钟一个标签 96点就15分钟一个标签
+        var offset = 86400/split_num;
+        var d = new Date(1986, 4, 25);
+        for (var i=0; i<split_num; i++)
+        {
+            var nd = new Date();
+            nd.setTime(d.getTime() +offset*1000*i);
+            var str = (nd.getHours())+":"+(nd.getMinutes());
+            xasis.push(str);
+        }
+        return xasis;
+    }
+</script>
+</html>
