@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DASH - A Quick Board for Dashing</title>
+    <!-- Style Imports -->
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- JS Imports -->
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/Chart.min.js"></script>
+    <script type="text/javascript" src="js/leaflet.js"></script>
+    <!-- Google Font Imports-->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id="sideMenu">
+       <img src="monkeyFoam.svg" width="120px" style="float:left"> <h1>MonkeyFoam</h1>
+        <ul id="list">
+            <li>Rig 1</li>
+            <li>Rig 2</li>
+            <li>Rig 3</li>
+            <li>Rig 4</li>
+            <li>Rig 5</li>
+        </ul>
+    </div>
+    <div id="main">
+        <div id="fullWidth">
+            <div id="map"></div>
+        </div>
+        <div class="graph">
+            <canvas id="temperatureReadings" width="250" height="250"></canvas>
+        </div>
+        <div class="graph">
+            <canvas id="pressureReadings" width="250" height="250"></canvas>
+        </div>
+        <div class="graph">
+            <canvas id="actualTemperature" width="250" height="250"></canvas>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
