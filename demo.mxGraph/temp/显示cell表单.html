@@ -1,0 +1,130 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>显示CELL表单</title>
+    <script type="text/javascript">
+        mxBasePath = '../src';
+    </script>
+    <script type="text/javascript" src="../3rd/mxGraph/src/js/mxClient.js"></script>
+    <script type="text/javascript">
+        function main(container)
+        {
+            if (!mxClient.isBrowserSupported())
+            {
+                mxUtils.error('Browser is not supported!', 200, false);
+            }
+            else
+            {
+                var graph = new mxGraph(container);
+                graph.setCellsResizable(false);
+                graph.setEnabled(false);//设置启用,就是允不允许你改变CELL的形状内容。
+                graph.setPanning(true);//移动镜头
+                //重写方法不允许那条线(edge)可以编辑
+                graph.isCellEditable = function(cell)
+                {
+                    return !this.getModel().isEdge(cell)&&!this.getModel().isVertex(cell);
+                };
+                new mxCellTracker(graph);
+                var style = graph.getStylesheet().getDefaultVertexStyle();
+                style[mxConstants.STYLE_STROKECOLOR] = 'gray';
+                style[mxConstants.STYLE_SHADOW] = true;
+                style[mxConstants.STYLE_FILLCOLOR] = '#DFDFDF';
+                style[mxConstants.STYLE_GRADIENTCOLOR] = 'white';
+                style[mxConstants.STYLE_FONTCOLOR] = 'black';
+                style[mxConstants.STYLE_FONTSIZE] = '12';
+                style[mxConstants.STYLE_SPACING] = 4;
+
+                style = graph.getStylesheet().getDefaultEdgeStyle();
+                style[mxConstants.STYLE_STROKECOLOR] = '#0C0C0C';
+                style[mxConstants.STYLE_LABEL_BACKGROUNDCOLOR] = 'white';
+                //定义为形状的关键。可能的值是一个形状前缀或新定义的任何形状的名称的所有常量。
+                style[mxConstants.STYLE_EDGE] = mxEdgeStyle.ElbowConnector;
+                style[mxConstants.STYLE_ROUNDED] = true;
+                style[mxConstants.STYLE_FONTCOLOR] = 'black';
+                style[mxConstants.STYLE_FONTSIZE] = '10';
+                graph.gridSize = 20;
+                graph.setResizeContainer(true);
+                graph.minimumContainerSize = new mxRectangle(0, 0, 500, 380);
+                graph.setBorder(60);
+                graph.getModel().beginUpdate();
+                try
+                {
+                    read(graph, 'fileio.xml');
+                }
+                finally
+                {
+                    graph.getModel().endUpdate();
+                }
+                //new mxDivResizer(container);
+                var cell;
+                graph.addListener(mxEvent.CLICK, function(sender, evt)
+                {
+                    cell= evt.getProperty('cell');
+                    selectionChanged(graph,cell);
+
+                });
+
+                selectionChanged(graph,cell);
+            }
+        };
+
+        // Parses the mxGraph XML file format
+        function read(graph, filename)
+        {
+            var req = mxUtils.load(filename);
+            var root = req.getDocumentElement();
+            var dec = new mxCodec(root.ownerDocument);
+            dec.decode(root, graph.getModel());
+        };
+
+        /**
+         * Updates the properties panel //更新属性面板
+         */
+        function selectionChanged(graph,cell)
+        {
+            var div = document.getElementById('properties');//获取属性面板
+            // Forces focusout in IE //IE中强调焦点移出事件
+            graph.container.focus()
+            // Clears the DIV the non-DOM way
+            div.innerHTML = ''; //清理DIV没有DOM
+            // Gets the selection cell
+            if (cell == null)
+            {
+                mxUtils.writeln(div, '当前没有选择一项'); //当没有获取CELL时，就显示什么也没有选择
+            }
+            else
+            {
+                var attrs = cell.value.attributes;
+                var center = document.createElement('center');
+                mxUtils.writeln(center, attrs[0].nodeValue);
+                div.appendChild(center);//将创建好的文本标题填入到DIV层里面去
+                mxUtils.br(div);
+                var form = new mxForm(); //从USER对象的属性中创建一个FORM
+                for (var i = 0; i < attrs.length; i++)
+                {
+                    form.addText(attrs[i].nodeName + ':', attrs[i].nodeValue); //创建文本框
+                }
+                div.appendChild(form.getTable()); //将创建的文本框组合成表格追加到DIV里面去vav
+                mxUtils.br(div);
+            }
+        }
+    </script>
+</head>
+<!-- Page passes the container for the graph to the grogram -->
+<body onload="main(document.getElementById('graphContainer'))">
+<table>
+    <tr>
+        <td>
+            <div id="graphContainer"
+                    style="border: solid 1px black;overflow:hidden;width:321px;height:241px;">
+            </div>
+        </td>
+        <td valign="top"><!-- 垂直对齐在顶部,这个是属性面板 -->
+            <div id="properties"
+                    style="border: solid 1px black; padding: 10px;">
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

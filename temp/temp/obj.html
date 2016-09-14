@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>try</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    function setName(obj){
+        obj.name = 'Nicholas'
+        obj = new Object();
+        obj.name = "Greg";
+    }
+
+    var person = new Object();
+    setName(person);
+    alert(person.name);
+
+</script>
+
+
+</body>
+</html>

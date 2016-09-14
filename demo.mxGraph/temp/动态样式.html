@@ -1,0 +1,98 @@
+<!--
+     改变控件大小后动态修改样式
+-->
+<!Doctype html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <title>动态样式</title>
+
+    <script type="text/javascript">
+        mxBasePath = '../src';
+    </script>
+    <script type="text/javascript" src="../3rd/mxGraph/src/js/mxClient.js"></script>
+    <!-- 示例代码 -->
+    <script type="text/javascript">
+        // 程序在此方法中启动
+        function main(container)
+        {
+            // 检查浏览器支持
+            if (!mxClient.isBrowserSupported()) {
+                mxUtils.error('Browser is not supported!', 200, false);
+            } else {
+                // 在容器中创建图形
+                var graph = new mxGraph(container);
+
+                // 禁用移动标签
+                graph.edgeLabelsMovable = false;
+
+                // 禁用所有元素的交互操作
+                new mxRubberband(graph);
+
+                //设置样式可变
+                graph.getView().updateStyle = true;
+
+                // 复写mxGraphModel.getStyle,当元素形状改变时，改变元素背景颜色
+                var previous = graph.model.getStyle;
+
+                graph.model.getStyle = function(cell) {
+                    if (cell != null) {
+                        var style = previous.apply(this, arguments);
+
+                        if (this.isEdge(cell)) {
+                            var target = this.getTerminal(cell, false);
+
+                            if (target != null) {
+                                var state = graph.getView().getState(target);
+                                var targetStyle = (state != null) ? state.style : graph.getCellStyle(target);
+                                var fill = mxUtils.getValue(targetStyle, mxConstants.STYLE_FILLCOLOR);
+
+                                if (fill != null) {
+                                    style += ';strokeColor='+fill;
+                                }
+                            }
+                        } else if (this.isVertex(cell)) {
+                            var geometry = this.getGeometry(cell);
+
+                            if (geometry != null && geometry.width > 80) {
+                                style += ';fillColor=green';
+                            }
+                        }
+
+                        return style;
+                    }
+
+                    return null;
+                };
+
+                // 在图形中创建默认组件
+                var parent = graph.getDefaultParent();
+
+                // 开启更新事务
+                graph.getModel().beginUpdate();
+                try
+                {
+                    var v1 = graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30, 'fillColor=green');
+                    var v2 = graph.insertVertex(parent, null, 'World!', 200, 150, 80, 30, 'fillColor=blue');
+                    var v3 = graph.insertVertex(parent, null, 'World!', 20, 150, 80, 30, 'fillColor=red');
+                    var e1 = graph.insertEdge(parent, null, 'Connect', v1, v2, 'perimeterSpacing=4;strokeWidth=4;labelBackgroundColor=white;fontStyle=1');
+                }
+                finally
+                {
+                    // 结束更新事务
+                    graph.getModel().endUpdate();
+                }
+            }
+        };
+    </script>
+</head>
+
+<!-- 页面载入时启动程序 -->
+<body onload="main(document.getElementById('graphContainer'))">
+
+<!-- 创建带网格壁纸和曲线的一个容器  -->
+<div id="graphContainer"
+        style="overflow:hidden;width:321px;height:241px;background:url('editors/images/grid.gif')">
+</div>
+</body>
+</html>

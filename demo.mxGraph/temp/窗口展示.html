@@ -1,0 +1,121 @@
+<!Doctype html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <title>窗口展示</title>
+
+    <script type="text/javascript">
+        mxBasePath = '../src';
+    </script>
+    <script type="text/javascript" src="../3rd/mxGraph/src/js/mxClient.js"></script>
+
+    <!-- 示例代码 -->
+    <script type="text/javascript">
+
+        //  程序在此方法中启动
+        function main(container)
+        {
+            // 检测浏览器兼容性
+            if (!mxClient.isBrowserSupported())
+            {
+                mxUtils.error('Browser is not supported!', 200, false);
+            }
+            else
+            {
+                // 在DIV分区中创建带滚动条的图形
+                var wnd = new mxWindow('可滚动，调整大小，给定高度Scrollable, resizable, given height', container, 50, 50, 220, 224, true, true);
+
+                // 创建图形
+                var graph = new mxGraph(container);
+
+                // 创建菜单和按键监控
+                graph.setTooltips(true);
+                graph.setPanning(true);
+                var rubberband = new mxRubberband(graph);
+                new mxKeyHandler(graph);
+
+                mxEvent.disableContextMenu(container);
+
+                // IE样式修复
+                if (mxClient.IS_IE)
+                {
+                    mxRubberbandmxRubberbandMouseMove = mxRubberband.prototype.mouseMove;
+                    mxRubberband.prototype.mouseMove = function(sender, me)
+                    {
+                        mxRubberbandMouseMove.apply(this, arguments);
+
+                        if (this.div != null && this.div.style.background != 'transparent')
+                        {
+                            container.style.cursor = 'default';
+                            this.div.style.background = 'transparent';
+                            this.div.style.borderStyle = 'dashed';
+                            mxUtils.setOpacity(this.div, 100);
+                        }
+                    }
+                }
+
+                //父母在Firefox中的容器没有Resize事件的解决方法，画布有限的绘图区域需要更新
+                // Firefox中自适应的解决方法，即：更新画图区域
+                else
+                {
+                    wnd.addListener(mxEvent.RESIZE_END, function(evt)
+                    {
+                        graph.sizeDidChange();
+                    });
+                }
+
+                // 创建默认窗体
+                var parent = graph.getDefaultParent();
+
+                // 启动更新事务
+                graph.getModel().beginUpdate();
+                try
+                {
+                    var v1 = graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30);
+                    var v2 = graph.insertVertex(parent, null, 'World!', 200, 150, 80, 30);
+                    var e1 = graph.insertEdge(parent, null, '', v1, v2);
+                }
+                finally
+                {
+                    // 结束更新事务
+                    graph.getModel().endUpdate();
+                }
+
+                wnd.setMaximizable(true);
+                wnd.setResizable(true);
+                wnd.setVisible(true);
+
+                var lorem = 'Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ';
+                var content = document.createElement('div');
+                mxUtils.write(content, lorem + lorem + lorem);
+
+                wnd = new mxWindow('可滚动，调整大小，高度自动Scrollable, resizable, auto height', content, 300, 50, 200, null, true, true);
+                wnd.setMaximizable(true);
+                wnd.setScrollable(true);
+                wnd.setResizable(true);
+                wnd.setVisible(true);
+
+                contentcontent = content.cloneNode(true)
+                content.style.width = '400px';
+
+                wnd = new mxWindow('可滚动，调整大小，固定的内容Scrollable, resizable, fixed content', content, 520, 50, 220, 200, true, true);
+                wnd.setMaximizable(true);
+                wnd.setScrollable(true);
+                wnd.setResizable(true);
+                wnd.setVisible(true);
+
+                mxLog.show();
+            }
+        };
+    </script>
+</head>
+
+<!-- 页面载入后启动程序. -->
+<body onload="main(document.getElementById('graphContainer'))">
+
+<!-- 创建带网格壁纸和曲线的一个容器  -->
+<div id="graphContainer"
+        style="overflow:auto;position:absolute;width:100%;height:100%;background:lightyellow;cursor:default;">
+</div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!Doctype html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <title>动态加载</title>
+    <script type="text/javascript">
+        mxBasePath = '../src';
+    </script>
+    <script type="text/javascript" src="../3rd/mxGraph/src/js/mxClient.js"></script>
+    <!-- 示例代码 -->
+    <script type="text/javascript">
+        // 程序在此方法中启动
+
+        // 全局变量，以确保每一个元素在响应中具有独特的ID，
+        // 在整个程序的生命周期中每一个元素在实际应用中的设置应该有一个外部的业务对象的ID或其他的单元应该是全局唯一的ID图模型的生命周期。
+        var requestId = 0;
+
+        function main(container)
+        {
+            // 检查浏览器支持
+            if (!mxClient.isBrowserSupported()) {
+                mxUtils.error('Browser is not supported!', 200, false);
+            }
+            else {
+                // 在容器中创建图形
+                var graph = new mxGraph(container);
+
+                // 禁用所有元素的交互操作
+                graph.setEnabled(false);
+
+                // 处理对元素的点击
+                graph.addListener(mxEvent.CLICK, function(sender, evt)
+                {
+                    var cell = evt.getProperty('cell');
+
+                    if (cell != null)
+                    {
+                        load(graph, cell);
+                    }
+                });
+
+                // 改变默认顶点的风格样式
+                var style = graph.getStylesheet().getDefaultVertexStyle();
+                style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_ELLIPSE;
+                style[mxConstants.STYLE_PERIMETER] = mxPerimeter.EllipsePerimeter;
+                style[mxConstants.STYLE_GRADIENTCOLOR] = 'white';
+
+                // 在图形中创建默认组件
+                var parent = graph.getDefaultParent();
+
+                var cx = graph.container.scrollWidth / 2;
+                var cy = graph.container.scrollHeight / 2;
+
+                var cell = graph.insertVertex(parent, '0-0', '0-0', cx - 20, cy - 15, 40, 30);
+
+                // 以动画的样式改变图形
+                graph.getModel().addListener(mxEvent.CHANGE, function(sender, evt)
+                {
+                    var changes = evt.getProperty('edit').changes;
+                    mxEffects.animateChanges(graph, changes);
+                });
+
+                load(graph, cell);
+            }
+        };
+
+        // 根据链接在服务器端请求相应的数据加载到给定的图形中（这是演示使用服务器的功能）
+        function load(graph, cell)
+        {
+            if (graph.getModel().isVertex(cell))
+            {
+                var cx = graph.container.scrollWidth / 2;
+                var cy = graph.container.scrollHeight / 2;
+
+                // 在图形中创建默认组件
+                var parent = graph.getDefaultParent();
+
+                // 开启模型的更新事务
+                graph.getModel().beginUpdate();
+                try
+                {
+                    var xml = server(cell.id);
+                    var doc = mxUtils.parseXml(xml);
+                    var dec = new mxCodec(doc);
+                    var model = dec.decode(doc.documentElement);
+
+                    // 删除服务器响应中没有的元素
+                    for (var key in graph.getModel().cells)
+                    {
+                        var tmp = graph.getModel().getCell(key);
+
+                        if (tmp != cell &&
+                                graph.getModel().isVertex(tmp))
+                        {
+                            graph.removeCells([tmp]);
+                        }
+                    }
+
+                    // 将客户端的元素与服务器返回的元素合并
+                    graph.getModel().mergeChildren(model.getRoot().getChildAt(0), parent);
+
+                    // 将给定的元素移动到图形中心
+                    var geo = graph.getModel().getGeometry(cell);
+
+                    if (geo != null)
+                    {
+                        geogeo = geo.clone();
+                        geo.x = cx - geo.width / 2;
+                        geo.y = cy - geo.height / 2;
+
+                        graph.getModel().setGeometry(cell, geo);
+                    }
+
+                    //根据选中的元素创建一个新的顶点列表图
+                    var vertices = [];
+
+                    for (var key in graph.getModel().cells) {
+                        var tmp = graph.getModel().getCell(key);
+
+                        if (tmp != cell &&
+                                model.isVertex(tmp)) {
+                            vertices.push(tmp);
+
+                            // 将选中的元素移动到园中心位置，形成动画
+                            var geo = model.getGeometry(tmp);
+
+                            if (geo != null) {
+                                geo.x = cx - geo.width / 2;
+                                geo.y = cy - geo.height / 2;
+                            }
+                        }
+                    }
+
+                    // 将响应的内容排列到一个圆形图中
+                    var cellCount = vertices.length;
+                    var phi = 2 * Math.PI / cellCount;
+                    var r = Math.min(graph.container.scrollWidth / 4,
+                            graph.container.scrollHeight / 4);
+
+                    for (var i = 0; i < cellCount; i++) {
+                        var geo = graph.getModel().getGeometry(vertices[i]);
+
+                        if (geo != null) {
+                            geogeo = geo.clone();
+                            geo.x += r * Math.sin(i * phi);
+                            geo.y += r * Math.cos(i * phi);
+
+                            graph.getModel().setGeometry(vertices[i], geo);
+                        }
+                    }
+                }
+                finally
+                {
+                    // 更新事务结束
+                    graph.getModel().endUpdate();
+                }
+            }
+        };
+
+        // 模拟的一个服务器，可以抓取大的具有一定深度的曲线图，并创建用于遍历的细胞，然后将其发送到客户端的图形模型的存在
+        // 模拟服务器，
+        function server(cellId)
+        {
+            // 增加元素的请求ID的编号
+            requestId++;
+
+            // 创建一个没有显示的本地图形
+            var graph = new mxGraph();
+
+            // 在对象中创建默认组件
+            var parent = graph.getDefaultParent();
+
+            // 开启模型的更新事务
+            graph.getModel().beginUpdate();
+            try
+            {
+                var v0 = graph.insertVertex(parent, cellId, 'Dummy', 0, 0, 40, 30);
+                var cellCount = parseInt(Math.random() * 16) + 4;
+
+                // 在顶点元素上根据随机数创建子元素
+                for (var i = 0; i < cellCount; i++)
+                {
+                    var id = requestId + '-' + i;
+                    var v = graph.insertVertex(parent, id, id, 0, 0, 40, 30);
+                    var e = graph.insertEdge(parent, null, 'Link ' + i, v0, v);
+                }
+            }
+            finally
+            {
+                // 更新事务结束
+                graph.getModel().endUpdate();
+            }
+
+            var enc = new mxCodec();
+            var node = enc.encode(graph.getModel());
+
+            return mxUtils.getXml(node);
+        };
+    </script>
+</head>
+
+<!-- 页面载入时启动程序 -->
+<body onload="main(document.getElementById('graphContainer'))" style="overflow:hidden;">
+
+<!-- Creates a container for the graph with a grid wallpaper. Make sure to define the position
+    and overflow attributes! See comments on the adding of the size-listener on line 54 ff!  -->
+<!-- 创建带网格壁纸和曲线的一个容器，请一定要定义的position和overflow的属性！根据在线API的54 页内容增加的大小侦听器  -->
+<div id="graphContainer"
+        style="overflow:visible;position:absolute;width:100%;height:100%;background:url('editors/images/grid.gif');cursor:default;">
+</div>
+</body>
+</html>
