@@ -85,6 +85,27 @@ function getGraphFromXml(container){
 
 }
 
+// 根据链接在服务器端请求相应的数据加载到给定的图形中（这是演示使用服务器的功能）
+function load(graph)
+{
+       // var cx = graph.container.scrollWidth / 2;
+       // var cy = graph.container.scrollHeight / 2;
+
+        // 在图形中创建默认组件
+        var parent = graph.getDefaultParent();
+
+        // 开启模型的更新事务
+        graph.getModel().beginUpdate();
+        try
+        {
+            read(graph, 'data/fileio.xml');
+        }
+        finally
+        {
+            // 更新事务结束
+            graph.getModel().endUpdate();
+        }
+};
 
 // 从XML数据中读取并解析
 function read(graph, filename)

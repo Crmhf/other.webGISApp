@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Layout - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="3rd/ktwDev/theme/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="3rd/ktwDev/theme/default/easyui.css" />
+
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../demo.css">
+    <script type="text/javascript" src="3rd/ktwDev/js/jquery.min.js"></script>
+    <script type="text/javascript" src="3rd/ktwDev/js/jquery.easyui.min.js"></script>
+</head>
+<body>
+<h2>Basic Layout</h2>
+<p>The layout contains north,south,west,east and center regions.</p>
+<div style="margin:20px 0;"></div>
+<div class="easyui-layout" style="width:700px;height:350px;">
+    <div data-options="region:'north'" style="height:50px"></div>
+    <div data-options="region:'south',split:true" style="height:50px;"></div>
+    <div data-options="region:'east',split:true" title="East" style="width:100px;"></div>
+    <div data-options="region:'west',split:true" title="West" style="width:100px;"></div>
+    <div id="graph" data-options="region:'center',title:'Main Title',iconCls:'icon-ok'">
+
+    </div>
+</div>
+
+</body>
+</html>

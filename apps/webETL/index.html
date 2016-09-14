@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>WebETL</title>
+    <title>WebETL - KingTopWare</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="3rd/ktwDev/theme/default/easyui.css" />
     <link rel="stylesheet" type="text/css" href="3rd/ktwDev/css/app.css" />
@@ -12,20 +12,24 @@
     <script type="text/javascript" src="3rd/ktwDev/js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ktwui_zl.js"></script>
 
+    <!-- Sets the basepath for the library if not in same directory -->
+    <script type="text/javascript">
+        mxBasePath = '3rd/mxGraph/src';
+    </script>
+    <!-- Loads and initializes the library -->
     <script type="text/javascript" src="3rd/mxGraph/src/js/mxClient.js"></script>
 
-    <script type="text/javascript" scr="js/layout.js"></script>
-    <script type="text/javascript" src="js/graph.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+ <!--   <script type="text/javascript" src="js/graph.js"></script>-->
     <script type="text/javascript" src="js/change.js"></script>
 
-    <script type="text/javascript">
-        mxBasePath = '../3rd/mxGraph/src';
-    </script>
-    <script type="text/javascript" src="3rd/mxGraph/examples/editors/js/mxApplication.js"></script>
+    <!-- 示例代码 -->
+
+
 </head>
 
 
-<body onload="initWorkFlow(document.getElementById('graph'));">
+<body>
 <div id="mainFrame" class="easyui-layout" style="top: 30px">
     <div data-options="region:'west',split:true" minwidth="100px" class="easyui-tabs" title=" " style="width: 300px">
             <div title="方案库" style="width: 300px;height: 700px">
@@ -34,8 +38,8 @@
                         <span>数据互操作</span>
                         <ul>
                             <li data-options="iconCls:'icon-help',closable:true">
-                                <span onclick="getGraphFromXml()">将数据从数据库导出到txt</span>
-                                <a href="#" onclick="getGraphFromXml(document.getElementById('graph'));">将数据从数据库导出到txt</a>
+                                <!--<span onclick="getGraphFromXml()">将数据从数据库导出到txt</span> -->
+                                <a href="#" onclick="load(document.getElementById('graph'));">将数据从数据库导出到txt</a>
                             </li>
                             <li>
                                 <span>11</span>
@@ -91,47 +95,47 @@
                                         <span>Json数据输入</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>LDAP数据输入</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>OGR标准数据输入</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>REST服务</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>SDE输入</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>ShapeFile文件输入</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>Web服务</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>WFS服务数据输入</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>XBase输入</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>XML输入</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>文本文件输入</span>
                                     </li>
                                     <li>
-                                        <img src="image/run.png">
+                                        <img src="img/test/run.png">
                                         <span>文本输入</span>
                                     </li>
                                     <li >
@@ -194,12 +198,11 @@
                     <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-stop'">停止</a>
                     <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-save'">保存</a>
                     <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-showresults'">执行运行结果</a>
+                    <a href="javascript:void(0)" id="showXML" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-showresults'">显示流程的XML</a>
             </div>
-            <div data-options="region:'center'" id="graph" style="background:url('img/mxGraph/grid.gif')">
+            <div data-options="region:'center'" id="graphContainer" style="background:url('img/mxGraph/grid.gif')">
             </div>
-            <textarea id="xml"
-             style="height:75%;width:800px;top:0;display:none;border-style:solid;border-width: 1px;border-color: #e0ecff">
-            </textarea>
+
             <div data-options="region:'south',split:true"
                  title= "服务日志" minheight="100px"  style="height: 120px;">
                 <div id="aaa">
@@ -207,6 +210,18 @@
             </div>
         </div>
     </div>
+
+
+    <div id="dlg" class="easyui-dialog" title="XML" data-options="iconCls:'icon-save'" closed="true" style="width:800px;height:600px;padding:10px">
+         <div id="showXMLMessage" style="z-index:9999;color:#0b0b0b;">
+         </div>
+    </div>
+
+    <div id="dlg" class="easyui-dialog" data-options="iconCls:'icon-save'" closed="true" style="width:800px;height:600px;padding:10px">
+        <div id="showXMLMessage" style="z-index:9999;color:#0b0b0b;">
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

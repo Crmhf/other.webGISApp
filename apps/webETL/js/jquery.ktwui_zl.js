@@ -29,7 +29,7 @@ function GetMenuToLeft(index) {
 }
 function SubSystemLayout() {
     var systemMenu = $("#systemMenu");
-    if (systemMenu[0].index == undefined) { GetMenusWidth(); }
+  //  if (systemMenu[0].index == undefined) { GetMenusWidth(); }
     var leftTab = $("#leftTab");
     var rightTab = $("#rightTab");
     var winWidth = $(window).width();
@@ -288,8 +288,8 @@ function PluginArrowMouseout(obj) {
 
 function LayoutRefresh() {
     MainFrameLayout();
-    SubSystemLayout();
-    PluginLayout();
+    // SubSystemLayout();
+    // PluginLayout();
 }
 
 function AddListen() {
