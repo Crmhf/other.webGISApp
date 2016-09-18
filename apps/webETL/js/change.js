@@ -86,19 +86,30 @@ function getGraphFromXml(container){
 }
 
 // 根据链接在服务器端请求相应的数据加载到给定的图形中（这是演示使用服务器的功能）
-function load(graph)
+function load(xml)
 {
        // var cx = graph.container.scrollWidth / 2;
        // var cy = graph.container.scrollHeight / 2;
 
         // 在图形中创建默认组件
-        var parent = graph.getDefaultParent();
+
 
         // 开启模型的更新事务
         graph.getModel().beginUpdate();
         try
         {
-            read(graph, 'data/fileio.xml');
+            // Loads the mxGraph file format (XML file)
+            read(graph, xml);
+
+            /*
+            var layout = new mxFastOrganicLayout(graph);
+            // Gets the default parent for inserting new cells. This
+            // is normally the first child of the root (ie. layer 0).
+            var parent = graph.getDefaultParent();
+
+            // Executes the layout
+            layout.execute(parent);*/
+
         }
         finally
         {
@@ -115,3 +126,5 @@ function read(graph, filename)
     var dec = new mxCodec(root.ownerDocument);
     dec.decode(root, graph.getModel());
 };
+
+

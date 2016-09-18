@@ -2,12 +2,12 @@
     <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
-        <mxCell id="2" value="Hello," vertex="1" parent="1">
-            <mxGeometry x="20" y="20" width="80" height="30" as="geometry"/>
+        <mxCell id="2" value="从SQL中加载数据" vertex="1" parent="1">
+            <mxGeometry x="300" y="300" width="120" height="50" as="geometry"></mxGeometry>
             <CustomData as="data">{"value":"v1"}</CustomData>
         </mxCell>
-        <mxCell id="3" value="World!" vertex="1" parent="1">
-            <mxGeometry x="200" y="150" width="80" height="30" as="geometry"/>
+        <mxCell id="3" value="导出到TXT中" vertex="1" parent="1">
+            <mxGeometry x="500" y="300" width="100" height="50" as="geometry"/>
             <CustomData as="data">{"value":"v1"}</CustomData>
         </mxCell>
         <mxCell id="4" value="" edge="1" parent="1" source="2" target="3">

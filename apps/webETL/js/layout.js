@@ -70,8 +70,15 @@ function initGraph(container)
         // 在指定容器中创建图形
         graph = new mxGraph(container);
 
-        // 激活橡皮圈选择
+        // 激活橡皮圈选择,鼠标框选
         new mxRubberband(graph);
+
+        // 禁止改变元素大小
+        graph.setCellsResizable(false);
+        // Label 将显示 Html 格式的 Value
+        graph.setHtmlLabels(true);
+        // 提示信息
+        graph.setTooltips(true);
 
         // 拿到插入单元的默认父节点。
         // 这通常是根节点的第一子节点（如0层）。
@@ -90,9 +97,16 @@ function initGraph(container)
         try
         {
             // 通过设定insertVertex中的参数来控制其样式
-            var v1 = graph.insertVertex(parent, null, '从SQL中加载数据', 300, 300, 120, 50,'ROUNDED;strokeColor=red;fillColor=gray');
+           var x = {
+               'x':'aa',
+               'y':'bb',
+               'z':'cc'
+           };
+            var v1 = graph.insertVertex(parent, null, x, 300, 300, 120, 50,'ROUNDED;strokeColor=red;fillColor=gray');
+            v1.data = new Step('N','N','N');
             var v2 = graph.insertVertex(parent, null, '导出到TXT中', 500, 300, 100, 50);
             var e1 = graph.insertEdge(parent, null, '', v1, v2);
+            e1.data = new Step('N','N','N');
         }
         finally
         {
@@ -101,6 +115,34 @@ function initGraph(container)
         }
     }
 };
+
+function Step(value1,value2,value3)
+{
+    this.SpecifyFormat = value1;
+    this.add_date = value2;
+    this.add_time = value3;
+}
+
+var codec = new mxObjectCodec(new Step());
+
+/*codec.encode = function(enc, obj)
+{
+    var node = enc.document.createElement('CustomData');
+    mxUtils.setTextContent(node, JSON.stringify(obj));
+
+    return node;
+};
+
+codec.decode = function(dec, node, into)
+{
+    var obj = JSON.parse(mxUtils.getTextContent(node));
+    obj.constructor = CustomData;
+
+    return obj;
+};*/
+
+mxCodecRegistry.register(codec);
+
 
 // 节点生成xml
 function showXML(container){
