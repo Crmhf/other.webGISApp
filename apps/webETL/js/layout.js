@@ -102,6 +102,7 @@ function initGraph(container)
                'y':'bb',
                'z':'cc'
            };
+
             var v1 = graph.insertVertex(parent, null, x, 300, 300, 120, 50,'ROUNDED;strokeColor=red;fillColor=gray');
             v1.data = new Step('N','N','N');
             var v2 = graph.insertVertex(parent, null, '导出到TXT中', 500, 300, 100, 50);
