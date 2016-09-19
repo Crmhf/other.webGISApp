@@ -1,9 +1,3 @@
-<mxGraphModel>
-    <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
-        <mxCell id="2" style="start-s" vertex="1" parent="1">
-            <mxGeometry x="130" y="40" width="60" height="60" as="geometry"/>
-        </mxCell>
-    </root>
-</mxGraphModel>
+<step id="0">
+
+</step>

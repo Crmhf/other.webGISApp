@@ -122,8 +122,10 @@ function load(xml)
 function read(graph, filename)
 {
     var req = mxUtils.load(filename);
+    debugger;
     var root = req.getDocumentElement();
     var dec = new mxCodec(root.ownerDocument);
+  //  var dec = new mxCodec(root);
     dec.decode(root, graph.getModel());
 };
 

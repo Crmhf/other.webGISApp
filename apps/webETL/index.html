@@ -12,12 +12,17 @@
     <script type="text/javascript" src="3rd/ktwDev/js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ktwui_zl.js"></script>
 
-    <!-- Sets the basepath for the library if not in same directory -->
+    <!-- Sets the basepath for the library if not in same directory-->
     <script type="text/javascript">
         mxBasePath = '3rd/mxGraph/src';
     </script>
-    <!-- Loads and initializes the library -->
     <script type="text/javascript" src="3rd/mxGraph/src/js/mxClient.js"></script>
+
+    <!--
+    <script type="text/javascript">
+        mxBasePath = '3rd/mxgraph2';
+    </script>
+    <script type="text/javascript" src="3rd/mxgraph2/js/mxClient.js"></script> -->
 
     <script type="text/javascript" src="js/layout.js"></script>
  <!--   <script type="text/javascript" src="js/graph.js"></script>-->
@@ -39,7 +44,7 @@
                         <ul>
                             <li data-options="iconCls:'icon-help',closable:true">
                                 <!--<span onclick="getGraphFromXml()">将数据从数据库导出到txt</span> -->
-                                <a href="#" onclick="load('data/1.xml');">将数据从数据库导出到txt</a>
+                                <a href="#" onclick="load('data/person.xml');">将数据从数据库导出到txt</a>
                             </li>
                             <li>
                                 <a href="#" onclick="load('data/demo.xml');">222222</a>

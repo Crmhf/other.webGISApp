@@ -67,6 +67,9 @@ function initGraph(container)
     }
     else
     {
+        // 禁用浏览器自带右键菜单
+        mxEvent.disableContextMenu(document.body);
+
         // 在指定容器中创建图形
         graph = new mxGraph(container);
 
@@ -85,35 +88,105 @@ function initGraph(container)
         var parent = graph.getDefaultParent();
 
         // 处理对元素的点击
-        graph.addListener(mxEvent.CLICK, function(sender, evt)
+        graph.addListener(mxEvent.DOUBLE_CLICK, function(sender, evt)
         {
             var cell = evt.getProperty('cell');
-
+            alert(cell);
+            debugger;
 
         });
+
+        var doc = mxUtils.createXmlDocument();
+        var y = doc.createElement('Step');
+        y.setAttribute('Name', '这是一个测试');
+        y.setAttribute('SpecifyFormat', 'N');
+        y.setAttribute('add_date', 'N');
+        y.setAttribute('add_time', 'N');
+
+
+        var z = doc.createElement('Step');
+        z.setAttribute('Name', '导出到TXT');
+        z.setAttribute('SpecifyFormat', 'N');
+        z.setAttribute('add_date', 'N');
+        z.setAttribute('add_time', 'N');
+
+        var x = doc.createElement('TransHop');
+        x.setAttribute('Name', '执行');
+        x.setAttribute('enabled', 'Y');
+        x.setAttribute('from', 'Json 输入');
+        x.setAttribute('from', '文本文件输出');
+
+        graph.convertValueToString = function(cell)
+        {
+            if (mxUtils.isNode(cell.value))
+            {
+                if (cell.value.nodeName.toLowerCase() == 'step')
+                {
+                    var Name = cell.getAttribute('Name', '');
+                    return Name;
+                }
+                else if (cell.value.nodeName.toLowerCase() == 'transhop')
+                {
+                    var LineName = cell.getAttribute('Name', '');
+                    return LineName;
+                }
+
+            }
+
+            return '';
+        };
 
         // 在一个步骤中，加入所有的单元到模型中
         graph.getModel().beginUpdate();
         try
         {
             // 通过设定insertVertex中的参数来控制其样式
-           var x = {
-               'x':'aa',
-               'y':'bb',
-               'z':'cc'
-           };
 
-            var v1 = graph.insertVertex(parent, null, x, 300, 300, 120, 50,'ROUNDED;strokeColor=red;fillColor=gray');
-            v1.data = new Step('N','N','N');
-            var v2 = graph.insertVertex(parent, null, '导出到TXT中', 500, 300, 100, 50);
-            var e1 = graph.insertEdge(parent, null, '', v1, v2);
-            e1.data = new Step('N','N','N');
+            /*
+            var doc = mxUtils.load('data/demo.xml');
+            var cell = graph.insertVertex(parent, null, doc.documentElement, 500, 300, 40, 40);
+            graph.setSelectionCells([cell]);*/
+
+
+
+            var v1 = graph.insertVertex(parent, null, y, 300, 300, 120, 50,'ROUNDED;strokeColor=red;fillColor=gray');
+         //   v1.data = new Step('N','N','N');
+            var v2 = graph.insertVertex(parent, null, z, 500, 300, 100, 50);
+            var e1 = graph.insertEdge(parent, null, x, v1, v2);
+         //   e1.data = new Step('N','N','N');
         }
         finally
         {
             // 更新显示
             graph.getModel().endUpdate();
         }
+
+        // 覆写右键单击事件
+        graph.panningHandler.factoryMethod = function(menu, cell, evt)
+        {
+            menu.addItem('Item 1', null, function()
+            {
+                alert('Item 1');
+            });
+
+            menu.addItem('Item 2', null, function()
+            {
+                alert('Item 2');
+            });
+
+            menu.addSeparator();
+
+            var submenu1 = menu.addItem('Submenu 1', null, null);
+
+            menu.addItem('Subitem 1', null, function()
+            {
+                alert('Subitem 1');
+            }, submenu1);
+            menu.addItem('Subitem 1', null, function()
+            {
+                alert('Subitem 2');
+            }, submenu1);
+        };
     }
 };
 
@@ -125,6 +198,8 @@ function Step(value1,value2,value3)
 }
 
 var codec = new mxObjectCodec(new Step());
+// mxCodecRegistry.register(codec);
+
 
 /*codec.encode = function(enc, obj)
 {

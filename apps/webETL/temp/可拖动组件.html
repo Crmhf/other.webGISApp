@@ -1,0 +1,203 @@
+<!Doctype html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <title>可拖动组件</title>
+    <!-- Sets the basepath for the library if not in same directory -->
+    <script type="text/javascript">
+        mxBasePath = '../src';
+    </script>
+
+    <!-- Loads and initializes the library -->
+    <script type="text/javascript" src="../3rd/mxGraph/src/js/mxClient.js"></script>
+    <!-- 示例代码 -->
+    <script type="text/javascript">
+        // 程序在此方法中启动
+        function main(container) {
+            // 检查浏览器支持
+            if (!mxClient.isBrowserSupported()) {
+                mxUtils.error('Browser is not supported!', 200, false);
+            } else {
+                //去锯齿效果
+                mxRectangleShape.prototype.crisp = true;
+
+                // 显示导航线
+                mxGraphHandler.prototype.guidesEnabled = true;
+
+                // Alt键禁用导航线
+                mxGuide.prototype.isEnabledForEvent = function(evt)
+                {
+                    return !mxEvent.isAltDown(evt);
+                };
+
+                // 显示终点
+                mxEdgeHandler.prototype.snapToTerminals = false;
+
+                var graphs = [];
+
+                // 在容器中创建图形
+                for (var i = 0; i < 2; i++) {
+                    var container = document.createElement('div');
+                    container.style.overflow = 'hidden';
+                    container.style.position = 'relative';
+                    container.style.width = '321px';
+                    container.style.height = '241px';
+                    container.style.background = 'url(\'editors/images/grid.gif\')';
+                    container.style.cursor = 'default';
+
+                    //在页面中插入容器
+                    document.body.appendChild(container);
+
+                    var graph = new mxGraph(container);
+                    graph.gridSize = 30;
+
+                    // 设置容器自动调整大小
+                    //graph.setResizeContainer(true);
+
+                    // 允许弹性选项
+                    new mxRubberband(graph);
+
+                    // 在图形中创建默认组件
+                    var parent = graph.getDefaultParent();
+
+                    // 开启模型的更新事务
+                    graph.getModel().beginUpdate();
+                    try
+                    {
+                        var v1 = graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30);
+                        var v2 = graph.insertVertex(parent, null, 'World!', 200, 150, 80, 30);
+                        var e1 = graph.insertEdge(parent, null, '', v1, v2);
+                    }
+                    finally
+                    {
+                        //更新事务结束
+                        graph.getModel().endUpdate();
+                    }
+                    //刷新图形
+                    graphs.push(graph);
+                }
+
+                // 检查图形中是否包含对应的elt节点
+                function containsElt(graph, elt) {
+                    while (elt != null)
+                    {
+                        if (elt == graph.container)
+                        {
+                            return true;
+                        }
+
+                        eltelt = elt.parentNode;
+                    }
+
+                    return false;
+                };
+
+                // 返回鼠标选中的元素
+                var graphF = function(evt)
+                {
+                    var x = mxEvent.getClientX(evt);
+                    var y = mxEvent.getClientY(evt);
+                    var elt = document.elementFromPoint(x, y);
+
+                    for (var i = 0; i < graphs.length; i++)
+                    {
+                        if (containsElt(graphs[i], elt))
+                        {
+                            return graphs[i];
+                        }
+                    }
+
+                    return null;
+                };
+
+                // 在给定的位置插入一个元素
+                var funct = function(graph, evt, target, x, y)
+                {
+                    var cell = new mxCell('测试CELL', new mxGeometry(0, 0, 120, 40));
+                    cell.vertex = true;
+                    var cells = graph.importCells([cell], x, y, target);
+
+                    if (cells != null && cells > 0)
+                    {
+                        graph.scrollCellToVisible(cells[0]);
+                        graph.setSelectionCells(cells);
+                    }
+                };
+
+                // 创建一个DOM节点，作为拖动源
+                var img = mxUtils.createImage('images/icons48/gear.png');
+                img.style.width = '48px';
+                img.style.height = '48px';
+                document.body.appendChild(img);
+
+                // 禁用IE浏览器中的DnD功能（这是为了跨浏览器平台而设计的，见下文）
+                if (mxClient.IS_IE) {
+                    mxEvent.addListener(img, 'dragstart', function(evt)
+                    {
+                        evt.returnValue = false;
+                    });
+                }
+
+                // 创建拖动源的预览
+                var dragElt = document.createElement('div');
+                dragElt.style.border = 'dashed black 1px';
+                dragElt.style.width = '120px';
+                dragElt.style.height = '40px';
+
+                // 在点击拖动源图标时提供预览。 预览是提供的仅仅是拖动源的图片
+                // 只有拖动源到容器内时才会显示元素的坐标预览
+                var ds = mxUtils.makeDraggable(img, graphF, funct, dragElt, null, null, graph.autoscroll, true);
+
+                // 从拖动源拖动时显示导航线。
+                // 注意，对图形中已存在的元素拖动时显示导航线不在本方法约束范围。
+                ds.isGuidesEnabled = function() {
+                    return graph.graphHandler.guidesEnabled;
+                };
+
+                // 从拖动源拖动元素到图形以外的区域时，显示拖动源图片预览
+                ds.createDragElement = mxDragSource.prototype.createDragElement;
+            }
+        };
+
+        // 提示: 要启用跨浏览器鼠标拖拽（如帧之间的），下面的方法需要重写：
+        /*mxDragSourcemxDragSourceMouseUp = mxDragSource.prototype.mouseUp;
+         mxDragSource.prototype.mouseUp = function(evt)
+         {
+         var doc = this.element.ownerDocument;
+
+         if (doc != document)
+         {
+         var mu = (mxClient.IS_TOUCH) ? 'touchend' : 'mouseup';
+
+         if (this.mouseUpHandler != null)
+         {
+
+         mxEvent.removeListener(doc, mu, this.mouseUpHandler);
+         }
+         }
+
+         mxDragSourceMouseUp.apply(this, arguments);
+         };*/
+
+        /*mxDragSourcemxDragSourceMouseDown = mxDragSource.prototype.mouseDown;
+         mxDragSource.prototype.mouseDown = function(evt)
+         {
+         if (this.enabled && !mxEvent.isConsumed(evt))
+         {
+         mxDragSourceMouseDown.apply(this, arguments);
+         var doc = this.element.ownerDocument;
+
+         if (doc != document)
+         {
+         var mu = (mxClient.IS_TOUCH) ? 'touchend' : 'mouseup';
+         mxEvent.addListener(doc, mu, this.mouseUpHandler);
+         }
+         }
+         };*/
+    </script>
+</head>
+
+<!-- 页面载入时启动程序 -->
+<body onload="main();">
+</body>
+</html>
