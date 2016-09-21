@@ -1,0 +1,113 @@
+<!Doctype html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <title>连接线调整</title>
+
+    <!-- 如果本文件的包与src不是在同一个目录,就要将basepath设置到src目录下 -->
+    <script type="text/javascript">
+        mxBasePath = '../3rd/mxGraph/src';
+    </script>
+
+    <!-- 引入支持库文件 -->
+    <script type="text/javascript" src="../3rd/mxGraph/src/js/mxClient.js"></script>
+    <!-- 示例代码 -->
+    <script type="text/javascript">
+        // 程序在此方法中启动
+        function main(container)
+        {
+            // 检查浏览器支持
+            if (!mxClient.isBrowserSupported())
+            {
+                mxUtils.error('Browser is not supported!', 200, false);
+            }
+            else
+            {
+                // 去锯齿效果
+                mxRectangleShape.prototype.crisp = true;
+
+                // 覆盖的鼠标事件，此方法没有任何返回值
+                var mxGraphFireMouseEvent = mxGraph.prototype.fireMouseEvent;
+                mxGraph.prototype.fireMouseEvent = function(evtName, me, sender)
+                {
+                    // 鼠标状态检查，无如何返回
+                    if (me.getState() == null)
+                    {
+                        // 更新的图形坐标中的事件
+                        if (me.graphX == null || me.graphY == null)
+                        {
+                            var pt = mxUtils.convertPoint(this.container, me.getX(), me.getY());
+
+                            me.graphX = pt.x;
+                            me.graphY = pt.y;
+                        }
+
+                        var cell = this.getCellAt(me.graphX, me.graphY);
+
+                        if (this.getModel().isEdge(cell))
+                        {
+                            me.state = this.view.getState(cell);
+
+                            if (me.state != null && me.state.shape != null)
+                            {
+                                graph.container.style.cursor = me.state.shape.node.style.cursor;
+                            }
+                        }
+                    }
+
+                    if (me.state == null)
+                    {
+                        graph.container.style.cursor = 'default';
+                    }
+
+                    mxGraphFireMouseEvent.apply(this, arguments);
+                };
+
+                // 复写鼠标双击事件, 调整连接线
+                var mxGraphDblClick = mxGraph.prototype.dblClick;
+                mxGraph.prototype.dblClick = function(evt, cell)
+                {
+                    if (cell == null)
+                    {
+                        var pt = mxUtils.convertPoint(this.container,
+                                mxEvent.getClientX(evt), mxEvent.getClientY(evt));
+                        cell = this.getCellAt(pt.x, pt.y);
+                    }
+
+                    mxGraphDblClick.call(this, evt, cell);
+                };
+
+                // 在容器中创建图形
+                var graph = new mxGraph(container);
+                graph.setTolerance(20);
+
+                //在图形中创建默认组件
+                var parent = graph.getDefaultParent();
+
+                // 开启更新事务
+                graph.getModel().beginUpdate();
+                try
+                {
+                    var v1 = graph.insertVertex(parent, null, 'Hello,', 120, 120, 80, 30);
+                    var v2 = graph.insertVertex(parent, null, 'World!', 400, 250, 80, 30);
+                    var e1 = graph.insertEdge(parent, null, '', v1, v2, 'edgeStyle=orthogonalEdgeStyle;');
+                    var e2 = graph.insertEdge(parent, null, '', v2, v1, 'edgeStyle=orthogonalEdgeStyle;');
+                }
+                finally
+                {
+                    // 结束更新事务
+                    graph.getModel().endUpdate();
+                }
+            }
+        };
+    </script>
+</head>
+
+<!-- 页面载入时启动程序 -->
+<body onload="main(document.getElementById('graphContainer'))">
+
+<!-- 创建带网格壁纸和曲线的一个容器  -->
+<div id="graphContainer" style="overflow:hidden;width:641px;height:481px;background:url('editors/images/grid.gif');cursor:default;">
+</div>
+</body>
+</html>
