@@ -321,5 +321,35 @@ $(document).ready(function(){
         showXML(container);
     });
 
+    $('#btnCheakTrans').click(function(){
+
+        var enc = new mxCodec(mxUtils.createXmlDocument());
+        var node = enc.encode(graph.getModel());
+
+        // x和y二选一，分别生成两种格式的XML
+        var x =  mxUtils.getPrettyXml(node);
+
+alert(x);
+        var graphXml = x;
+
+        $.ajax ({
+            type:'POST',
+        //    dataType:'text',
+            url: commonConfig.trans.engineXml,
+            data:graphXml,
+            error: function() {
+                alert('数据获取失败！');
+            },
+            success: function(data) {
+
+                alert('ok');
+
+            },
+            complete: function() {
+                //$('#cargando').delay(500).fadeOut('slow');
+            }
+        });
+    });
+
 
 });
