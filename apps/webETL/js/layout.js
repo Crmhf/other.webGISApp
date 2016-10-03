@@ -161,6 +161,33 @@ function initGraph(container)
             graph.getModel().endUpdate();
         }
 
+        // 获取到工具条，并能拖动工具条，新增工具栏的节点
+        var tbContainer = document.getElementById('xxxx');
+        var toolbar = new mxToolbar(tbContainer);
+        var addVertex = function(icon, w, h, style)
+        {
+            var vertex = new mxCell(null, new mxGeometry(0, 0, w, h), style);
+            vertex.setVertex(true);
+
+            var img = addToolbarItem(graph, toolbar, vertex, icon);
+            img.enabled = true;
+
+            graph.getSelectionModel().addListener(mxEvent.CHANGE, function()
+            {
+                var tmp = graph.isSelectionEmpty();
+                mxUtils.setOpacity(img, (tmp) ? 100 : 20);
+                img.enabled = tmp;
+            });
+        };
+        addVertex('editors/images/rectangle.gif', 100, 40, '');
+        addVertex('editors/images/rounded.gif', 100, 40, '');
+        addVertex('editors/images/ellipse.gif', 40, 40, '');
+        addVertex('editors/images/rhombus.gif', 40, 40, '');
+        addVertex('editors/images/triangle.gif', 40, 40, '');
+        addVertex('editors/images/cylinder.gif', 40, 40, '');
+        addVertex('editors/images/actor.gif', 30, 40, '');
+
+
         // 覆写右键单击事件
         graph.panningHandler.factoryMethod = function(menu, cell, evt)
         {
@@ -236,7 +263,53 @@ function showXML(container){
     $('#dlg').dialog('open');
 }
 
+// 添加工具栏上的元素
+function addToolbarItem(graph, toolbar, prototype, image)
+{
+    // Function that is executed when the image is dropped on
+    // the graph. The cell argument points to the cell under
+    // the mousepointer if there is one.
+    var funct = function(graph, evt, cell, x, y)
+    {
+        graph.stopEditing(false);
 
+        var vertex = graph.getModel().cloneCell(prototype);
+        vertex.geometry.x = x;
+        vertex.geometry.y = y;
+
+        graph.addCell(vertex);
+        graph.setSelectionCell(vertex);
+    }
+
+    // Creates the image which is used as the drag icon (preview)
+    var img = toolbar.addMode(null, image, function(evt, cell)
+    {
+        var pt = this.graph.getPointForEvent(evt);
+        funct(graph, evt, cell, pt.x, pt.y);
+    });
+
+    // Disables dragging if element is disabled. This is a workaround
+    // for wrong event order in IE. Following is a dummy listener that
+    // is invoked as the last listener in IE.
+    mxEvent.addListener(img, 'mousedown', function(evt)
+    {
+        // do nothing
+    });
+
+    // This listener is always called first before any other listener
+    // in all browsers.
+    mxEvent.addListener(img, 'mousedown', function(evt)
+    {
+        if (img.enabled == false)
+        {
+            mxEvent.consume(evt);
+        }
+    });
+
+    mxUtils.makeDraggable(img, graph, funct);
+
+    return img;
+}
 
 
 $(document).ready(function(){
@@ -247,5 +320,36 @@ $(document).ready(function(){
     $('#showXML').click(function(){
         showXML(container);
     });
+
+    $('#btnCheakTrans').click(function(){
+
+        var enc = new mxCodec(mxUtils.createXmlDocument());
+        var node = enc.encode(graph.getModel());
+
+        // x和y二选一，分别生成两种格式的XML
+        var x =  mxUtils.getPrettyXml(node);
+
+alert(x);
+        var graphXml = x;
+
+        $.ajax ({
+            type:'POST',
+        //    dataType:'text',
+            url: commonConfig.trans.engineXml,
+            data:graphXml,
+            error: function() {
+                alert('数据获取失败！');
+            },
+            success: function(data) {
+
+                alert('ok');
+
+            },
+            complete: function() {
+                //$('#cargando').delay(500).fadeOut('slow');
+            }
+        });
+    });
+
 
 });
