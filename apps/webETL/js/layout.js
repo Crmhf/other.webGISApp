@@ -116,6 +116,7 @@ function initGraph(container)
         x.setAttribute('from', 'Json 输入');
         x.setAttribute('from', '文本文件输出');
 
+        // 设定在流程图上显示的字段
         graph.convertValueToString = function(cell)
         {
             if (mxUtils.isNode(cell.value))
@@ -321,6 +322,8 @@ $(document).ready(function(){
         showXML(container);
     });
 
+
+    // 检查输入的XML是否能正常使用
     $('#btnCheakTrans').click(function(){
 
         var enc = new mxCodec(mxUtils.createXmlDocument());
@@ -329,19 +332,20 @@ $(document).ready(function(){
         // x和y二选一，分别生成两种格式的XML
         var x =  mxUtils.getPrettyXml(node);
 
-alert(x);
-        var graphXml = x;
+      //  var data = JSON.stringify({ graphXml: y});
+
+        var data = { 'graphXml': x};
 
         $.ajax ({
             type:'POST',
-        //    dataType:'text',
             url: commonConfig.trans.engineXml,
-            data:graphXml,
-            error: function() {
-                alert('数据获取失败！');
+            data:data,
+            error: function(a,b,c) {
+                debugger;
+                alert(a+'数据获取失败！');
             },
             success: function(data) {
-
+debugger;
                 alert('ok');
 
             },
@@ -351,5 +355,66 @@ alert(x);
         });
     });
 
+
+    // 显示dialog
+    $('#displayDialog').click(function(){
+
+        /*$("<div></div>").dialog({
+            id: "akmaterial_add_dialog",
+            href: "AkMaterial/Add",
+            title: "添加物料",
+            height: 400,
+            width: 500,
+            modal: true,
+            buttons: [{
+                id: "akmaterial_add_btn",
+                text: '添 加',
+                handler: function () {
+                    $("#akmaterial_addform").form("submit", {
+                        url: "AkMaterial/AddProcess",
+                        onSubmit: function () {
+                            $('#akmaterial_add_btn').linkbutton('disable');
+                            if ($(this).form('validate')) {
+                                return true;
+                            }
+                            else {
+                                $('#akmaterial_add_btn').linkbutton('enable');
+                                return false;
+                            }
+                        },
+                        success: function (data) {
+                            var result = eval('(' + data + ')');
+                            if (result.Success) {
+                                $("#akmaterial_add_dialog").dialog('destroy');
+                                $.show_warning("提示", result.Message);
+                                akmaterial_databind();
+                            } else {
+                                $('#akmaterial_add_btn').linkbutton('enable');
+                                $.show_warning("提示", result.Message);
+                            }
+                        }
+                    });
+                }
+            }],
+            onLoad:function() {
+
+            },
+            onClose: function () {
+                $("#akmaterial_add_dialog").dialog('destroy');
+            }
+        });*/
+
+        $('#dd').dialog({
+            title: 'My Dialog',
+            width: 800,
+            height: 600,
+            closed: false,
+            cache: false,
+            href: 'dialogs/database/sqlInput.html',
+            modal: true
+        });
+        $('#dd').dialog('refresh', 'dialogs/database/sqlInput.html');
+
+    });
 
 });

@@ -1,0 +1,45 @@
+<!--
+    设定数据库连接
+-->
+<form id="ff" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input name="name" class="f1 easyui-textbox"></input></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input name="email" class="f1 easyui-textbox"></input></td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td><input name="phone" class="f1 easyui-textbox"></input></td>
+        </tr>
+        <tr>
+            <td>File:</td>
+            <td><input name="file" class="f1 easyui-filebox"></input></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"></input></td>
+        </tr>
+    </table>
+</form>
+
+<div style="text-align:center;padding:5px 0">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">确定</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">取消</a>
+</div>
+
+<script>
+    // 页面编辑之后，生成一个对象
+    // 生成的对象用来保存节点所需的信息
+    // 将对象中的信息更新到当前的节点中
+    function submitForm(){
+        $('#ff').form('submit');
+    }
+    function clearForm(){
+        //   $('#ff').form('clear');
+        alert('clear');
+    }
+</script>

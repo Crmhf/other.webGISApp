@@ -54,7 +54,7 @@
                                 <a href="#" onclick="load('data/helloworld.xml');">helloworld</a>
                             </li>
                             <li>
-                                <a href="#" onclick="load('data/sql2txt.xml');">33333fanyi</a>
+                                <a href="#" onclick="load('data/sql2txt.xml');">SQL导出到TXT</a>
                             </li>
                             <li>
                                 <a href="#" onclick="load('data/sql.xml');">sql导出到txtfanyi</a>
@@ -204,8 +204,8 @@
         <div class="easyui-layout" data-options="fit:true">
             <div data-options="region:'north'" class="easyui-panel" style="height: 30px;background-color: #e0ecff">
                     <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-run'">启动</a>
-                    <a id="btnCheakTrans" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-run'">检查</a>
-                    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-pause'">暂停</a>
+                    <a id="btnCheakTrans" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-run'">检查流程是否正常</a>
+                    <a id="displayDialog" href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-pause'">暂停</a>
                     <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-stop'">停止</a>
                     <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-save'">保存</a>
                     <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-showresults'">执行运行结果</a>
@@ -228,6 +228,11 @@
          </div>
     </div>
 
+    <div id="dd" class="easyui-dialog" title="My Dialog" data-options="iconCls:'icon-save'" closed="true" style="width:800px;height:600px;padding:10px">
+    </div>
+
+    <div id="ddSub" class="easyui-dialog" title="My Dialog" data-options="iconCls:'icon-save'" closed="true" style="width:800px;height:600px;padding:10px">
+    </div>
 
 
 </div>
