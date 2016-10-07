@@ -91,7 +91,7 @@ function initGraph(container)
         graph.addListener(mxEvent.DOUBLE_CLICK, function(sender, evt)
         {
             var cell = evt.getProperty('cell');
-            alert(cell);
+            alert(cell.getId());
             debugger;
 
         });
