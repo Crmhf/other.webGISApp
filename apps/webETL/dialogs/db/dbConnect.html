@@ -36,10 +36,15 @@
     // 生成的对象用来保存节点所需的信息
     // 将对象中的信息更新到当前的节点中
     function submitForm(){
-        $('#ff').form('submit');
+       $('#ddSub').dialog('close');
     }
+    // 关闭dialog
     function clearForm(){
-        //   $('#ff').form('clear');
-        alert('clear');
+       $('#ddSub').dialog('close');
     }
+
+    // 初始化获取SQL
+    $(document).ready(function(){
+        $('#xLable').val(currentCellAttrs.label.nodeValue);
+    });
 </script>

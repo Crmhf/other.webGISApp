@@ -419,6 +419,26 @@ $(document).ready(function(){
     });
 
 
+    // 运行当前所选的流程
+    $('#btnRunTrans').click(function(){
+        var xml = getGraphXML();
+        var data = { 'graphXml': xml};
+        $.ajax ({
+            type:'POST',
+            url: commonConfig.trans.run,
+            data:data,
+            error: function(a,b,c) {
+                debugger;
+                alert(a+'数据获取失败！');
+            },
+            success: function(data) {
+                alert('该流程可以正常运行！');
+            },
+            complete: function() {
+                //$('#cargando').delay(500).fadeOut('slow');
+            }
+        });
+    });
     // 检查输入的XML是否能正常使用
     $('#btnCheakTrans').click(function(){
 
@@ -441,9 +461,7 @@ $(document).ready(function(){
                 alert(a+'数据获取失败！');
             },
             success: function(data) {
-debugger;
-                alert('ok');
-
+                alert('该流程可以正常运行！');
             },
             complete: function() {
                 //$('#cargando').delay(500).fadeOut('slow');
