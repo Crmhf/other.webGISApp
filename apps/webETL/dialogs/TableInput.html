@@ -1,7 +1,7 @@
 <form id="ff" method="post">
     <div style="margin-bottom:20px">
         <lable>表单名称：</lable>
-        <input class="easyui-textbox" name="name" style="width:100%" data-options="label:'Name:',required:true">
+        <input id="tableinput-name" class="easyui-textbox" name="name" style="width:100%" data-options="label:'Name:',required:true">
     </div>
     <div style="margin-bottom:20px">
         <lable>数据库连接：</lable>
@@ -12,15 +12,14 @@
 
         <select id="DDLCC" class="easyui-combobox" name="DDLCC"  style="width:84px;" data-options="required:true" title="键入搜索查询" >
         </select>
-
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addDbConnect()" style="width:80px">编辑连接</a>
     </div>
     <div style="margin-bottom:20px">
-        <input class="easyui-textbox" name="message" style="width:100%;height:60px" data-options="label:'Message:',multiline:true">
+        <input id="tableinput-sql" class="easyui-textbox" name="message" style="width:100%;height:60px" data-options="label:'Message:',multiline:true">
     </div>
 </form>
 
 <div style="text-align:center;padding:5px 0">
-    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addDbConnect()" style="width:80px">新增</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">确定</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">取消</a>
 </div>
@@ -33,9 +32,7 @@
         $('#ff').form('submit');
     }
     function clearForm(){
-        //   $('#ff').form('clear');
-        var x = commonConfig.database.listNames;
-        alert(x);
+        $('#dd').dialog('close');
     }
 
     // 自执行函数，页面加载过程中自动执行的方法
@@ -90,7 +87,7 @@
 
     function addDbConnect(){
         $('#ddSub').dialog({
-            title: 'My Dialog2222',
+            title: '数据库连接',
             width: 800,
             height: 600,
             closed: false,
@@ -102,5 +99,12 @@
     }
 
 
+    $(document).ready(function(){
+        // 获取节点的参数
+
+        $('#tableinput-name').val(currentCellAttrs.label.nodeValue)
+        $('#tableinput-sql').val(currentCellAttrs.sql.nodeValue)
+
+    });
 
 </script>
