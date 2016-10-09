@@ -278,7 +278,6 @@ function createTextField(graph, form, cell, attribute)
             }
         }
     };
-
     mxEvent.addListener(input, 'keypress', function (evt)
     {
         // Needs to take shift into account for textareas
@@ -350,6 +349,15 @@ function showXML(container){
     // jQuery中的 html()无法解析xml
     $('#showXMLMessage').text(x);
     $('#dlg').dialog('open');
+}
+
+// 获取生成graph的XML
+function getGraphXML(){
+    var enc = new mxCodec(mxUtils.createXmlDocument());
+    var node = enc.encode(graph.getModel());
+    // 获取组成graph的XML
+    var etlXML =  mxUtils.getPrettyXml(node);
+    return etlXML;
 }
 
 // 添加工具栏上的元素
