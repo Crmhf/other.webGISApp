@@ -1,0 +1,48 @@
+<!--
+// 1.获取到当前节点里面的元素信息
+// 2.当前表单里面的元素信息
+// 3.根据表单里面的元素信息，反向更新流程
+-->
+<form id="ff" method="post">
+    <div style="margin-bottom:20px">
+        <lable>表单名称：</lable>
+        <input id="xLable" class="easyui-textbox" name="name" style="width:100%" data-options="label:'Name:',required:true">
+    </div>
+    <div style="margin-bottom:20px">
+        <input class="easyui-textbox" name="message" style="width:100%;height:60px" data-options="label:'Message:',multiline:true">
+    </div>
+</form>
+
+<div style="text-align:center;padding:5px 0">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">确定</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">取消</a>
+</div>
+
+<script>
+    // 更新节点信息
+    function submitForm(){
+        graph.getModel().beginUpdate();
+        try
+        {
+            alert($('#xLable').val());
+            var edit = new mxCellAttributeChange(
+                    currentCell, currentCellAttrs.label.nodeName,
+                    $('#xLable').val());
+            graph.getModel().execute(edit);
+            graph.updateCellSize(currentCell);
+        }
+        finally
+        {
+            graph.getModel().endUpdate();
+            $('#dd').dialog('close');
+        }
+    }
+    // 关闭dialog
+    function clearForm(){
+        $('#dd').dialog('close');
+    }
+    $(document).ready(function(){
+        $('#xLable').val(currentCellAttrs.label.nodeValue);
+    });
+</script>
+

@@ -14,7 +14,7 @@
                 <mxGeometry x="250" y="230" width="40" height="40" as="geometry"/>
             </mxCell>
         </Step>
-        <TransHop Name="XXX3" id="4" to="文本文件输出" from="表输入2" enabled="Y">
+        <TransHop Name="从SQL导出到Txt" id="4" to="文本文件输出" from="表输入2" enabled="Y">
             <mxCell id="8" edge="1" parent="1" source="3" target="2">
                 <mxGeometry relative="1" as="geometry"/>
             </mxCell>

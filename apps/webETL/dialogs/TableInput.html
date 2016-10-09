@@ -46,26 +46,26 @@
             //注册事件
             onChange: function (newValue, oldValue) {
                 if (newValue != null) {
-                  //  var thisKey = encodeURIComponent($('#' + vID).combobox('getValue')); //搜索词
+                    //  var thisKey = encodeURIComponent($('#' + vID).combobox('getValue')); //搜索词
                     var urlStr = commonConfig.database.listNames;
                     $("#" + vID).combobox("reload", urlStr);
                 }
                 /*
-                if (newValue != null) {
-                    var thisKey = encodeURIComponent($('#' + vID).combobox('getValue')); //搜索词
-                    var thisType = ""; //车辆类型
-                    var urlStr = "AutoComplete.ashx?objType=" + thisType + "&objStr=" + thisKey;
-                    $("#" + vID).combobox("reload", urlStr);
-                } */
+                 if (newValue != null) {
+                 var thisKey = encodeURIComponent($('#' + vID).combobox('getValue')); //搜索词
+                 var thisType = ""; //车辆类型
+                 var urlStr = "AutoComplete.ashx?objType=" + thisType + "&objStr=" + thisKey;
+                 $("#" + vID).combobox("reload", urlStr);
+                 } */
             },
             onSelect: function (record) {
                 var vTxt = record.name;
                 $('#DDLCC').combobox('setValue', vTxt);
                 getDbConnectInfo(vTxt);
                 /*
-                setValue(record.typeName);
-                //document.getElementById("TextBox4").value = record.TPrice;
-                $("#TextBox4").val(record.TPrice); */
+                 setValue(record.typeName);
+                 //document.getElementById("TextBox4").value = record.TPrice;
+                 $("#TextBox4").val(record.TPrice); */
             }
         });
     });
