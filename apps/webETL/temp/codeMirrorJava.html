@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>codeMirror显示Java</title>
+    <script type="text/javascript" src="../3rd/codeMirror/codemirror.js"></script>
+    <link rel="stylesheet" href="../3rd/codeMirror/codemirror.css">
+    <script src="./3rd/codeMirror/javascript.js"></script>
+    <script>
+        $(function(){
+            var mixedMode = {
+                name: "htmlmixed",
+                scriptTypes: [{matches: /\/x-handlebars-template|\/x-mustache/i,
+                    mode: null},
+                    /* {matches: /\<\%|\%\>/i,
+                     mode: "text/x-java"},*/
+                    {matches: /(text|application)\/(x-)?vb(a|script)/i,
+                        mode: "text/x-java"}]
+            };
+            Mirroreditor = CodeMirror.fromTextArea(document.getElementById('texcode'), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: mixedMode,
+                indentWithTabs: true,
+                smartIndent: true,
+                styleActiveLine: true,
+                autofocus: true,
+                keyMap: "sublime",
+                autoCloseBrackets: true,
+                autoCloseTags: true,
+                extraKeys: {
+                    "F11": function(cm) {
+                        cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+                    },
+                    "Esc": function(cm) {
+                        if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+                    }
+                }
+            });
+
+            return Mirroreditor;
+        });
+    </script>
+</head>
+<body>
+
+<textarea id="texcode" name="texcode" rows="30" cols="100">
+
+   var jsKeywords = {
+      "if": kw("if"), "while": A, "with": A, "else": B, "do": B, "try": B, "finally": B,
+      "return": C, "break": C, "continue": C, "new": C, "delete": C, "throw": C,
+      "var": kw("var"), "const": kw("var"), "let": kw("var"),
+      "function": kw("function"), "catch": kw("catch"),
+      "for": kw("for"), "switch": kw("switch"), "case": kw("case"), "default": kw("default"),
+      "in": operator, "typeof": operator, "instanceof": operator,
+      "true": atom, "false": atom, "null": atom, "undefined": atom, "NaN": atom, "Infinity": atom,
+      "this": kw("this")
+    };
+</textarea>
+</body>
+</html>
+
