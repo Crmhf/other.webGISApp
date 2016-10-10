@@ -1,0 +1,131 @@
+<form id="ff" method="post">
+    <div style="margin-bottom:20px">
+        <lable>表单名称：</lable>
+        <input id="tableinput-name" class="easyui-textbox" name="name" style="width:100%" data-options="label:'Name:',required:true">
+    </div>
+    <div style="margin-bottom:20px">
+        <lable>数据库连接：</lable>
+        <!--<select class="easyui-combobox" name="language" label="Language" style="width:100%">
+            <option value="db1">ETL</option>
+            <option value="db1">ETL2</option>
+        </select>-->
+
+        <select id="DDLCC" class="easyui-combobox" name="DDLCC"  style="width:84px;" data-options="required:true" title="键入搜索查询" >
+        </select>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addDbConnect()" style="width:80px">编辑连接</a>
+    </div>
+    <div style="margin-bottom:20px">
+        <input id="tableinput-sql" class="easyui-textbox" name="message" style="width:100%;height:60px" data-options="label:'Message:',multiline:true">
+    </div>
+</form>
+
+<div style="text-align:center;padding:5px 0">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">确定</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">取消</a>
+</div>
+
+<script>
+    // 页面编辑之后，生成一个对象
+    // 生成的对象用来保存节点所需的信息
+    // 将对象中的信息更新到当前的节点中
+    function submitForm(){
+        $('#ff').form('submit');
+    }
+    function clearForm(){
+        $('#dd').dialog('close');
+    }
+
+    // 自执行函数，页面加载过程中自动执行的方法
+    $(function () {
+        var vID = "DDLCC";
+        $('#' + vID).combobox({
+            textField: 'name',
+            //注册事件
+            onChange: function (newValue, oldValue) {
+                if (newValue != null) {
+                    //  var thisKey = encodeURIComponent($('#' + vID).combobox('getValue')); //搜索词
+                    var urlStr = commonConfig.database.listNames;
+                    $("#" + vID).combobox("reload", urlStr);
+                }
+                /*
+                 if (newValue != null) {
+                 var thisKey = encodeURIComponent($('#' + vID).combobox('getValue')); //搜索词
+                 var thisType = ""; //车辆类型
+                 var urlStr = "AutoComplete.ashx?objType=" + thisType + "&objStr=" + thisKey;
+                 $("#" + vID).combobox("reload", urlStr);
+                 } */
+            },
+            onSelect: function (record) {
+                var vTxt = record.name;
+                $('#DDLCC').combobox('setValue', vTxt);
+                getDbConnectInfo(vTxt);
+                /*
+                 setValue(record.typeName);
+                 //document.getElementById("TextBox4").value = record.TPrice;
+                 $("#TextBox4").val(record.TPrice); */
+            }
+        });
+    });
+    function getDbConnectInfo(vTxt) {
+        var requestURL = commonConfig.database.getDBInfo;
+        $.ajax({
+            type: "GET",
+            url: requestURL+'?dbName='+vTxt,
+            cache: false,
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (result) {
+                debugger;
+                alert('数据库名称：'+result.databaseName);
+            },
+            error: function (a, b, c) {
+                // showerror();
+                alert('修改应用失败');
+            }
+        });
+    }
+
+    function addDbConnect(){
+        $('#ddSub').dialog({
+            title: '数据库连接',
+            width: 800,
+            height: 600,
+            closed: false,
+            cache: false,
+            href: 'dialogs/database/dbConnect.html',
+            modal: true
+        });
+        $('#ddSub').dialog('refresh', 'dialogs/db/dbConnect.html');
+    }
+
+    // 更新节点信息
+    function submitForm(){
+        graph.getModel().beginUpdate();
+        try
+        {
+            var name = new mxCellAttributeChange(currentCell, currentCellAttrs.label.nodeName,$('#tableinput-name').val());
+            var sql = new mxCellAttributeChange(currentCell, currentCellAttrs.sql.nodeName,$('#tableinput-sql').val());
+            graph.getModel().execute(name);
+            graph.getModel().execute(sql);
+
+            // 改变当前节点的大小
+           // graph.updateCellSize(currentCell);
+        }
+        finally
+        {
+            graph.getModel().endUpdate();
+            $('#dd').dialog('close');
+        }
+    }
+    // 关闭dialog
+    function clearForm(){
+        $('#dd').dialog('close');
+    }
+    $(document).ready(function(){
+        // 获取节点的参数
+        $('#tableinput-name').val(currentCellAttrs.label.nodeValue)
+        $('#tableinput-sql').val(currentCellAttrs.sql.nodeValue)
+
+    });
+
+</script>

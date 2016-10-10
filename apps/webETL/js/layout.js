@@ -55,6 +55,8 @@ function initGraph(container){
 }
 */
 
+var currentCell;
+var currentCellAttrs;
 
 // 程序从这里开始。创建DOM节点中指定标记的简单图形。
 // 方法在文档的onLoad事件处理中被调用（如下所示）。
@@ -90,15 +92,49 @@ function initGraph(container)
         // 处理对元素的点击
         graph.addListener(mxEvent.DOUBLE_CLICK, function(sender, evt)
         {
-            var cell = evt.getProperty('cell');
-            alert(cell);
-            debugger;
+            currentCell = evt.getProperty('cell');
+            // 获取当前的cell的节点
+            // alert(cell.getId());
+
+            currentCellAttrs = currentCell.value.attributes;
+            var name = currentCellAttrs.ctype.nodeValue;
+
+            $('#dd').dialog({
+                title: '编辑该节点',
+                width: 800,
+                height: 600,
+                closed: false,
+                cache: false,
+                href: 'dialogs/'+ name + '.html',
+                modal: true
+            });
+
+            /*
+            var div = document.getElementById('properties');
+            // Clears the DIV the non-DOM way
+            div.innerHTML = '';
+            // Creates the form from the attributes of the user object
+            var form = new mxForm();
+
+            var attrs = cell.value.attributes;
+
+            //var json = JSON.parse(attrs);
+            alert(attrs.ctype);
+
+            for (var i = 0; i < attrs.length; i++)
+            {
+                createTextField(graph, form, cell, attrs[i]);
+            }
+
+            div.appendChild(form.getTable());
+            mxUtils.br(div); */
 
         });
 
+        /* 初始化默认显示的流程图 - 已废弃
         var doc = mxUtils.createXmlDocument();
         var y = doc.createElement('Step');
-        y.setAttribute('Name', '这是一个测试');
+        y.setAttribute('Name', '表输入');
         y.setAttribute('SpecifyFormat', 'N');
         y.setAttribute('add_date', 'N');
         y.setAttribute('add_time', 'N');
@@ -114,15 +150,16 @@ function initGraph(container)
         x.setAttribute('Name', '执行');
         x.setAttribute('enabled', 'Y');
         x.setAttribute('from', 'Json 输入');
-        x.setAttribute('from', '文本文件输出');
+        x.setAttribute('from', '文本文件输出'); */
 
+        // 设定在流程图上显示的字段
         graph.convertValueToString = function(cell)
         {
             if (mxUtils.isNode(cell.value))
             {
                 if (cell.value.nodeName.toLowerCase() == 'step')
                 {
-                    var Name = cell.getAttribute('Name', '');
+                    var Name = cell.getAttribute('label', '');
                     return Name;
                 }
                 else if (cell.value.nodeName.toLowerCase() == 'transhop')
@@ -136,19 +173,12 @@ function initGraph(container)
             return '';
         };
 
+        /* 初始化显示流程图 - 已废弃
         // 在一个步骤中，加入所有的单元到模型中
         graph.getModel().beginUpdate();
         try
         {
             // 通过设定insertVertex中的参数来控制其样式
-
-            /*
-            var doc = mxUtils.load('data/demo.xml');
-            var cell = graph.insertVertex(parent, null, doc.documentElement, 500, 300, 40, 40);
-            graph.setSelectionCells([cell]);*/
-
-
-
             var v1 = graph.insertVertex(parent, null, y, 300, 300, 120, 50,'ROUNDED;strokeColor=red;fillColor=gray');
          //   v1.data = new Step('N','N','N');
             var v2 = graph.insertVertex(parent, null, z, 500, 300, 100, 50);
@@ -159,7 +189,7 @@ function initGraph(container)
         {
             // 更新显示
             graph.getModel().endUpdate();
-        }
+        }  */
 
         // 获取到工具条，并能拖动工具条，新增工具栏的节点
         var tbContainer = document.getElementById('xxxx');
@@ -217,6 +247,64 @@ function initGraph(container)
     }
 };
 
+/**
+ * Creates the textfield for the given property.
+ * 已废弃
+ */
+function createTextField(graph, form, cell, attribute)
+{
+    var input = form.addText(attribute.nodeName + ':', attribute.nodeValue);
+
+    var applyHandler = function()
+    {
+        var newValue = input.value || '';
+        var oldValue = cell.getAttribute(attribute.nodeName, '');
+
+        if (newValue != oldValue)
+        {
+            graph.getModel().beginUpdate();
+
+            try
+            {
+                var edit = new mxCellAttributeChange(
+                    cell, attribute.nodeName,
+                    newValue);
+                graph.getModel().execute(edit);
+                graph.updateCellSize(cell);
+            }
+            finally
+            {
+                graph.getModel().endUpdate();
+            }
+        }
+    };
+    mxEvent.addListener(input, 'keypress', function (evt)
+    {
+        // Needs to take shift into account for textareas
+        if (evt.keyCode == /*enter*/13 &&
+            !mxEvent.isShiftDown(evt))
+        {
+            input.blur();
+        }
+    });
+
+    if (mxClient.IS_IE)
+    {
+        mxEvent.addListener(input, 'focusout', applyHandler);
+    }
+    else
+    {
+        // Note: Known problem is the blurring of fields in
+        // Firefox by changing the selection, in which case
+        // no event is fired in FF and the change is lost.
+        // As a workaround you should use a local variable
+        // that stores the focused field and invoke blur
+        // explicitely where we do the graph.focus above.
+        mxEvent.addListener(input, 'blur', applyHandler);
+    }
+}
+
+
 function Step(value1,value2,value3)
 {
     this.SpecifyFormat = value1;
@@ -261,6 +349,15 @@ function showXML(container){
     // jQuery中的 html()无法解析xml
     $('#showXMLMessage').text(x);
     $('#dlg').dialog('open');
+}
+
+// 获取生成graph的XML
+function getGraphXML(){
+    var enc = new mxCodec(mxUtils.createXmlDocument());
+    var node = enc.encode(graph.getModel());
+    // 获取组成graph的XML
+    var etlXML =  mxUtils.getPrettyXml(node);
+    return etlXML;
 }
 
 // 添加工具栏上的元素
@@ -321,6 +418,28 @@ $(document).ready(function(){
         showXML(container);
     });
 
+
+    // 运行当前所选的流程
+    $('#btnRunTrans').click(function(){
+        var xml = getGraphXML();
+        var data = { 'graphXml': xml};
+        $.ajax ({
+            type:'POST',
+            url: commonConfig.trans.run,
+            data:data,
+            error: function(a,b,c) {
+                debugger;
+                alert(a+'数据获取失败！');
+            },
+            success: function(data) {
+                alert('该流程可以正常运行！');
+            },
+            complete: function() {
+                //$('#cargando').delay(500).fadeOut('slow');
+            }
+        });
+    });
+    // 检查输入的XML是否能正常使用
     $('#btnCheakTrans').click(function(){
 
         var enc = new mxCodec(mxUtils.createXmlDocument());
@@ -329,21 +448,20 @@ $(document).ready(function(){
         // x和y二选一，分别生成两种格式的XML
         var x =  mxUtils.getPrettyXml(node);
 
-alert(x);
-        var graphXml = x;
+      //  var data = JSON.stringify({ graphXml: y});
+
+        var data = { 'graphXml': x};
 
         $.ajax ({
             type:'POST',
-        //    dataType:'text',
             url: commonConfig.trans.engineXml,
-            data:graphXml,
-            error: function() {
-                alert('数据获取失败！');
+            data:data,
+            error: function(a,b,c) {
+                debugger;
+                alert(a+'数据获取失败！');
             },
             success: function(data) {
-
-                alert('ok');
-
+                alert('该流程可以正常运行！');
             },
             complete: function() {
                 //$('#cargando').delay(500).fadeOut('slow');
@@ -351,5 +469,66 @@ alert(x);
         });
     });
 
+
+    // 显示dialog
+    $('#displayDialog').click(function(){
+
+        /*$("<div></div>").dialog({
+            id: "akmaterial_add_dialog",
+            href: "AkMaterial/Add",
+            title: "添加物料",
+            height: 400,
+            width: 500,
+            modal: true,
+            buttons: [{
+                id: "akmaterial_add_btn",
+                text: '添 加',
+                handler: function () {
+                    $("#akmaterial_addform").form("submit", {
+                        url: "AkMaterial/AddProcess",
+                        onSubmit: function () {
+                            $('#akmaterial_add_btn').linkbutton('disable');
+                            if ($(this).form('validate')) {
+                                return true;
+                            }
+                            else {
+                                $('#akmaterial_add_btn').linkbutton('enable');
+                                return false;
+                            }
+                        },
+                        success: function (data) {
+                            var result = eval('(' + data + ')');
+                            if (result.Success) {
+                                $("#akmaterial_add_dialog").dialog('destroy');
+                                $.show_warning("提示", result.Message);
+                                akmaterial_databind();
+                            } else {
+                                $('#akmaterial_add_btn').linkbutton('enable');
+                                $.show_warning("提示", result.Message);
+                            }
+                        }
+                    });
+                }
+            }],
+            onLoad:function() {
+
+            },
+            onClose: function () {
+                $("#akmaterial_add_dialog").dialog('destroy');
+            }
+        });*/
+
+        $('#dd').dialog({
+            title: 'My Dialog',
+            width: 800,
+            height: 600,
+            closed: false,
+            cache: false,
+            href: 'dialogs/database/sqlInput.html',
+            modal: true
+        });
+        $('#dd').dialog('refresh', 'dialogs/database/sqlInput.html');
+
+    });
 
 });
