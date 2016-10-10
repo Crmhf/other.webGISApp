@@ -4,37 +4,129 @@
 <form id="ff" method="post">
     <table>
         <tr>
-            <td>Name:</td>
-            <td><input name="name" class="f1 easyui-textbox"></input></td>
+            <td>连接名称:</td>
+            <td><input id="connectName" name="connectName" class="easyui-textbox" /></td>
         </tr>
         <tr>
-            <td>Email:</td>
-            <td><input name="email" class="f1 easyui-textbox"></input></td>
+            <td>主机:</td>
+            <td><input name="dbHost" name="dbHost" class="easyui-textbox" /></td>
         </tr>
         <tr>
-            <td>Phone:</td>
-            <td><input name="phone" class="f1 easyui-textbox"></input></td>
+            <td>数据库名称:</td>
+            <td><input name="dbName" name="dbName" class="easyui-textbox" /></td>
         </tr>
         <tr>
-            <td>File:</td>
-            <td><input name="file" class="f1 easyui-filebox"></input></td>
+            <td>端口号:</td>
+            <td><input name="dbPort" name="dbPort" class="easyui-textbox" /></td>
         </tr>
         <tr>
-            <td></td>
-            <td><input type="submit" value="Submit"></input></td>
+            <td>用户名:</td>
+            <td><input name="userName" name="userName" class="easyui-textbox" /></td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td><input name="userPassword" name="userPassword" class="easyui-textbox" /></td>
         </tr>
     </table>
 </form>
 
 <div style="text-align:center;padding:5px 0">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="checkDBConnect()" style="width:120px">测试连接</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addDBConnect()" style="width:120px">增加连接</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">确定</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">取消</a>
 </div>
 
 <script>
-    // 页面编辑之后，生成一个对象
-    // 生成的对象用来保存节点所需的信息
-    // 将对象中的信息更新到当前的节点中
+    function getDBInfo(dbName){
+        /*
+        var connectName = 'xx';
+        var dbHost = 'localhost';
+        var dbName = 'abc';
+        var dbPort = '5432';
+        var userName = 'postgres';
+        var userPassword = '8888888';*/
+
+        var data = { 'dbName': dbName};
+
+        $.ajax ({
+            type:'POST',
+            url: commonConfig.database.getDBInfo,
+            data:data,
+            error: function(a,b,c) {
+                debugger;
+                alert(a+'数据获取失败！');
+            },
+            success: function(data) {
+                // 获取到数据库连接的相关信息
+                var dbData = JSON.parse(data);
+                debugger;
+
+
+             //   $('#connectName').val(dbData.name);
+                $('#dbName').val(dbData.databaseName);
+                $('#dbHost').val(dbData.hostname);
+                $('#dbPort').val(dbData.port);
+                $('#userName').val(dbData.username);
+                $('#userPassword').val(dbData.password);
+
+            },
+            complete: function() {
+                //$('#cargando').delay(500).fadeOut('slow');
+                $('#connectName').val('1111111');
+            }
+        });
+    }
+
+    // 检查数据库连接
+    function checkDBConnect(){
+        alert($('#connectName').val());
+
+        var databaseInfo = '{"name":"ttt","type":"POSTGRESQL","access":0,"hostname":"localhost","databaseName":"abc","username":"postgres","password":"8888888","streamingResults":true,"MSSQLUseIntegratedSecurity":false,"port":"5432","extraOptions":[],"supportBooleanDataType":false,"quoteIdentifiersCheck":false,"lowerCaseIdentifiersCheck":false,"upperCaseIdentifiersCheck":false}';
+        var data = { 'databaseInfo': databaseInfo};
+        $.ajax ({
+            type:'POST',
+            url: commonConfig.database.test,
+            data:data,
+            error: function(a,b,c) {
+                debugger;
+                alert(a+'数据获取失败！');
+            },
+            success: function(data) {
+                var dataInfo = JSON.parse(data);
+                alert(decodeURIComponent(dataInfo.message));
+            },
+            complete: function() {
+                //$('#cargando').delay(500).fadeOut('slow');
+            }
+        });
+    }
+
+    //
+    function addDBConnect(){
+        alert('addDBConnect');
+
+        var databaseInfo = '{"name":"aaa","type":"POSTGRESQL","access":0,"hostname":"localhost","databaseName":"xyz","username":"postgres","password":"8888888","streamingResults":true,"MSSQLUseIntegratedSecurity":false,"port":"5432","extraOptions":[],"supportBooleanDataType":false,"quoteIdentifiersCheck":false,"lowerCaseIdentifiersCheck":false,"upperCaseIdentifiersCheck":false}';
+        var data = { 'databaseInfo': databaseInfo};
+
+        $.ajax ({
+            type:'POST',
+            url: commonConfig.database.create,
+            data:data,
+            error: function(a,b,c) {
+                debugger;
+                alert(a+'数据获取失败！');
+            },
+            success: function(data) {
+                var dataInfo = JSON.parse(data);
+                alert(decodeURIComponent(dataInfo.message));
+            },
+            complete: function() {
+                //$('#cargando').delay(500).fadeOut('slow');
+            }
+        });
+    }
+
     function submitForm(){
        $('#ddSub').dialog('close');
     }
@@ -42,9 +134,10 @@
     function clearForm(){
        $('#ddSub').dialog('close');
     }
-
     // 初始化获取SQL
     $(document).ready(function(){
-        $('#xLable').val(currentCellAttrs.label.nodeValue);
+        var dbName = 'ttt';
+        getDBInfo(dbName);
+
     });
 </script>

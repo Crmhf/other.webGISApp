@@ -6,6 +6,11 @@
         </Info>
         <Step Name="文本文件输出" SpecifyFormat="N" add_date="N" add_time="N" add_to_result_filenames="Y" append="N" compression="None" copies="1" create_parent_folder="Y" ctype="TextFileOutput" date_time_format="" distribute="Y" do_not_open_new_file_init="N" draw="Y" enclosure="%26quot;" enclosure_fix_disabled="N" enclosure_forced="N" encoding="" extention="txt" fast_dump="N"  fileNameField="" fileNameInField="N" file_name="C:/Users/kettleweb" footer="N" format="DOS" haspartno="N" header="Y" is_command="N" label="文本文件输出" pad="N" separator=";" servlet_output="N" split="N" splitevery="0" id="2">
             <mxCell style="icon;image=img/etl/db/false.png" parent="1" vertex="1">
+                <mxGeometry x="810" y="230" width="100" height="40" as="geometry"/>
+            </mxCell>
+        </Step>
+        <Step Name="文本文件输出" SpecifyFormat="N" add_date="N" add_time="N" add_to_result_filenames="Y" append="N" compression="None" copies="1" create_parent_folder="Y" ctype="TextFileOutput" date_time_format="" distribute="Y" do_not_open_new_file_init="N" draw="Y" enclosure="%26quot;" enclosure_fix_disabled="N" enclosure_forced="N" encoding="" extention="txt" fast_dump="N"  fileNameField="" fileNameInField="N" file_name="C:/Users/kettleweb" footer="N" format="DOS" haspartno="N" header="Y" is_command="N" label="文本文件输出" pad="N" separator=";" servlet_output="N" split="N" splitevery="0" id="2">
+            <mxCell style="icon;image=img/etl/db/false.png" parent="1" vertex="1">
                 <mxGeometry x="510" y="230" width="100" height="40" as="geometry"/>
             </mxCell>
         </Step>

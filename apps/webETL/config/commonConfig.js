@@ -6,7 +6,7 @@ var commonConfig;
 (function(){
 
     // 门户中所使用的服务地址
-     var SERVICE_URL = 'http://192.168.1.170:8080/etl/';
+     var SERVICE_URL = 'http://192.168.1.120:8081/etl/';
    // var SERVICE_URL = 'http://192.168.1.120:8080/etl/';
 
     var config = {

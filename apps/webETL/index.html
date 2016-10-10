@@ -40,28 +40,57 @@
     <div data-options="region:'west',split:true" minwidth="100px" class="easyui-tabs" title=" " style="width: 300px">
             <div title="方案库" style="width: 300px;height: 700px">
                 <ul class="easyui-tree">
-                    <li data-options="state:'closed'">
+                    <li data-options="state:'open'">
                         <span>数据互操作</span>
                         <ul>
-                            <li data-options="iconCls:'icon-help',closable:true">
-                                <!--<span onclick="getGraphFromXml()">将数据从数据库导出到txt</span> -->
-                                <a href="#" onclick="load('data/person.xml');">将数据从数据库导出到txt</a>
-                            </li>
-                            <li>
-                                <a href="#" onclick="load('data/demo.xml');">222222</a>
-                            </li>
-                            <li>
-                                <a href="#" onclick="load('data/helloworld.xml');">helloworld</a>
-                            </li>
                             <li>
                                 <a href="#" onclick="load('data/sql2txt.xml');">SQL导出到TXT</a>
                             </li>
                             <li>
+                                <a href="#" onclick="load('data/sql2txtJava.xml');">SQL导出到TXT带配置</a>
+                            </li>
+                            <li>
                                 <a href="#" onclick="load('data/sql.xml');">sql导出到txtfanyi</a>
                             </li>
-                            </ul>
+                        </ul>
                     </li>
-                    </ul>
+                    <li data-options="state:'closed'">
+                        <span>数据同步</span>
+                        <ul>
+                            <li>
+                                <a href="#">空间数据同步</a>
+                            </li>
+                            <li>
+                                <a href="#">业务数据同步</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-options="state:'closed'">
+                        <span>空间数据导入到数据库</span>
+                        <ul>
+                            <li>
+                                <a href="#">ORG数据导入到POSTGIS</a>
+                            </li>
+                            <li>
+                                <a href="#">SHP数据导入到POSTGIS</a>
+                            </li>
+                            <li>
+                                <a href="#">SDE数据导入到POSTGIS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-options="state:'closed'">
+                        <span>数据导出</span>
+                        <ul>
+                            <li>
+                                <a href="#">空间数据导出</a>
+                            </li>
+                            <li>
+                                <a href="#">业务数据导出</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
             <div title="数据源" style="padding:10px">
                 <li data-options="iconCls:'icon-help',closable:true">
