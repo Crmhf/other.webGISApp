@@ -9,7 +9,7 @@
                 <mxGeometry x="510" y="230" width="100" height="40" as="geometry"/>
             </mxCell>
         </Step>
-        <Step Name="表输入2" connection="etl" copies="1" ctype="TableInput" distribute="Y" draw="Y" execute_each_row="N" label="表输入2" lazy_conversion_active="N" limit="10" lookup="" sql="SELECT%20*%20FROM%20sfz2%0A" variables_active="N" id="3">
+        <Step Name="表输入2" connection="ttt" copies="1" ctype="TableInput" distribute="Y" draw="Y" execute_each_row="N" label="表输入2" lazy_conversion_active="N" limit="10" lookup="" sql="SELECT * FROM KTW_USER" variables_active="N" id="3">
             <mxCell style="icon;image=img/etl/db/true.png" parent="1" vertex="1">
                 <mxGeometry x="250" y="230" width="100" height="40" as="geometry"/>
             </mxCell>

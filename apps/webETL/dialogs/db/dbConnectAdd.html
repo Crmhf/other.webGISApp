@@ -1,0 +1,102 @@
+<!--
+    设定数据库连接
+-->
+<form id="ff" method="post">
+    <table>
+        <tr>
+            <td>连接名称:</td>
+            <td><input id="connectName" name="connectName" class="easyui-textbox" /></td>
+        </tr>
+        <tr>
+            <td>主机:</td>
+            <td><input name="dbHost" name="dbHost" class="easyui-textbox" /></td>
+        </tr>
+        <tr>
+            <td>数据库名称:</td>
+            <td><input name="dbName" name="dbName" class="easyui-textbox" /></td>
+        </tr>
+        <tr>
+            <td>端口号:</td>
+            <td><input name="dbPort" name="dbPort" class="easyui-textbox" /></td>
+        </tr>
+        <tr>
+            <td>用户名:</td>
+            <td><input name="userName" name="userName" class="easyui-textbox" /></td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td><input name="userPassword" name="userPassword" class="easyui-textbox" /></td>
+        </tr>
+    </table>
+</form>
+
+<div style="text-align:center;padding:5px 0">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">确定</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">取消</a>
+</div>
+
+<script>
+
+
+    // 检查数据库连接
+    function checkDBConnect(){
+        alert($('#connectName').val());
+
+        var databaseInfo = '{"name":"ttt","type":"POSTGRESQL","access":0,"hostname":"localhost","databaseName":"abc","username":"postgres","password":"8888888","streamingResults":true,"MSSQLUseIntegratedSecurity":false,"port":"5432","extraOptions":[],"supportBooleanDataType":false,"quoteIdentifiersCheck":false,"lowerCaseIdentifiersCheck":false,"upperCaseIdentifiersCheck":false}';
+        var data = { 'databaseInfo': databaseInfo};
+        $.ajax ({
+            type:'POST',
+            url: commonConfig.database.test,
+            data:data,
+            error: function(a,b,c) {
+                debugger;
+                alert(a+'数据获取失败！');
+            },
+            success: function(data) {
+                var dataInfo = JSON.parse(data);
+                alert(decodeURIComponent(dataInfo.message));
+            },
+            complete: function() {
+                //$('#cargando').delay(500).fadeOut('slow');
+            }
+        });
+    }
+
+    //
+    function addDBConnect(){
+
+        var databaseInfo = '{"name":"aaa111","type":"POSTGRESQL","access":0,"hostname":"localhost","databaseName":"xyz","username":"postgres","password":"8888888","streamingResults":true,"MSSQLUseIntegratedSecurity":false,"port":"5432","extraOptions":[],"supportBooleanDataType":false,"quoteIdentifiersCheck":false,"lowerCaseIdentifiersCheck":false,"upperCaseIdentifiersCheck":false}';
+        var data = { 'databaseInfo': databaseInfo};
+
+        $.ajax ({
+            type:'POST',
+            url: commonConfig.database.create,
+            data:data,
+            error: function(a,b,c) {
+                debugger;
+                alert(a+'数据获取失败！');
+            },
+            success: function(data) {
+                var dataInfo = JSON.parse(data);
+                alert(decodeURIComponent(dataInfo.message));
+            },
+            complete: function() {
+                //$('#cargando').delay(500).fadeOut('slow');
+            }
+        });
+    }
+
+    function submitForm(){
+       addDBConnect();
+       $('#ddSub').dialog('close');
+    }
+    // 关闭dialog
+    function clearForm(){
+       $('#ddSub').dialog('close');
+    }
+    // 初始化获取SQL
+    $(document).ready(function(){
+
+
+    });
+</script>
