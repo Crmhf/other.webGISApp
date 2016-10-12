@@ -1,0 +1,56 @@
+<!doctype html>
+
+<title>CodeMirror: C-like mode</title>
+<meta charset="utf-8"/>
+
+<link rel="stylesheet" href="../3rd/code/codemirror.css">
+<script src="../3rd/code/codemirror.js"></script>
+<script src="../3rd/code/mode/clike.js"></script>
+<style>.CodeMirror {border: 2px inset #dee;}</style>
+
+<article>
+
+
+<div><textarea id="java-code">
+import com.demo.util.MyType;
+import com.demo.util.MyInterface;
+
+public enum Enum {
+  VAL1, VAL2, VAL3
+}
+
+public class Class<T, V> implements MyInterface {
+  public static final MyType<T, V> member;
+  
+  private class InnerClass {
+    public int zero() {
+      return 0;
+    }
+  }
+
+  @Override
+  public MyType method() {
+    return member;
+  }
+
+  public void method2(MyType<T, V> value) {
+    method();
+    value.method3();
+    member = value;
+  }
+}
+</textarea></div>
+
+
+
+    <script>
+  
+      var javaEditor = CodeMirror.fromTextArea(document.getElementById("java-code"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "text/x-java"
+      });
+    </script>
+
+
+</article>

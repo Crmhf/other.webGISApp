@@ -492,6 +492,23 @@ $(document).ready(function(){
         });
     });
 
+
+    // 显示dialog
+    $('#btnCode').click(function(){
+
+        $('#dd').dialog({
+            title: '代码显示',
+            width: 800,
+            height: 600,
+            closed: false,
+            cache: false,
+            href: 'dialogs/Code.html',
+            modal: true
+        });
+        $('#dd').dialog('refresh', 'dialogs/Code.html');
+
+    });
+
     // 显示dialog
     $('#displayDialog').click(function(){
 

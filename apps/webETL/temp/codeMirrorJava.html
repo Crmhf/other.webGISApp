@@ -1,62 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>codeMirror显示Java</title>
-    <script type="text/javascript" src="../3rd/codeMirror/codemirror.js"></script>
-    <link rel="stylesheet" href="../3rd/codeMirror/codemirror.css">
-    <script src="./3rd/codeMirror/javascript.js"></script>
-    <script>
-        $(function(){
-            var mixedMode = {
-                name: "htmlmixed",
-                scriptTypes: [{matches: /\/x-handlebars-template|\/x-mustache/i,
-                    mode: null},
-                    /* {matches: /\<\%|\%\>/i,
-                     mode: "text/x-java"},*/
-                    {matches: /(text|application)\/(x-)?vb(a|script)/i,
-                        mode: "text/x-java"}]
-            };
-            Mirroreditor = CodeMirror.fromTextArea(document.getElementById('texcode'), {
-                lineNumbers: true,
-                matchBrackets: true,
-                mode: mixedMode,
-                indentWithTabs: true,
-                smartIndent: true,
-                styleActiveLine: true,
-                autofocus: true,
-                keyMap: "sublime",
-                autoCloseBrackets: true,
-                autoCloseTags: true,
-                extraKeys: {
-                    "F11": function(cm) {
-                        cm.setOption("fullScreen", !cm.getOption("fullScreen"));
-                    },
-                    "Esc": function(cm) {
-                        if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
-                    }
-                }
-            });
+<html>
+<link rel="stylesheet" href="../3rd/code/codemirror.css">
+<script src="../3rd/code/codemirror.js"></script>
+<script src="../3rd/code/mode/clike/clike.js"></script>
 
-            return Mirroreditor;
-        });
-    </script>
+<!--引入css文件，用以支持主题-->
+<link rel="stylesheet" href="../3rd/codeMirror/theme/seti.css">
+<head>
+    <title>CodeMirror Test</title>
 </head>
 <body>
+<textarea id="code">
 
-<textarea id="texcode" name="texcode" rows="30" cols="100">
+  public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
+{
+    Object[] r = getRow();
+    if (r == null) {
+        setOutputDone();
+        return false;
+    }
 
-   var jsKeywords = {
-      "if": kw("if"), "while": A, "with": A, "else": B, "do": B, "try": B, "finally": B,
-      "return": C, "break": C, "continue": C, "new": C, "delete": C, "throw": C,
-      "var": kw("var"), "const": kw("var"), "let": kw("var"),
-      "function": kw("function"), "catch": kw("catch"),
-      "for": kw("for"), "switch": kw("switch"), "case": kw("case"), "default": kw("default"),
-      "in": operator, "typeof": operator, "instanceof": operator,
-      "true": atom, "false": atom, "null": atom, "undefined": atom, "NaN": atom, "Infinity": atom,
-      "this": kw("this")
-    };
+    if (first)
+    {
+        first = false;
+    }
+
+    // It is always safest to call createOutputRow() to ensure that your output row's Object[] is large
+    // enough to handle any new fields you are creating in this step.
+    r = createOutputRow(r, outputRowSize);
+
+    /* TODO: Your code here. (See Sample)
+
+     // Get the value from an input field
+     String foobar = get(Fields.In, "a_fieldname").getString(r);
+
+     foobar += "bar";
+
+     // Set a value in a new output field
+     get(Fields.Out, "output_fieldname").setValue(r, foobar);
+
+     */
+    // Send the row on to the next step.
+    putRow(data.outputRowMeta, r);
+
+    return true;
+}
+
 </textarea>
 </body>
+<script type="text/javascript">
+    var editor=CodeMirror.fromTextArea(document.getElementById("code"),{
+        mode:"text/x-java",
+        lineNumbers:true,
+        theme:"seti",
+        //代码折叠
+        lineWrapping:true,
+        foldGutter: true
+    });
+</script>
 </html>
-
