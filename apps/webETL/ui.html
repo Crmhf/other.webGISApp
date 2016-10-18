@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>KingTop webETL</title>
+    <link rel="stylesheet" type="text/css" href="3rd/ui/theme/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="3rd/ui/theme/icon.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript" src="3rd/ui/js/jquery.min.js"></script>
+    <script type="text/javascript" src="3rd/ui/js/jquery.easyui.min.js"></script>
+
+    <!-- Sets the basepath for the library if not in same directory-->
+    <script type="text/javascript">
+        mxBasePath = '3rd/mxGraph/src';
+    </script>
+    <script type="text/javascript" src="3rd/mxGraph/src/js/mxClient.js"></script>
+
+    <!-- codeMirror -->
+    <link rel="stylesheet" href="3rd/code/codemirror.css">
+    <script src="3rd/code/codemirror.js"></script>
+    <script src="3rd/code/mode/clike.js"></script>
+
+    <script type="text/javascript" src="config/commonConfig.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <!--   <script type="text/javascript" src="js/graph.js"></script>-->
+    <script type="text/javascript" src="js/change.js"></script>
+</head>
+<body class="easyui-layout">
+<!-- Start Header -->
+<div data-options="region:'north',border:false" style="height:50px;">
+    <div style="height:49px;background-color:#24282C;">
+            <div class="logo"></div>
+    </div>
+</div>
+<!-- End Header -->
+<div data-options="region:'west',split:true" minwidth="100px" class="easyui-tabs" title=" " style="width: 300px">
+    <div title="方案库" style="width: 300px;height: 700px">
+        <ul class="easyui-tree">
+            <li data-options="state:'open'">
+                <span>数据互操作</span>
+                <ul>
+                    <li>
+                        <a href="#" onclick="load('data/sql2txt.xml');">SQL导出到TXT-OK</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="load('data/sql2txtJava.xml');">SQL导出到TXT带配置</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="load('data/sql.xml');">SQL数据导出到CSV</a>
+                    </li>
+                </ul>
+            </li>
+            <li data-options="state:'closed'">
+                <span>数据同步</span>
+                <ul>
+                    <li>
+                        <a href="#">空间数据同步</a>
+                    </li>
+                    <li>
+                        <a href="#">业务数据同步</a>
+                    </li>
+                </ul>
+            </li>
+            <li data-options="state:'closed'">
+                <span>空间数据导入到数据库</span>
+                <ul>
+                    <li>
+                        <a href="#">ORG数据导入到POSTGIS</a>
+                    </li>
+                    <li>
+                        <a href="#">SHP数据导入到POSTGIS</a>
+                    </li>
+                    <li>
+                        <a href="#">SDE数据导入到POSTGIS</a>
+                    </li>
+                </ul>
+            </li>
+            <li data-options="state:'closed'">
+                <span>数据导出</span>
+                <ul>
+                    <li>
+                        <a href="#">空间数据导出</a>
+                    </li>
+                    <li>
+                        <a href="#">业务数据导出</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div title="数据源" style="padding:10px">
+        <li data-options="iconCls:'icon-help',closable:true">
+            <span>Access数据输入</span>
+        </li>
+        <li>
+            <span>CSV文件输入</span>
+        </li>
+        <li>
+            <span>Email消息输入</span>
+        </li>
+        <li>
+            <span>Excel输入</span>
+        </li>
+        <li>
+            <span>Http请求(GET)</span>
+        </li>
+    </div>
+</div>
+<div data-options="region:'east',split:true" minwidth="100px" title="工具箱" style="width: 250px;">
+    <div style="margin:20px 0;"></div>
+    <div style="width: 200px" valign="top" id="toolbar">
+        <ul class="easyui-tree">
+            <li data-options="state:'closed'">
+                <span>数据输入</span>
+                <ul>
+                    <li data-options="iconCls:'icon-help',closable:true">
+                        <span>Access数据输入</span>
+                    </li>
+                    <li>
+                        <span>CSV文件输入</span>
+                    </li>
+                    <li>
+                        <span>Email消息输入</span>
+                    </li>
+                    <li>
+                        <span>Excel输入</span>
+                    </li>
+                    <li>
+                        <span>Http请求(GET)</span>
+                    </li>
+                    <li>
+                        <span>Http请求(POST)</span>
+                    </li>
+                    <li>
+                        <span>Json数据输入</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>LDAP数据输入</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>OGR标准数据输入</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>REST服务</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>SDE输入</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>ShapeFile文件输入</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>Web服务</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>WFS服务数据输入</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>XBase输入</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>XML输入</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>文本文件输入</span>
+                    </li>
+                    <li>
+                        <img src="img/test/run.png">
+                        <span>文本输入</span>
+                    </li>
+                    <li >
+                        <span>栅格文件输入</span>
+                    </li>
+                    <li >
+                        <span>生成随机值</span>
+                    </li>
+                    <li >
+                        <span>自定义表格</span>
+                    </li>
+                    <li >
+                        <span>获取文件名称</span>
+                    </li>
+                    <li >
+                        <span>获取系统信息</span>
+                    </li>
+                    <li >
+                        <span>街景文件输入</span>
+                    </li>
+                    <li >
+                        <span>表输入</span>
+                    </li>
+                    <li >
+                        <span>触发器增量抽取</span>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>数据输出</span>
+                <ul>
+                    <li>Access数据库输出</li>
+                    <li>CSV输出</li>
+                    <li>Excel文件输出</li>
+                    <li>Json数据输出</li>
+                    <li>LDAP数据输出</li>
+                    <li>OGR标准文件输出</li>
+                    <li>SDE输出</li>
+                    <li>ShapeFile文件输出</li>
+                    <li>XML输出</li>
+                    <li>文本文件输出</li>
+                    <li>栅格文件输出</li>
+                    <li>表输出</li>
+                </ul>
+            </li>
+        </ul>
+        <div id="xxxx" style="display:none;"></div>
+    </div>
+</div>
+<!--
+<div data-options="region:'south',border:false" style="height:20px;background:#A9FACD;padding:0px;">bottom</div>
+-->
+
+<div id="maptool"  data-options="region:'center'">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'north'" class="easyui-panel" style="height: 30px;">
+            <a id="btnRunTrans" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-run'">启动</a>
+            <a id="btnCheakTrans" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-check'">检查流程</a>
+            <a id="btnSaveTrans" href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-save'">保存</a>
+
+            <a id="btnCode" href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-pause'">显示代码</a>
+            <!-- <a id="displayDialog" href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-pause'">暂停</a>
+             <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-stop'">停止</a>
+             <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-save'">保存</a>
+            <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-showresults'">执行运行结果</a>-->
+            <a href="javascript:void(0)" id="showXML" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-showresults'">显示流程</a>
+        </div>
+        <div data-options="region:'center'" id="graphContainer" style="background:url('img/mxGraph/grid.gif')">
+        </div>
+
+        <div data-options="region:'south',split:true"
+                title="服务日志" minheight="100px"  style="height: 200px;">
+            <div id="aaa">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- dialog -->
+<div id="dlg" class="easyui-dialog" title="XML" data-options="iconCls:'icon-save'" closed="true" style="width:800px;height:600px;padding:10px">
+    <div id="showXMLMessage" style="z-index:9999;color:#0b0b0b;">
+    </div>
+</div>
+<div id="dd" class="easyui-dialog" title="My Dialog" data-options="iconCls:'icon-save'" closed="true" style="width:800px;height:600px;padding:10px">
+</div>
+
+</body>
+</html>

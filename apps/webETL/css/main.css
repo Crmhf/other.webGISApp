@@ -1,0 +1,33 @@
+body{
+margin:0;
+border:0;
+font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", STXihei, "华文细黑", Heiti, "黑体", sans-serif;
+letter-spacing: normal;
+/*background-color: transparent;*/
+-webkit-font-smoothing: antialiased;
+}
+.logo{
+ width:200px;
+ height:49px;
+background:url('../img/logo.png') no-repeat center center;
+}
+
+.map-pause{
+background:url('../img/mapimages/pause.png') no-repeat center center;
+}
+.map-stop{
+background:url('../img/mapimages/stop.png') no-repeat center center;
+}
+.map-showresults{
+background:url('../img/mapimages/show-results.png') no-repeat center center;
+}
+.map-save{
+background:url('../img/mapimages/save.png') no-repeat center center;
+}
+.map-run{
+background:url('../img/mapimages/run.png') no-repeat center center;
+}
+.map-check{
+background:url('../img/mapimages/check.png') no-repeat center center;
+}
+

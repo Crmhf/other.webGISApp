@@ -493,7 +493,7 @@ $(document).ready(function(){
     });
 
 
-    // 显示dialog
+    // 显示代码编辑框
     $('#btnCode').click(function(){
 
         $('#dd').dialog({
@@ -506,7 +506,7 @@ $(document).ready(function(){
             modal: true
         });
         $('#dd').dialog('refresh', 'dialogs/Code.html');
-
+        $.messager.alert('警告','警告消息');
     });
 
     // 显示dialog

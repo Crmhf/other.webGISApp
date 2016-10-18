@@ -3,7 +3,7 @@
 <head>
     <title>WebETL - KingTopWare</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="3rd/ktwDev/theme/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="3rd/ktwDev/theme/bootstrap/easyui.css" />
     <link rel="stylesheet" type="text/css" href="3rd/ktwDev/css/app.css" />
     <link rel="stylesheet" type="text/css" href="3rd/ktwDev/css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/common.css" />
@@ -39,10 +39,11 @@
 
 
 </head>
-
-
 <body>
-<div id="mainFrame" class="easyui-layout" style="top: 30px">
+<div id="mainFrame" class="easyui-layout">
+    <div data-options="region:'north',split:true" style="height:">
+
+    </div>
     <div data-options="region:'west',split:true" minwidth="100px" class="easyui-tabs" title=" " style="width: 300px">
             <div title="方案库" style="width: 300px;height: 700px">
                 <ul class="easyui-tree">
@@ -235,9 +236,9 @@
                 <div id="xxxx"></div>
             </div>
     </div>
-    <div id="maptool" data-options="region:'center'" style="border: 0">
+    <div id="maptool" data-options="region:'center'">
         <div class="easyui-layout" data-options="fit:true">
-            <div data-options="region:'north'" class="easyui-panel" style="height: 30px;background-color: #e0ecff">
+            <div data-options="region:'north'" class="easyui-panel" style="height: 30px;">
                     <a id="btnRunTrans" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-run'">启动</a>
                     <a id="btnCheakTrans" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-run'">检查流程</a>
                     <a id="btnSaveTrans" href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'map-pause'">保存</a>

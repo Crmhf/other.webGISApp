@@ -5,13 +5,13 @@
             <mxCell parent="0"/>
         </Info>
         <Step Name="文本文件输出" SpecifyFormat="N" add_date="N" add_time="N" add_to_result_filenames="Y" append="N" compression="None" copies="1" create_parent_folder="Y" ctype="TextFileOutput" date_time_format="" distribute="Y" do_not_open_new_file_init="N" draw="Y" enclosure="%26quot;" enclosure_fix_disabled="N" enclosure_forced="N" encoding="" extention="txt" fast_dump="N"  fileNameField="" fileNameInField="N" file_name="C:/Users/kettleweb" footer="N" format="DOS" haspartno="N" header="Y" is_command="N" label="文本文件输出" pad="N" separator=";" servlet_output="N" split="N" splitevery="0" id="2">
-            <mxCell style="icon;image=img/etl/db/false.png" parent="1" vertex="1">
-                <mxGeometry x="510" y="230" width="100" height="40" as="geometry"/>
+            <mxCell style="shape=label;image=img/etl/db/true.png;imageWidth=24;imageHeight=24;spacingBottom=10;fillColor=#adc5ff;gradientColor=#7d85df;glass=1;rounded=1;shadow=1;" parent="1" vertex="1">
+                <mxGeometry x="510" y="230" width="80" height="80" as="geometry"/>
             </mxCell>
         </Step>
-        <Step Name="表输入2" connection="etl" copies="1" ctype="TableInput" distribute="Y" draw="Y" execute_each_row="N" label="表输入2" lazy_conversion_active="N" limit="10" lookup="" sql="SELECT * FROM price" variables_active="N" id="3">
-            <mxCell style="icon;image=img/etl/db/true.png" parent="1" vertex="1">
-                <mxGeometry x="250" y="230" width="100" height="40" as="geometry"/>
+        <Step Name="表输入" connection="etl" copies="1" ctype="TableInput" distribute="Y" draw="Y" execute_each_row="N" label="表输入" lazy_conversion_active="N" limit="10" lookup="" sql="SELECT * FROM price" variables_active="N" id="3">
+            <mxCell style="shape=label;image=img/etl/db/false.png;imageWidth=24;imageHeight=24;spacingBottom=10;fillColor=#adc5ff;gradientColor=#7d85df;glass=1;rounded=1;shadow=1;" parent="1" vertex="1">
+                <mxGeometry x="250" y="230" width="80" height="80" as="geometry"/>
             </mxCell>
         </Step>
         <TransHop Name="从SQL导出到Txt" id="4" to="文本文件输出" from="表输入2" enabled="Y">

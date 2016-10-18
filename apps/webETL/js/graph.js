@@ -38,3 +38,13 @@ function graph(container)
 
 
 }
+
+
+var curTimestamp = new Date();
+//  alert(curTimestamp.getTime());
+var tick = Math.abs(curTimestamp.getTime() - timeStamp.getTime());
+timeStamp = curTimestamp;
+if (tick >= 800){
+
+}
+}
