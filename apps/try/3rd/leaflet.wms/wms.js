@@ -305,7 +305,7 @@ wms.Overlay = L.Layer.extend({
         'version': '1.1.1',
         'layers': '',
         'styles': '',
-        'format': 'image/png8',
+        'format': 'image/png',
         'transparent': true
     },
 
@@ -314,9 +314,10 @@ wms.Overlay = L.Layer.extend({
         'uppercase': false,
         'attribution': '',
         'opacity': 1,
-        'isBack': true,
+        'isBack': false,
         'minZoom': 0,
-        'maxZoom': 18
+        'maxZoom': 18,
+        'zindex': 1000
     },
 
     'initialize': function(url, options) {
@@ -378,7 +379,10 @@ wms.Overlay = L.Layer.extend({
         // Keep current image overlay in place until new one loads
         // (inspired by esri.leaflet)
         var bounds = this._map.getBounds();
-        var overlay = L.imageOverlay(url, bounds, {'opacity': 0});
+        var overlay = L.imageOverlay(url, bounds, {'opacity': 1,'zindex': this.options.zindex});
+
+     //   var overlay = L.ImageOverlay.Canvas(url, bounds, {'opacity': 0,'zindex': this.options.zindex});
+
         overlay.addTo(this._map);
         overlay.once('load', _swap, this);
         function _swap() {
@@ -444,9 +448,10 @@ wms.Overlay = L.Layer.extend({
         var se = crs.project(bounds.getSouthEast());
 
         // Assemble WMS parameter string
+        // 调整显示图片的宽高，减小图片显示的大小
         var params = {
-            'width': size.x/2,
-            'height': size.y/2
+            'width': Math.round(size.x/1.5),
+            'height': Math.round(size.y/1.5)
         };
         params[projectionKey] = crs.code;
         params.bbox = (
