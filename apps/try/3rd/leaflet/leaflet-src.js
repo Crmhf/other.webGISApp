@@ -11743,12 +11743,14 @@
 		_zoomIn: function (e) {
 			if (!this._disabled && this._map._zoom < this._map.getMaxZoom()) {
 				this._map.zoomIn(this._map.options.zoomDelta * (e.shiftKey ? 3 : 1));
+				console.log(this._map.getZoom());
 			}
 		},
 
 		_zoomOut: function (e) {
 			if (!this._disabled && this._map._zoom > this._map.getMinZoom()) {
 				this._map.zoomOut(this._map.options.zoomDelta * (e.shiftKey ? 3 : 1));
+				console.log(this._map.getZoom());
 			}
 		},
 

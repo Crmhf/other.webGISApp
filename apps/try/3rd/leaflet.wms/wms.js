@@ -315,7 +315,7 @@ wms.Overlay = L.Layer.extend({
         'attribution': '',
         'opacity': 1,
         'isBack': false,
-        'minZoom': 0,
+        'minZoom': 1,
         'maxZoom': 18,
         'zindex': 1000
     },
