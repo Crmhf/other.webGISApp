@@ -58,6 +58,73 @@ function initGraph(container){
 var currentCell;
 var currentCellAttrs;
 
+
+// 覆盖的元素重绘方法放置图标
+mxLabel.prototype.redraw = function()
+{
+    var isSvg = (this.dialect == mxConstants.DIALECT_SVG);
+    var isVml = mxUtils.isVml(this.node);
+
+    // 更新的最外层的边框
+    if (isSvg)
+    {
+        this.updateSvgShape(this.innerNode);
+
+        if (this.shadowNode != null)
+        {
+            this.updateSvgShape(this.shadowNode);
+        }
+
+        this.updateSvgGlassPane();
+    }
+    else if (isVml)
+    {
+        this.updateVmlShape(this.node);
+        this.updateVmlShape(this.rectNode);
+        this.label.style.width = this.node.style.width;
+        this.label.style.height = this.node.style.height;
+
+        this.updateVmlGlassPane();
+    }
+    else
+    {
+        this.updateHtmlShape(this.node);
+    }
+
+    // 更新图像的宽度和图像高度
+    var imageWidth = 0;
+    var imageHeight = 0;
+
+    if (this.imageNode != null)
+    {
+        imageWidth = (this.style[mxConstants.STYLE_IMAGE_WIDTH] ||
+            this.imageSize) * this.scale;
+        imageHeight = (this.style[mxConstants.STYLE_IMAGE_HEIGHT] ||
+            this.imageSize) * this.scale;
+
+        // 放置图标
+        var x = (this.bounds.width - imageWidth) / 2;
+        var y = this.bounds.height - imageHeight / 0.5;
+
+        if (isSvg)
+        {
+            this.imageNode.setAttribute('x', (this.bounds.x + x) + 'px');
+            this.imageNode.setAttribute('y', (this.bounds.y + y) + 'px');
+            this.imageNode.setAttribute('width', imageWidth + 'px');
+            this.imageNode.setAttribute('height', imageHeight + 'px');
+        }
+        else
+        {
+            this.imageNode.style.position = 'relative';
+            this.imageNode.style.left = x + 'px';
+            this.imageNode.style.top = y + 'px';
+            this.imageNode.style.width = imageWidth + 'px';
+            this.imageNode.style.height = imageHeight + 'px';
+            this.imageNode.setAttribute('stroked', 'false');
+        }
+    }
+};
+
 // 程序从这里开始。创建DOM节点中指定标记的简单图形。
 // 方法在文档的onLoad事件处理中被调用（如下所示）。
 function initGraph(container)
@@ -78,6 +145,8 @@ function initGraph(container)
         // 激活橡皮圈选择,鼠标框选
         new mxRubberband(graph);
 
+        // 去锯齿效果
+        mxLabel.prototype.crisp = true;
         // 禁止改变元素大小
         graph.setCellsResizable(false);
         // Label 将显示 Html 格式的 Value
