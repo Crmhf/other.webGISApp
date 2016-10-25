@@ -1,0 +1,316 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!-- coding: utf-8 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+quelques liens
+http://api.ign.fr/tech-docs-js/developpeur/wmts.html
+http://api.ign.fr//tech-docs-js/examples/geoportalLeaflet.html
+http://wxs.ign.fr/qyb08yi3axc1c7h579jvtxs4/proxy-wmts?SERVICE=WMTS&REQUEST=GetCapabilities
+http://tile.geobretagne.fr/gwc02/service/wmts?SERVICE=WMTS&REQUEST=GetCapabilities
+
+http://depot.ign.fr/geoportail/api/develop/tech-docs-js/examples/geoportalLeaflet_WMTSL93.html
+http://api.ign.fr/documentation/80/affichage-de-couches-wmts
+-->
+<html>
+
+<head>
+    <title>Leaflet et WMTS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="cache-control" content="no-cache">
+    <!--leaflet-->
+    <link rel="stylesheet" href="3rd/leaflet/leaflet.css" />
+    <script src="3rd/leaflet/leaflet.js"></script>
+    <script src="../3rd/leaflet.wms/wms.js"></script>
+    <script src="../3rd/ol3/ol-debug.js"></script>
+    <script src="../3rd/jquery/2.1.1/jquery.js"></script>
+    </div>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        #coords {
+            position: absolute;
+            left: 50px;
+            top: 0px;
+            z-index: 1000;
+            color:red;
+            font-weight:800;
+            background: white;
+
+        }
+    </style>
+</head>
+
+<body>
+<div id='map'></div>
+<div id="coords"></div>
+<script type="text/javascript">
+    function getCapabilities(){
+
+
+        //var osm = new ol.Layer.OSM();
+
+        var url='http://192.168.227.106:8080/share-exchange/KTWService/wmts';
+        $.ajax({
+            url: url + "?Request=GetCapabilities&t=" + new Date().getTime(),
+            dataType: 'text',
+            type: 'GET',
+            timeout: 2000,
+            async: false,
+            cache: false,
+            success: function (xml) {
+                if (!xml) return;
+                //获取服务元数据
+                var result = new ol.format.WMTSCapabilities().read(xml);
+                option = ol.source.WMTS.optionsFromCapabilities(result, {
+                    /*layer:  mapInfo.catalogSpace+":"+mapInfo.serviceName,
+                    matriSet: mapInfo.spatialReference,
+                    projection: ol.proj.get(mapInfo.spatialReference),
+                    style: 'default',
+                    format: 'image/png'*/
+                    layer: 'ffffffff95ff1d75:textdom7service2'
+                });
+                option.wrapX = false;
+                return option;
+            },
+            error: function (e, o) {
+                alert("获取元数据失败");
+            }
+        });
+    }
+
+    L.TileLayer.WMTS = L.TileLayer.extend({
+
+        defaultWmtsParams: {
+            service: 'WMTS',
+            request: 'GetTile',
+            version: '1.0.0',
+            layer: '',
+            style: '',
+            tilematrixSet: '',
+            format: 'image/png'
+        },
+
+        initialize: function(url, options) { // (String, Object)
+            this._url = url;
+            var wmtsParams = L.extend({}, this.defaultWmtsParams),
+                    tileSize = options.tileSize || this.options.tileSize;
+            if (options.detectRetina && L.Browser.retina) {
+                wmtsParams.width = wmtsParams.height = tileSize * 2;
+            } else {
+                wmtsParams.width = wmtsParams.height = tileSize;
+            }
+            for (var i in options) {
+                // all keys that are not TileLayer options go to WMTS params
+                if (!this.options.hasOwnProperty(i) && i != "matrixIds") {
+                    wmtsParams[i] = options[i];
+                }
+            }
+            this.wmtsParams = wmtsParams;
+            this.matrixIds = options.matrixIds;
+            L.setOptions(this, options);
+        },
+
+        onAdd: function(map) {
+            L.TileLayer.prototype.onAdd.call(this, map);
+        },
+
+        getTileUrl: function(tilePoint, zoom) { // (Point, Number) -> String
+            var map = this._map;
+            crs = map.options.crs;
+            tileSize = this.options.tileSize;
+            nwPoint = tilePoint.multiplyBy(tileSize);
+            //+/-1 in order to be on the tile
+            nwPoint.x += 1;
+            nwPoint.y -= 1;
+            sePoint = nwPoint.add(new L.Point(tileSize, tileSize));
+            nw = crs.project(map.unproject(nwPoint, zoom));
+            se = crs.project(map.unproject(sePoint, zoom));
+            console.log("nw x:%s y:%s", nw.x, nw.y);
+            tilewidth = se.x - nw.x;
+            console.log("tilewidth:"+tilewidth);
+            zoom = map.getZoom();
+            ident = this.matrixIds[zoom].identifier;
+            X0 = this.matrixIds[zoom].topLeftCorner.lng;
+            Y0 = this.matrixIds[zoom].topLeftCorner.lat;
+            console.log("X0:%s Y0:%s", X0, Y0);
+            tilecol = Math.floor((nw.x - X0) / tilewidth);
+            tilerow = -Math.floor((nw.y - Y0) / tilewidth);
+            url = L.Util.template(this._url, {
+                s: this._getSubdomain(tilePoint)
+            });
+            return url + L.Util.getParamString(this.wmtsParams, url) + "&tilematrix=" + ident + "&tilerow=" + tilerow + "&tilecol=" + tilecol;
+        },
+
+        setParams: function(params, noRedraw) {
+            L.extend(this.wmtsParams, params);
+            if (!noRedraw) {
+                this.redraw();
+            }
+            return this;
+        }
+    });
+
+    L.tileLayer.wtms = function(url, options) {
+        return new L.TileLayer.WMTS(url, options);
+    };
+
+
+    /* Fin / End
+     *---------------------------------------------------------*/
+    //
+    // la configuration initiale
+    var conf = {
+        lon: 112.2536315,
+        lat: 28.707551,
+        zoom: 13
+    };
+    getCapabilities();
+    var matrixIds = [];
+    var smallNum = parseInt(option.tileGrid.matrixIds_[0]);
+    var bigNum = parseInt(option.tileGrid.matrixIds_[0]) + option.tileGrid.matrixIds_.length;
+    for (var i=smallNum;i < bigNum;i++){
+        matrixIds[i] = {
+            identifier: i,
+            //  scaleDenominator: 2181470.311981486,
+            topLeftCorner: new L.LatLng(90, -180)
+        }
+    }
+
+
+    // !!! attention le top left évolue
+    var matrixIds4546 = [];
+    matrixIds4546[8] = {
+        identifier: "8",
+      //  scaleDenominator: 2181470.311981486,
+        topLeftCorner: new L.LatLng(90, -180)
+    };
+    matrixIds4546[9] = {
+        identifier: "9",
+      //  scaleDenominator: 1090735.155990743,
+        topLeftCorner: new L.LatLng(90, -180)
+    };
+    matrixIds4546[10] = {
+        identifier: "10",
+      //  scaleDenominator: 545367.5779953715,
+        topLeftCorner: new L.LatLng(90, -180)
+    };
+    matrixIds4546[11] = {
+        identifier: "11",
+      //  scaleDenominator: 272683.78899768577,
+        topLeftCorner: new L.LatLng(90, -180)
+    };
+    matrixIds4546[12] = {
+        identifier: "12",
+      //  scaleDenominator: 136341.89449884288,
+        topLeftCorner: new L.LatLng(90, -180)
+    };
+    matrixIds4546[13] = {
+        identifier: "13",
+      //  scaleDenominator: 68170.94724942144,
+        topLeftCorner: new L.LatLng(90, -180)
+    };
+    matrixIds4546[14] = {
+        identifier: "14",
+     //   scaleDenominator: 34085.47362471072,
+        topLeftCorner: new L.LatLng(90, -180)
+    };
+    matrixIds4546[15] = {
+        identifier: "15",
+      //  scaleDenominator: 17042.73681235536,
+        topLeftCorner: new L.LatLng(90, -180)
+    };
+    matrixIds4546[16] = {
+        identifier: "16",
+      //  scaleDenominator: 8521.36840617768,
+        topLeftCorner: new L.LatLng(90, -180)
+    };
+    matrixIds4546[17] = {
+        identifier: "17",
+     //  scaleDenominator: 4260.68420308884,
+        topLeftCorner: new L.LatLng(90, -180)
+    };
+
+
+
+
+    // 起始 109.687917 28.8646892
+    // 结束 110.0030584 29.1744853
+    var layer_GB = "ffffffff95ff1d75:textdom7service2";
+    var gb_attrib = "xx";
+
+    var gb_url = 'http://192.168.227.106:8080/share-exchange/KTWService/wmts';
+    var wms_url = 'http://192.168.227.106:8080/share-exchange/KTWService/wms';
+
+   var wms =  L.WMS.overlay(wms_url, {
+        layers: 'ffffffff8a2a69f1:jw4490',
+        format: 'image/png',
+        maxZoom: 20,
+        minZoom: 0,
+        continuousWorld: true
+    });
+
+
+
+    var gb_layer = new L.TileLayer.WMTS(gb_url, {
+        layer: layer_GB,
+        style: 'default',
+        tilematrixSet: "EPSG:4326",
+        matrixIds: matrixIds,
+        format: 'image/png',
+        attribution: gb_attrib
+    });
+
+
+
+    //
+    // la carte avec le crs ad-hoc
+    var map = L.map('map', {
+        crs: L.CRS.EPSG4326,
+        continuousWorld: true,
+        worldCopyJump: false
+    });
+    map.setView([conf.lat, conf.lon], conf.zoom);
+
+    L.control.scale({
+        'position': 'bottomleft',
+        'metric': true,
+        'imperial': false
+    }).addTo(map);
+    // l'URL WMTS
+    //
+    // OK
+    // http://geobretagne.fr/gwc02/service/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0
+    // &LAYER=satellite&STYLE=&TILEMATRIXSET=EPSG%3A2154&TILEMATRIX=EPSG%3A2154%3A16&TILEROW=721&TILECOL=1169&FORMAT=image%2Fjpeg
+    //
+    // KO
+    // http://tile.geobretagne.fr/gwc02/service/wmts?SERVICE=WMTS&service=WMTS&request=GetTile&version=1.0.0
+    // &layer=carte&style=normal&tilematrixSet=EPSG%3A2154&format=image%2Fjpeg&height=256&width=256&tilematrix=EPSG:4546:15&tilerow=1&tilecol=2
+    map.addLayer(wms);
+    map.addLayer(gb_layer);
+
+    /*
+    var baseLayers = {
+        "Carte GB": gb_layer
+    };
+
+    L.control.layers(baseLayers, {}).addTo(map); */
+
+    map.on('mousemove', function(e){
+        var c = document.getElementById("coords");
+        c.innerHTML = e.latlng.lat.toFixed(4) + ", " + e.latlng.lng.toFixed(4);
+    });
+
+
+</script>
+</body>
+
+</html>
