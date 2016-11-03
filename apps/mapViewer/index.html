@@ -81,7 +81,7 @@
     </style>
     <!-- 获取对应的服务配置信息 -->
     <script type="text/javascript" src="../commonConfig.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="3rd/jQuery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="3rd/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="3rd/leaflet/leaflet-src.js"></script>
     <script type="text/javascript" src="config/epsg.js"></script>
@@ -128,6 +128,7 @@
 
 
 
+
     <script type="text/javascript" src="3rd/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
 
     <script type="text/javascript" src="3rd/jquery.qrcode/jquery.qrcode.min.js"></script>
@@ -137,37 +138,44 @@
 
 
     <script type="text/javascript">
+        var appid; // 应用的id
+        var appExId; // 应用扩展id
         var mapInfo; // 地图信息
-        var mapId; // 地图的idv
+        var mapId; // 地图的div
         var map;
         var controlLoader; //地图加载动画
     </script>
 
-    <!-- 解析器 -->
+    <!-- url解析器 -->
     <script type="text/javascript" src="ktw/util.url/js/url.js"></script>
-    <!--<script type="text/javascript" src="js/getUrlParam.js"></script>-->
+    <!-- 创建uuid --->
+    <script type="text/javascript" src="ktw/util.uuid/uuid.js"></script>
+    <!-- 获取服务的具体参数 -->
     <script type="text/javascript" src="js/getServiceParam.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
-
-    <script type="text/javascript" src="config/defaults.js"></script>
+    <!-- 获取到基础框架的信息 -->
     <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="config/defaults.js"></script>
+
 
     <script type="text/javascript" src="js/temp.js"></script>
-    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+
 </head>
 
 <body>
 
 <!-- 测试功能面板 -->
-<!--<div style="position:absolute;left:300px;top:700px;z-index:999999;color:#0f0f0f;background-color:transparent">
-    <input type="button" value="test" onclick="page.test()" /> <br/>
+<div style="position:absolute;left:300px;top:200px;z-index:999999;color:#0f0f0f;background-color:transparent">
+    <input type="button" value="新增" onclick="addAppInfo('d')" /> <br/>
     <input type="button" value="显示数据面板" onclick="page.showDataPanel()" /> <br/>
+
+    <!--
     <input type="button" value="显示地图面板" onclick="page.showMapPanel()" /> <br/>
     <input type="button" value="显示分享面板" onclick="page.showSharePanel()" /> <br/>
     <input type="button" value="显示设置面板" onclick="page.showSetupPanel()" /> <br/>
     <input type="button" value="显示删除面板" onclick="page.showDeletePanel()" /><br/><br/>
-    <input type="button" value="弹出提示框" onclick="page.showDeletePanel()" />
-</div>-->
+    <input type="button" value="弹出提示框" onclick="page.showDeletePanel()" />-->
+</div>
 
 <!-- 地图容器 -->
 <div id="map-wrapper">

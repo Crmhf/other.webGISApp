@@ -39,9 +39,9 @@ function Frame() {
     // 获取到Url里的参数信息
         _getUrlParam = function() {
             var location =  window.location.search;
-            mapId = URL.get('mapItem',location);
+            appid = URL.get('appid',location);
             //     console.info('&getUrlParam&mapId:' + mapId);
-            return mapId;
+            return appid;
         };
 
     // 对外提供调用的方法
@@ -91,7 +91,7 @@ function Frame() {
 
     // 获取url中的参数信息
     this.getParam = function(){
-        var x = $.getUrlParam('x');
+        var x = $.getUrlParam('appid');
         alert(x);
     };
 
@@ -169,7 +169,7 @@ function Frame() {
     })();
 };
 
-// 判断是否登录
+// 判断用户是否登录,如果未登录,回首页
 function isLogin(){
     // 检查用户是否已经登录了
     return isLogin;
@@ -185,12 +185,14 @@ $(document).ready(function () {
     // }
     // else{
     page = new Frame();
+
     // }
     //initMap();
     // 根据id获取到服务里面的参数
-    $.getServiceParam("00000000566b284b01566b3d4f280005");
+    $.getServiceParam(appid);
 
     // 初始化构建的webmap的参数
+    // 构造map的信息
     var webmap = {};
     webmap.item = {
         "title":"地图的描述信息",
@@ -201,6 +203,7 @@ $(document).ready(function () {
 
     webmap.itemData = {
         // 业务图层
+        // 服务地址、是否可见、透明度、标题、唯一标识
         "operationalLayers": [{
             "url": "https://server.arcgisonline.com/ArcGIS/rest/services/Specialty/Soil_Survey_Map/MapServer",
             "visibility": true,
@@ -351,12 +354,13 @@ $(document).ready(function () {
             "catalogid": "00000000566af22101566afa9e080008",
             "typeid": "2"
         };
-
+        var strUrl=commonConfig.getServiveForMap;
        $.ajax({
             type:'POST',
-            url:'http://192.168.1.114:8081/share-exchange/webservices/rest/serviceregister/queryviewinfo/1/10?_type=json',
+           // url:'http://192.168.227.106:8080/share-exchange/webservices/rest/serviceregister/queryviewinfo/1/10?_type=json',
+            url:strUrl,
             dataType:'json',
-            data:'{"catalogid":"00000000566af22101566afa9e080008","serverbelongtype":"1","userflag":1,"title":""}',
+            data:'{"catalogid":"4028817457b1336c0157b247974f0008","serverbelongtype":"1","userflag":1,"title":""}',
             contentType:"application/json;charset=utf-8",
             success:function(data){
                 var result=data.data.data;
@@ -364,7 +368,7 @@ $(document).ready(function () {
                 content='<table class="table table-bordered table-hover"><thead> <tr> <th><input type="checkbox"/></th> <th>名称</th> <th>类型</th> </tr> </thead> <tbody>'
                     for(var i=0,len=result.length; i<len; i++){
 
-                        content+='<tr><td><input class="data-list-checkbox" name="selectrow" type="checkbox" class="'+result[i].id+'" value="'+result[i].name+'"></td><td>'+result[i].servicesname+'</td><td>'+result[i].servertypename+'</td>';
+                        content+='<tr><td><input class="data-list-checkbox" name="selectrow" type="checkbox" class="'+result[i].id+'" value="'+result[i].title+'"></td><td>'+result[i].title+'</td><td>'+result[i].servertypename+'</td>';
                         content+='</tr>';
                     }
                 content+='</tbody></table>';
@@ -420,7 +424,7 @@ $(document).ready(function () {
         $.getServiceParam("00000000566b284b01566b3d4f280005");
     }
 
-    $(".aaa").click(function(){
+    /*$(".aaa").click(function(){
         alert(dataA);
         $("#addlayertable").find("[name=selectrow]:checkbox:checked").each(function(){
             var data=$(this).parent("tr");
@@ -434,7 +438,7 @@ $(document).ready(function () {
 
             console.log(id);
         })
-    })
+    })*/
     $("[name=selectrow]:checkbox:checked").each(function(){
         var data=$(this).parent("tr");
         var id=data.find("[name='id']").val();

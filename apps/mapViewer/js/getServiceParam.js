@@ -7,22 +7,31 @@
        // var strUrl='http://192.168.1.114:8081/share-exchange/webservices/rest/serviceregister/importOneService/';
 
        // 获取到通用的配置信息
-       var strUrl=commonConfig.getServiceById;
+       // var strUrl=commonConfig.getServiceById;
+
+        alert(id);
+
+
+        // 获取服务地址
+        // 为了能查到该应用的详细信息,需要在对应的
+        var requestURL = commonConfig.app.queryAll;
         $.ajax({
             type: "GET",
+            url: requestURL + id,
+            async: false,
+            cache: false,
+            dataType: "json",
             contentType: "application/json;charset=utf-8",
-            url: strUrl + id,
-            dataType: 'json',
-            contentType:"application/json;charset=utf-8",
-          //  cache: false,
-          //  data: id,
-            success: function (resultData) {
-                mapInfo = resultData.data;
-             //   console.info('&getServiceParam&mapInfo:' + mapInfo.serviceUrl);
-                initMap();
+            success: function (result) {
+                mapInfo = result.data;
+                alert(mapInfo);
+                debugger;
+                //   console.info('&getServiceParam&mapInfo:' + mapInfo.serviceUrl);
+               // initMap();
             },
-            error: function (error) {
-                alert('error+获取地图服务的具体参数信息失败！');
+            error: function (a, b, c) {
+                // showerror();
+                alert('服务获取失败');
             }
         });
 
