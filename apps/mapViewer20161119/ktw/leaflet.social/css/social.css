@@ -1,0 +1,9 @@
+.leaflet-social-control a {
+font-size: 36px;
+color: #8d46b0;
+text-decoration: none;
+}
+
+.leaflet-social-control a:hover{
+   color:#000;
+}
