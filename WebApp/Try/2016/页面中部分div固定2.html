@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无闪动的div层固定</title>
+    <style type="text/css">
+        body{margin:0px; padding:0px;}
+        #fixedBottom{
+            background-color: #00b3ee;
+            position:fixed; bottom:100px;
+            _position:absolute; _bottom:100px;
+            _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginBottom,10)||100)));
+            width:100%; height:30px; line-height:30px; border:1px solid #ccc;
+        }
+        #fixedTop{
+            background-color: #1a9bcb;
+            position:fixed; top:0px;
+            _position:absolute; _top:100px;
+            _top:expression(eval(document.documentElement.scrollTop+(parseInt(this.currentStyle.marginTop,10)||100)));
+            width:100%; height:30px; line-height:30px; border:1px solid #ccc;
+        }
+        *html{background-image:url(about:blank);background-attachment:fixed;}
+    </style>
+</head>
+<body style="height:2000px;">
+
+<div id="fixedTop">我吃了定心丹，风吹不动，雷打不动，我就定在这愁着你！</div>
+
+<div id="fixedBottom">我吃了定心丹，风吹不动，雷打不动，我就定在这愁着你！</div>
+
+</body>
+</html>

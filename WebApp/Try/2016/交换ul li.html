@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+    <title>Table test</title>
+    <style type="text/css">
+        <!--
+        td { text-align:center;font-size:12px;padding:3px;}
+        -->
+    </style>
+    <script type="text/javascript">
+        function buttonMove(type) {
+            var table = document.getElementById("table1");
+            for (var i = 0; i < table.rows.length; i++) {
+                var radio = table.rows[i].cells[0].childNodes
+                if (radio[0].checked == true) {
+                    if (type == "up") {
+
+                        moveUp(radio[0]);
+                        return;
+                    }
+                    else if (type=="down"){
+                        moveDown(radio[0]);
+                        return;
+                    }
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<input name="" type="button" value="上移" onclick=" buttonMove('up')" />
+<input name="" type="button" value="下移" onclick=" buttonMove('down')"/><br />
+<table id="table1" bordercolor="#000000" width="370" border="1">
+    <tbody>
+    <tr>
+        <td align="center"><input name="move" type="radio" value=""></td>
+        <td width="25%" align="center">1</td>
+        <td width="25%"><input name="" type="text" value="11"></td>
+        <!--使用javascript:void(0)是为了能够传递this参数到事件处理程序-->
+        <td width="25%"><a href="javascript:void(0)" onClick="moveUp(this)">上移</a></td>
+        <td width="25%"><a href="javascript:void(0)" onClick="moveDown(this)">下移</a></td>
+    </tr>
+    <tr>
+        <td align="center"><input name="move" type="radio" value=""></td>
+        <td>2</td>
+        <td><input name="" type="text" value="22"></td>
+        <td><a href="javascript:void(0)" onClick="moveUp(this)">上移</a></td>
+        <td><a href="javascript:void(0)" onClick="moveDown(this)">下移</a></td>
+    </tr>
+    <tr>
+        <td align="center"><input name="move" type="radio" value=""></td>
+        <td>3</td>
+        <td><input name="" type="text" value="33"></td>
+        <td><a href="javascript:void(0)" onClick="moveUp(this)">上移</a></td>
+        <td><a href="javascript:void(0)" onClick="moveDown(this)">下移</a></td>
+    </tr>
+    <tr>
+        <td align="center"><input name="move" type="radio" value=""></td>
+        <td>4</td>
+        <td><input name="" type="text" value="44"></td>
+        <td><a href="javascript:void(0)" onClick="moveUp(this)">上移</a></td>
+        <td><a href="javascript:void(0)" onClick="moveDown(this)">下移</a></td>
+    </tr>
+    <tr>
+        <td align="center"><input name="move" type="radio" value=""></td>
+        <td>5</td>
+        <td><input name="" type="text" value="55"></td>
+        <td><a href="javascript:void(0)" onClick="moveUp(this)">上移</a></td>
+        <td><a href="javascript:void(0)" onClick="moveDown(this)">下移</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+<script language="JavaScript" type="text/javascript">
+    <!--
+    function cleanWhitespace(element) {
+        //遍历element的子结点
+        for (var i = 0; i < element.childNodes.length; i++) {
+            var node = element.childNodes;
+            //判断是否是空白文本结点，如果是，则删除该结点
+            if (node.nodeType == 3 && !/\S/.test(node.nodeValue))
+                node.parentNode.removeChild(node);
+        }
+    }
+
+    //获得表格对象
+    var _table=document.getElementById("table1");
+    cleanWhitespace(_table);
+
+
+    //使表格行上移，接收参数为链接对象
+    function moveUp(_a){
+        //通过链接对象获取表格行的引用
+        var _row=_a.parentNode.parentNode;
+        //如果不是第一行，则与上一行交换顺序
+        if(_row.previousSibling)swapNode(_row,_row.previousSibling);
+    }
+
+    //使表格行下移，接收参数为链接对象
+    function moveDown(_a){
+        //通过链接对象获取表格行的引用
+        var _row=_a.parentNode.parentNode;
+        //如果不是最后一行，则与下一行交换顺序
+        if(_row.nextSibling)swapNode(_row,_row.nextSibling);
+    }
+
+    //定义通用的函数交换两个结点的位置
+    function swapNode(node1,node2){
+        //获取父结点
+        var _parent=node1.parentNode;
+        //获取两个结点的相对位置
+        var _t1=node1.nextSibling;
+        var _t2=node2.nextSibling;
+        //将node2插入到原来node1的位置
+        if(_t1)
+            _parent.insertBefore(node2,_t1);
+        else
+            _parent.appendChild(node2);
+        //将node1插入到原来node2的位置
+        if(_t2)
+            _parent.insertBefore(node1,_t2);
+        else
+            _parent.appendChild(node1);
+    }
+    //-->
+</script>
