@@ -5,6 +5,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui' />
     <title>卷帘对比分析</title>
     <script src='3rd/leaflet/leaflet-src.js'></script>
+    <script src='3rd/leaflet.wms/wms.js'></script>
     <script src="3rd/leaflet.sidebyside/sidebyside.js"></script>
     <link href='3rd/leaflet/leaflet.css' rel='stylesheet' />
     <style>
@@ -28,10 +29,30 @@
     // 通过加载两个不同的图层进行对比
     var map = L.map('map').setView([51.505, -0.09], 13);
 
+    /*
     var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
+    }).addTo(map); */
+
+    var wmsUrl = 'http://192.168.231.64:8080/share-exchange/KTWService/wms';
+
+    wms1 =  L.WMS.overlay(wmsUrl, {
+        format: 'image/png',
+        layers: '1749d7ad:xzqcun3',
+        styles: '',
+        maxZoom: 20,
+        minZoom: 0,
+        continuousWorld: true
     }).addTo(map);
 
+    wms2 =  L.WMS.overlay(wmsUrl, {
+        format: 'image/png',
+        styles: '1749d7ad:grespl4',
+        maxZoom: 20,
+        minZoom: 0,
+        continuousWorld: true
+    }).addTo(map);
+/*
     var stamenLayer = L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png', {
         attribution:
         'Map tiles by <a href="http://stamen.com">Stamen Design<\/a>, ' +
@@ -39,9 +60,9 @@
         'Map data {attribution.OpenStreetMap}',
         minZoom: 1,
         maxZoom: 16
-    }).addTo(map)
+    })*/
 
-    L.control.sideBySide(stamenLayer, osmLayer).addTo(map);
+    L.control.sideBySide(wms1, wms2).addTo(map);
 </script>
 </body>
 </html>
