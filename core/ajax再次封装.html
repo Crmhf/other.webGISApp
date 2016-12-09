@@ -1,0 +1,55 @@
+<<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQueryAjaxJson取值示例</title>
+    <script type="text/javascript" src="Scripts/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            jsonAjax("AjaxQuery.aspx", "type=json", "json", callBack);
+            jsonAjax("AjaxQuery.aspx", "id=1&name=2&type=text", "text", callBackTxt);
+        });
+        function callBack(data) {
+            $("#ddd").html('');
+            var json = eval(data); //数组
+            $.each(json, function (index, item) {
+                //循环获取数据
+                var name = json[index].Name;
+                var age = json[index].Age;
+                var sex = json[index].Sex;
+                $("#ddd").html($("#ddd").html() + "<br>" + name + "  " + age + "  " + sex + "<br/>");
+            });
+        };
+        function callBackTxt(data) {
+            $("#ccc").html(data);
+        };
+
+        /**
+         * ajax post提交
+         * @param url
+         * @param param
+         * @param datat 为html,json,text
+         * @param callback回调函数
+         * @return
+         */
+        function jsonAjax(url, param, datat, callback) {
+            $.ajax({
+                type: "post",
+                url: url,
+                data: param,
+                dataType: datat,
+                success: callback,
+                error: function () {
+                    jQuery.fn.mBox({
+                        message: '恢复失败'
+                    });
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+<span id="ccc"></span>
+<span id="ddd"></span>
+</body>
+</html>
