@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Leaflet class diagram - Leaflet</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../gis/k/k.css">
+    <script type="text/javascript" src="../../gis/k/k.js"></script>
+
+
+    <style>
+        #map {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+S
+
+</head>
+<body>
+
+<div id='map'></div>
+
+<script type="text/javascript">
+
+    var bounds = [[0,0], [1570,1910]];
+
+    var map = K.map('map', {
+        crs: K.CRS.Simple,
+        maxZoom: 1,
+        minZoom: -2,
+        maxBounds: bounds
+    });
+
+    map.getContainer().style.width = '100vw';
+    map.getContainer().style.height= '100vh';
+    document.body.style.margin = 0;
+
+    var image = K.imageOverlay('class-diagram.png', bounds).addTo(map);
+
+    map.fitBounds(bounds);
+
+</script>
+
+
+
+</body>
+</html>

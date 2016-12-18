@@ -1,0 +1,286 @@
+/* required styles */
+
+.kmap-pane,
+.kmap-tile,
+.kmap-marker-icon,
+.kmap-marker-shadow,
+.kmap-tile-container,
+.kmap-map-pane svg,
+.kmap-map-pane canvas,
+.kmap-zoom-box,
+.kmap-image-layer,
+.kmap-layer {  position: absolute;  left: 0;  top: 0;  }
+
+.kmap-container {  overflow: hidden;  }
+
+.kmap-tile,
+.kmap-marker-icon,
+.kmap-marker-shadow {  -webkit-user-select: none; -moz-user-select: none;  user-select: none;  -webkit-user-drag: none;  }
+/* Safari renders non-retina tile on retina better with this, but Chrome is worse */
+.kmap-safari .kmap-tile {  image-rendering: -webkit-optimize-contrast;  }
+/* hack that prevents hw layers "stretching" when loading new tiles */
+.kmap-safari .kmap-tile-container {  width: 1600px;  height: 1600px;  -webkit-transform-origin: 0 0;  }
+.kmap-marker-icon,
+.kmap-marker-shadow {  display: block;  }
+/* .kmap-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */
+/* .kmap-container img: map is broken in FF if you have max-width: 100% on tiles */
+.kmap-container .kmap-overlay-pane svg,
+.kmap-container .kmap-marker-pane img,
+.kmap-container .kmap-tile-pane img,
+.kmap-container img.kmap-image-layer {  max-width: none !important;  }
+
+.kmap-container.kmap-touch-zoom {  -ms-touch-action: pan-x pan-y;  touch-action: pan-x pan-y;  }
+.kmap-container.kmap-touch-drag {  -ms-touch-action: pinch-zoom;  }
+.kmap-container.kmap-touch-drag.kmap-touch-drag {  -ms-touch-action: none;  touch-action: none;  }
+.kmap-tile {  filter: inherit;  visibility: hidden;  }
+.kmap-tile-loaded {  visibility: inherit;  }
+.kmap-zoom-box {  width: 0;  height: 0;  -moz-box-sizing: border-box;  box-sizing: border-box;  z-index: 800;  }
+/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
+.kmap-overlay-pane svg {  -moz-user-select: none;  }
+
+/* 设定不同元素的z-inde*/
+.kmap-pane         { z-index: 400; }
+.kmap-tile-pane    { z-index: 200; }
+.kmap-overlay-pane { z-index: 400; }
+.kmap-shadow-pane  { z-index: 500; }
+.kmap-marker-pane  { z-index: 600; }
+.kmap-tooltip-pane   { z-index: 650; }
+.kmap-popup-pane   { z-index: 700; }
+.kmap-map-pane canvas { z-index: 100; }
+.kmap-map-pane svg    { z-index: 200; }
+
+.kmap-vml-shape {  width: 1px;  height: 1px;  }
+.lvml {  behavior: url(#default#VML);  display: inline-block;  position: absolute;  }
+
+
+/* control positioning */
+.kmap-control {  position: relative;  z-index: 800;  pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+.kmap-top,
+.kmap-bottom {  position: absolute;  z-index: 1000;  pointer-events: none;  }
+.kmap-top {  top: 0;  }
+.kmap-right {  right: 0;  }
+.kmap-bottom {  bottom: 0;  }
+.kmap-left {  left: 0;  }
+.kmap-control {  float: left;  clear: both;  }
+.kmap-right .kmap-control {  float: right;  }
+.kmap-top .kmap-control {  margin-top: 10px;  }
+.kmap-bottom .kmap-control {  margin-bottom: 10px;  }
+.kmap-left .kmap-control { margin-left: 10px;  }
+.kmap-right .kmap-control {  margin-right: 10px;  }
+
+/* zoom and fade animations */
+.kmap-fade-anim .kmap-tile {  will-change: opacity;  }
+.kmap-fade-anim .kmap-popup {  opacity: 0;  -webkit-transition: opacity 0.2s linear;  -moz-transition: opacity 0.2s linear;  -o-transition: opacity 0.2s linear;  transition: opacity 0.2s linear;  }
+.kmap-fade-anim .kmap-map-pane .kmap-popup {  opacity: 1;  }
+.kmap-zoom-animated {  -webkit-transform-origin: 0 0;  -ms-transform-origin: 0 0;  transform-origin: 0 0;  }
+.kmap-zoom-anim .kmap-zoom-animated {  will-change: transform;  }
+.kmap-zoom-anim .kmap-zoom-animated {  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);  -moz-transition:-moz-transform 0.25s cubic-bezier(0,0,0.25,1);  -o-transition:      -o-transform 0.25s cubic-bezier(0,0,0.25,1);  transition:         transform 0.25s cubic-bezier(0,0,0.25,1);  }
+.kmap-zoom-anim .kmap-tile,
+.kmap-pan-anim .kmap-tile {  -webkit-transition: none;  -moz-transition: none;  -o-transition: none;  transition: none;  }
+.kmap-zoom-anim .kmap-zoom-hide {  visibility: hidden;  }
+
+
+/* cursors */
+.kmap-interactive {  cursor: pointer;  }
+.kmap-grab { cursor: -webkit-grab;  cursor:    -moz-grab;  }
+.kmap-crosshair,
+.kmap-crosshair .kmap-interactive {  cursor: crosshair;  }
+.kmap-popup-pane,
+.kmap-control {  cursor: auto;  }
+.kmap-dragging .kmap-grab,
+.kmap-dragging .kmap-grab .kmap-interactive,
+.kmap-dragging .kmap-marker-draggable {  cursor: move;  cursor: -webkit-grabbing;  cursor:    -moz-grabbing;  }
+
+/* marker & overlays interactivity */
+.kmap-marker-icon,
+.kmap-marker-shadow,
+.kmap-image-layer,
+.kmap-pane > svg path,
+.kmap-tile-container {  pointer-events: none;  }
+
+.kmap-marker-icon.kmap-interactive,
+.kmap-image-layer.kmap-interactive,
+.kmap-pane > svg path.kmap-interactive {
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+
+/* visual tweaks */
+.kmap-container {  background: #ddd;  outline: 0;  }
+.kmap-container a {  color: #0078A8;  }
+.kmap-container a.kmap-active {  outline: 2px solid orange;	}
+.kmap-zoom-box {  border: 2px dotted #38f;  background: rgba(255,255,255,0.5);  }
+
+/* general typography */
+.kmap-container {  font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;  }
+
+
+/* general toolbar styles */
+.kmap-bar {  border-radius: 2px;  }
+.kmap-bar a,
+.kmap-bar a:hover {  background-color: #444;  border-bottom: 1px solid #333;  width: 24px;  height: 24px;  line-height: 24px;  display: block;  text-align: center;  text-decoration: none;  color: #fff;  }
+.kmap-bar a,
+.kmap-control-layers-toggle {  background-position: 50% 50%;  background-repeat: no-repeat;  display: block;  }
+.kmap-bar a:hover {  background-color: #555;  }
+.kmap-bar a:first-child {  border-top-left-radius: 2px;  border-top-right-radius: 2px;  }
+.kmap-bar a:last-child {  border-bottom-left-radius: 2px;  border-bottom-right-radius: 2px;  border-bottom: none;  }
+.kmap-bar a.kmap-disabled {  cursor: default;  background-color: #f4f4f4;  color: #bbb;  }
+.kmap-touch .kmap-bar a {  width: 30px;  height: 30px;  line-height: 30px;  }
+
+
+/* zoom control */
+.kmap-control-zoom-in,
+.kmap-control-zoom-out {  font: bold 18px 'Lucida Console', Monaco, monospace;  text-indent: 1px; }
+.kmap-control-zoom-out {  font-size: 20px;  }
+.kmap-touch .kmap-control-zoom-in {  font-size: 22px;  }
+.kmap-touch .kmap-control-zoom-out {  font-size: 24px;  }
+
+
+/* layers control */
+.kmap-control-layers {  box-shadow: 0 1px 5px rgba(0,0,0,0.4);  background: #fff;  border-radius: 5px;  }
+.kmap-control-layers-toggle {  background-image: url(img/layers.png);  width: 36px;  height: 36px;  }
+.kmap-retina .kmap-control-layers-toggle {  background-image: url(img/layers-2x.png);  background-size: 26px 26px;  }
+.kmap-touch .kmap-control-layers-toggle {  width: 44px;  height: 44px;  }
+.kmap-control-layers .kmap-control-layers-list,
+.kmap-control-layers-expanded .kmap-control-layers-toggle {  display: none;  }
+.kmap-control-layers-expanded .kmap-control-layers-list {  display: block;  position: relative;  }
+.kmap-control-layers-expanded {  padding: 6px 10px 6px 6px;  color: #333;  background: #fff;  }
+.kmap-control-layers-scrollbar {  overflow-y: scroll;  padding-right: 5px;  }
+.kmap-control-layers-selector {  margin-top: 2px;  position: relative;  top: 1px;  }
+.kmap-control-layers label {  display: block;  }
+.kmap-control-layers-separator {  height: 0;  border-top: 1px solid #ddd;  margin: 5px -10px 5px -6px;  }
+
+/* attribution and scale controls */
+.kmap-container .kmap-control-attribution {  background: #fff;  background: rgba(255, 255, 255, 0.7);  margin: 0;  }
+.kmap-control-attribution,
+.kmap-control-scale-line {  padding: 0 5px;  color: #333;  }
+.kmap-control-attribution a {  text-decoration: none;  }
+.kmap-control-attribution a:hover { text-decoration: underline;  }
+.kmap-container .kmap-control-attribution,
+.kmap-container .kmap-control-scale {  font-size: 11px;  }
+.kmap-left .kmap-control-scale {  margin-left: 5px;  }
+.kmap-bottom .kmap-control-scale {  margin-bottom: 5px;  }
+.kmap-control-scale-line {  border: 2px solid #777;  border-top: none;  line-height: 1.1;  padding: 2px 5px 1px;  font-size: 11px;  white-space: nowrap;  overflow: hidden;  -moz-box-sizing: border-box; box-sizing: border-box;  background: #fff;  background: rgba(255, 255, 255, 0.5);  }
+.kmap-control-scale-line:not(:first-child) {  border-top: 2px solid #777;  border-bottom: none;  margin-top: -2px;  }
+.kmap-control-scale-line:not(:first-child):not(:last-child) {  border-bottom: 2px solid #777;  }
+
+.kmap-touch .kmap-control-attribution,
+.kmap-touch .kmap-control-layers,
+.kmap-touch .kmap-bar {  box-shadow: none;  }
+.kmap-touch .kmap-control-layers,
+.kmap-touch .kmap-bar {  border: 2px solid rgba(0,0,0,0.2);  background-clip: padding-box;  }
+
+
+/* popup */
+.kmap-popup {  position: absolute;  text-align: center;  margin-bottom: 20px;  }
+.kmap-popup-content-wrapper {  padding: 1px;  text-align: left;  border-radius: 12px;  }
+.kmap-popup-content {  margin: 13px 19px;  line-height: 1.4;  }
+.kmap-popup-content p {  margin: 18px 0;  }
+.kmap-popup-tip-container {  width: 40px;  height: 20px;  position: absolute;  left: 50%;  margin-left: -20px;  overflow: hidden;  pointer-events: none;  }
+.kmap-popup-tip {  width: 17px;  height: 17px;  padding: 1px;  margin: -10px auto 0;
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	     -o-transform: rotate(45deg);
+	        transform: rotate(45deg);
+	}
+.kmap-popup-content-wrapper,
+.kmap-popup-tip {  background: white;  color: #333;  box-shadow: 0 3px 14px rgba(0,0,0,0.4);  }
+.kmap-container a.kmap-popup-close-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 4px 4px 0 0;
+	border: none;
+	text-align: center;
+	width: 18px;
+	height: 14px;
+	font: 16px/14px Tahoma, Verdana, sans-serif;
+	color: #c3c3c3;
+	text-decoration: none;
+	font-weight: bold;
+	background: transparent;
+	}
+.kmap-container a.kmap-popup-close-button:hover {
+	color: #999;
+	}
+.kmap-popup-scrolled {
+	overflow: auto;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	}
+
+.kmap-oldie .kmap-popup-content-wrapper {
+	zoom: 1;
+	}
+.kmap-oldie .kmap-popup-tip {
+	width: 24px;
+	margin: 0 auto;
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
+	}
+.kmap-oldie .kmap-popup-tip-container {
+	margin-top: -1px;
+	}
+
+.kmap-oldie .kmap-control-zoom,
+.kmap-oldie .kmap-control-layers,
+.kmap-oldie .kmap-popup-content-wrapper,
+.kmap-oldie .kmap-popup-tip {
+	border: 1px solid #999;
+	}
+
+
+/* div icon */
+
+.kmap-div-icon {  background: #fff;  border: 1px solid #666;  }
+
+
+/* Tooltip */
+/* Base styles for the element that has a tooltip */
+.kmap-tooltip {
+	position: absolute;
+	padding: 6px;
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	color: #222;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+	}
+.kmap-tooltip.kmap-clickable {
+	cursor: pointer;
+	pointer-events: auto;
+	}
+.kmap-tooltip-top:before,
+.kmap-tooltip-bottom:before,
+.kmap-tooltip-left:before,
+.kmap-tooltip-right:before {
+	position: absolute;
+	pointer-events: none;
+	border: 6px solid transparent;
+	background: transparent;
+	content: "";
+	}
+
+/* Directions */
+.kmap-tooltip-bottom {  margin-top: 6px;  }
+.kmap-tooltip-top {  margin-top: -6px;  }
+.kmap-tooltip-bottom:before,
+.kmap-tooltip-top:before {  left: 50%;  margin-left: -6px;  }
+.kmap-tooltip-top:before {  bottom: 0;  margin-bottom: -12px;  border-top-color: #fff;  }
+.kmap-tooltip-bottom:before {  top: 0;  margin-top: -12px;  margin-left: -6px;  border-bottom-color: #fff;  }
+.kmap-tooltip-left {  margin-left: -6px;  }
+.kmap-tooltip-right {  margin-left: 6px;  }
+.kmap-tooltip-left:before,
+.kmap-tooltip-right:before {  top: 50%;  margin-top: -6px;  }
+.kmap-tooltip-left:before {  right: 0;  margin-right: -12px;  border-left-color: #fff;  }
+.kmap-tooltip-right:before {  left: 0;  margin-left: -12px;  border-right-color: #fff;  }

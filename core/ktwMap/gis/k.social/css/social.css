@@ -1,0 +1,9 @@
+.kmap-social-control a {
+font-size: 36px;
+color: #8d46b0;
+text-decoration: none;
+}
+
+.kmap-social-control a:hover{
+   color:#000;
+}

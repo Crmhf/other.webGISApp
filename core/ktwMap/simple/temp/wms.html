@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Leaflet class diagram - Leaflet</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../gis/k/k.css">
+    <script type="text/javascript" src="../../gis/k/k.js"></script>
+    <script type="text/javascript" src="../../gis/k.layer.wms/wms.js"></script>
+
+    <style>
+        #map {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<div id='map'></div>
+
+<script type="text/javascript">
+
+    var cities = new K.LayerGroup();
+
+    K.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
+            K.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
+            K.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
+            K.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+
+
+    var wmsUrl = 'http://192.168.227.16:8082/share-exchange/KTWService/wms';
+    var layers = '29982500:xingzhengqu';
+    var styles = 'default_polygon';
+    var key = 'C6B44BCE4DE02A677F299DAFB6AE5D8776981E7DAD71E678B57E492AECEE8FE13B8EC82DB3F18876F13A6DF54C9E277B2ddd';
+    var baselayer = K.WMS.overlay(wmsUrl, {
+        layers: layers,
+        styles: styles,
+        format: 'image/png',
+        key:key,
+        maxZoom: 20,
+        minZoom: 0,
+        continuousWorld: true
+    });
+
+
+
+    map = K.map('map', {
+        zoomControl: true,
+        layers: [baselayer, cities]
+    }).setView([27.317, 112.252], 13);
+            //.setView([28.117, 112.854], 11);
+
+    var baseLayers = {
+        "地图": baselayer
+    };
+
+    var overlays = {
+        "城市": cities
+    };
+
+    K.control.layers(baseLayers, overlays).addTo(map);
+
+</script>
+
+
+
+</body>
+</html>

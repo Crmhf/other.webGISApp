@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDK Demo</title>
+    <link rel="stylesheet" href="../../3rd/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../3rd/codemirror/codemirror.css">
+    <link rel="stylesheet" href="../../3rd/codemirror/blackboard.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="demo.css">
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <script src="../../3rd/jquery.min.js"></script>
+    <script src="../../3rd/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../3rd/codemirror/codemirror.js"></script>
+    <script src="../../3rd/codemirror/javascript.js"></script>
+    <script src="../../3rd/codemirror/htmlmixed.js"></script>
+    <script src="../../3rd/codemirror/xml.js"></script>
+    <script src="../../3rd/clipboard.min.js"></script>
+    <script src="demo.js"></script>
+</head>
+<body>
+<h1 id="title">
+    <div class="logo"></div>
+    JavaScript SDK Demo
+</h1>
+<hr style="margin-top: 0 !important;">
+<div id="demoMainContent">
+    <div id="demoCatalog" unselectable="on" style="-moz-user-select:none;-webkit-user-select:none;">
+        <ul class="nav nav-list menu">
+            <li><label class="tree-toggler nav-header">地图 (Map)</label>
+                <ul class="nav nav-list tree">
+                    <li><a href="../../sample/map/map-options.html" target="container">地图构造</a></li>
+                    <li><a href="../../sample/map/map-method.html" target="container">地图方法</a></li>
+                </ul>
+            </li>
+            <li>
+                <label class="tree-toggler nav-header">图层 (Layer)</label>
+                <ul class="nav nav-list tree">
+                    <li><a href="../../sample/layer/tile-layer.html" target="container">瓦片图层</a></li>
+                    <li><a href="../../sample/layer/graphic-layer.html" target="container">图形图层</a></li>
+                    <li><a href="../../sample/layer/html-layer.html" target="container">HTML图层</a></li>
+                    <li><a href="../../sample/layer/image-layer.html" target="container">图片图层</a></li>
+                    <li><a href="../../sample/layer/feature-layer.html" target="container">要素图层</a></li>
+                    <li><a href="../../sample/layer/label-layer.html" target="container">标注图层</a></li>                    
+                    <li><a href="../../sample/layer/utfgrid-layer.html" target="container">UTFGrid图层</a></li>
+                    <li><a href="../../sample/layer/layer-method.html" target="container">图层方法</a></li>
+                </ul>
+            </li>
+            <li>
+                <label class="tree-toggler nav-header">图形对象 (Graphic)</label>
+                <ul class="nav nav-list tree">
+                    <li><a href="../../sample/graphic/simple-graphic.html" target="container">基本图形</a></li>
+                    <li><a href="../../sample/graphic/multi-graphic.html" target="container">复杂图形</a></li>
+                    <li><a href="../../sample/graphic/group-graphic.html" target="container">组合图形</a></li>
+                    <li><a href="../../sample/graphic/od-graphic.html" target="container">OD线</a></li>
+                </ul>
+            </li>
+           <!--  <li>
+                <label class="tree-toggler nav-header">事件 (Event)</label>
+                <ul class="nav nav-list tree">
+                    <li><a href="../sample/event/map-event.html" target="container">基本图形</a></li>
+                </ul>
+            </li> -->
+            <li>
+                <label class="tree-toggler nav-header">投影 (Project)</label>
+                <ul class="nav nav-list tree">
+                    <li><a href="../../sample/project/project.html" target="container">投影</a></li>
+                </ul>
+            </li>
+            <li>
+                <label class="tree-toggler nav-header">扩展模块</label>
+                <ul class="nav nav-list tree">
+                    <li><a href="../../sample/modules/module-anim.html" target="container">动画</a></li>
+                    <li><a href="../../sample/modules/module-maps.html" target="container">底图服务</a></li>
+                    <li><a href="../../sample/modules/module-draw.html" target="container" >交互绘图</a></li>
+                    <li><a href="../../sample/modules/module-cluster.html" target="container">聚类图</a></li>
+                    <li><a href="../../sample/modules/module-arcgis.html" target="container">ArcGIS服务</a></li>
+                    <li><a href="../../sample/modules/module-heat.html" target="container">热度图</a></li>
+                    <li><a href="../../sample/modules/module-movable.html" target="container">动态目标</a></li>
+                    <li><a href="../../sample/modules/module-geogrid.html" target="container">地理网格</a></li>
+                    <li><a href="../../sample/modules/module-fluid.html" target="container">流体场动画</a></li>
+                    <li><a href="../../sample/modules/module-temporal.html" target="container">时态动画</a></li>
+                </ul>
+            </li>
+            <li>
+                <label class="tree-toggler nav-header">HTTP API</label>
+                <ul class="nav nav-list tree">
+                    <li><a href="../../sample/api/geohey-map.html" target="container">GeoHey 地图</a></li>
+                    <li><a href="../../sample/api/geohey-data.html" target="container">GeoHey 数据</a></li>
+                    <li><a href="../../sample/api/geocoding.html" target="container">地址匹配</a></li>
+                    <li><a href="../../sample/api/geom.html" target="container">地理分析</a></li>
+                    <li><a href="../../sample/api/dataviz.html" target="container">数据可视化</a></li>
+                    <li><a href="../../sample/api/geotag.html" target="container">地理标签</a></li>
+                </ul>
+            </li>
+            <li>
+                <label class="tree-toggler nav-header">其它</label>
+                <ul class="nav nav-list tree">
+                    <li><a href="../../sample/others/browser-test.html" target="container">浏览器测试</a></li>
+                    <li><a href="../../sample/others/10k-points.html" target="container">10K个点</a></li>
+                    <li><a href="../../sample/others/china-admin.html" target="container">中国陆地行政区划</a></li>
+                    <li><a href="../../sample/others/edit-china-boundary.html" target="container">编辑边界线</a></li>
+                    <li><a href="../../sample/others/indoor-map.html" target="container">室内地图</a></li>
+                    <li><a href="../../sample/others/mask.html" target="container">图形遮罩</a></li>
+                    <li><a href="../../sample/others/pie-chart-map.html" target="container">饼图</a></li>
+                    <li><a href="../../sample/others/popup.html" target="container">弹出气泡</a></li>
+                    <!-- <li><a href="../../sample/others/where-am-i.html" target="container">定位</a></li> -->
+                    <li><a href="../../sample/others/wind.html" target="container">全球风场</a></li>
+                    <!-- <li><a href="../../sample/others/world-flash.html" target="container">闪烁的世界</a></li> -->
+                    <li><a href="../../sample/others/world-pop-gdp.html" target="container">世界人口与GDP</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="demoContent">
+        <div id="codeContent">
+            <div id="code_top" unselectable="on">
+                <div id="code_button">
+                    <div id="copy" onclick="copyAll()">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span> 复制
+                    </div>
+                    <div id="run" onclick="runCode()">
+                        <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> 运行
+                    </div>
+                    <div id="refresh" onclick="setCode()">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> 重置
+                    </div>
+                </div>
+                <p id="demoName">地图构造</p>
+            </div>
+            <div id="code_bottom">
+                <textarea id="code" name="code">
+                </textarea>
+            </div>
+        </div>
+        <div id="dragLine"></div>
+        <div id="mapContent">
+            <div id="overIframe" style="background: url('about:_blank')"></div>
+            <iframe unselectable="on" name="container" id="container" src=""></iframe>
+        </div>
+    </div>
+</div>
+</body>
+</html>
