@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>我的页面</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <style type="text/css">
+        .div1{background: url(../img/wsj0315/header-bg.png);
+            font-size: 18px;
+            font-weight: bold;
+            color: white;}
+        .container{margin: 15px 0 5px 98px }
+        div.col-md-8{width: 100px;
+            background-color: #1E90FF;
+            padding: 3px;
+            text-align: center;}
+        .name{width: 300px;
+            position: absolute;
+            right: 150px}
+        .icon{background-color: gray;
+            width: 26px;
+            height: 26px;
+            position: absolute;
+            right: 124px}
+        .reset{background-color: gray;
+            width: 26px;
+            height: 26px;
+            position: absolute;
+            right: 95px}
+        table {
+            width: 1170px;
+            height: 100px;
+            position: absolute;
+            right: 98px;
+            border-collapse:collapse;/*表格的边框会合并为单一的边框*/
+            text-align: center;}
+        style,tr{border:1px solid;}
+        .group{width: 100px;
+            background-color: lightgray}
+        .group2{width: 70px}
+        .select{width: 110px;}
+        .type{background-color:#1E90FF ;
+            width: 830px;
+            position: absolute;
+            top: 210px;
+            left: 98px;
+            padding: 5px}
+        .list{width: 60px;
+            position: absolute;
+            right: 66px}
+        .icon_2{width: 60px;
+            position: absolute;
+            right: 5px}
+        .icon_3{position: absolute;
+            right: 110px;
+            top: 23px}
+        .icon_4{position: absolute;
+            right: 50px;
+            top: 23px}
+    </style>
+</head>
+<body>
+<div class="div1">
+    <div class="row">
+        <div class="col-md-7"><img src="../img/wsj0315/logo.png" alt="logo">湖南省地理信息公共交换共享平台</div>
+        <div class="col-md-1">首页</div>
+        <div class="col-md-1">服务</div>
+        <div class="col-md-1">应用</div>
+        <div class="col-md-1">数据</div>
+        <div class="col-md-1"><img src="../img/wsj0315/head-image.png"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">－服务－</div>
+        <div class="col-md-4"></div>
+        <form>
+            <label>
+            <input type="text" class="name" value="搜索服务标题...">
+            <img class="icon" src="../img/wsj0315/fdj.png">
+            <img class="reset" src="../img/wsj0315/cz.png">
+            </label>
+        </form>
+    </div>
+</div>
+<table>
+    <colgroup span="1" class="group"></colgroup>
+    <colgroup span="8" class="group2"></colgroup>
+    <tr>
+        <td>水系</td>
+        <td>水系线</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    <tr>
+        <td>年份</td>
+        <td>2017</td>
+        <td>2016</td>
+        <td>2015</td>
+        <td>2014</td>
+        <td>2013</td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>比例尺</td>
+        <td>1000000</td>
+        <td>500000</td>
+        <td>10000</td>
+        <td>5000</td>
+        <td>2000</td>
+        <td>500</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>行政区划</td>
+        <td>长沙市</td>
+        <td>株洲市</td>
+        <td>衡阳市</td>
+        <td>邵阳市</td>
+        <td>张家界</td>
+        <td>益阳市</td>
+        <td>耒阳市</td>
+        <td>娄底市</td><td></td>
+    </tr>
+</table>
+<div class="type">
+    <form>
+        服务类型
+        <label>
+        <select class="select" >
+            <option value="">全部类型</option>
+            <option value="">全部类型</option>
+            <option value="">全部类型</option>
+        </select>
+            <input type="button" class="list" value="列表">
+            <img class="icon_3" src="../img/wsj0315/grid.png">
+            <input type="button" class="icon_2" value="图标">
+            <img class="icon_4" src="../img/wsj0315/list2.png">
+        </label>
+    </form>
+</div>
+</body>
+</html>

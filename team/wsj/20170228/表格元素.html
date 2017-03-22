@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格</title>
+</head>
+<body>
+表格构成的三个基本要素<br>
+table:表格的范围,外框,用来定义表格,表格的其他元素包含在table标签里面<br>
+tr:表格的行<br>
+td:表格的单元格<br>
+th元素:为表格添加标题行<br>
+th元素用来定义表格的标题单元格,他是tr元素的子元素,必须放在tr标签里边;tr元素的内容会自动居中对齐和加粗文字<br>
+colspan元素:横向合并单元格<br>
+属性值为正整数,表示该单元格横向合并的列数,语法为<td colspan="3"></td><br>
+rowspan元素:纵向合并单元格<br>
+属性值为正整数,表示该单元格纵向合并的行数,语法为<td rowspan="3"></td><br>
+caption元素,给表格添加标题<br>
+用来制定表格的的标题或者说明;是table的子元素,必须放在table中使用<br>
+<table border="3">
+    <caption>表格实例</caption>
+    <tr><th colspan="4">标题<tr>
+    <tr><td rowspan="4">单元格</td><td>单元格</td><td>单元格</td><td>单元格</td></tr>
+    <tr><td>单元格</td><td rowspan="2">单元格</td><td>单元格</td></tr>
+    <tr><td>单元格</td><td>单元格</td></tr>
+    <tr><td>单元格</td><td>单元格</td><td>单元格</td></tr>
+</table><br>
+<table border="1">
+    <thead><tr><th colspan="5">标题</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td></tr>
+        <tr><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td></tr>
+        <tr><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td></tr>
+    </tbody>
+    <tfoot><tr><td>备注:</td><td colspan="4">单元格</td></tfoot></tr>
+</table>
+<br>
+<table border="1">
+    <colgroup span="1" style="width:150px">
+        <col style="background:red"> </col>
+    </colgroup>
+    <colgroup span="3" style="width:200px">
+        <col style="background:green">
+        <col style="background:blue">
+        <col style="background:yellow">
+    </colgroup>
+    <colgroup span="1" style="width:150px">
+        <col style="background:cyan">
+    </colgroup>
+    <tr><th>标题</th><th>标题</th><th>标题</th><th>标题</th><th>标题</th></tr>
+    <tr><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td></tr>
+    <tr><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td></tr>
+    <tr><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td></tr>
+    <tr><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td><td>单元格</td></tr>
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
