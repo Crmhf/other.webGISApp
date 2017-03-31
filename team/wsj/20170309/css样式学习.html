@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>盒子模型</title>
+    <style type="text/css">
+        #box0{
+            background: cyan;
+            font-size: 18px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;}
+        #box6{
+            background-color: red;
+            margin: 0;
+            padding: 20px 14px 10px 14px;
+            width: 420px;
+            float: left;
+        }
+        #box1{
+            background-color: yellow ;
+            padding: 10px ;
+            margin: 0;
+            float: left;
+        }
+        #box7{
+            background-color: blue;
+            margin: 0;
+            padding: 20px 14px 10px 14px;
+            width: 420px;
+            float: left;
+        }
+        #box2{
+            background-color: green ;
+            padding: 10px ;
+            margin: 0;
+            float: left;
+        }
+        #box8{
+            background-color: purple;
+            margin: 0;
+            padding: 20px 14px 10px 14px;
+            width: 420px;
+            float: left;
+            height: 164px;
+        }
+        #box3{
+            background-color: orange ;
+            padding: 10px ;
+            margin: 0;
+            float: left;
+        }
+        div.pos_box4{position: absolute;
+            top: 252px;
+            left: 456px;
+            width: 450px;
+            background-color: yellow;
+            font-size: 14px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;}
+        div.pos_box5{position: absolute;
+            top: 282px;
+            left: 456px;
+            width:224px;
+            border: 1px solid;
+            font-size: 14px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;}
+        div.pos_box9{position: absolute;
+            top: 282px;
+            left: 680px;
+            width: 224px;
+            border: 1px solid;
+            font-size: 14px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;}
+        div.pos_box10{position: absolute;
+            top: 314px;
+            left: 456px;}
+        div.pos_box11{position: absolute;
+            top: 314px;
+            left: 704px;}
+    </style>
+</head>
+<body>
+<div id="box0">盒子模型</div>
+<div style="float: left;">
+    <div id="box6"><div id="box1">如果要定义不止一个声明，则需要用分号将每个声明分开。下面的例子展示出如何定义一个红色文字的居中段落。最后一条规则是不需要加分号的，因为分号在英语中是一个分隔符号，不是结束符号。然而，大多数有经验的设计师会在每条声明的末尾都加上分号，这么做的好处是，当你从现有的规则中增减声明时，会尽可能地减少出错的可能性。你应该在每行只描述一个属性，这样可以增强样式定义的可读性。</div>
+    </div>
+</div>
+<div style="float: left;">
+    <div id="box7"><div id="box2">如果要定义不止一个声明，则需要用分号将每个声明分开。下面的例子展示出如何定义一个红色文字的居中段落。最后一条规则是不需要加分号的，因为分号在英语中是一个分隔符号，不是结束符号。然而，大多数有经验的设计师会在每条声明的末尾都加上分号，这么做的好处是，当你从现有的规则中增减声明时，会尽可能地减少出错的可能性。你应该在每行只描述一个属性，这样可以增强样式定义的可读性。</div>
+    </div>
+</div>
+<div style="float: left;">
+    <div id="box8"><div id="box3">如果要定义不止一个声明，则需要用分号将每个声明分开。下面的例子展示出如何定义一个红色文字的居中段落。最后一条规则是不需要加分号的，因为分号在英语中是一个分隔符号，不是结束符号。然而，大多数有经验的设计师会在每条声明的末尾都加上分号，这么做的好处是，当你从现有的规则中增减声明时，会尽可能地减少出错的可能性。你应该在每行只描述一个属性，这样可以增强样式定义的可读性。</div>
+    </div>
+</div>
+<div class="pos_box4">盒子模型</div>
+<div class="pos_box5">盒子5</div>
+<div class="pos_box9">盒子9</div>
+<div class="pos_box10"><img src="../img/2.jpg" width="200px" height="135px"></div>
+<div class="pos_box11"><img src="../img/3.jpg" width="200px" height="135px"></div>
+</body>
+</html>
