@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+    <title>工作日计算</title>
+    <script language="javascript">
+        //函数
+        function getWorkDays(){
+            var startDate = new Date(document.getElementById("startDate").value.replace(/-/g, "/"));
+//结束日期
+            var endDate = new Date(document.getElementById("endDate").value.replace(/-/g, "/"));
+            var diffDays = (endDate - startDate)/(1000*60*60*24) + 1;//获取日期之间相差的天数
+            var remainDay = diffDays % 7;//得到日期之间的余数（0-6之间）
+            var weeks = Math.floor(diffDays / 7);//获取日期之间有多少周
+            var weekends = 2 * weeks;//计算每周*2 得到取整的的周六日天数
+            var weekDay = startDate.getDay();//获取开始日期为星期几（0，1，2，3，4，5，6）0对应星期日
+            for(var i = 0;i < remainDay;i++){//循环处理余下的天数有多少个周六或者周日（最多出现一个周六或者一个周日）
+                if(((weekDay + i)==6)||((weekDay + i)==0)||((weekDay + i)==7)){
+                    weekends = weekends + 1;
+                }
+            }
+            alert((diffDays-weekends));//工作日=相差天数减去周六日天数
+
+        }
+
+    </script>
+</head>
+<body>
+<form>
+    起始日期：<input type="text" id="startDate" name="startDate" value="2012/03/01">   截至日期<input type="text" id="endDate" name="endDate" value="2014/05/20">
+    <input type="button" name="BT" value="计算工作日" onclick="getWorkDays()">
+</form>
+</body>
+</html>
