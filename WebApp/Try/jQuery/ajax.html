@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="../../jsFramework/jquery-1.8.1.min.js"></script>
+</head>
+<body>
+
+<div id="con">
+    <input type="button" value="ajax" value="xxxx" onclick="get()"/>
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+    function get(){
+/*
+        var url = 'http://192.168.1.60:8080/portal/ws/rest/catalog/query/';
+        var data = '{ "parentid":"402881bc57ada58b0157adb0515a0001","orderby":"CREATETIME DESC"}';
+        $.ajax ({
+            type:'POST',
+            dataType:'json',
+            url: url,
+            data:data,
+            error: function(a,b,c) {
+                alert('数据获取失败！');
+            },
+            success: function(data) {
+                alert('ok');
+            },
+            complete: function() {
+                //$('#cargando').delay(500).fadeOut('slow');
+            }
+        });*/
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+          //  url: "http://192.168.1.60:8080/portal/ws/rest/catalog/query/",
+            url: "http://192.168.1.114:901/portal/ws/rest/catalog/query/",
+            dataType: 'json',
+            cache: false,
+            data:JSON.stringify({"parentid":"4028817457b1336c0157b247974f0008"}),
+            success: function (models) {
+                alert("ok");
+
+            },
+            error: function (error) {
+                alert("error");
+            }
+        });
+
+
+    }
+</script>
