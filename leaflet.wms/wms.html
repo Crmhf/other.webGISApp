@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ArcGIS WMS</title>
+    <link rel="stylesheet" href="3rd/leaflet/leaflet.css" />
+    <script src="3rd/leaflet/leaflet.js"></script>
+</head>
+<body>
+<div id="map" style="height: 100%; width: 100%"></div>
+<script>
+
+    // Create the WMS layer
+    var wmsLayer = L.tileLayer.wms('http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer/export', {
+        layers: '0,1,2',
+        format: 'image/png',
+        transparent: false,
+        // The `continuousWorld` property should be set to make sure Leaflet doesn't
+        // try to wrap or cut off the tiles on Spherical Mercator's bounds.
+        continuousWorld: true
+    });
+
+    // Define the map
+    var map = L.map('map', {
+        center:[0, 0],
+        zoom: 1,
+        layers: [
+            wmsLayer
+        ]
+    });
+</script>
+</body>
+</html>

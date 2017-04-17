@@ -1,0 +1,19 @@
+body{ margin:0; }
+
+.g-container {
+z-index: 0;
+font-family: "Helvetica Neue", Helvetica, "Microsoft YaHei", Arial;
+-webkit-font-smoothing: antialiased;
+overflow: hidden;
+cursor: -webkit-grab;
+cursor: -moz-grab;
+position: relative;
+-ms-touch-action: none;
+}
+
+#map-container{
+position: absolute;
+height: 100%;
+width: 100%;
+z-index:9999;
+}

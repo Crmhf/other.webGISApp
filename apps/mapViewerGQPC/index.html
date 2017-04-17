@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="3rd/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="3rd/leaflet.draw/leaflet.draw.css" />
+    <link rel="stylesheet" href="3rd/leaflet.markercluster/css/MarkerCluster.css" />
+    <link rel="stylesheet" href="3rd/leaflet.markercluster/css/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="3rd/leaflet.draw/leaflet.draw.css" />
+    <link rel="stylesheet" href="3rd/leaflet.measure/leaflet.measure.css" />
+    <link rel="stylesheet" href="3rd/leaflet.mouseposition/mousePosition.css" />
+    <link rel="stylesheet" href="3rd/leaflet.geoNames/leaflet.geonames.css" />
+
+    <link rel="stylesheet" href="ktw/leaflet.loading/css/loading.css" />
+    <link rel="stylesheet" href="ktw/leaflet.orderlayers/css/orderlayers.css" />
+    <link rel="stylesheet" href="ktw/leaflet.locationSearch/css/locationSearch.css" />
+    <link rel="stylesheet" href="ktw/leaflet.bookmarks/css/bookmarks.css" />
+    <link rel="stylesheet" href="ktw/leaflet.slideMenu/css/slideMenu.css" />
+    <link rel="stylesheet" href="ktw/leaflet.defaultExtent/css/defaultExtent.css" />
+    <link rel="stylesheet" href="ktw/leaflet.print/css/print.css" />
+    <link rel="stylesheet" href="ktw/leaflet.home/css/home.css" />
+    <link rel="stylesheet" href="ktw/leaflet.command/css/command.css" />
+    <link rel="stylesheet" href="ktw/leaflet.social/css/social.css" />
+    <link rel="stylesheet" href="ktw/leaflet.logo/css/logo.css" />
+    <link rel="stylesheet" href="ktw/leaflet.iconLayers/css/iconLayers.css" />
+    <link rel="stylesheet" href="ktw/leaflet.styleEditor/css/styleEditor.css" />
+
+    <link rel="stylesheet" href="ktw/leaflet.geojsonAutoComplete/css/geojsonAutoComplete.css" />
+    <link rel="stylesheet" href="ktw/leaflet.ktwControls/leaflet.ktwControls.css" />
+
+    <link rel="stylesheet" href="3rd/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="3rd/font-awesome/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="3rd/perfect-scrollbar/css/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="css/mapviz.css" />
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/easyui.css">
+    <title>mapViewer</title>
+    <style type="text/css">
+        body { overflow: hidden; }
+
+        .navbar-offset { margin-top: 50px; }
+        #map { position: absolute; top: 50px; bottom: 0px; left: 0px; right: 0px; }
+        #map .ol-zoom { font-size: 1.2em; }
+
+        .zoom-top-opened-sidebar { margin-top: 5px; }
+        .zoom-top-collapsed { margin-top: 45px; }
+
+        .mini-submenu{
+            display:none;
+            background-color: rgba(255, 255, 255, 0.46);
+            border: 1px solid rgba(0, 0, 0, 0.9);
+            border-radius: 4px;
+            padding: 9px;
+            /*position: relative;*/
+            width: 42px;
+            text-align: center;
+        }
+
+        .mini-submenu-left {
+            position: absolute;
+            top: 60px;
+            left: .5em;
+            z-index: 40;
+        }
+
+        #map { z-index: 35; }
+
+        .sidebar { z-index: 45; }
+
+        .main-row { position: relative; top: 0; }
+
+        .mini-submenu:hover{
+            cursor: pointer;
+        }
+
+
+
+    </style>
+    <!-- 获取对应的服务配置信息 -->
+    <script type="text/javascript" src="../commonConfig.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="3rd/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="3rd/leaflet/leaflet-src.js"></script>
+    <script type="text/javascript" src="config/epsg.js"></script>
+    <script type="text/javascript" src="3rd/choropleth/choropleth.js"></script>
+
+    <!-- 临时测试数据 -->
+    <script type="text/javascript" src="data/realworld.388.js"></script>
+    <script type="text/javascript" src="data/iconLayerProviders.js"></script>
+    <script type="text/javascript" src="data/countries.geo.json"></script>
+    <script type="text/javascript" src="data/crimes_by_district.geojson"></script>
+    <!--临时测试的数据后续将全部删除 -->
+
+    <script type="text/javascript" src="3rd/proj4/proj4-compressed.js"></script>
+    <script type="text/javascript" src="3rd/proj4leaflet/proj4leaflet.js"></script>
+
+    <script type="text/javascript" src="3rd/leaflet.draw/leaflet.draw-src.js"></script>
+    <script type="text/javascript" src="3rd/leaflet.markercluster/js/markercluster.js"></script>
+    <script type="text/javascript" src="3rd/leaflet.measure/leaflet.measure.js"></script>
+    <script type="text/javascript" src="3rd/leaflet.mouseposition/mousePosition.js"></script>
+    <script type="text/javascript" src="3rd/leaflet.geoNames/leaflet.geonames.js"></script>
+
+    <script type="text/javascript" src="ktw/leaflet.loading/js/loading.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.orderlayers/js/orderlayers.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.locationSearch/js/locationSearch.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.bookmarks/js/bookmarks.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.slideMenu/js/slideMenu.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.geoSearch/js/search.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.defaultExtent/js/defaultExtent.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.print/js/print.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.home/js/home.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.legend/js/legend.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.command/js/command.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.areaSelect/js/areaSelect.js"></script>
+
+    <!--<script type="text/javascript" src="ktw/leaflet.removeAll/js/removeAll.js"></script>-->
+    <script type="text/javascript" src="ktw/leaflet.social/js/social.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.logo/js/logo.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.iconLayers/js/iconLayers.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.styleEditor/js/styleEditor.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.styleEditor/js/styleForms.js"></script>
+
+    <script type="text/javascript" src="ktw/leaflet.geojsonAutoComplete/js/geojsonAutoComplete.js"></script>
+    <script type="text/javascript" src="ktw/leaflet.ktwControls/leaflet.ktwControls.js"></script>
+
+
+
+    <script type="text/javascript" src="3rd/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+
+    <script type="text/javascript" src="3rd/jquery.qrcode/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="3rd/noty/jquery.noty.js"></script>
+    <script type="text/javascript" src="3rd/noty/layouts/topCenter.js"></script>
+    <script type="text/javascript" src="3rd/noty/themes/bootstrap.js"></script>
+
+
+    <script type="text/javascript">
+        var mapInfo; // 地图信息
+        var mapId; // 地图的idv
+        var map;
+        var controlLoader; //地图加载动画
+    </script>
+
+    <!-- 解析器 -->
+    <script type="text/javascript" src="ktw/util.url/js/url.js"></script>
+    <!--<script type="text/javascript" src="js/getUrlParam.js"></script>-->
+    <script type="text/javascript" src="js/getServiceParam.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+
+    <script type="text/javascript" src="config/defaults.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+
+    <script type="text/javascript" src="js/temp.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+</head>
+
+<body>
+
+<!-- 测试功能面板 -->
+<!--<div style="position:absolute;left:300px;top:700px;z-index:999999;color:#0f0f0f;background-color:transparent">
+    <input type="button" value="test" onclick="page.test()" /> <br/>
+    <input type="button" value="显示数据面板" onclick="page.showDataPanel()" /> <br/>
+    <input type="button" value="显示地图面板" onclick="page.showMapPanel()" /> <br/>
+    <input type="button" value="显示分享面板" onclick="page.showSharePanel()" /> <br/>
+    <input type="button" value="显示设置面板" onclick="page.showSetupPanel()" /> <br/>
+    <input type="button" value="显示删除面板" onclick="page.showDeletePanel()" /><br/><br/>
+    <input type="button" value="弹出提示框" onclick="page.showDeletePanel()" />
+</div>-->
+
+<!-- 地图容器 -->
+<div id="map-wrapper">
+    <div id='searchContainer' style="position: fixed;"></div>
+    <div id="map-container" class="g-container shrink">
+    </div>
+    <!-- 地图时间轴，当显示思维的时间数据时就需要添加 -->
+    <div id="time-slider-container" class="shrink">
+        <div id="time-slider-wrapper" class="hide">
+            <ul>
+                <li class="controls">
+                    <span><i id="control-play" class="fa fa-play fa-fw"></i><i id="control-pause" class="fa fa-pause fa-fw hide"></i></span>
+                </li>
+                <li class="slider-container">
+                    <div id="time-slider" data-slider-value="1" data-slider-min="1"></div>
+                </li>
+                <li id="label">1</li>
+            </ul>
+        </div>
+    </div></div>
+</div>
+
+<!-- 整个工具栏，带弹出的工具面板 -->
+<div id="tool-container">
+    <!-- 工具条 -->
+    <div id="toolbar">
+        <div id="btn-data" class="toolbar-item active">
+            <i class="fa fa-database fa-fw"></i>
+            <span class="toolbar-item-name">数据</span>
+        </div>
+        <div id="btn-basemap" class="toolbar-item">
+            <i class="fa fa-map-o fa-fw"></i>
+            <span class="toolbar-item-name">底图</span>
+        </div>
+        <div id="btn-share" class="toolbar-item">
+            <i class="fa fa-share-alt fa-fw"></i>
+            <span class="toolbar-item-name">分享</span>
+        </div>
+        <div id="btn-setup" class="toolbar-item">
+            <i class="fa fa-cog fa-fw"></i>
+            <span class="toolbar-item-name">设置</span>
+        </div>
+        <div id="btn-save-shortcut" class="toolbar-item">
+            <i class="fa fa-cloud-upload fa-fw"></i>
+            <span class="toolbar-item-name">保存</span>
+        </div>
+        <div id="btn-delete" class="toolbar-item">
+            <i class="fa fa-trash-o fa-fw"></i>
+            <span class="toolbar-item-name">删除</span>
+        </div>
+        <div id="bottom-toolbar-item-container">
+            <div id="btn-project" class="toolbar-item">
+                <i class="fa fa-list-ul fa-fw"></i>
+                <span class="toolbar-item-name">项目</span>
+            </div>
+        </div>
+    </div>
+    <!-- 工具面板：具体操作功能 -->
+    <div id="tool-panel-container">
+        <div id="data-panel" class="tool-panel sub-tool-panel " style="display:block">
+            <div class="panel-header">
+                <span>选择数据</span>
+                <i class="btn-close-panel fa fa-times fa-fw" title="关闭"></i>
+            </div>
+            <div class="tool-panel-content scrollbar ps-container" data-ps-id="24db131d-6035-aba3-c6eb-46fbc6f8e217">
+                <div class="input-group input-group-sm">
+                    <input id="input-search" type="text" class="form-control" placeholder="输入名称搜索">
+                        <span class="input-group-btn">
+                            <button id="btn-search" class="btn btn-default"><span class="fa fa-search"></span><span class="fa fa-circle-o-notch fa-spin"></span></button>
+                        </span>
+                </div>
+                <div class="btn-switch-group center-block primary-wrapper data-type">
+                    <div class="btn-switch active"  >我的数据</div>
+                    <div class="btn-switch">公共数据</div>
+                </div>
+                <div class="change-data" style="max-height: 87%; overflow-y:auto">
+                    <div id="private-data-list" class="data-item-list primary-wrapper active">
+                        <div id="btn-upload-data" class="myData" data-toggle="modal" data-target="#myModal">+ 添加数据</div>
+                    </div>
+                    <div  class="data-item-list primary-wrapper">
+                        <ul id="public-data-list">
+                            <!--<li  class="list-item">
+                                <div class="item-thumb">
+
+                                    <i class="ghf-point"></i>
+
+                                </div>
+                                <div class="item-title limit-text" title="全球旅游景点分布及热度趋势数据（2016年第一季度）">这里是服务名称</div>
+                                <div class="item-info">
+                                    <span class="item-updated-at text-muted pull-right"><i class="fa fa-edit fa-fw"></i></span>
+                                    <span class="item-updated-at text-muted pull-right"><i class="fa fa-eraser fa-fw"data-toggle="modal" data-target="#delete-data-list" ></i></span>
+                                </div>
+                            </li>
+                            <li class="list-item">
+                                <div class="item-thumb">
+
+                                    <i class="ghf-point"></i>
+
+                                </div>
+                                <div class="item-title limit-text" title="全球空气质量监测数据（2016年04月）">全球空气质量监测数据（2016年04月）</div>
+                                <div class="item-info">
+                                    <span class="item-desc text-muted limit-text">7771条记录</span>
+                                    <span class="item-updated-at text-muted pull-right">2016-04-10</span>
+                                </div>
+                            </li>-->
+                        </ul>
+                        <div class="pagination-container">
+                                <span class="pull-right">
+                                    <i id="btn-pre-page" class="fa fa-chevron-left fa-fw text-muted disabled"></i>
+                                    <i id="btn-next-page" class="fa fa-chevron-right fa-fw text-muted"></i>
+                                </span>
+                            <i id="btn-refresh" class="fa fa-refresh fa-fw text-muted"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="change-data" style="display:none">
+                    <div class="public-data-change">
+                        这里是树
+                    </div>
+                </div>
+                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                    <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+                </div>
+                <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;">
+                    <div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div>
+                </div>
+                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                    <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+                </div>
+                <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;">
+                    <div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div>
+                </div>
+            </div>
+        </div>
+        <div id="basemap-panel" class="tool-panel " style="display:none;">
+            <div class="panel-header">
+                地图
+                <i class="btn-close-panel fa fa-times fa-fw" title="关闭"></i>
+            </div>
+            <div class="tool-panel-content scrollbar ps-container" data-ps-id="ef3f00d7-3c2f-39a4-0d06-787477d614b3">
+                <ul id="map-list">
+                    <li class="map-item">
+                        <div id="my-map" class="thumb" style="background-image: url(img/map/map-tpl-natural.png)">
+                            <i class="fa fa-check-circle fa-fw"></i>
+                        </div>
+                        <p>我的地图</p>
+                    </li>
+                    <li class="map-item">
+                        <div id="qq" class="thumb" style="background-image:url(img/map/map-tpl-midnight.png)">
+                            <i class="fa fa-check-circle"></i>
+                        </div>
+                        <p>腾讯地图</p>
+                    </li>
+                    <li class="map-item">
+                        <div id="auto" class="thumb" style="background-image:url(img/map/map-tpl-warm.png)">
+                            <i class="fa fa-check-circle"></i>
+                        </div>
+                        <p>高德地图</p>
+                    </li>
+                    <li class="map-item">
+                        <div id="arcgisOnline" class="thumb" style="background-image:url(img/map/map-tpl-tourism.png)">
+                            <i class="fa fa-check-circle"></i>
+                        </div>
+                        <p>ArcGIS Online</p>
+                    </li>
+                    <li class="map-item">
+                        <div id="stamenToner" class="thumb" style="background-image:url(img/map/map-tpl-midnight.png)">
+                            <i class="fa fa-check-circle"></i>
+                        </div>
+                        <p>黑白地图</p>
+                    </li>
+                    <li class="map-item">
+                        <div id="stamenWaterColor" class="thumb" style="background-image:url(img/map/map-tpl-natural.png)">
+                            <i class="fa fa-check-circle"></i>
+                        </div>
+                        <p>水彩地图</p>
+                    </li>
+                </ul>
+                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px; height: 734px;"><div class="ps-scrollbar-y" style="top: 0px; height: 580px;"></div></div><div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div>
+        </div>
+        <div id="share-panel" class="tool-panel " style="display:none;">
+            <div class="panel-header">
+                分享
+                <i class="btn-close-panel fa fa-times fa-fw" title="关闭"></i>
+            </div>
+            <div class="tool-panel-content scrollbar ps-container" data-ps-id="1a6ffb78-c4d5-8de7-2d64-2e664387af98">
+                <div id="qrcode"></div>
+                <label>分享链接</label>
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" readonly="" value="http://地图链接地址">
+            <span class="input-group-btn">
+                <button class="btn btn-default btn-copy" data-clipboard-text="http://地图链接地址"><span class="fa fa-copy"></span></button>
+            </span>
+                </div>
+                <label>嵌入到网页</label>
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" readonly="" value="<iframe width=480 height=300 src='http://地图链接地址' frameborder=0></iframe>">
+            <span class="input-group-btn">
+                <button class="btn btn-default btn-copy" data-clipboard-text="<iframe width=480 height=300 src='http://地图链接地址' frameborder=0></iframe>"><span class="fa fa-copy"></span></button>
+            </span>
+                </div>
+                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div>
+        </div>
+        <div id="setup-panel" class="tool-panel " style="display:none;">
+            <div class="panel-header">
+                设置
+                <i class="btn-close-panel fa fa-times fa-fw" title="关闭"></i>
+            </div>
+            <div class="tool-panel-content">
+                <div class="input-group-sm">
+                    <label>名称</label>
+                    <input id="input-viz-name" type="text" class="form-control">
+                </div>
+                <div class="input-group-sm primary-wrapper">
+                    <label>描述</label>
+        <textarea id="text-viz-desc" rows="5" class="scrollbar ps-container" data-ps-id="677f22e1-cd8b-1225-0da0-9fbdb2951794">
+        </textarea>
+                </div>
+                <div class="primary-wrapper">
+                    <!--<div id="share-wrapper" class="material-switch">
+                      <input id="chk-share" type="checkbox">
+                      <label for="chk-share" class="label-default"></label>
+                      分享到<a class="link-gallery" href="https://分享链接" target="_blank"><strong>发现</strong></a>
+                    </div>-->
+                    <button id="btn-save-ok" class="btn btn-primary btn-sm btn-half-width pull-right">
+                        <span class="label"><i class="fa fa-save fa-fw"></i> 保存</span>
+                        <span class="loading hide"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="delete-panel" class="tool-panel " style="display:none;">
+            <div class="panel-header">
+                <span>删除</span>
+                <i class="btn-close-panel fa fa-times fa-fw" title="关闭"></i>
+            </div>
+            <div class="tool-panel-content">
+                <div class="text-wrapper">
+                    <p id="warning-icon"><i class="fa fa-exclamation-triangle fa-fw"></i></p>
+                    <p id="warning-text"><span>该项目已分享，删除将导致无法访问！</span>删除无法恢复，是否确认删除当前项目？</p>
+                </div>
+                <div class="primary-wrapper">
+                    <button id="btn-delete-cancel" class="btn btn-default btn-sm btn-half-width">取消</button>
+                    <button id="btn-delete-ok" class="btn btn-danger btn-sm btn-half-width pull-right">
+                        <span class="label"><i class="fa fa-trash-o fa-fw"></i> 删除</span>
+                        <span class="loading hide"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 数据列表弹出框-->
+<div class="modal fade" tabindex="-1" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 >读取数据</h4>
+            </div>
+            <div class="modal-body" style="max-height:300px;overflow-y: auto;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div id="data-layer-list"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="aaa">dianji </button>
+                <button type="button" class="addLayer"> sure</button>
+                <button type="button" data-dismiss="modal">close</button>
+                <button type="button" >sava change</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除弹出框-->
+<div class="modal fade" tabindex="-1" id="delete-data-list" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 >删除</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div >
+                            删除数据
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal">close</button>
+                <button type="button" >sava change</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 信息提示框 -->
+<!--<div id="message-container" class="animated error fadeOutUp">
+  <i class="fa fa-check-circle-o fa-fw success"></i><i class="fa fa-frown-o fa-fw error"></i><i class="fa fa-exclamation-triangle fa-fw warning"></i><span id="message">查询我的地图出错</span>
+</div>-->
+
+<!-- 图例显示面板 -->
+<div id="legend-wrapper" class="hide">
+    <div id="legend-container"></div>
+    <span id="legend-toggle-label">例</span>
+</div>
+
+<!-- 属性框 -->
+<div id="feature-dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h5 class="modal-title">属性</h5>
+            </div>
+            <div class="modal-body scrollbar ps-container" data-ps-id="05269e39-b3e8-4937-2853-5100adea1e70">
+                <table class="table">
+                    <tbody id="feature-fields">
+                    </tbody>
+                </table>
+                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div><div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

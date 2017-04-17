@@ -1,0 +1,462 @@
+[
+  {
+    "county":"Adair County",
+    "tickets":1624
+  },
+  {
+    "county":"Andrew County",
+    "tickets":2558
+  },
+  {
+    "county":"Atchison County",
+    "tickets":2533
+  },
+  {
+    "county":"Audrain County",
+    "tickets":1861
+  },
+  {
+    "county":"Barry County",
+    "tickets":2502
+  },
+  {
+    "county":"Barton County",
+    "tickets":3077
+  },
+  {
+    "county":"Bates County",
+    "tickets":3586
+  },
+  {
+    "county":"Benton County",
+    "tickets":1635
+  },
+  {
+    "county":"Bollinger County",
+    "tickets":209
+  },
+  {
+    "county":"Boone County",
+    "tickets":6558
+  },
+  {
+    "county":"Buchanan County",
+    "tickets":3085
+  },
+  {
+    "county":"Butler County",
+    "tickets":2566
+  },
+  {
+    "county":"Caldwell County",
+    "tickets":2157
+  },
+  {
+    "county":"Callaway County",
+    "tickets":7026
+  },
+  {
+    "county":"Camden County",
+    "tickets":1410
+  },
+  {
+    "county":"Cape Girardeau County",
+    "tickets":2849
+  },
+  {
+    "county":"Carroll County",
+    "tickets":769
+  },
+  {
+    "county":"Carter County",
+    "tickets":3531
+  },
+  {
+    "county":"Cass County",
+    "tickets":3910
+  },
+  {
+    "county":"Cedar County",
+    "tickets":898
+  },
+  {
+    "county":"Chariton County",
+    "tickets":1186
+  },
+  {
+    "county":"Christian County",
+    "tickets":2146
+  },
+  {
+    "county":"Clark County",
+    "tickets":3649
+  },
+  {
+    "county":"Clay County",
+    "tickets":7200
+  },
+  {
+    "county":"Clinton County",
+    "tickets":3676
+  },
+  {
+    "county":"Cole County",
+    "tickets":3894
+  },
+  {
+    "county":"Cooper County",
+    "tickets":3202
+  },
+  {
+    "county":"Crawford County",
+    "tickets":5382
+  },
+  {
+    "county":"Dade County",
+    "tickets":238
+  },
+  {
+    "county":"Dallas County",
+    "tickets":5705
+  },
+  {
+    "county":"Daviess County",
+    "tickets":3957
+  },
+  {
+    "county":"DeKalb County",
+    "tickets":1391
+  },
+  {
+    "county":"Dent County",
+    "tickets":1670
+  },
+  {
+    "county":"Douglas County",
+    "tickets":1642
+  },
+  {
+    "county":"Dunklin County",
+    "tickets":1353
+  },
+  {
+    "county":"Franklin County",
+    "tickets":6463
+  },
+  {
+    "county":"Gasconade County",
+    "tickets":799
+  },
+  {
+    "county":"Gentry County",
+    "tickets":233
+  },
+  {
+    "county":"Greene County",
+    "tickets":5694
+  },
+  {
+    "county":"Grundy County",
+    "tickets":1244
+  },
+  {
+    "county":"Harrison County",
+    "tickets":3188
+  },
+  {
+    "county":"Henry County",
+    "tickets":3123
+  },
+  {
+    "county":"Hickory County",
+    "tickets":910
+  },
+  {
+    "county":"Holt County",
+    "tickets":3013
+  },
+  {
+    "county":"Howard County",
+    "tickets":597
+  },
+  {
+    "county":"Howell County",
+    "tickets":6910
+  },
+  {
+    "county":"Iron County",
+    "tickets":384
+  },
+  {
+    "county":"Jackson County",
+    "tickets":9282
+  },
+  {
+    "county":"Jasper County",
+    "tickets":9780
+  },
+  {
+    "county":"Jefferson County",
+    "tickets":8254
+  },
+  {
+    "county":"Johnson County",
+    "tickets":4829
+  },
+  {
+    "county":"Knox County",
+    "tickets":491
+  },
+  {
+    "county":"Laclede County",
+    "tickets":8322
+  },
+  {
+    "county":"Lafayette County",
+    "tickets":7096
+  },
+  {
+    "county":"Lawrence County",
+    "tickets":2682
+  },
+  {
+    "county":"Lewis County",
+    "tickets":4155
+  },
+  {
+    "county":"Lincoln County",
+    "tickets":5343
+  },
+  {
+    "county":"Linn County",
+    "tickets":4086
+  },
+  {
+    "county":"Livingston County",
+    "tickets":1978
+  },
+  {
+    "county":"McDonald County",
+    "tickets":2094
+  },
+  {
+    "county":"Macon County",
+    "tickets":4916
+  },
+  {
+    "county":"Madison County",
+    "tickets":1582
+  },
+  {
+    "county":"Maries County",
+    "tickets":753
+  },
+  {
+    "county":"Marion County",
+    "tickets":3698
+  },
+  {
+    "county":"Mercer County",
+    "tickets":482
+  },
+  {
+    "county":"Miller County",
+    "tickets":3177
+  },
+  {
+    "county":"Mississippi County",
+    "tickets":1693
+  },
+  {
+    "county":"Moniteau County",
+    "tickets":1563
+  },
+  {
+    "county":"Monroe County",
+    "tickets":1563
+  },
+  {
+    "county":"Montgomery County",
+    "tickets":3485
+  },
+  {
+    "county":"Morgan County",
+    "tickets":2479
+  },
+  {
+    "county":"New Madrid County",
+    "tickets":5215
+  },
+  {
+    "county":"Newton County",
+    "tickets":4954
+  },
+  {
+    "county":"Nodaway County",
+    "tickets":3182
+  },
+  {
+    "county":"Oregon County",
+    "tickets":600
+  },
+  {
+    "county":"Osage County",
+    "tickets":707
+  },
+  {
+    "county":"Ozark County",
+    "tickets":1279
+  },
+  {
+    "county":"Pemiscot County",
+    "tickets":2101
+  },
+  {
+    "county":"Perry County",
+    "tickets":2997
+  },
+  {
+    "county":"Pettis County",
+    "tickets":2520
+  },
+  {
+    "county":"Phelps County",
+    "tickets":7300
+  },
+  {
+    "county":"Pike County",
+    "tickets":1625
+  },
+  {
+    "county":"Platte County",
+    "tickets":4257
+  },
+  {
+    "county":"Polk County",
+    "tickets":5238
+  },
+  {
+    "county":"Pulaski County",
+    "tickets":9873
+  },
+  {
+    "county":"Putnam County",
+    "tickets":813
+  },
+  {
+    "county":"Ralls County",
+    "tickets":2429
+  },
+  {
+    "county":"Randolph County",
+    "tickets":4914
+  },
+  {
+    "county":"Ray County",
+    "tickets":1436
+  },
+  {
+    "county":"Reynolds County",
+    "tickets":413
+  },
+  {
+    "county":"Ripley County",
+    "tickets":792
+  },
+  {
+    "county":"St. Charles County",
+    "tickets":15030
+  },
+  {
+    "county":"St. Clair County",
+    "tickets":3483
+  },
+  {
+    "county":"Ste. Genevieve County",
+    "tickets":3300
+  },
+  {
+    "county":"St. Francois County",
+    "tickets":18207
+  },
+  {
+    "county":"St. Louis County",
+    "tickets":5015
+  },
+  {
+    "county":"Saline County",
+    "tickets":3007
+  },
+  {
+    "county":"Schuyler County",
+    "tickets":669
+  },
+  {
+    "county":"Scotland County",
+    "tickets":498
+  },
+  {
+    "county":"Scott County",
+    "tickets":2249
+  },
+  {
+    "county":"Shannon County",
+    "tickets":1517
+  },
+  {
+    "county":"Shelby County",
+    "tickets":2202
+  },
+  {
+    "county":"Stoddard County",
+    "tickets":1424
+  },
+  {
+    "county":"Stone County",
+    "tickets":544
+  },
+  {
+    "county":"Sullivan County",
+    "tickets":1712
+  },
+  {
+    "county":"Taney County",
+    "tickets":2817
+  },
+  {
+    "county":"Texas County",
+    "tickets":4135
+  },
+  {
+    "county":"Vernon County",
+    "tickets":2181
+  },
+  {
+    "county":"Warren County",
+    "tickets":3529
+  },
+  {
+    "county":"Washington County",
+    "tickets":451
+  },
+  {
+    "county":"Wayne County",
+    "tickets":1624
+  },
+  {
+    "county":"Webster County",
+    "tickets":2990
+  },
+  {
+    "county":"Worth County",
+    "tickets":182
+  },
+  {
+    "county":"Wright County",
+    "tickets":5260
+  },
+  {
+    "county":"St. Louis City County",
+    "tickets":53
+  }
+]

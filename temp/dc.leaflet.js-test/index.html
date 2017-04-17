@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DC.js + Leaflet</title>
+  <meta charset="UTF-8">
+  <link type="text/css" href="lib/leaflet.css" rel="stylesheet"/>
+  <link type="text/css" href="lib/dc.css" rel="stylesheet"/>
+  <style>
+    #container {
+      width:800px;
+      margin:20px auto;
+    }
+    #map {
+      width:800px;
+      height:400px;
+    }
+    .dc-chart g.row text {
+      fill:black;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <h2>Dolores Park Crimes</h2>
+  <div id="map"></div>
+  <div id="charts">
+    <div id="crimesbyday"></div>
+    <div id="category"></div>
+    <div id="dayofweek"></div>
+  </div>
+</div>
+<script type="text/javascript" src="lib/d3.js"></script>
+<script type="text/javascript" src="lib/crossfilter.js"></script>
+<script type="text/javascript" src="lib/dc.js"></script>
+<script type="text/javascript" src="lib/leaflet.js"></script>
+<script type="text/javascript" src="lib/dc.leaflet.js"></script>
+<script type="text/javascript" src="lib/dolores.js"></script>
+</body>
+</html>
+

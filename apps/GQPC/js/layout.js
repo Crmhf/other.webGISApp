@@ -87,6 +87,10 @@ $(document).ready(function(){
     $('#surface_people').click(function(){
         surface_people();
     });
+
+    $('#zoomLevel').click(function(){
+        alert(map.getZoom());
+    });
 });
 
 // 检查marker是否已存在,如果已存在就清除

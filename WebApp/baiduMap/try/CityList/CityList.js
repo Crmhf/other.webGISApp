@@ -93,7 +93,7 @@ var BMapLib = window.BMapLib = BMapLib || {};
          * @param {Any} source 目标参数
          * @shortcut isString
          * @meta standard
-         *             
+         *
          * @returns {boolean} 类型判断结果
          */
         baidu.lang.isString = function (source) {

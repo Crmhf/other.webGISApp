@@ -1,0 +1,55 @@
+{
+"type": "FeatureCollection",
+
+"features": [
+{ "type": "Feature", "id": 0, "properties": { "Location": "N Main & Laurel", "Type": "Monterey Cyprus", "YEAR": 1988, "Photo_old": "1988_Montereycyprus1915", "P_old_year": 1915, "Photo_new": "1988_Montereycyprus2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.718384, 42.200878, 0.0 ] } }
+,
+{ "type": "Feature", "id": 1, "properties": { "Location": "Plaza", "Type": "Tree of Heaven", "YEAR": 1989, "Photo_old": "1989_treeofheaven1881", "P_old_year": 1881, "Photo_new": "1989_treeofheaven2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.715584, 42.196819, 0.0 ] } }
+,
+{ "type": "Feature", "id": 2, "properties": { "Location": "1 Hillcrest Street", "Type": "Monkey Puzzle", "YEAR": 1990, "Photo_old": "1990_monkeypuzzle1915", "P_old_year": 1915, "Photo_new": "1990_monkeypuzzle2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.712593, 42.193291, 0.0 ] } }
+,
+{ "type": "Feature", "id": 3, "properties": { "Location": "503 Beach", "Type": "Interior Live Oak", "YEAR": 1991, "Photo_old": "1991_interiorliveoak1961", "P_old_year": 1961, "Photo_new": "1991_interiorliveoak2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.701736, 42.185303, 0.0 ] } }
+,
+{ "type": "Feature", "id": 4, "properties": { "Location": "133 Nutley Street", "Type": "California Black Oak", "YEAR": 1992, "Photo_old": "1992_CAblackoak1916", "P_old_year": 1916, "Photo_new": "1992_CAblackoak2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.720039, 42.194767, 0.0 ] } }
+,
+{ "type": "Feature", "id": 5, "properties": { "Location": "Glenwood Park", "Type": "Walnut", "YEAR": 1993, "Photo_old": "1993_walnut1961", "P_old_year": 1961, "Photo_new": "1993_walnut2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.700714, 42.184883, 0.0 ] } }
+,
+{ "type": "Feature", "id": 6, "properties": { "Location": "SOU Library", "Type": "Sequoia", "YEAR": 1994, "Photo_old": "1994_sousequoia1959", "P_old_year": 1959, "Photo_new": "1994_sousequoia2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.694809, 42.185303, 0.0 ] } }
+,
+{ "type": "Feature", "id": 7, "properties": { "Location": "128 S. Laurel", "Type": "Black Oak", "YEAR": 1995, "Photo_old": "1995_blackoak1910", "P_old_year": 1910, "Photo_new": "1995_blackoak2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.717873, 42.201237, 0.0 ] } }
+,
+{ "type": "Feature", "id": 8, "properties": { "Location": "563 N Main", "Type": "Blue Spruce", "YEAR": 1996, "Photo_old": "1996_c_spruce1990", "P_old_year": 1990, "Photo_new": "1996_c_spruce2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.721291, 42.206257, 0.0 ] } }
+,
+{ "type": "Feature", "id": 9, "properties": { "Location": "695 6th", "Type": "American Elm", "YEAR": 1997, "Photo_old": "1997_americanelm1940", "P_old_year": 1940, "Photo_new": "1997_americanelm2002", "P_new_year": 2002 }, "geometry": { "type": "Point", "coordinates": [ -122.705086, 42.196636, 0.0 ] } }
+,
+{ "type": "Feature", "id": 10, "properties": { "Location": "801 Ashland Street", "Type": "Coast Redwood", "YEAR": 1998, "Photo_old": "1998_coastredwood1960", "P_old_year": 1960, "Photo_new": "1998_coastredwood2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.703987, 42.1856, 0.0 ] } }
+,
+{ "type": "Feature", "id": 11, "properties": { "Location": "101 Orange", "Type": "Osage Orange", "YEAR": 1999, "Photo_old": "1999_osageorange1889", "P_old_year": 1889, "Photo_new": "1999_osageorange2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.712875, 42.204674, 0.0 ] } }
+,
+{ "type": "Feature", "id": 12, "properties": { "Location": "Ashland Library", "Type": "Gingko tree", "YEAR": 2000, "Photo_old": "2000_gingko1920", "P_old_year": 1920, "Photo_new": "2000_gingko2001", "P_new_year": 2001 }, "geometry": { "type": "Point", "coordinates": [ -122.709808, 42.194202, 0.0 ] } }
+,
+{ "type": "Feature", "id": 13, "properties": { "Location": "391 Liberty", "Type": "Atlas Blue Cedar", "YEAR": 2001, "Photo_old": "2001_bluespruce1980", "P_old_year": 1980, "Photo_new": "2001_bluespruce2002", "P_new_year": 2002 }, "geometry": { "type": "Point", "coordinates": [ -122.703491, 42.188042, 0.0 ] } }
+,
+{ "type": "Feature", "id": 14, "properties": { "Location": "Safeway", "Type": "Deodora Cedar", "YEAR": 2002, "Photo_old": "2002_deodoracedar1959", "P_old_year": 1959, "Photo_new": "2002_deodoracedar2002", "P_new_year": 2002 }, "geometry": { "type": "Point", "coordinates": [ -122.706116, 42.192894, 0.0 ] } }
+,
+{ "type": "Feature", "id": 15, "properties": { "Location": "762 B Street", "Type": "Pecan (Carya Illinoensis)", "YEAR": 2003, "Photo_old": "2003_TotY_720_B", "P_old_year": 0, "Photo_new": null, "P_new_year": 0 }, "geometry": { "type": "Point", "coordinates": [ -122.704231, 42.19614, 0.0 ] } }
+,
+{ "type": "Feature", "id": 16, "properties": { "Location": "407 Scenic", "Type": "Monterey Cyprus", "YEAR": 2004, "Photo_old": "2004_Cypress1905", "P_old_year": 1905, "Photo_new": "2004_TofY04Webphoto", "P_new_year": 0 }, "geometry": { "type": "Point", "coordinates": [ -122.723114, 42.203671, 0.0 ] } }
+,
+{ "type": "Feature", "id": 17, "properties": { "Location": "167 Almond", "Type": "Giant Sequoia", "YEAR": 2005, "Photo_old": null, "P_old_year": 0, "Photo_new": "2005_giantsequoia2005", "P_new_year": 2005 }, "geometry": { "type": "Point", "coordinates": [ -122.720337, 42.198875, 0.0 ] } }
+,
+{ "type": "Feature", "id": 18, "properties": { "Location": "Mountain View Cemetary", "Type": "Pacific Madrone", "YEAR": 2006, "Photo_old": null, "P_old_year": 0, "Photo_new": "2006_P1010016", "P_new_year": 0 }, "geometry": { "type": "Point", "coordinates": [ -122.681763, 42.186054, 0.0 ] } }
+,
+{ "type": "Feature", "id": 19, "properties": { "Location": "122 Helman Street", "Type": "Silver Maple", "YEAR": 2007, "Photo_old": null, "P_old_year": 0, "Photo_new": "2007_blkwht", "P_new_year": 0 }, "geometry": { "type": "Point", "coordinates": [ -122.715355, 42.200447, 0.0 ] } }
+,
+{ "type": "Feature", "id": 20, "properties": { "Location": "128 Wimer Street", "Type": "Spanish Fir", "YEAR": 2008, "Photo_old": null, "P_old_year": 0, "Photo_new": "2008_1202_treeofyear_BW", "P_new_year": 0 }, "geometry": { "type": "Point", "coordinates": [ -122.722466, 42.203457, 0.0 ] } }
+,
+{ "type": "Feature", "id": 21, "properties": { "Location": "634 Iowa Street", "Type": "Pink Dogwood", "YEAR": 2009, "Photo_old": "2009_Lambs", "P_old_year": 0, "Photo_new": "2009_Iowa_634_dogwood", "P_new_year": 0 }, "geometry": { "type": "Point", "coordinates": [ -122.706314, 42.190353, 0.0 ] } }
+,
+{ "type": "Feature", "id": 22, "properties": { "Location": "200 Sherman Street", "Type": "Podless Catalpa", "YEAR": 2010, "Photo_old": null, "P_old_year": 0, "Photo_new": "2010_TotY_Winner_Podless_Catalpa_200_Sherman", "P_new_year": 0 }, "geometry": { "type": "Point", "coordinates": [ -122.706596, 42.190971, 0.0 ] } }
+,
+{ "type": "Feature", "id": 23, "properties": { "Location": "65 Granite Street", "Type": "Coast Redwood", "YEAR": 2011, "Photo_old": null, "P_old_year": 0, "Photo_new": "2011_TotY_65_Granite_Street", "P_new_year": 0 }, "geometry": { "type": "Point", "coordinates": [ -122.717644, 42.196175, 0.0 ] } }
+,
+{ "type": "Feature", "id": 24, "properties": { "Location": "1209 Iowa Street", "Type": "Oregon White Oak", "YEAR": 2012, "Photo_old": null, "P_old_year": 0, "Photo_new": "2012_TotY_Iowa_Street", "P_new_year": 0 }, "geometry": { "type": "Point", "coordinates": [ -122.696975, 42.190519, 0.0 ] } }
+]
+}

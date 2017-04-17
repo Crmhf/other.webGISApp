@@ -1,0 +1,8 @@
+.leaflet-control-home {
+/*background-image: url('leaflet.defaultextent.png');*/
+background-image: url('../img/home.png');
+background-size: 23px;
+width: 26px;
+height: 26px;
+display: block;
+}

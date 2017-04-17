@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试用户密钥的页面</title>
+
+
+    <script type="text/javascript" src="api/ak.min2.js"></script>
+    <script type="text/javascript">
+        ak.config = {
+            debug: false, // 开启s调试模式,调用的所有api的返回值会在客户端alert出来
+            url:'http://192.168.227.104:8080', // 验证请求的ip
+            akId: '', // 必填，私有密钥
+            jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        };
+    </script>
+</head>
+<body>
+
+<input type="button" value="测试密钥原生" onclick="x()"><br>
+<input type="button" value="测试密钥原生z" onclick="z()"><br>
+<input type="button" value="测试密钥jQuery" onclick="y()">
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+    function x(){
+        var  serviceUrl = 'http://192.168.227.104:8080/user-center/user/json/login';
+
+        var param  = JSON.stringify({"LOGIN": "hnadmin", "PASSWORD": "e10adc3949ba59abbe56e057f20f883e"});
+
+
+
+        /*ajax('http://192.168.227.104:8080/user-center/user/json/login', 'post')
+                .data({"LOGIN": "hnadmin", "PASSWORD": "e10adc3949ba59abbe56e057f20f883e"})
+                .error(function(e) { console.log("*BOOM*"); })
+                .send(function(data, status, headers) {
+                    console.log(data);
+                    debugger;
+                });*/
+
+        ajax({
+            type: 'POST',
+            url: serviceUrl,
+            data: param,
+            timeout: 5000,
+            onSuccess: function(data) {
+                console.log('Here is the data: ' + data);
+            },
+            onComplete: function() {
+
+            },
+            onError: function() {
+                console.log('Error');
+            }
+        });
+    }
+
+    function y(){
+        var  serviceUrl = 'http://192.168.227.16:8084/user-center/user/json/login';
+
+        var param  = JSON.stringify({"LOGIN": "hnadmin", "PASSWORD": "e10adc3949ba59abbe56e057f20f883e"});
+
+
+        $.ajax({
+            type: "POST",
+            url: serviceUrl,
+            data: param,
+            async: true,
+            cache: false,
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function(data) {
+                debugger;
+                console.log('Here is the data: ' + data);
+            },
+            error: function() {
+                console.log('Error');
+            } // 系统级错误
+        });
+    }
+
+
+    function z(){
+        var  serviceUrl = 'http://192.168.227.104:8080/user-center/user/json/login';
+
+        var param  = JSON.stringify({"LOGIN": "hnadmin", "PASSWORD": "e10adc3949ba59abbe56e057f20f883e"});
+
+
+
+        /*ajax('http://192.168.227.104:8080/user-center/user/json/login', 'post')
+         .data({"LOGIN": "hnadmin", "PASSWORD": "e10adc3949ba59abbe56e057f20f883e"})
+         .error(function(e) { console.log("*BOOM*"); })
+         .send(function(data, status, headers) {
+         console.log(data);
+         debugger;
+         });*/
+
+        /*
+        ajax({
+            type: 'POST',
+            url: serviceUrl,
+            data: param,
+            timeout: 5000,
+            onSuccess: function(data) {
+                console.log('Here is the data: ' + data);
+            },
+            onComplete: function() {
+
+            },
+            onError: function() {
+                console.log('Error');
+            }
+        });*/
+
+        ak_ajax({
+            url:serviceUrl,//request URL
+            type:"POST",//Request type GET/POST
+            data:param,
+            ansyc:false,
+            success: function(data){
+                alert(data);
+                // 如果授权失败,弹出 授权失败,请联系管理员确认分配的私有密钥是否正确
+            },
+            error: function(data){
+                debugger;
+                alert(data);
+            }
+
+        });
+    }
+</script>

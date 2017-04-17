@@ -1,0 +1,4034 @@
+{
+    "geojson_crime": {
+        "features": [
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-04-11", 
+                    "dayofweek": "Monday", 
+                    "description": "RESISTING ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "02:35:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SUSPICIOUS OCC", 
+                    "date": "2011-04-11", 
+                    "dayofweek": "Monday", 
+                    "description": "SUSPICIOUS OCCURRENCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "02:35:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2011-04-09", 
+                    "dayofweek": "Saturday", 
+                    "description": "AGGRAVATED ASSAULT WITH A DEADLY WEAPON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SECONDARY CODES", 
+                    "date": "2011-04-09", 
+                    "dayofweek": "Saturday", 
+                    "description": "GANG ACTIVITY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "STOLEN PROPERTY", 
+                    "date": "2011-04-08", 
+                    "dayofweek": "Friday", 
+                    "description": "STOLEN PROPERTY, POSSESSION WITH KNOWLEDGE, RECEIVING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "23:23:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-04-08", 
+                    "dayofweek": "Friday", 
+                    "description": "RESISTING ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "23:23:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2011-04-08", 
+                    "dayofweek": "Friday", 
+                    "description": "ROBBERY ON THE STREET, STRONGARM", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "23:23:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2011-04-08", 
+                    "dayofweek": "Friday", 
+                    "description": "AGGRAVATED ASSAULT WITH BODILY FORCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "23:23:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-04-08", 
+                    "dayofweek": "Friday", 
+                    "description": "CONSPIRACY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "23:23:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428309267889, 
+                        37.7600871873775
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "BURGLARY", 
+                    "date": "2011-04-04", 
+                    "dayofweek": "Monday", 
+                    "description": "BURGLARY OF APARTMENT HOUSE, UNLAWFUL ENTRY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "12:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2011-04-02", 
+                    "dayofweek": "Saturday", 
+                    "description": "BATTERY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:11:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2011-04-01", 
+                    "dayofweek": "Friday", 
+                    "description": "BATTERY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "22:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2011-03-26", 
+                    "dayofweek": "Saturday", 
+                    "description": "PETTY THEFT FROM LOCKED AUTO", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "19:45:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "WARRANTS", 
+                    "date": "2011-03-25", 
+                    "dayofweek": "Friday", 
+                    "description": "WARRANT ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "23:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2011-03-25", 
+                    "dayofweek": "Friday", 
+                    "description": "MALICIOUS MISCHIEF, GRAFFITI", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "23:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428203997155, 
+                        37.759691691831
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-03-19", 
+                    "dayofweek": "Saturday", 
+                    "description": "DRIVERS LICENSE, SUSPENDED OR REVOKED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "10:45:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428203997155, 
+                        37.759691691831
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "FRAUD", 
+                    "date": "2011-03-19", 
+                    "dayofweek": "Saturday", 
+                    "description": "FALSE ID TO PEACE OFFICER", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "10:45:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426036566526, 
+                        37.759419804663
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2011-03-16", 
+                    "dayofweek": "Wednesday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "19:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425920487436, 
+                        37.7598279172229
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SUSPICIOUS OCC", 
+                    "date": "2011-03-13", 
+                    "dayofweek": "Sunday", 
+                    "description": "INVESTIGATIVE DETENTION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:01:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428051707644, 
+                        37.7580899767786
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2011-03-12", 
+                    "dayofweek": "Saturday", 
+                    "description": "GRAND THEFT OF PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "01:50:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.42823159163, 
+                        37.7592690036548
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "FRAUD", 
+                    "date": "2011-03-12", 
+                    "dayofweek": "Saturday", 
+                    "description": "FALSE ID TO PEACE OFFICER", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "01:48:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.42823159163, 
+                        37.7592690036548
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "WARRANTS", 
+                    "date": "2011-03-12", 
+                    "dayofweek": "Saturday", 
+                    "description": "WARRANT ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "01:48:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.42823159163, 
+                        37.7592690036548
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "TRESPASS", 
+                    "date": "2011-03-12", 
+                    "dayofweek": "Saturday", 
+                    "description": "TRESPASSING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "01:48:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428355366652, 
+                        37.7612577113414
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2011-03-10", 
+                    "dayofweek": "Thursday", 
+                    "description": "MALICIOUS MISCHIEF, VANDALISM", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:01:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2011-03-05", 
+                    "dayofweek": "Saturday", 
+                    "description": "BATTERY OF A POLICE OFFICER", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "16:12:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2011-03-05", 
+                    "dayofweek": "Saturday", 
+                    "description": "AGGRAVATED ASSAULT WITH BODILY FORCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "16:12:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-03-05", 
+                    "dayofweek": "Saturday", 
+                    "description": "RESISTING ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "16:12:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426036566526, 
+                        37.759419804663
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SEX OFFENSES, FORCIBLE", 
+                    "date": "2011-03-03", 
+                    "dayofweek": "Thursday", 
+                    "description": "SEXUAL BATTERY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425844437514, 
+                        37.7590298040848
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2011-02-27", 
+                    "dayofweek": "Sunday", 
+                    "description": "GRAND THEFT FROM LOCKED AUTO", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "15:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2011-02-22", 
+                    "dayofweek": "Tuesday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2011-02-21", 
+                    "dayofweek": "Monday", 
+                    "description": "FOUND PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "10:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-02-17", 
+                    "dayofweek": "Thursday", 
+                    "description": "CONSPIRACY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:02:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2011-02-17", 
+                    "dayofweek": "Thursday", 
+                    "description": "ROBBERY, ARMED WITH A KNIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:02:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2011-02-12", 
+                    "dayofweek": "Saturday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SEX OFFENSES, NON FORCIBLE", 
+                    "date": "2011-02-11", 
+                    "dayofweek": "Friday", 
+                    "description": "UNLAWFUL SEXUAL INTERCOURSE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "EXCEPTIONAL CLEARANCE", 
+                    "time": "19:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SEX OFFENSES, FORCIBLE", 
+                    "date": "2011-02-11", 
+                    "dayofweek": "Friday", 
+                    "description": "ORAL COPULATION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "EXCEPTIONAL CLEARANCE", 
+                    "time": "19:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SEX OFFENSES, FORCIBLE", 
+                    "date": "2011-02-11", 
+                    "dayofweek": "Friday", 
+                    "description": "FORCIBLE RAPE, BODILY FORCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "EXCEPTIONAL CLEARANCE", 
+                    "time": "19:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2011-02-07", 
+                    "dayofweek": "Monday", 
+                    "description": "BATTERY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "04:50:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2011-02-06", 
+                    "dayofweek": "Sunday", 
+                    "description": "AIDED CASE, DOG BITE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "11:45:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425768246873, 
+                        37.7582261992584
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2011-02-05", 
+                    "dayofweek": "Saturday", 
+                    "description": "FOUND PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "15:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2011-02-03", 
+                    "dayofweek": "Thursday", 
+                    "description": "AIDED CASE, DOG BITE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "15:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428355366652, 
+                        37.7612577113414
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2011-01-27", 
+                    "dayofweek": "Thursday", 
+                    "description": "ROBBERY, BODILY FORCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "01:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-01-26", 
+                    "dayofweek": "Wednesday", 
+                    "description": "SCHOOL PROPERTY, DISTURBANCE ON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "JUVENILE BOOKED", 
+                    "time": "12:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2011-01-26", 
+                    "dayofweek": "Wednesday", 
+                    "description": "ROBBERY, BODILY FORCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "JUVENILE BOOKED", 
+                    "time": "12:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428355366652, 
+                        37.7612577113414
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-01-22", 
+                    "dayofweek": "Saturday", 
+                    "description": "DRIVERS LICENSE, SUSPENDED OR REVOKED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "23:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2011-01-19", 
+                    "dayofweek": "Wednesday", 
+                    "description": "PETTY THEFT OF PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "08:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425577459237, 
+                        37.7615126051244
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-01-19", 
+                    "dayofweek": "Wednesday", 
+                    "description": "RESISTING ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "02:25:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425577459237, 
+                        37.7615126051244
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2011-01-19", 
+                    "dayofweek": "Wednesday", 
+                    "description": "AGGRAVATED ASSAULT OF POLICE OFFICER,BODILY FORCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "02:25:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425577459237, 
+                        37.7615126051244
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-01-19", 
+                    "dayofweek": "Wednesday", 
+                    "description": "TRAFFIC VIOLATION ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "02:25:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2011-01-18", 
+                    "dayofweek": "Tuesday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "09:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2011-01-17", 
+                    "dayofweek": "Monday", 
+                    "description": "MALICIOUS MISCHIEF, BUILDING UNDER CONSTRUCTION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:01:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "TRESPASS", 
+                    "date": "2011-01-17", 
+                    "dayofweek": "Monday", 
+                    "description": "TRESPASSING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:01:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "MISSING PERSON", 
+                    "date": "2011-01-15", 
+                    "dayofweek": "Saturday", 
+                    "description": "MISSING JUVENILE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "08:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "MISSING PERSON", 
+                    "date": "2011-01-15", 
+                    "dayofweek": "Saturday", 
+                    "description": "FOUND PERSON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "08:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2011-01-11", 
+                    "dayofweek": "Tuesday", 
+                    "description": "PETTY THEFT AUTO STRIP", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2011-01-10", 
+                    "dayofweek": "Monday", 
+                    "description": "AIDED CASE, MENTAL DISTURBED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "21:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.42823159163, 
+                        37.7592690036548
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2011-01-10", 
+                    "dayofweek": "Monday", 
+                    "description": "DEATH REPORT, CAUSE UNKNOWN", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "11:40:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425768246873, 
+                        37.7582261992584
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2011-01-07", 
+                    "dayofweek": "Friday", 
+                    "description": "POSSESSION OF MARIJUANA", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425768246873, 
+                        37.7582261992584
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2011-01-07", 
+                    "dayofweek": "Friday", 
+                    "description": "POSSESSION OF COCAINE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425768246873, 
+                        37.7582261992584
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2011-01-07", 
+                    "dayofweek": "Friday", 
+                    "description": "AGGRAVATED ASSAULT WITH A GUN", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2011-01-03", 
+                    "dayofweek": "Monday", 
+                    "description": "STALKING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "14:08:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-01-03", 
+                    "dayofweek": "Monday", 
+                    "description": "VIOLATION OF RESTRAINING ORDER", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "14:08:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2011-01-03", 
+                    "dayofweek": "Monday", 
+                    "description": "PROBATION VIOLATION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "14:08:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428155898854, 
+                        37.7584715433795
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-12-23", 
+                    "dayofweek": "Thursday", 
+                    "description": "MALICIOUS MISCHIEF, VANDALISM", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "03:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426935654616, 
+                        37.7582112427245
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-12-18", 
+                    "dayofweek": "Saturday", 
+                    "description": "TRAFFIC ACCIDENT", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:16:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-12-17", 
+                    "dayofweek": "Friday", 
+                    "description": "AGGRAVATED ASSAULT WITH BODILY FORCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "20:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-12-17", 
+                    "dayofweek": "Friday", 
+                    "description": "ATTEMPTED ROBBERY ON THE STREET W/DEADLY WEAPON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "20:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428155898854, 
+                        37.7584715433795
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-12-16", 
+                    "dayofweek": "Thursday", 
+                    "description": "ROBBERY ON THE STREET WITH A DANGEROUS WEAPON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "20:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-12-16", 
+                    "dayofweek": "Thursday", 
+                    "description": "FOUND PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "07:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428309267889, 
+                        37.7600871873775
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-12-15", 
+                    "dayofweek": "Wednesday", 
+                    "description": "GRAND THEFT OF PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "05:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-12-15", 
+                    "dayofweek": "Wednesday", 
+                    "description": "HARASSING PHONE CALLS", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "02:06:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.42823159163, 
+                        37.7592690036548
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-12-14", 
+                    "dayofweek": "Tuesday", 
+                    "description": "AIDED CASE, MENTAL DISTURBED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "PSYCHOPATHIC CASE", 
+                    "time": "12:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.42823159163, 
+                        37.7592690036548
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "TRESPASS", 
+                    "date": "2010-12-13", 
+                    "dayofweek": "Monday", 
+                    "description": "TRESPASSING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "12:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.42823159163, 
+                        37.7592690036548
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-12-13", 
+                    "dayofweek": "Monday", 
+                    "description": "RESISTING ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "12:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428385139477, 
+                        37.7608861612155
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-12-12", 
+                    "dayofweek": "Sunday", 
+                    "description": "FOUND PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "09:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VEHICLE THEFT", 
+                    "date": "2010-12-11", 
+                    "dayofweek": "Saturday", 
+                    "description": "STOLEN TRUCK", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "21:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428355366652, 
+                        37.7612577113414
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-12-08", 
+                    "dayofweek": "Wednesday", 
+                    "description": "GRAND THEFT OF PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "19:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-12-08", 
+                    "dayofweek": "Wednesday", 
+                    "description": "BATTERY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:40:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428203997155, 
+                        37.759691691831
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VEHICLE THEFT", 
+                    "date": "2010-11-28", 
+                    "dayofweek": "Sunday", 
+                    "description": "STOLEN TRUCK", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.42823159163, 
+                        37.7592690036548
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-11-25", 
+                    "dayofweek": "Thursday", 
+                    "description": "MALICIOUS MISCHIEF, VANDALISM", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "09:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.42823159163, 
+                        37.7592690036548
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-11-25", 
+                    "dayofweek": "Thursday", 
+                    "description": "PETTY THEFT FROM A BUILDING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "09:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428155898854, 
+                        37.7584715433795
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "BURGLARY", 
+                    "date": "2010-11-25", 
+                    "dayofweek": "Thursday", 
+                    "description": "BURGLARY OF RESIDENCE, UNLAWFUL ENTRY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "08:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428155898854, 
+                        37.7584715433795
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-11-22", 
+                    "dayofweek": "Monday", 
+                    "description": "MALICIOUS MISCHIEF, ADULT SUSPECT", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "22:28:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VEHICLE THEFT", 
+                    "date": "2010-11-22", 
+                    "dayofweek": "Monday", 
+                    "description": "STOLEN TRUCK", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "19:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428203997155, 
+                        37.759691691831
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-11-21", 
+                    "dayofweek": "Sunday", 
+                    "description": "PETTY THEFT FROM UNLOCKED AUTO", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428203997155, 
+                        37.759691691831
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-11-21", 
+                    "dayofweek": "Sunday", 
+                    "description": "FALSE PERSONATION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "WARRANTS", 
+                    "date": "2010-11-13", 
+                    "dayofweek": "Saturday", 
+                    "description": "WARRANT ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "01:46:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRIVING UNDER THE INFLUENCE", 
+                    "date": "2010-11-13", 
+                    "dayofweek": "Saturday", 
+                    "description": "DRIVING WHILE UNDER THE INFLUENCE OF ALCOHOL", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "01:46:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-11-13", 
+                    "dayofweek": "Saturday", 
+                    "description": "TRAFFIC COLLISION, HIT & RUN, PROPERTY DAMAGE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "01:46:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-11-11", 
+                    "dayofweek": "Thursday", 
+                    "description": "MALICIOUS MISCHIEF, GRAFFITI", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "23:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-11-11", 
+                    "dayofweek": "Thursday", 
+                    "description": "VANDALISM OR GRAFFITI TOOLS, POSSESSION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "23:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-10-31", 
+                    "dayofweek": "Sunday", 
+                    "description": "ROBBERY, BODILY FORCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428355366652, 
+                        37.7612577113414
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-10-31", 
+                    "dayofweek": "Sunday", 
+                    "description": "PETTY THEFT OF PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "02:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-10-27", 
+                    "dayofweek": "Wednesday", 
+                    "description": "GRAND THEFT FROM PERSON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "22:27:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426935654616, 
+                        37.7582112427245
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-10-25", 
+                    "dayofweek": "Monday", 
+                    "description": "MALICIOUS MISCHIEF, VANDALISM OF VEHICLES", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-10-25", 
+                    "dayofweek": "Monday", 
+                    "description": "GRAND THEFT FROM A BUILDING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "10:50:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-10-25", 
+                    "dayofweek": "Monday", 
+                    "description": "THEFT OF COMPUTERS OR CELL PHONES", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "10:50:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SUSPICIOUS OCC", 
+                    "date": "2010-10-22", 
+                    "dayofweek": "Friday", 
+                    "description": "INVESTIGATIVE DETENTION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "JUVENILE ADMONISHED", 
+                    "time": "23:50:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-10-20", 
+                    "dayofweek": "Wednesday", 
+                    "description": "DISRUPTS SCHOOL ACTIVITIES", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "11:55:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-10-20", 
+                    "dayofweek": "Wednesday", 
+                    "description": "BATTERY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "11:55:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425768246873, 
+                        37.7582261992584
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-10-20", 
+                    "dayofweek": "Wednesday", 
+                    "description": "ATTEMPTED ROBBERY ON THE STREET W/DEADLY WEAPON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:20:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-10-18", 
+                    "dayofweek": "Monday", 
+                    "description": "ROBBERY ON THE STREET, STRONGARM", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:41:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-10-18", 
+                    "dayofweek": "Monday", 
+                    "description": "CONSPIRACY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:41:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-10-18", 
+                    "dayofweek": "Monday", 
+                    "description": "ROBBERY, BODILY FORCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:41:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-10-18", 
+                    "dayofweek": "Monday", 
+                    "description": "MISCELLANEOUS INVESTIGATION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:41:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-10-18", 
+                    "dayofweek": "Monday", 
+                    "description": "EVADING A POLICE OFFICER RECKLESSLY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:41:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425768246873, 
+                        37.7582261992584
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-10-16", 
+                    "dayofweek": "Saturday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "15:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2010-10-10", 
+                    "dayofweek": "Sunday", 
+                    "description": "CONTROLLED SUBSTANCE VIOLATION, LOITERING FOR", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "11:50:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2010-10-10", 
+                    "dayofweek": "Sunday", 
+                    "description": "POSSESSION OF MARIJUANA", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "11:50:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2010-10-10", 
+                    "dayofweek": "Sunday", 
+                    "description": "POSSESSION OF MARIJUANA FOR SALES", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "11:32:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-10-10", 
+                    "dayofweek": "Sunday", 
+                    "description": "CONSPIRACY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "11:32:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2010-10-10", 
+                    "dayofweek": "Sunday", 
+                    "description": "SALE OF MARIJUANA", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "11:32:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-10-07", 
+                    "dayofweek": "Thursday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "12:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-10-01", 
+                    "dayofweek": "Friday", 
+                    "description": "COURTESY REPORT", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:01:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SUSPICIOUS OCC", 
+                    "date": "2010-09-29", 
+                    "dayofweek": "Wednesday", 
+                    "description": "SUSPICIOUS OCCURRENCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:45:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-09-29", 
+                    "dayofweek": "Wednesday", 
+                    "description": "FIRE REPORT", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:45:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-09-28", 
+                    "dayofweek": "Tuesday", 
+                    "description": "RESISTING ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "12:18:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-09-28", 
+                    "dayofweek": "Tuesday", 
+                    "description": "SCHOOL PROPERTY, DISTURBANCE ON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "12:18:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-09-21", 
+                    "dayofweek": "Tuesday", 
+                    "description": "MALICIOUS MISCHIEF, STREET CARS/BUSES", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "20:32:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-09-18", 
+                    "dayofweek": "Saturday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "21:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428355366652, 
+                        37.7612577113414
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-09-17", 
+                    "dayofweek": "Friday", 
+                    "description": "GRAND THEFT FROM LOCKED AUTO", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "22:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426036566526, 
+                        37.759419804663
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-09-15", 
+                    "dayofweek": "Wednesday", 
+                    "description": "ROBBERY, BODILY FORCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426036566526, 
+                        37.759419804663
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "STOLEN PROPERTY", 
+                    "date": "2010-09-15", 
+                    "dayofweek": "Wednesday", 
+                    "description": "STOLEN PROPERTY, POSSESSION WITH KNOWLEDGE, RECEIVING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426036566526, 
+                        37.759419804663
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-09-15", 
+                    "dayofweek": "Wednesday", 
+                    "description": "BATTERY, FORMER SPOUSE OR DATING RELATIONSHIP", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "22:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-09-13", 
+                    "dayofweek": "Monday", 
+                    "description": "GRAND THEFT OF PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "13:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428280073101, 
+                        37.7604898033552
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-09-11", 
+                    "dayofweek": "Saturday", 
+                    "description": "THREATS AGAINST LIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428355366652, 
+                        37.7612577113414
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-09-10", 
+                    "dayofweek": "Friday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428051707644, 
+                        37.7580899767786
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-09-10", 
+                    "dayofweek": "Friday", 
+                    "description": "CIVIL RIGHTS, INCL. INJURY, THREAT, OR DAMAGE (HATE CRIMES)", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "02:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428051707644, 
+                        37.7580899767786
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-09-10", 
+                    "dayofweek": "Friday", 
+                    "description": "AGGRAVATED ASSAULT WITH A DEADLY WEAPON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "02:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-09-09", 
+                    "dayofweek": "Thursday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "23:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.42823159163, 
+                        37.7592690036548
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-09-09", 
+                    "dayofweek": "Thursday", 
+                    "description": "MALICIOUS MISCHIEF, VANDALISM", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "15:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428355366652, 
+                        37.7612577113414
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VEHICLE THEFT", 
+                    "date": "2010-09-08", 
+                    "dayofweek": "Wednesday", 
+                    "description": "STOLEN TRUCK", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "17:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425920487436, 
+                        37.7598279172229
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2010-09-08", 
+                    "dayofweek": "Wednesday", 
+                    "description": "SALE OF MARIJUANA", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "17:28:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425920487436, 
+                        37.7598279172229
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2010-09-08", 
+                    "dayofweek": "Wednesday", 
+                    "description": "POSSESSION OF MARIJUANA FOR SALES", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "17:28:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-09-05", 
+                    "dayofweek": "Sunday", 
+                    "description": "STALKING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "09:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-09-05", 
+                    "dayofweek": "Sunday", 
+                    "description": "STAY AWAY ORDER VIOLATION, DV RELATED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "09:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425577459237, 
+                        37.7615126051244
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "EMBEZZLEMENT", 
+                    "date": "2010-09-04", 
+                    "dayofweek": "Saturday", 
+                    "description": "EMBEZZLED VEHICLE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "11:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428309267889, 
+                        37.7600871873775
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-09-03", 
+                    "dayofweek": "Friday", 
+                    "description": "ROBBERY ON THE STREET WITH A KNIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "21:40:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425842162189, 
+                        37.7606220053743
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SUSPICIOUS OCC", 
+                    "date": "2010-09-02", 
+                    "dayofweek": "Thursday", 
+                    "description": "SUSPICIOUS OCCURRENCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "WARRANTS", 
+                    "date": "2010-08-31", 
+                    "dayofweek": "Tuesday", 
+                    "description": "ENROUTE TO ADULT AUTHORITY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "14:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "WARRANTS", 
+                    "date": "2010-08-31", 
+                    "dayofweek": "Tuesday", 
+                    "description": "ENROUTE TO OUTSIDE JURISDICTION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "14:10:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-08-31", 
+                    "dayofweek": "Tuesday", 
+                    "description": "GRAND THEFT OF PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "11:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "WEAPON LAWS", 
+                    "date": "2010-08-31", 
+                    "dayofweek": "Tuesday", 
+                    "description": "WEAPON, POSSESS OR BRING OTHER ON SCHOOL GROUNDS", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "JUVENILE CITED", 
+                    "time": "11:28:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-08-28", 
+                    "dayofweek": "Saturday", 
+                    "description": "INFLICT INJURY ON COHABITEE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "14:49:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "WARRANTS", 
+                    "date": "2010-08-28", 
+                    "dayofweek": "Saturday", 
+                    "description": "WARRANT ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "14:49:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-08-24", 
+                    "dayofweek": "Tuesday", 
+                    "description": "FOUND PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-08-23", 
+                    "dayofweek": "Monday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428355366652, 
+                        37.7612577113414
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-08-22", 
+                    "dayofweek": "Sunday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-08-21", 
+                    "dayofweek": "Saturday", 
+                    "description": "STAY AWAY ORDER VIOLATION, DV RELATED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "20:55:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-08-21", 
+                    "dayofweek": "Saturday", 
+                    "description": "THREATS AGAINST LIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "20:55:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "FRAUD", 
+                    "date": "2010-08-21", 
+                    "dayofweek": "Saturday", 
+                    "description": "CREDIT CARD, THEFT BY USE OF", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "20:55:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-08-21", 
+                    "dayofweek": "Saturday", 
+                    "description": "BATTERY WITH SERIOUS INJURIES", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "03:20:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-08-20", 
+                    "dayofweek": "Friday", 
+                    "description": "STAY AWAY ORDER VIOLATION, DV RELATED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-08-19", 
+                    "dayofweek": "Thursday", 
+                    "description": "STAY AWAY ORDER VIOLATION, DV RELATED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "23:53:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-08-19", 
+                    "dayofweek": "Thursday", 
+                    "description": "MALICIOUS MISCHIEF, BREAKING WINDOWS", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "23:53:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-08-19", 
+                    "dayofweek": "Thursday", 
+                    "description": "STALKING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "23:53:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428280073101, 
+                        37.7604898033552
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-08-14", 
+                    "dayofweek": "Saturday", 
+                    "description": "FOUND PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-08-12", 
+                    "dayofweek": "Thursday", 
+                    "description": "RESISTING ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "01:45:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427242380192, 
+                        37.7614118083919
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2010-08-12", 
+                    "dayofweek": "Thursday", 
+                    "description": "POSSESSION OF METH-AMPHETAMINE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "01:45:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LIQUOR LAWS", 
+                    "date": "2010-08-10", 
+                    "dayofweek": "Tuesday", 
+                    "description": "CONSUMING ALCOHOL IN PUBLIC VIEW", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "15:16:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "WARRANTS", 
+                    "date": "2010-08-10", 
+                    "dayofweek": "Tuesday", 
+                    "description": "WARRANT ARREST", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "15:16:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426925145612, 
+                        37.7581017061518
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-08-07", 
+                    "dayofweek": "Saturday", 
+                    "description": "STAY AWAY ORDER VIOLATION, DV RELATED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "14:19:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-08-07", 
+                    "dayofweek": "Saturday", 
+                    "description": "VIOLATION OF MUNICIPAL CODE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "04:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-08-07", 
+                    "dayofweek": "Saturday", 
+                    "description": "ATTEMPTED ROBBERY ON THE STREET WITH A KNIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "01:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-08-07", 
+                    "dayofweek": "Saturday", 
+                    "description": "CONSPIRACY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "01:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "STOLEN PROPERTY", 
+                    "date": "2010-08-07", 
+                    "dayofweek": "Saturday", 
+                    "description": "STOLEN PROPERTY, POSSESSION WITH KNOWLEDGE, RECEIVING", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "01:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-08-03", 
+                    "dayofweek": "Tuesday", 
+                    "description": "BATTERY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "21:05:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427231882765, 
+                        37.761302271703
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-08-03", 
+                    "dayofweek": "Tuesday", 
+                    "description": "TRAFFIC VIOLATION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "13:50:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-08-01", 
+                    "dayofweek": "Sunday", 
+                    "description": "AIDED CASE, DOG BITE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "14:22:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-07-31", 
+                    "dayofweek": "Saturday", 
+                    "description": "PROPERTY FOR IDENTIFICATION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "00:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-07-31", 
+                    "dayofweek": "Saturday", 
+                    "description": "ATTEMPTED ROBBERY ON THE STREET WITH A KNIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "00:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-07-31", 
+                    "dayofweek": "Saturday", 
+                    "description": "FOUND PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "00:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-07-31", 
+                    "dayofweek": "Saturday", 
+                    "description": "ROBBERY, ARMED WITH A KNIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "00:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-07-31", 
+                    "dayofweek": "Saturday", 
+                    "description": "CONSPIRACY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "00:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-07-31", 
+                    "dayofweek": "Saturday", 
+                    "description": "ATTEMPTED HOMICIDE WITH A KNIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "00:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-07-31", 
+                    "dayofweek": "Saturday", 
+                    "description": "ROBBERY ON THE STREET WITH A KNIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "00:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-07-31", 
+                    "dayofweek": "Saturday", 
+                    "description": "AGGRAVATED ASSAULT WITH A KNIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "00:58:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425920487436, 
+                        37.7598279172229
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-07-27", 
+                    "dayofweek": "Tuesday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "02:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425842162189, 
+                        37.7606220053743
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SUSPICIOUS OCC", 
+                    "date": "2010-07-25", 
+                    "dayofweek": "Sunday", 
+                    "description": "SUSPICIOUS OCCURRENCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "19:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425842162189, 
+                        37.7606220053743
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-07-24", 
+                    "dayofweek": "Saturday", 
+                    "description": "AIDED CASE, MENTAL DISTURBED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "PSYCHOPATHIC CASE", 
+                    "time": "09:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-07-23", 
+                    "dayofweek": "Friday", 
+                    "description": "AGGRAVATED ASSAULT WITH A DEADLY WEAPON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "20:23:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428203997155, 
+                        37.759691691831
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2010-07-21", 
+                    "dayofweek": "Wednesday", 
+                    "description": "SALE OF MARIJUANA", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "JUVENILE BOOKED", 
+                    "time": "14:25:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428203997155, 
+                        37.759691691831
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "MISSING PERSON", 
+                    "date": "2010-07-21", 
+                    "dayofweek": "Wednesday", 
+                    "description": "FOUND PERSON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "JUVENILE BOOKED", 
+                    "time": "14:25:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428203997155, 
+                        37.759691691831
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "DRUG/NARCOTIC", 
+                    "date": "2010-07-21", 
+                    "dayofweek": "Wednesday", 
+                    "description": "POSSESSION OF MARIJUANA", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "JUVENILE BOOKED", 
+                    "time": "14:25:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428051707644, 
+                        37.7580899767786
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-07-20", 
+                    "dayofweek": "Tuesday", 
+                    "description": "MALICIOUS MISCHIEF, VANDALISM", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "18:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425920487436, 
+                        37.7598279172229
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-07-19", 
+                    "dayofweek": "Monday", 
+                    "description": "PETTY THEFT OF PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "14:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426935654616, 
+                        37.7582112427245
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-07-17", 
+                    "dayofweek": "Saturday", 
+                    "description": "GRAND THEFT FROM PERSON", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "16:00:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425958633861, 
+                        37.7586064995657
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-07-17", 
+                    "dayofweek": "Saturday", 
+                    "description": "BATTERY, FORMER SPOUSE OR DATING RELATIONSHIP", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "14:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425958633861, 
+                        37.7586064995657
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-07-17", 
+                    "dayofweek": "Saturday", 
+                    "description": "THREATS AGAINST LIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "14:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425958633861, 
+                        37.7586064995657
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SECONDARY CODES", 
+                    "date": "2010-07-17", 
+                    "dayofweek": "Saturday", 
+                    "description": "DOMESTIC VIOLENCE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "14:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ROBBERY", 
+                    "date": "2010-07-14", 
+                    "dayofweek": "Wednesday", 
+                    "description": "ATTEMPTED ROBBERY ON THE STREET WITH A KNIFE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "23:15:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.428280073101, 
+                        37.7604898033552
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-07-14", 
+                    "dayofweek": "Wednesday", 
+                    "description": "MALICIOUS MISCHIEF, VANDALISM", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "17:50:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "SUSPICIOUS OCC", 
+                    "date": "2010-07-12", 
+                    "dayofweek": "Monday", 
+                    "description": "INVESTIGATIVE DETENTION", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "20:16:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426153349478, 
+                        37.7606186794333
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-07-11", 
+                    "dayofweek": "Sunday", 
+                    "description": "AIDED CASE", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "LOCATED", 
+                    "time": "18:49:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425768246873, 
+                        37.7582261992584
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "OTHER OFFENSES", 
+                    "date": "2010-07-10", 
+                    "dayofweek": "Saturday", 
+                    "description": "DRIVERS LICENSE, SUSPENDED OR REVOKED", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, CITED", 
+                    "time": "18:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.425577459237, 
+                        37.7615126051244
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "VANDALISM", 
+                    "date": "2010-07-09", 
+                    "dayofweek": "Friday", 
+                    "description": "MALICIOUS MISCHIEF, VANDALISM OF VEHICLES", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "01:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "LARCENY/THEFT", 
+                    "date": "2010-07-04", 
+                    "dayofweek": "Sunday", 
+                    "description": "GRAND THEFT OF PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "14:30:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427231882765, 
+                        37.761302271703
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "ASSAULT", 
+                    "date": "2010-07-02", 
+                    "dayofweek": "Friday", 
+                    "description": "BATTERY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "19:08:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.427231882765, 
+                        37.761302271703
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "WEAPON LAWS", 
+                    "date": "2010-07-02", 
+                    "dayofweek": "Friday", 
+                    "description": "WEAPON, DEADLY, CARRYING WITH INTENT TO COMMIT ASSAULT", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "ARREST, BOOKED", 
+                    "time": "19:08:00"
+                }, 
+                "type": "Feature"
+            }, 
+            {
+                "geometry": {
+                    "coordinates": [
+                        -122.426079580545, 
+                        37.7614267757472
+                    ], 
+                    "type": "Point"
+                }, 
+                "id": null, 
+                "properties": {
+                    "category": "NON-CRIMINAL", 
+                    "date": "2010-06-30", 
+                    "dayofweek": "Wednesday", 
+                    "description": "LOST PROPERTY", 
+                    "pddistrict": "MISSION", 
+                    "resolution": "NONE", 
+                    "time": "00:30:00"
+                }, 
+                "type": "Feature"
+            }
+        ], 
+        "type": "FeatureCollection"
+    }, 
+    "geojson_shape": {
+        "coordinates": [
+            [
+                -122.42890477180481, 
+                37.761627847394024
+            ], 
+            [
+                -122.42561101913451, 
+                37.76183989323063
+            ], 
+            [
+                -122.42520332336426, 
+                37.75797208159544
+            ], 
+            [
+                -122.42859363555907, 
+                37.75779395381997
+            ], 
+            [
+                -122.42890477180481, 
+                37.761627847394024
+            ]
+        ], 
+        "type": "Polygon"
+    }, 
+    "message": null, 
+    "url": ""
+}

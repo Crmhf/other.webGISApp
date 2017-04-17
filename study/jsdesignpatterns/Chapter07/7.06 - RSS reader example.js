@@ -2,7 +2,9 @@
 
 var DisplayModule = new Interface('DisplayModule', ['append', 'remove', 'clear']);
 
-/* ListDisplay class. */
+/**
+  ListDisplay class.
+*/
 
 var ListDisplay = function(id, parent) { // implements DisplayModule
   this.list = document.createElement('ul');
@@ -20,7 +22,7 @@ ListDisplay.prototype = {
     this.list.removeChild(el);
   },
   clear: function() {
-    this.list.innerHTML = '';
+      this.list.innerHTML = '';
   }
 };
 

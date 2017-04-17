@@ -1,0 +1,139 @@
+{
+  "_args": [
+    [
+      "fecs",
+      ""
+    ]
+  ],
+  "_from": "fecs@latest",
+  "_id": "fecs@1.2.2",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/fecs",
+  "_nodeVersion": "6.0.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/fecs-1.2.2.tgz_1488814338857_0.5439335142727941"
+  },
+  "_npmUser": {
+    "email": "ecomfe@gmail.com",
+    "name": "ecomfe"
+  },
+  "_npmVersion": "3.8.6",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "fecs",
+    "raw": "fecs",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/fecs/-/fecs-1.2.2.tgz",
+  "_shasum": "ad369b42141e2b734cb0441961afc6b6d467dcd0",
+  "_shrinkwrap": null,
+  "_spec": "fecs",
+  "_where": "",
+  "author": {
+    "email": "wfsr@foxmail.com",
+    "name": "chris"
+  },
+  "bin": {
+    "fecs": "./bin/fecs"
+  },
+  "bugs": {
+    "url": "https://github.com/ecomfe/fecs/issues"
+  },
+  "dependencies": {
+    "babel-eslint": "^7.1.1",
+    "babel-polyfill": "^6.23.0",
+    "chalk": "^1.1.1",
+    "csscomb": "^4.0.0",
+    "csshint": "stable",
+    "doctrine2": "latest",
+    "esformatter": "^0.10.0",
+    "esformatter-braces": "^1.2.1",
+    "esformatter-dot-notation": "^1.3.1",
+    "esformatter-fecs": "latest",
+    "esformatter-jsx": "^7.4.1",
+    "esformatter-limit-linebreaks": "0.0.3",
+    "esformatter-parseint": "^1.0.3",
+    "esformatter-quotes": "^1.1.0",
+    "esformatter-remove-trailing-commas": "^1.0.1",
+    "esformatter-semicolons": "^1.1.2",
+    "esformatter-spaced-lined-comment": "^2.0.1",
+    "esformatter-var-each": "^2.1.0",
+    "eslint": "^3.15.0",
+    "eslint-plugin-babel": "^4.0.1",
+    "eslint-plugin-html": "^2.0.1",
+    "htmlcs": "stable",
+    "lesslint": "stable",
+    "loophole": "^1.1.0",
+    "manis": "^0.3.0",
+    "map-stream": "^0.1.0",
+    "minimatch": "^3.0.2",
+    "minimist": "^1.2.0",
+    "msee": "^0.3.2",
+    "vinyl": "^2.0.0",
+    "vinyl-fs": "^2.4.3"
+  },
+  "description": "Front End Code Style Suite",
+  "devDependencies": {
+    "coveralls": "^2.11.14",
+    "istanbul": "^0.4.5",
+    "jasmine-node": "^2.0.0",
+    "mock-fs": "3.11.0",
+    "mock-require": "^2.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "ad369b42141e2b734cb0441961afc6b6d467dcd0",
+    "tarball": "https://registry.npmjs.org/fecs/-/fecs-1.2.2.tgz"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "gitHead": "715214ad8c2f359f22d37463d29197cd350f137a",
+  "homepage": "https://github.com/ecomfe/fecs",
+  "keywords": [
+    "cssbeautify",
+    "csshint",
+    "csslint",
+    "eslint",
+    "fecs",
+    "htmlbeautify",
+    "htmlhint",
+    "htmllint",
+    "jsbeautify",
+    "jscs",
+    "jshint",
+    "jslint"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "ecomfe",
+      "email": "ecomfe@gmail.com"
+    }
+  ],
+  "name": "fecs",
+  "optionalDependencies": {},
+  "preferGlobal": true,
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecomfe/fecs.git"
+  },
+  "scripts": {
+    "coverage": "istanbul cover ./node_modules/jasmine-node/bin/jasmine-node -x \"{cli,lib/css/rules}/*.js\" --captureExceptions test/",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "lint": "node ./bin/fecs --type=js --rule",
+    "postinstall": "node scripts/install.js",
+    "test": "npm run lint && npm run coverage"
+  },
+  "version": "1.2.2"
+}
