@@ -1,0 +1,1 @@
+var mapConfig={crs:"bepsg3857",init_center:"109.4081,24.31546",baseLayer:{type:"baidu"}};
