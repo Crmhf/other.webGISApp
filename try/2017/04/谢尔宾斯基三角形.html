@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Sierpinski Triangle</title>
+</head>
+<body>
+<canvas id="canvas"
+        width="600" height="600"
+        style="display:block;margin:50px auto">
+	你的浏览器不支持canvas
+</canvas>
+</body>
+<script type="text/javascript">
+	var context =
+		document.getElementById("canvas")
+			.getContext("2d");
+
+	//根据三顶点坐标绘制一个三角形
+	function triangle(p1,p2,p3){
+		context.moveTo(p1.x,p1.y);
+		context.lineTo(p2.x,p2.y);
+		context.lineTo(p3.x,p3.y);
+		context.lineTo(p1.x,p1.y);
+	}
+
+	/*绘制谢尔宾斯基三角形的方法
+	 p：正三角形中心点坐标，len：三角形边长*/
+	function SierpinskiTriangle(p,len){
+		var r=len/Math.sqrt(3);
+		//计算顶点坐标
+		var p1={x:p.x, y:p.y-r};
+		var p2={x:p.x-len/2, y:p.y+r/2};
+		var p3={x:p2.x+len, y:p2.y};
+		triangle(p1,p2,p3); //绘制正三角形外框
+		//递归绘制所有的倒三角形
+		middleTriangle(p1,p2,p3);
+
+		function middleTriangle(p1,p2,p3){
+			var tp1={x:(p2.x+p3.x)/2, y:(p2.y+p3.y)/2};
+			var tp2={x:(p1.x+p3.x)/2, y:(p1.y+p3.y)/2};
+			var tp3={x:(p1.x+p2.x)/2, y:(p1.y+p2.y)/2};
+			triangle(tp1,tp2,tp3);
+			//递归前判断最短线条长度是否短于临界值
+			if((tp1.x-tp2.x)*(tp1.x-tp2.x)+
+				(tp1.y-tp2.y)*(tp1.y-tp2.y)>20){
+				middleTriangle(p1,tp2,tp3);
+				middleTriangle(p2,tp1,tp3);
+				middleTriangle(p3,tp1,tp2);
+			}
+		}
+	}
+
+	//绘制
+	SierpinskiTriangle({x:300,y:360},560);
+	context.lineWidth = 0.5;
+	context.strokeStyle = "#F5270B";
+	context.stroke();
+</script>
+</html>
