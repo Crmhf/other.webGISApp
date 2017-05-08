@@ -132,9 +132,9 @@
     function fields() {
         var now = new Date;
         return [
-            {index: .7, text: formatSecond(now), value: now.getSeconds() / 60},
-            {index: .6, text: formatMinute(now), value: now.getMinutes() / 60},
-            {index: .5, text: formatHour(now),   value: now.getHours() / 24},
+            {index: .6, text: formatSecond(now), value: now.getSeconds() / 60},
+            {index: .5, text: formatMinute(now), value: now.getMinutes() / 60},
+            {index: .4, text: formatHour(now),   value: now.getHours() / 24},
             {index: .3, text: formatDay(now),    value: now.getDay() / 7},
             {index: .2, text: formatDate(now),   value: (now.getDate() - 1) / (32 - new Date(now.getYear(), now.getMonth(), 32).getDate())},
             {index: .1, text: formatMonth(now),  value: now.getMonth() / 12}
